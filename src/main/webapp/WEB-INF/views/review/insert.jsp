@@ -16,24 +16,75 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
 
-	<div class="container">
+			<h2 class="text-center"
+				style="margin-bottom: 2%; margin-top: 10%;">댓글 작성</h2>
+
+			<c:url value="/review/insert" var="writeLink" />
+
+			<form action="${writeLink }" method="post">
+				<div class="table table-responsive">
+					<table class="table table-striped">
+
+						<tr>
+							<td style="text-align: center;" value="${dto.memerId }"></td>
+							<td>
+								<textarea class="form-control" name="content" id="textarea1"
+									cols="20" rows="5"></textarea>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div style="text-align: center;">
+					<button type="submit" class="btn btn-outline-secondary" id="button">작성</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	
+	<%-- 댓글 목록 --%>
+
+	<!-- .container.mt-3>.row>.col -->
+	<div class="container mt-3">
 		<div class="row">
 			<div class="col">
-				<h1>글 작성</h1>
+				<h3>댓글</h3>
 				
-				<form action="${appRoot }/review/insert" method="post">
-					
-					<div>
-						<label class="form-label" for="textarea1">본문</label>
-						<textarea class="form-control" name="content" id="textarea1" cols="30" rows="10"></textarea>
-					</div>
-					
-					<button class="btn btn-primary">작성</button>
-				</form>
+				<ul id="replyList1" class="list-group">
+					 
+					<c:forEach items="${replyList }" var="reply">
+						<li class="list-group-item">
+							<div id="replyDisplayContainer${reply.id }">
+								<div class="fw-bold">
+									<i class="fa-solid fa-comment"></i>
+									${reply.inserted}
+									<span class="reply-edit-toggle-button badge bg-info text-dark"
+										id="replyEditToggleButton${reply.id }"
+										data-reply-id="${reply.id }">
+										<i class="fa-solid fa-pen-to-square"></i>
+									</span>
+									<span class="reply-delete-button badge bg-danger"
+										data-reply-id="${reply.id }">
+										<i class="fa-solid fa-trash-can"></i>
+									</span>
+								</div>
+								<c:out value="${reply.content }" />
+							</div>
+						</li>
+					</c:forEach>
+
+				</ul>
 			</div>
 		</div>
 	</div>
+	
+	
 	
 </body>
 </html>

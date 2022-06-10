@@ -1,5 +1,7 @@
 package com.hys.trazar.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,12 @@ public class ReviewService {
 		int cnt = mapper.insertReview(dto);
 		
 		return cnt == 1; 
+	}
+
+	public List<ReviewDto> listReply() {
+		
+		return mapper.selectReply();
+		
 	}
 
 }

@@ -11,7 +11,8 @@ public class ReviewDto {
 	private String memberId;
 	private String content;
 	private LocalDateTime inserted;
-
+	
+	/*
 	public String getPrettyInserted() {
 		// 24시간 이내면 시간만
 		// 이전이면 년-월-일
@@ -22,4 +23,5 @@ public class ReviewDto {
 			return inserted.toLocalDate().toString();
 		}
 	}
+	*/
 }

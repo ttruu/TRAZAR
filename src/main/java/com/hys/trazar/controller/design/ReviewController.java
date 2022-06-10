@@ -1,7 +1,10 @@
 package com.hys.trazar.controller.design;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +26,11 @@ public class ReviewController {
 	}
 	
 	@PostMapping("insert")
-	public void insert(ReviewDto dto, RedirectAttributes rttr) {
+	public void insert(ReviewDto dto, Model model, RedirectAttributes rttr) {
+		
+		List<ReviewDto> list = service.listReply();
+		
+		model.addAttribute("replyList", list);
 		
 		boolean success = service.insertReview(dto);
 		
@@ -32,6 +39,6 @@ public class ReviewController {
 		} else {
 			rttr.addFlashAttribute("message", "새 글이 등록되지 않았습니다.");
 		}
-		
 	}
+	
 }
