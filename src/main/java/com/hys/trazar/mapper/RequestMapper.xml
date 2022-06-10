@@ -7,5 +7,6 @@
 		INSERT INTO Request (title, body, price)
 		VALUES (#{title}, #{body}, #{price})
 	</insert>
-
+	
+	
 </mapper>
