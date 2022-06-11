@@ -22,10 +22,17 @@ public class ReviewService {
 		return cnt == 1; 
 	}
 
-	public List<ReviewDto> listReply() {
+	public List<ReviewDto> listReview() {
 		
-		return mapper.selectReply();
+		return mapper.selectReview();
 		
+	}
+
+	public boolean updateReview(ReviewDto dto) {
+
+		int cnt = mapper.updateReview(dto);
+		
+		return cnt == 1;
 	}
 
 }

@@ -9,8 +9,14 @@
 		VALUES (#{content})
 	</insert>
 	
-	<select id="selectReply" resultType="com.hys.trazar.domain.ReviewDto">
+	<select id="selectReview" resultType="com.hys.trazar.domain.ReviewDto">
   		SELECT id, content, inserted FROM Review ORDER BY id DESC
     </select>
+    
+    <update id="updateReview">
+    	UPDATE Review
+    	SET content = #{content}
+    	WHERE id = #{id}
+    </update>
 	
 </mapper>

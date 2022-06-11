@@ -8,6 +8,8 @@ public interface ReviewMapper {
 
 	int insertReview(ReviewDto dto);
 
-	List<ReviewDto> selectReply();
+	List<ReviewDto> selectReview();
+
+	int updateReview(ReviewDto dto);
 
 }
