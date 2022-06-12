@@ -14,5 +14,16 @@
 		<security:form-login/>
 	</security:http>
 	
-	<security:authentication-manager></security:authentication-manager>
+	<security:authentication-manager> <!-- 내놔 정보 -->
+		<security:authentication-provider> <!-- db를 통해 제공 -->
+			<security:jdbc-user-service 
+				data-source-ref="dataSource"
+				users-by-username-query="
+					SELECT id, password, name
+					FROM Member
+					WHERE id = ?
+				"
+				/>
+		</security:authentication-provider>
+	</security:authentication-manager>
 </beans>
