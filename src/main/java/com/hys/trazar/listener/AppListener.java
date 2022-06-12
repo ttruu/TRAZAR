@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebListener;
  * Application Lifecycle Listener implementation class AppListener
  *
  */
-
 public class AppListener implements ServletContextListener {
 
     /**
@@ -30,13 +29,9 @@ public class AppListener implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent sce)  { 
-         ServletContext application = sce.getServletContext();
-         
-         application.setAttribute("appRoot", application.getContextPath());
+    	ServletContext application = sce.getServletContext();
+    	
+    	application.setAttribute("appRoot", application.getContextPath());
     }
 	
 }
-
-
-
-
