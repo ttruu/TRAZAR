@@ -3,27 +3,52 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hys.trazar.mapper.ReviewMapper">
-	
-	<insert id="insertReview" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-		INSERT INTO Review (content)
-		VALUES (#{content})
+
+	<insert id="insertReview">
+	INSERT INTO Review (board_id, content, memberId)
+	VALUES (#{boardId}, #{content}, #{memberId})
 	</insert>
 	
-	<select id="selectReview" resultType="com.hys.trazar.domain.ReviewDto">
-  		SELECT id, content 
-  		FROM Review
-  		ORDER BY id DESC
-    </select>
-    
-    <update id="updateReview">
-    	UPDATE Review
-    	SET content = #{content}
-    	WHERE id = #{id}
-    </update>
-    
-    <delete id="removeReview">
-    	DELETE FROM Review
-		WHERE id = #{id }
-    </delete>
+	<select id="selectAllBoardId" resultType="com.hys.trazar.domain.ReplyDto">
+	SELECT r.id, 
+	       r.board_id boardId,
+	       r.content,
+	       r.inserted,
+	FROM Review r JOIN Member m ON r.memberId = m.id
+	WHERE r.board_id = #{boardId}
+	ORDER BY r.id
+	</select>
+	
+	<update id="updateReview">
+	UPDATE Review
+	SET content = #{content}
+	WHERE id = #{id}
+	
+	</update>
+	
+	<delete id="deleteReview">
+	DELETE FROM Review
+	WHERE id = #{id}
+	</delete>
+	
+	<delete id="deleteByBoardId">
+	DELETE FROM Review
+	WHERE board_id = #{boardId}
+	</delete>
+	
+	<select id="selectReviewById" resultType="com.hys.trazar.domain.ReplyDto">
+	SELECT id,
+		   board_id boardId,
+		   content,
+		   memberId,
+		   inserted
+    FROM Review
+    WHERE id = #{id}
+	</select>
+	
+	<delete id="deleteByMemberId">
+	DELETE FROM Review
+	WHERE memberId = #{memberId}
+	</delete>
 	
 </mapper>

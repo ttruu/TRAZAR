@@ -1,5 +1,6 @@
 package com.hys.trazar.service;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,33 +14,48 @@ public class ReviewService {
 	
 	@Autowired
 	private ReviewMapper mapper;
+	
+	public List<ReviewDto> getReviewByBoardId(int boardId) {
+		
+		return mapper.selectAllBoardId(boardId, null);
+	}
 
 	public boolean insertReview(ReviewDto dto) {
+
+		return mapper.insertReview(dto) == 1;
+	}
+	
+	public boolean updateReview(ReviewDto dto, Principal principal) {
+		ReviewDto old = mapper.selectReviewById(dto.getId());
 		
-		// 댓글 등록
-		int cnt = mapper.insertReview(dto);
+		if (old.getMemberId().equals(principal.getName())) {
+			// 댓글 작성자와 로그인한 유저가 같을 때만 수정
+			return mapper.updateReview(dto) == 1;
+			
+		} else {
+			// 그렇지 않으면 return false;
+			return false;
+		}
 		
-		return cnt == 1; 
 	}
 
-	public List<ReviewDto> listReview() {
+	public boolean deleteReview(int id, Principal principal) {
 		
-		return mapper.selectReview();
+		ReviewDto old = mapper.selectReviewById(id);
 		
+		if (old.getMemberId().equals(principal.getName())) {
+			// 댓글 작성자와 로그인한 유저가 같을 때만 수정
+			return mapper.deleteReview(id) == 1;
+			
+		} else {
+			// 그렇지 않으면 return false;
+			return false;
+		}
 	}
 
-	public boolean updateReview(ReviewDto dto) {
-
-		int cnt = mapper.updateReview(dto);
-		
-		return cnt == 1;
+	public List<ReviewDto> getReviewWithOwnByBoardId(int boardId, String memberId) {
+		return mapper.selectAllBoardId(boardId, memberId);
 	}
 
-	public boolean removeReview(ReviewDto dto) {
-		
-		int cnt = mapper.removeReview(dto);
-		
-		return cnt == 1;
-	}
 
 }
