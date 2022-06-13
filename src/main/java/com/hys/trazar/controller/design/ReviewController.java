@@ -37,7 +37,7 @@ public class ReviewController {
 		
 	}
 	
-	@PostMapping("/insert/modify")
+	@PostMapping("/modify")
 	public String modify(ReviewDto dto, RedirectAttributes rttr) {
 	
 		boolean success = service.updateReview(dto);
@@ -51,7 +51,7 @@ public class ReviewController {
 		return "redirect:/review/insert";
 	}
 	
-	@PostMapping("/insert/remove")
+	@PostMapping("/remove")
 	public String remove(ReviewDto dto, RedirectAttributes rttr) {
 		
 		boolean success = service.removeReview(dto);
