@@ -22,10 +22,19 @@
 
 //전송 버튼 누르는 이벤트
 $(document).ready(function() {
-	$("#button-send").on("click", function(e) {
+	
+	 $('#button-send').click(function(e){
+
+         var txt = $('#msg').val();
+
+         socket.send(txt);
+
+     });
+	
+	/* $("#button-send").on("click", function(e) {
 		sendMessage();
 		$('#msg').val('')
-	});
+	}); */
 	
 	var sock = new SockJS('http://localhost:8080/trazar/chatting');
 	sock.onmessage = onMessage;
@@ -77,14 +86,14 @@ $(document).ready(function() {
 	}
 	//채팅창에서 나갔을 때
 	function onClose(evt) {
-		var user = '${principal.username}';
+		var user = '${user1}';
 		var str = user + " 님이 퇴장하셨습니다.";
 		
 		$("#msgArea").append(str);
 	}
 	//채팅창에 들어왔을 때
 	function onOpen(evt) {
-		var user = '${principal.username}';
+		var user = '${user1}';
 		var str = user + "님이 입장하셨습니다.";
 		
 		$("#msgArea").append(str);
@@ -103,6 +112,7 @@ $(document).ready(function() {
 		<div id="msgArea" class="col">
 		
 		</div>
+	<form id="form1" action="${appRoot }/chat" method="post" >
 		<div class="col-6">
 		<div class="input-group mb-3">
 			<input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -111,6 +121,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		</div>
+	</form>
 	</div>
 	<div class="col-6">
 	</div>

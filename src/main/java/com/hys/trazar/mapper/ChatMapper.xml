@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hys.trazar.mapper.ChatMapper">
+	<select id="getChatInfo" resultType="Object">
+		SELECT m.id designerId, cm.message
+		FROM ChatMessage cm
+			JOIN ChatUser cu ON cm.chatUserId = cu.id
+			JOIN DesignBoard db ON cu.designBoardId = db.id
+			JOIN Member m ON db.designerId = m.id
+	</select>
+	
+	<select id="getChatInfo2" resultType="Object">
+		SELECT m.id customerId, cm.message
+		FROM ChatMessage cm
+			JOIN ChatUser cu ON cm.chatUserId = cu.id
+			JOIN Request r ON cu.requestBoardId = r.id
+			JOIN Member m ON r.memberId = m.id
+	</select>
+	
+</mapper>
