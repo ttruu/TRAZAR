@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
 <!DOCTYPE html>
 <html>
@@ -11,14 +12,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<my:navBar current="memberInfo"></my:navBar>
 <h1>로그인 성공 !!!</h1>
-<h1>(메인 페이지)</h1>
+<h1>(메인 페이지 디자이너 보드)</h1>
 
-	<c:url value="/sign/modifyMember" var="modifyMember">
-		<c:param name="id" value="${member.id }"></c:param>
-	</c:url>
-	<a href="${modifyMember} ">마이페이지 </a>
 
 </body>
 </html>

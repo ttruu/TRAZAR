@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,164 +23,11 @@
 	crossorigin="anonymous"></script>
 <title>Insert title here</title>
 <script>
-$(document).ready(function() {
-	// 암호, 암호 확인 일치여부
-	let passwordCheck = true;
-	// 이메일 중복 확인 여부
-	let emailCheck = true;
-	// 닉네임 중복 확인 여부
-	let nickNameCheck = true;
-	
-	// 기존 이메일
-	const oldEmail = $("#emailInput1").val();
-	// 기존 닉네임
-	const oldNickName = $("#nickNameInput1").val();
-	
-	// 수정버튼(modifySubmitButton1) 활성화 함수
-	const enableModifyButton = function() {
-		if (passwordCheck && emailCheck && nickNameCheck) {
-			$("#modifySubmitButton1").removeAttr("disabled");
-		} else {
-			$("#modifySubmitButton1").attr("disabled", "");
-		}
-	};
-	
-	// 이메일 input 요소에 text 변경시 이메일중복확인버튼 활성화
-	$("#emailInput1").keyup(function() {
-		const newEmail = $("#emailInput1").val();
-		
-		if (oldEmail === newEmail) {
-			$("#emailCheckButton1").attr("disabled", "");
-			$("#emailMessage1").text("");
-			emailCheck = true;
-		} else {
-			$("#emailCheckButton1").removeAttr("disabled");
-			emailCheck = false;
-		}
-		
-		enableModifyButton();
-	});
-	
-	// 닉네임 input 요소에 text 변경시 닉네임중복확인버튼 활성화
-	$("#nickNameInput1").keyup(function() {
-		const newNickName = $("#nickNameInput1").val();
-		
-		if (oldNickName === newNickName) {
-			$("#nickNameCheckButton1").attr("disabled", "");
-			$("#nickNameMessage1").text("");
-			nickNameCheck = true;
-		} else {
-			$("#nickNameCheckButton1").removeAttr("disabled");
-			nickNameCheck = false;
-		}
-		
-		enableModifyButton();
-		
-	});
-	
-	// 이메일중복버튼 클릭시 ajax 요청 발생
-	$("#emailCheckButton1").click(function(e) {
-		// 기본 이벤트 진행 중지
-		e.preventDefault();
-		
-		const data = {email : $("#emailInput1").val()};
-		
-		emailCheck = false;
-		$.ajax({
-			url : "${appRoot}/member/check",
-			type : "get",
-			data : data,
-			success : function(data) {
-				switch(data) {
-				case "ok" :
-					$("#emailMessage1").text("사용 가능한 이메일입니다.");
-					emailCheck = true;
-					break;
-				case "notok" :
-					$("#emailMessage1").text("사용 불가능한 이메일입니다.");
-					
-					break;
-				}
-			},
-			error : function() {
-				$("#emailMessage1").text("이메일 중복 확인 중 오류 발생, 다시 시도해주세요.");
-			},
-			complete : function() {
-				console.log("이메일 중복 확인 완료")
-				enableModifyButton();
-			}
-		});
-	});
-	
-	// 닉네임중복버튼 클릭시 ajax 요청 발생
-	$("#nickNameCheckButton1").click(function(e) {
-		// 기본 이벤트 진행 중지
-		e.preventDefault();
-		
-		const data = {nickname : $("#nickNameInput1").val()};
-		
-		nickNameCheck = false; // 
-		$.ajax({
-			url : "${appRoot}/member/check",
-			type : "get",
-			data : data,
-			success : function(data) {
-				switch(data) {
-				case "ok" :
-					$("#nickNameMessage1").text("사용 가능한 닉네임입니다.");
-					nickNameCheck = true;
-					break;
-				case "notok" :
-					$("#nickNameMessage1").text("사용 불가능한 닉네임입니다.");
-					break;
-				}
-			},
-			error : function() {
-				$("#nickNameMessage1").text("닉네임 중복 확인 중 오류 발생, 다시 시도해주세요.");
-			},
-			complete : function() {
-				console.log("닉네임 중복 확인 완료");
-				enableModifyButton();
-			}
-		});
-	});
-	
-	// 암호, 암호확인 요소 값 변경시
-	$("#passwordInput1, #passwordInput2").keyup(function() {
-		const pw1 = $("#passwordInput1").val();
-		const pw2 = $("#passwordInput2").val();
-		
-		if (pw1 === pw2) {
-			$("#passwordMessage1").text("패스워드가 일치합니다.");
-			passwordCheck = true;
-		} else {
-			$("#passwordMessage1").text("패스워드가 일치하지 않습니다.");
-			passwordCheck = false;
-		}
-		
-		enableModifyButton();
-
-	});
-	
-	// 수정 submit 버튼 ("modifySubmitButton2") 클릭 시
-	$("#modifySubmitButton2").click(function(e) {
-		e.preventDefault();
-		const form2 = $("#form2");
-		
-		// input 값 옮기기
-		form2.find("[name=password]").val($("#passwordInput1").val());
-		form2.find("[name=email]").val($("#emailInput1").val());
-		form2.find("[name=nickname]").val($("#nickNameInput1").val());
-		
-		// submit
-		form2.submit();
-	});
-});
 </script>
 </head>
 <body>
 
-
+<my:navBar current="memberInfo"></my:navBar>
 	<div class="container">
 	
 		
@@ -189,7 +37,11 @@ $(document).ready(function() {
 				<h1>회원 정보 보기</h1>
 				
 				<div>
-					<label for="idInput1" class="form-label">
+					<label for="nameInput1" class="form-label">
+					이름
+					</label>
+					<input id="nameInput1" class="form-control" type="text" value="${member.name }" readonly />
+					<label for="nameInput1" class="form-label">
 					아이디
 					</label>
 					<input id="idInput1" class="form-control" type="text" value="${member.id }" readonly />
@@ -223,6 +75,24 @@ $(document).ready(function() {
 						<button class="btn btn-secondary" id="nickNameCheckButton1" disabled>닉네임중복확인</button>
 					</div>
 					<p class="form-text" id="nickNameMessage1"></p>
+					
+					<label for="phoneNum" class="form-label">
+					휴대폰 번호
+					</label>
+					
+					<div class="input-group">
+						<input class="form-control" id="phoneNumInput1" type="number" value="${member.phoneNum}" readonly /> 
+					</div>
+					<p class="form-text" id="phoneNumMessage1"></p>
+					
+					<label for="introduceInput1" class="form-label">
+					자기소개
+					</label>
+					<div class="input-group">
+						<input class="form-control" id="introduceInput1" type="text" value="${member.introduce }" /> 
+						<button class="btn btn-secondary" id="introduceCheckButton1" disabled>수정</button>
+					</div>
+					<p class="form-text" id="emailMessage1"></p>
 					
 					<label for="" class="form-label">
 					가입일시

@@ -1,5 +1,7 @@
 package com.hys.trazar.mapper.login;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.hys.trazar.domain.login.SignupDto;
@@ -17,5 +19,7 @@ public interface SignupMapper {
 	int createAuth(@Param("id")String id, @Param("auth")String auth);
 
 	SignupDto memberModify(String id);
+
+	List<SignupDto> memberList();
 
 }

@@ -1,5 +1,7 @@
 package com.hys.trazar.controller.login;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -24,7 +26,7 @@ public class SignupController {
 	public void createUserForm() {
 
 	}
-	
+
 	@GetMapping("signupSuccess")
 	public void SuccessCreate() {
 			
@@ -90,6 +92,12 @@ public class SignupController {
 	public void ModifyMember(String id, Model model) {
 		SignupDto dto = service.memberModify(id);
 		model.addAttribute("member", dto);
+	}
+	
+	@GetMapping("memberList")
+	public void memberList(Model model) {
+		List<SignupDto> dto = service.memberList();
+		model.addAttribute("memberList", dto);
 	}
 	
 }

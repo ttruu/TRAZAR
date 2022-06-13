@@ -31,4 +31,8 @@
 		SELECT id, password, email, nickName, phoneNum, introduce, name, inserted FROM Member WHERE id = #{id}
 	</select>
 	
+	<select id="memberList" resultType="com.hys.trazar.domain.login.SignupDto">
+	SELECT id, password, email, nickName, phoneNum, introduce, name, inserted FROM Member ORDER BY inserted DESC
+</select>
+	
 </mapper>
