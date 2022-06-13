@@ -35,4 +35,11 @@ public class ReviewService {
 		return cnt == 1;
 	}
 
+	public boolean removeReview(ReviewDto dto) {
+		
+		int cnt = mapper.removeReview(dto);
+		
+		return cnt == 1;
+	}
+
 }

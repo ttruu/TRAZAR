@@ -12,4 +12,6 @@ public interface ReviewMapper {
 
 	int updateReview(ReviewDto dto);
 
+	int removeReview(ReviewDto dto);
+
 }

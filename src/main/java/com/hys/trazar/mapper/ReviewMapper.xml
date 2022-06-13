@@ -10,7 +10,9 @@
 	</insert>
 	
 	<select id="selectReview" resultType="com.hys.trazar.domain.ReviewDto">
-  		SELECT id, content, inserted FROM Review ORDER BY id DESC
+  		SELECT id, content 
+  		FROM Review
+  		ORDER BY id DESC
     </select>
     
     <update id="updateReview">
@@ -18,5 +20,10 @@
     	SET content = #{content}
     	WHERE id = #{id}
     </update>
+    
+    <delete id="removeReview">
+    	DELETE FROM Review
+		WHERE id = #{id }
+    </delete>
 	
 </mapper>

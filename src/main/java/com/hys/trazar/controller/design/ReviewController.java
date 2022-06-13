@@ -33,16 +33,11 @@ public class ReviewController {
 		
 		model.addAttribute("reviewList", list);
 		
-		boolean success = service.insertReview(dto);
+		service.insertReview(dto);
 		
-		if (success) {
-			rttr.addFlashAttribute("message", "새 글이 등록되었습니다.");
-		} else {
-			rttr.addFlashAttribute("message", "새 글이 등록되지 않았습니다.");
-		}
 	}
 	
-	@PostMapping("insert/modify")
+	@PostMapping("/insert/modify")
 	public String modify(ReviewDto dto, RedirectAttributes rttr) {
 	
 		boolean success = service.updateReview(dto);
@@ -53,7 +48,46 @@ public class ReviewController {
 			rttr.addFlashAttribute("message", "글이 수정되지 않았습니다.");
 		}
 		
-		return "redirect:/review/insert" + dto.getId();
+		return "redirect:/review/insert";
+	}
+	
+	@PostMapping("/insert/remove")
+	public String remove(ReviewDto dto, RedirectAttributes rttr) {
+		
+		boolean success = service.removeReview(dto);
+		
+		if (success) {
+			rttr.addFlashAttribute("message", "글이 수정되었습니다.");
+		} else {
+			rttr.addFlashAttribute("message", "글이 수정되지 않았습니다.");
+		}
+		
+		return "redirect:/review/insert";
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

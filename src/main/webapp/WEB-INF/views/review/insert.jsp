@@ -29,11 +29,21 @@
 <title>Insert title here</title>
 
 <script>
-	
+	$(document).ready(function() {
+		$("#edit-button").click(function() {
+			$("#textarea1").removeAttr("readonly");
+			$("#modify-submit1").removeAttr("readonly");
+			$("#delete-submit1").removeAttr("readonly");
+		});
+	});
 </script>
 
 </head>
 <body>
+
+	<c:if test="${not empty message }">
+	<div class="alert alert-primary">${message }</div>
+	</c:if>
 
 	<div class="row">
 		<div class="col-md-2"></div>
@@ -47,27 +57,24 @@
 
 				<div class="mb-3">
 					<label for="textarea1" class="form-label"></label>
-					<textarea name="content" class="form-control" id="textarea1"
-						rows="3"></textarea>
+					<textarea name="content" class="form-control" rows="3"></textarea>
 				</div>
 
 				<div style="text-align: center;">
 					<button type="submit" class="btn btn-outline-secondary" id="button">작성</button>
 				</div>
+				
 			</form>
 		</div>
 	</div>
 
+	<!-- read, modify, delete -->
 	<div class="container mt-3">
 		<div class="row">
 			<div class="col">
 				<br />
 
-				<h3>댓글
-
-				</h3>
-
-				<ul id="replyList1" class="list-group">
+				<h3>댓글</h3>
 
 					<c:forEach items="${reviewList }" var="review">
 						
@@ -77,31 +84,20 @@
 									<i class="fa-solid fa-circle-user fa-2x"></i>
 								</div>
 								
-								<c:out value="${review.content }" />
-								<button id="edit-button" class="btn btn-secondary">
-								<i class="fa-solid fa-pen-to-square"></i>
-								</button>
+								<p>${review.content }</p>
+								<button id="edit-button" class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i></button>
 							</div>
 							<!--  ${review.inserted} -->
 						</li>
-					</c:forEach>
-					<c:if test="${not empty message }">
-					<div class="alert alert-primary">${message }</div>
-				</c:if>
+					
 
 					<form id="form1" action="${appRoot }/review/modify" method="post">
 						<input type="hidden" name="id" value="${review.id }" />
 	
-						<div>
-							<label class="form-label" for="textarea1">본문</label>
-							<textarea class="form-control" name="content" id="textarea1"
-								cols="30" rows="10" readonly>${review.content }</textarea>
-						</div>
 						<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
 						<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
 					</form>	
-					
-				</ul>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
