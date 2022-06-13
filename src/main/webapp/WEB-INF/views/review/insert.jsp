@@ -30,10 +30,15 @@
 
 <script>
 	$(document).ready(function() {
-		$("#edit-button").click(function() {
+		
+		$(".edit-button").click(function() {
+			const replyId = $(this).attr("data-reply-id");
+			$("#form" + replyId).removeClass("d-none");
+			/*
 			$("#textarea1").removeAttr("readonly");
 			$("#modify-submit1").removeAttr("readonly");
 			$("#delete-submit1").removeAttr("readonly");
+			*/
 		});
 	});
 </script>
@@ -85,18 +90,18 @@
 								</div>
 								
 								<p>${review.content }</p>
-								<button id="edit-button" class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i></button>
+								<button id="edit-button${review.id }" data-reply-id="${review.id }" class="edit-button btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i></button>
 							</div>
 							<!--  ${review.inserted} -->
+							<form id="form${review.id }" action="${appRoot }/review/modify" class="d-none" method="post">
+								<input type="hidden" name="id" value="${review.id }" />
+			
+								<button id="modify-submit${review.id }" class="btn btn-primary">수정</button>
+								<button id="delete-submit${review.id }" class="btn btn-danger">삭제</button>
+							</form>	
 						</li>
 					
 
-					<form id="form1" action="${appRoot }/review/modify" method="post">
-						<input type="hidden" name="id" value="${review.id }" />
-	
-						<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
-						<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
-					</form>	
 				</c:forEach>
 			</div>
 		</div>
