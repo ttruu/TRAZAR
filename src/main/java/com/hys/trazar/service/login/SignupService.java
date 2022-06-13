@@ -1,6 +1,7 @@
 package com.hys.trazar.service.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hys.trazar.domain.login.SignupDto;
@@ -11,9 +12,24 @@ public class SignupService {
 	
 	@Autowired
 	private SignupMapper mapper;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	public boolean createMember(SignupDto dto) {
-		return mapper.createUser(dto)==1;
+		
+		// 암호화 
+		String encodedPassword = passwordEncoder.encode(dto.getPassword());
+		// 암호화 된 암호를 다시 세팅 
+		dto.setPassword(encodedPassword);
+		
+		// create member 
+		int cnt1 = mapper.createUser(dto);
+		
+		// insert auth (기본 권한)
+		int cnt2 = mapper.createAuth(dto.getId(), "ROLE_USER");
+		
+		return cnt1 == 1 && cnt2 == 2;
 	}
 
 	public boolean MemberIdCheck(String id) {
@@ -26,6 +42,10 @@ public class SignupService {
 
 	public boolean MemberEmailCheck(String email) {
 		return mapper.MemberEmailCheck(email) > 0;
+	}
+
+	public SignupDto memberModify(String id) {
+		return mapper.memberModify(id);
 	}
 
 }

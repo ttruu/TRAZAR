@@ -1,7 +1,9 @@
 package com.hys.trazar.controller.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,7 @@ import com.hys.trazar.service.login.SignupService;
 public class SignupController {
 	@Autowired
 	private SignupService service;
+	
 
 	@GetMapping("signup")
 	public void createUserForm() {
@@ -27,14 +30,24 @@ public class SignupController {
 			
 	}
 	
+	@GetMapping("loginSuccess")
+	public void successLogin() {
+		
+	}
+	
+	@GetMapping("login")
+	public void login() {
+		
+	}
 
 	@PostMapping("signup")
 	public String createUser(SignupDto dto) {
 		boolean success = service.createMember(dto);
+
 		if (success) {
-			return "redirect:/sign/signupSuccess/";
-		} else {
 			return "redirect:/sign/signup/";
+		} else {
+			return "redirect:/sign/signupSuccess/";
 		}
 	}
 
@@ -64,7 +77,7 @@ public class SignupController {
 	@GetMapping(path = "check", params = "email")
 	@ResponseBody
 	public String emailCheck(String email) {
-		boolean success = service.MemberEmailCheck(email);
+		boolean success = service.MemberEmailCheck(email); 
 
 		if (success) {
 			return "notok";
@@ -72,4 +85,11 @@ public class SignupController {
 			return "ok";
 		}
 	}
+	
+	@GetMapping("modifyMember")
+	public void ModifyMember(String id, Model model) {
+		SignupDto dto = service.memberModify(id);
+		model.addAttribute("member", dto);
+	}
+	
 }

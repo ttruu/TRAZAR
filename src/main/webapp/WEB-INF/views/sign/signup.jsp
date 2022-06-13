@@ -27,12 +27,19 @@
 
 <script>
 	$(document).ready(function() {
+	
+		let idCheck = false;
+		let emailCheck = false;
+		let nickNameCheck = false;
+		let pwCheck = false;
+		
 		$("#idCheckButton").click(function(e) {
 			e.preventDefault()
 			const data = {
 				id : $("#form1").find("[name=id]").val()
 			}
-
+			
+			idCheck = false;
 			$.ajax({
 				url : "${appRoot}/sign/check",
 				data : data,
@@ -41,6 +48,7 @@
 					case "ok":
 						$("#idCheckMessage").text("사용 가능한 아이디 입니다.")
 						$("#idCheckMessage").css("color", "blue")
+						idCheck = true;
 						break;
 					case "notok":
 						$("#idCheckMessage").text("사용중인 아이디 입니다.")
@@ -50,6 +58,9 @@
 				},
 				error : function(data) {
 					$("#idCheckMessage").text("아이디 중복 확인 중 오류가 발생하였습니다.")
+				},
+				complete : function(data){
+					enableSubmit()
 				}
 			})
 		})
@@ -59,6 +70,7 @@
 			const data = {
 				email : $("#form1").find("[name=email]").val()
 			}
+			emailCheck = false;
 			$.ajax({
 				url : "${appRoot}/sign/check",
 				data : data,
@@ -67,6 +79,7 @@
 					case "ok":
 						$("#emailCheckMessage").text("사용 가능한 이메일 입니다.")
 						$("#emailCheckMessage").css("color", "blue")
+						emailCheck = true;
 						break;
 					case "notok":
 						$("#emailCheckMessage").text("사용중인 이메일 입니다.")
@@ -76,6 +89,9 @@
 				},
 				error : function(data) {
 					$("#emailCheckMessage").text("이메일 중복 확인 중 오류가 발생하였습니다.")
+				},
+				complete : function(data){
+					enableSubmit()
 				}
 			})
 		})
@@ -85,6 +101,7 @@
 				nickName : $("#form1").find("[name=nickName]").val()
 			}
 
+			nickNameCheck = false;
 			$.ajax({
 
 				url : "${appRoot}/sign/check",
@@ -94,6 +111,7 @@
 					case "ok":
 						$("#nickNameCheckMessage").text("사용 가능한 닉네임 입니다.")
 						$("#nickNameCheckMessage").css("color", "blue")
+						nickNameCheck = true;
 						break;
 					case "notok":
 						$("#nickNameCheckMessage").text("사용중인 닉네임 입니다.")
@@ -103,10 +121,33 @@
 				},
 				error : function(data) {
 					$("#nickNameCheckMessage").text("닉네임 중복 확인 중 오류가 발생하였습니다.")
+				},
+				complete : function(data){
+					enableSubmit()
 				}
 			})
 		})
-		
+		$("#pwCheck1, #pwCheck2").keyup(function(){
+			const pw1 = $("#pwCheck1").val()
+			const pw2 = $("#pwCheck2").val()
+			
+			if(pw1 == pw2){
+				$("#passwordCheck").text("패스워드가 일치합니다.")
+				$("#passwordCheck").css("color","blue")
+				pwCheck = true;
+			} else {
+				$("#passwordCheck").text("패스워드가 일치하지 않습니다.")
+				$("#passwordCheck").css("color","red")
+			}
+		})
+		const enableSubmit = function(){
+			if(idCheck && emailCheck && nickNameCheck && pwCheck){
+				$("#CreateButton").removeAttr("disabled")
+			} else {
+				$("#CreateButton").attr("disabled","")
+			}
+			enableSubmit()
+		}
 		
 	})
 </script>
@@ -119,41 +160,37 @@
 				<h1>회원가입</h1>
 				<form action="${appRoot }/sign/signup" method="post" id="form1">
 					이름 :
-					<input type="text" name="name" />
+					<input type="text" name="name" maxlength = "5" placeholder = "이름을 입력하세요." required />
 					<br />
 					아이디 :
-					<input type="text" name="id" />
+					<input type="text" name="id" maxlength = "10" placeholder = "아이디를 입력하세요." required/>
 					<br />
 					<button class="btn btn-primary" id="idCheckButton" type="button">중복확인</button>
 					<p id="idCheckMessage"></p>
-					<br />
 					패스워드 :
-					<input type="password" name="password" id="pwCheck1" />
+					<input type="password" name="password" id="pwCheck1" required />
 					<br />
 					패스워드 확인 :
-					<input type="password" id="pwCheck2"/>
+					<input type="password" id="pwCheck2" required/>
 					<p id="passwordCheck"></p>
-					<br />
 					이메일 :
-					<input type="email" name="email" />
+					<input type="email" name="email" placeholder = "이메일을 입력하세요." required />
 					<br />
 					<button class="btn btn-primary" id="emailCheckButton" type="button">중복확인</button>
 					<p id="emailCheckMessage"></p>
-					<br />
 					닉네임 :
-					<input type="text" name="nickName" />
+					<input type="text" name="nickName" maxlength = "10" placeholder = "닉네임을 입력하세요." required/>
 					<br />
 					<button class="btn btn-primary" id="nickNameCheckButton"
 						type="button">중복확인</button>
 					<p id="nickNameCheckMessage"></p>
-					<br />
 					휴대폰 번호 :
-					<input type="text" name="phoneNum" />
+					<input type="number" name="phoneNum" maxlength = "13" placeholder = "휴대폰 번호를 입력하세요." required/>
 					<br />
 					자기소개 :
 					<textarea rows="" cols="" name="introduce"></textarea>
 					<br />
-					<button class="btn btn-secondary">회원가입</button>
+					<button class="btn btn-secondary" disabled id="CreateButton">회원가입</button>
 				</form>
 			</div>
 		</div>

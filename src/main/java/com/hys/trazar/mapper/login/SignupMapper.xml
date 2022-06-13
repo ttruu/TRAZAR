@@ -21,4 +21,14 @@
 		SELECT COUNT(email) FROM Member WHERE email = #{email}
 	</select>
 	
+	<!-- 권한 추가 -->
+	<insert id="createAuth">
+		INSERT INTO Auth (memberId, role)
+		VALUES (#{id}, #{auth})
+	</insert>
+	
+	<select id="memberModify" resultType="com.hys.trazar.domain.login.SignupDto">
+		SELECT id, password, email, nickName, phoneNum, introduce, name, inserted FROM Member WHERE id = #{id}
+	</select>
+	
 </mapper>
