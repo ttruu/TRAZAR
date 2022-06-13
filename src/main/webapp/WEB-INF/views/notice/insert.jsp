@@ -33,7 +33,7 @@
 					
 					<div>
 						<label class="form-label" for="textarea1">본문</label>
-						<textarea class="form-control" name="body" cols="30" rows="10"></textarea>
+						<textarea class="form-control" name="body" id="summernote" cols="30" rows="10"></textarea>
 					</div>
 		<button>등록</button>
 	</form>
