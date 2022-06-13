@@ -13,6 +13,7 @@ public class DesignBoardDto {
 	private LocalDateTime inserted;
 	private String designerId;
 	private String managerId;
+	private String writerNickName;
 	
 	public String getPrettyInserted() {
 		// 24시간 이내면 시간만

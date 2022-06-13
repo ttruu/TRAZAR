@@ -31,4 +31,13 @@ public class DesignBoardService {
 		return mapper.selectDesignBoardAll();
 	}
 
+	public boolean updateDesignBoard(DesignBoardDto dto) {
+		int cnt = mapper.updateDesignBoard(dto);
+		return cnt == 1;
+	}
+
+	public boolean deleteDesignBoard(int id) {
+		return mapper.deleteDesignBoard(id) == 1;
+	}
+
 }

@@ -1,5 +1,6 @@
 package com.hys.trazar.controller.design;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,4 +53,36 @@ public class DesignBoardController {
 		
 		model.addAttribute("designBoard", dto);
 	}
+	
+	@PostMapping("modify")
+	public String modify(DesignBoardDto dto, RedirectAttributes rttr) {
+		boolean success = service.updateDesignBoard(dto);
+		
+		if(success) {
+			rttr.addFlashAttribute("message", "글이 수정되었습니다");
+		} else {
+			rttr.addFlashAttribute("message", "글이 수정되지 않았습니다");
+		}
+		
+		rttr.addAttribute("id", dto.getId());
+		
+		return "redirect:/designBoard/get";
+	}
+	
+	
+	@PostMapping("remove")
+	public String remove(int id, RedirectAttributes rttr) {
+		
+		boolean success = service.deleteDesignBoard(id);
+		
+		if (success) {
+			rttr.addFlashAttribute("message", "글이 삭제 되었습니다.");
+			
+		} else {
+			rttr.addFlashAttribute("message", "글이 삭제 되지않았습니다.");
+		}
+		return "redirect:/designBoard/list";
+	}
+	
+
 }

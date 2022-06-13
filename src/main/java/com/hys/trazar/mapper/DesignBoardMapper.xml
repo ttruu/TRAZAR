@@ -22,6 +22,16 @@
 		WHERE id = #{id}
 	</select>
 
-
+	<update id="updateDesignBoard">
+		UPDATE DesignBoard
+		SET title = #{title},
+			body = #{body}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteDesignBoard">
+		DELETE FROM DesignBoard
+		WHERE id = #{id }
+	</delete>
 
 </mapper>

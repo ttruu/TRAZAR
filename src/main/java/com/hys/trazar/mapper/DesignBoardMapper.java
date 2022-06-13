@@ -12,4 +12,8 @@ public interface DesignBoardMapper {
 
 	List<DesignBoardDto> selectDesignBoardAll();
 
+	int updateDesignBoard(DesignBoardDto dto);
+
+	int deleteDesignBoard(int id);
+
 }
