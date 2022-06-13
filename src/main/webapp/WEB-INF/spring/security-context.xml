@@ -11,19 +11,16 @@
 	<!-- http의 request와 response에 관련된 설정 -->
 	<security:http>
 		<security:csrf disabled="true"/>
-		<security:form-login/>
+		<security:form-login default-target-url="/sign/loginSuccess/" login-page="/sign/login/"/>
 	</security:http>
 	
-	<security:authentication-manager> <!-- 내놔 정보 -->
-		<security:authentication-provider> <!-- db를 통해 제공 -->
+	<security:authentication-manager>
+		<security:authentication-provider>
 			<security:jdbc-user-service 
-				data-source-ref="dataSource"
-				users-by-username-query="
-					SELECT id, password, name
-					FROM Member
-					WHERE id = ?
-				"
-				/>
+			data-source-ref="dataSource"
+				users-by-username-query="SELECT id, password, 1 FROM Member WHERE id = ?"
+				authorities-by-username-query="SELECT memberId, role FROM Auth WHERE memberId = ?"
+			/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>
