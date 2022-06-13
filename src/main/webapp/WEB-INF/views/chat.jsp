@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page import="java.util.*" %>
 <% request.setCharacterEncoding("utf-8"); %>
+
+<sec:authentication property="principal" var="principal"/>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,76 +21,75 @@
 <script type="text/javascript">
 
 //전송 버튼 누르는 이벤트
-$("#button-send").on("click", function(e) {
-	sendMessage();
-	$('#msg').val('')
-});
-
-var sock = new SockJS('http://localhost:8080/chatting');
-sock.onmessage = onMessage;
-sock.onclose = onClose;
-sock.onopen = onOpen;
-
-function sendMessage() {
-	sock.send($("#msg").val());
-}
-//서버에서 메시지를 받았을 때
-function onMessage(msg) {
+$(document).ready(function() {
+	$("#button-send").on("click", function(e) {
+		sendMessage();
+		$('#msg').val('')
+	});
 	
-	var data = msg.data;
-	var sessionId = null; //데이터를 보낸 사람
-	var message = null;
+	var sock = new SockJS('http://localhost:8080/trazar/chatting');
+	sock.onmessage = onMessage;
+	sock.onclose = onClose;
+	sock.onopen = onOpen;
 	
-	var arr = data.split(":");
-	
-	for(var i=0; i<arr.length; i++){
-		console.log('arr[' + i + ']: ' + arr[i]);
+	function sendMessage() {
+		sock.send($("#msg").val());
 	}
-	
-	var cur_session = '${userid}'; //현재 세션에 로그인 한 사람
-	console.log("cur_session : " + cur_session);
-	
-	sessionId = arr[0];
-	message = arr[1];
-	
-    //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
-	if(sessionId == cur_session){
+	//서버에서 메시지를 받았을 때
+	function onMessage(msg) {
 		
-		var str = "<div class='col-6'>";
-		str += "<div class='alert alert-secondary'>";
-		str += "<b>" + sessionId + " : " + message + "</b>";
-		str += "</div></div>";
+		var data = msg.data;
+		var sessionId = null; //데이터를 보낸 사람
+		var message = null;
+		
+		var arr = data.split(":");
+		
+		for(var i=0; i<arr.length; i++){
+			console.log('arr[' + i + ']: ' + arr[i]);
+		}
+		
+		var cur_session = '${userid}'; //현재 세션에 로그인 한 사람
+		console.log("cur_session : " + cur_session);
+		
+		sessionId = arr[0];
+		message = arr[1];
+		
+	    //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
+		if(sessionId == cur_session){
+			
+			var str = "<div class='col-6'>";
+			str += "<div class='alert alert-secondary'>";
+			str += "<b>" + sessionId + " : " + message + "</b>";
+			str += "</div></div>";
+			
+			$("#msgArea").append(str);
+		}
+		else{
+			
+			var str = "<div class='col-6'>";
+			str += "<div class='alert alert-warning'>";
+			str += "<b>" + sessionId + " : " + message + "</b>";
+			str += "</div></div>";
+			
+			$("#msgArea").append(str);
+		}
+		
+	}
+	//채팅창에서 나갔을 때
+	function onClose(evt) {
+		var user = '${principal.username}';
+		var str = user + " 님이 퇴장하셨습니다.";
 		
 		$("#msgArea").append(str);
 	}
-	else{
-		
-		var str = "<div class='col-6'>";
-		str += "<div class='alert alert-warning'>";
-		str += "<b>" + sessionId + " : " + message + "</b>";
-		str += "</div></div>";
+	//채팅창에 들어왔을 때
+	function onOpen(evt) {
+		var user = '${principal.username}';
+		var str = user + "님이 입장하셨습니다.";
 		
 		$("#msgArea").append(str);
 	}
-	
-}
-//채팅창에서 나갔을 때
-function onClose(evt) {
-	
-	var user = '${pr.username}';
-	var str = user + " 님이 퇴장하셨습니다.";
-	
-	$("#msgArea").append(str);
-}
-//채팅창에 들어왔을 때
-function onOpen(evt) {
-	
-	var user = '${pr.username}';
-	var str = user + "님이 입장하셨습니다.";
-	
-	$("#msgArea").append(str);
-}
-
+})
 </script>
 
 <title>Insert title here</title>
