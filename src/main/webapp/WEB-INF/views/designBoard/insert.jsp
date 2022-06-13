@@ -21,11 +21,15 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+	
+<!-- 폰트크기/설정 -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -33,34 +37,43 @@
 	<my:navBar current="insert" />
 
 
-	<script>
-		$(document).ready(function() {
-			$('#summernote').summernote({
-		    height: 500,                 // 에디터 높이
-	          minHeight: null,             // 최소 높이
-	          maxHeight: null,             // 최대 높이
-	          focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-	          lang: "ko-KR",					// 한글 설정
-	         toolbar: [
-	            // [groupName, [list of button]]
-	            ['fontname', ['fontname']],
-	            ['fontsize', ['fontsize']],
-	            ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-	            ['color', ['forecolor','color']],
-	            ['table', ['table']],
-	            ['para', ['ul', 'ol', 'paragraph']],
-	            ['height', ['height']],
-	            ['insert',['picture','link','video']],
-	            ['view', ['fullscreen', 'help']]
-	          ],
-	        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-	        fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
-			
-		});
-	});
-		
-	   
-	</script>
+<script>
+$(document).ready(function() {
+	var toolbar = [
+		    // 글꼴 설정
+		    ['fontname', ['fontname']],
+		    // 글자 크기 설정
+		    ['fontsize', ['fontsize']],
+		    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+		    // 글자색
+		    ['color', ['forecolor','color']],
+		    // 표만들기
+		    ['table', ['table']],
+		    // 글머리 기호, 번호매기기, 문단정렬
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    // 줄간격
+		    ['height', ['height']],
+		    // 그림첨부, 링크만들기, 동영상첨부
+		    ['insert',['picture','link','video']],
+		    // 코드보기, 확대해서보기, 도움말
+		    ['view', ['codeview','fullscreen', 'help']]
+		  ];
+	var setting = {
+            height : 300,
+            minHeight : null,
+            maxHeight : null,
+            focus : true,
+            lang : 'ko-KR',
+            toolbar : toolbar
+         };
+        $('#summernote').summernote(setting);
+        
+        
+ });
+	
+   
+</script>
 
 
 	<div class="container">
