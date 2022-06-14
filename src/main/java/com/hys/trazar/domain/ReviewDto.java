@@ -9,8 +9,9 @@ public class ReviewDto {
 	private int id;
 	private int designBoardId;
 	private String memberId;
-	private String content;
+	private String body;
 	private boolean own;
+	private String writerNickName;
 	private LocalDateTime inserted;
 	
 	

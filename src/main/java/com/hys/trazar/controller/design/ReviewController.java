@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hys.trazar.domain.ReviewDto;
 import com.hys.trazar.service.ReviewService;
@@ -80,11 +81,12 @@ public class ReviewController {
 	}
 	
 	@GetMapping("list")
-	public List<ReviewDto> list(int boardId, Principal principal) {
+	@ResponseBody
+	public List<ReviewDto> list(int designBoardId, Principal principal ) {
 		if (principal == null) {
-			return service.getReviewByDesignBoardId(boardId);
+			return service.getReviewByDesignBoardId(designBoardId);
 		} else {
-			return service.getReviewWithOwnByDesignBoardId(boardId, principal.getName());
+			return service.getReviewWithOwnByDesignBoardId(designBoardId, principal.getName());
 		}
 	}
 	

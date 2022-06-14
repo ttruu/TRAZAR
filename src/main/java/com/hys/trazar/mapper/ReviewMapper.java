@@ -10,7 +10,7 @@ public interface ReviewMapper {
 	
 	int insertReview(ReviewDto dto);
 
-	List<ReviewDto> selectAllDesignBoardId(@Param("designBoardId") int boardId, @Param("memberId") String memberId);
+	List<ReviewDto> selectAllDesignBoardId(@Param("designBoardId") int designBoardId, @Param("memberId") String memberId);
 
 	int updateReview(ReviewDto dto);
 

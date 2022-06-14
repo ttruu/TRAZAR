@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hys.trazar.mapper.TestMapper">
+<mapper namespace="com.hys.trazar.mapper.ReviewMapper">
 
-<insert id="insertReview">
+	<insert id="insertReview">
 	INSERT INTO Review (designBoardId, body, memberId)
 	VALUES (#{designBoardId}, #{body}, #{memberId})
 	</insert>
@@ -12,9 +12,10 @@
 	<select id="selectAllDesignBoardId" resultType="com.hys.trazar.domain.ReviewDto">
 	SELECT r.id, 
 	       r.designBoardId,
+	       r.memberId,
 	       r.body,
-	       r.inserted
-	IF (m.id = #{memberId}, 1, 0) own
+	       r.inserted,
+	       IF (m.id = #{memberId}, 1, 0) own
 	FROM Review r JOIN Member m ON r.memberId = m.id
 	WHERE r.designBoardId = #{designBoardId}
 	ORDER BY r.id
@@ -43,7 +44,7 @@
 		   body,
 		   memberId,
 		   inserted
-    FROM Reply
+    FROM Review
     WHERE id = #{id}
 	</select>
 	
