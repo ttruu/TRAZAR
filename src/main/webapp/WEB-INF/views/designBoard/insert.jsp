@@ -24,11 +24,9 @@
 
 	
 <!-- 폰트크기/설정 -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
 
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js" integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <title>Insert title here</title>
 </head>
@@ -59,43 +57,41 @@ $(document).ready(function() {
 		    // 코드보기, 확대해서보기, 도움말
 		    ['view', ['codeview','fullscreen', 'help']]
 		  ];
-	
-	var setting = {
-            height : 300,
-            minHeight : null,
-            maxHeight : null,
-            focus : true,
-            lang : 'ko-KR',
-            toolbar : toolbar,
-            //콜백 함수
-            callbacks : { 
-            	onImageUpload : function(files, editor, welEditable) {
-            // 파일 업로드(다중업로드를 위해 반복문 사용)
-            for (var i = files.length - 1; i >= 0; i--) {
-            uploadSummernoteImageFile(files[i], this);
-            		}
-            	}
-            }
-         };
-	
-        $('#summernote').summernote(setting);
- 	});
-				
-		function uploadSummernoteImageFile(file, el) {
-			data = new FormData();
-			data.append("file", file);
+		
+	 $('#summernote').summernote({
+		 	placeholder: '최대 500자 작성 가능합니다.',
+	        height: 300,
+	        lang: 'ko-KR',
+	        toolbar : toolbar,
+	        callbacks: {
+	        	onImageUpload: function(files) {
+	        		for(var i = files.length -1; i>=0; i--) {
+	        			sendFile(files[i], this);
+	        		}
+	        		
+	        		//$summernote.summernote('insertNode', imgNode);
+	        	}
+	        }
+	 });
+	 
+	 function sendFile(file, el) {
+			var form_data = new FormData();
+			form_data.append('file', file);
 			$.ajax({
-				data : data,
-				type : "POST",
-				url : "uploadSummernoteImageFile",
+				data: form_data,
+				type : "post",
+				url: 'summer_image',
+				cache :false,
 				contentType : false,
 				enctype : 'multipart/form-data',
 				processData : false,
-				success : function(data) {
-					$(el).summernote('editor.insertImage', data.url);
+				success : function(img_name) {
+					console.log("img : "+img_name);
+					$(el).summernote('editor.insertImage', img_name);
 				}
 			});
-		}
+		}	 
+});
 	
    
 </script>

@@ -33,5 +33,10 @@
 		DELETE FROM DesignBoard
 		WHERE id = #{id }
 	</delete>
+	
+	<insert id="insertFile">
+		INSERT INTO Files (designBoardId, fileName)
+		VALUES (#{designBoardId}, #{fileName})
+	</insert>
 
 </mapper>

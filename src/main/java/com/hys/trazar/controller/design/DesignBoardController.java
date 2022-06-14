@@ -4,11 +4,19 @@ package com.hys.trazar.controller.design;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.HTMLDocument.Iterator;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,17 +54,35 @@ public class DesignBoardController {
 		
 	}
 	
+	@ResponseBody
 	@PostMapping("insert")
-	public String insert(DesignBoardDto designBoard, RedirectAttributes rttr) {
-		boolean success = service.insertDesignBoard(designBoard);
+	public String insert(DesignBoardDto designBoard, 
+				RedirectAttributes rttr,
+				MultipartFile[] file, 
+				Principal principal, 
+				HttpServletResponse response) throws Exception  {
 		
-		if(success) {
-			rttr.addFlashAttribute("message", "새 글이 등록되었습니다");
-		} else {
-			rttr.addFlashAttribute("message", "새글이 등록되지 않았습니다");
+		response.setContentType("text/html;charset=utf-8");
+		
+		PrintWriter out = response.getWriter();
+		
+		if(file != null) {
+			List<String> fileList = new ArrayList<String>();
+			for(MultipartFile f : file) {
+				fileList.add(f.getOriginalFilename());
+			}
+			designBoard.setFileName(fileList);
 		}
 		
-		return "redirect:/designBoard/list";
+		boolean success = service.insertDesignBoard(designBoard, file);
+		
+		if (success) {
+			//rttr.addFlashAttribute("message", "새 글이 등록되었습니다.");
+		} else {
+			//rttr.addFlashAttribute("message", "새 글이 등록되지 않았습니다.");
+		}
+		
+		return "redirect:/board/list";
 	}
 	
 	
@@ -96,42 +123,34 @@ public class DesignBoardController {
 		return "redirect:/designBoard/list";
 	}
 	
-	
-	@RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
+	@PostMapping("summer_image")
+	public void fileUpload(String fileName, MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		JsonObject jsonObject = new JsonObject();
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
 		
-        
-		String fileRoot = "C:\\summernote_image\\"; // 외부경로로 저장을 희망할때.
-		 
-		
-		
-		// 내부경로로 저장
-		//String contextRoot = new HttpServletRequestWrapper(request).getRealPath("/");
-				
-		//String fileRoot = contextRoot + "resources/fileupload/";
-		
-		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
-		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
-		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
-		
-		File targetFile = new File(fileRoot + savedFileName);
-		
-		try {
-			InputStream fileStream = multipartFile.getInputStream();
-			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
-			jsonObject.addProperty("url", "/resources/fileupload/"+ savedFileName); // contextroot + resources + 저장할 내부 폴더명
-			jsonObject.addProperty("responseCode", "success");
-				
-		} catch (IOException e) {
-			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
-			jsonObject.addProperty("responseCode", "error");
-			e.printStackTrace();
+		// 업로드할 폴더 경로
+		String realFolder = request.getSession().getServletContext().getRealPath("summer_image");
+		UUID uuid = UUID.randomUUID();
+
+		// 업로드할 파일 이름
+		String org_filename = file.getOriginalFilename();
+		String str_filename = uuid.toString() + org_filename;
+
+		System.out.println("원본 파일명 : " + org_filename);
+		System.out.println("저장할 파일명 : " + str_filename);
+
+		String filepath = realFolder + "\\" + fileName + "\\" + str_filename;
+		System.out.println("파일경로 : " + filepath);
+
+		File f = new File(filepath);
+		if (!f.exists()) {
+			f.mkdirs();
 		}
-		String a = jsonObject.toString();
-		return a;
+		file.transferTo(f);
+		out.println("summer_image/" + fileName +"/" + str_filename);
+		out.close();
 	}
 	
 
