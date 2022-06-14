@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.hys.trazar.domain.ChatDto;
 import com.hys.trazar.service.ChatService;
 
 import lombok.extern.log4j.Log4j;
@@ -31,9 +30,9 @@ public class ChatController {
 	}
 	
 	@PostMapping("/chat")
-	public void chatPost(Model model, ChatDto dto) {
-		service.getChatInfo(dto);
+	public void chatPost(Model model, String message) {
+		service.getChatInfo(message);
 		
-		model.addAttribute("user", dto);
+		model.addAttribute("user", message);
 	}
 }
