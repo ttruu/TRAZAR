@@ -37,6 +37,7 @@
 
 <script>
 $(document).ready(function() {
+	let temporaryId = '${designBoard.id}';
 	var toolbar = [
 		    // 글꼴 설정
 		    ['fontname', ['fontname']],
@@ -65,8 +66,9 @@ $(document).ready(function() {
 	        toolbar : toolbar,
 	        callbacks: {
 	        	onImageUpload: function(files) {
-	        		for(var i = files.length -1; i>=0; i--) {
-	        			sendFile(files[i], this);
+	        		for (file of files) {
+	        			let url = sendFile(file);
+
 	        		}
 	        		
 	        		//$summernote.summernote('insertNode', imgNode);
@@ -76,18 +78,20 @@ $(document).ready(function() {
 	 
 	 function sendFile(file, el) {
 			var form_data = new FormData();
+			form_data.append('tempid', temporaryId);
 			form_data.append('file', file);
 			$.ajax({
 				data: form_data,
 				type : "post",
 				url: 'summer_image',
 				cache :false,
-				contentType : false,
-				enctype : 'multipart/form-data',
 				processData : false,
 				success : function(img_name) {
 					console.log("img : "+img_name);
-					$(el).summernote('editor.insertImage', img_name);
+					
+        			let newImgElem = document.createElement("img");
+        			newImgElem.setAttribute("src", url);
+        			$('#summernote').summernote('insertNode', newImgElem);
 				}
 			});
 		}	 

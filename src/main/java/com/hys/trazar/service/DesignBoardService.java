@@ -26,9 +26,9 @@ public class DesignBoardService {
 
 	@Autowired
 	private DesignBoardMapper mapper;
-	
+
 	private S3Client s3;
-	
+
 	@Value("${aws.s3.bucketName}")
 	private String bucketName;
 
@@ -37,19 +37,19 @@ public class DesignBoardService {
 
 		return designBoard;
 	}
-	
+
 	// 객체가 생성되자마자 실행되는 메소드
 	@PostConstruct
 	public void init() {
 		Region region = Region.AP_NORTHEAST_2;
 		this.s3 = S3Client.builder().region(region).build();
 	}
-	
+
 	@PreDestroy
 	public void destroy() {
 		this.s3.close();
 	}
-	
+
 	@Transactional
 	public boolean insertDesignBoard(DesignBoardDto designBoard, MultipartFile[] files) {
 		// 게시물 등록
@@ -60,7 +60,6 @@ public class DesignBoardService {
 		return cnt == 1;
 	}
 
-	
 	private void addFiles(int id, MultipartFile[] files) {
 		// 파일 등록
 		if (files != null) {
@@ -78,15 +77,12 @@ public class DesignBoardService {
 	}
 
 	private void saveFileAwsS3(int id, MultipartFile file) {
-		
+
 		String key = "designBoard/" + id + "/" + file.getOriginalFilename();
-		
-		PutObjectRequest putObjectRequest = PutObjectRequest.builder()
-				.acl(ObjectCannedACL.PUBLIC_READ)
-				.bucket(bucketName)
-				.key(key)
-				.build();
-		
+
+		PutObjectRequest putObjectRequest = PutObjectRequest.builder().acl(ObjectCannedACL.PUBLIC_READ)
+				.bucket(bucketName).key(key).build();
+
 		RequestBody requestBody;
 		try {
 			requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
@@ -96,7 +92,27 @@ public class DesignBoardService {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-		
+
+	}
+
+	// summernote용 임시 파일 저장
+	
+	public String saveFileAwsS3(int id, MultipartFile file, boolean temp) {
+		String key = "designBoard/temp/" + id + "/" + file.getOriginalFilename();
+
+		PutObjectRequest putObjectRequest = PutObjectRequest.builder().acl(ObjectCannedACL.PUBLIC_READ)
+				.bucket(bucketName).key(key).build();
+
+		RequestBody requestBody;
+		try {
+			requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
+			s3.putObject(putObjectRequest, requestBody);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		return key;
 	}
 
 	public List<DesignBoardDto> listDesignBoard() {

@@ -1,43 +1,33 @@
 package com.hys.trazar.controller.design;
 
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.html.HTMLDocument.Iterator;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.JsonObject;
 import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.service.DesignBoardService;
 
 @Controller
 @RequestMapping("designBoard")
 public class DesignBoardController {
+	private AtomicInteger idForSummernote = new AtomicInteger();
 	
 	@Autowired
 	private DesignBoardService service;
@@ -50,8 +40,9 @@ public class DesignBoardController {
 	}
 
 	@GetMapping("insert")
-	public void insert() {
-		
+	public void insert(@ModelAttribute("designBoard") DesignBoardDto designBoard) {
+		int nextTemporaryId = idForSummernote.incrementAndGet();
+		designBoard.setId(nextTemporaryId);
 	}
 	
 	@ResponseBody
@@ -125,32 +116,12 @@ public class DesignBoardController {
 	
 	@ResponseBody
 	@PostMapping("summer_image")
-	public void fileUpload(String fileName, MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
-		
-		// 업로드할 폴더 경로
-		String realFolder = request.getSession().getServletContext().getRealPath("summer_image");
-		UUID uuid = UUID.randomUUID();
-
-		// 업로드할 파일 이름
-		String org_filename = file.getOriginalFilename();
-		String str_filename = uuid.toString() + org_filename;
-
-		System.out.println("원본 파일명 : " + org_filename);
-		System.out.println("저장할 파일명 : " + str_filename);
-
-		String filepath = realFolder + "\\" + fileName + "\\" + str_filename;
-		System.out.println("파일경로 : " + filepath);
-
-		File f = new File(filepath);
-		if (!f.exists()) {
-			f.mkdirs();
-		}
-		file.transferTo(f);
-		out.println("summer_image/" + fileName +"/" + str_filename);
-		out.close();
+	public String fileUpload(HttpServletRequest request) throws Exception {
+		System.out.println(request.getParameter("file"));
+		System.out.println(request.getParameter("tempid"));
+//		System.out.println(request.getParameter("tempid"));
+//		return service.saveFileAwsS3(222, file, true);
+		return null;
 	}
 	
 

@@ -72,8 +72,9 @@ $(document).ready(function() {
 	        toolbar : toolbar,
 	        callbacks: {
 	        	onImageUpload: function(files, editor, welEditable) {
-	        		for(var i = files.length -1; i>=0; i--) {
-	        			sendFile(files[i], this);
+	        		for (file of files) {
+	        			let url = sendFile(files);
+
 	        		}
 	        	}
 	        }
@@ -92,7 +93,10 @@ $(document).ready(function() {
 				processData : false,
 				success : function(img_name) {
 					console.log("img : "+img_name);
-					$(el).summernote('editor.insertImage', img_name);
+					
+        			let newImgElem = document.createElement("img");
+        			newImgElem.setAttribute("src", url);
+        			$('#summernote').summernote('insertNode', newImgElem);
 				}
 			});
 		}	 
