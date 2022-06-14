@@ -36,6 +36,7 @@ public class NoticeService {
 	}
 
 	
+	
 	public List<NoticeDto> listNotice() {
 		return mapper.selectNotice();
 	}
