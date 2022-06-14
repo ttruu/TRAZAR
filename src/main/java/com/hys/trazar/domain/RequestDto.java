@@ -15,5 +15,4 @@ public class RequestDto {
 	private String customerId;
 	private String price;
 	private LocalDateTime inserted;
-	private String test;
 }
