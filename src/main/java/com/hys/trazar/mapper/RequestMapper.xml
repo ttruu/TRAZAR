@@ -8,5 +8,10 @@
 		VALUES (#{title}, #{body}, #{price}, #{memberId})
 	</insert>
 	
+	<select id="listBoard" resultType="com.hys.trazar.domain.RequestDto">
+		SELECT memberId, title, price, inserted
+		FROM Request
+		ORDER BY id DESC
+	</select>
 	
 </mapper>

@@ -1,5 +1,7 @@
 package com.hys.trazar.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class RequestService {
 	public boolean addRequest(RequestDto dto) {
 		return mapper.addRequest(dto) == 1;
 		
+	}
+
+	public List<RequestDto> listBoard() {
+		return mapper.listBoard();
 	}
 
 }
