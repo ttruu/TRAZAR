@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,40 +13,51 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-		<c:url value="/notice/insert" var="writeLink" />
-
-	<h1><a href="${writeLink }">글 쓰기</a></h1>
-
-	<h1>글 목록</h1>
+<my:navBar current="list" />
 	
-	<table class="table">
-		<thead>
-			<tr>
-				<th>id</th>
-				<th>title</th>
-				<th>inserted</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${noticeList }" var="notice">
-				<tr>
-					<td>${notice.id }</td>
-					<td>
-					
-					<c:url value="/notice/${notice.id }" var="link"></c:url>
-					
-					<a href="${link }">
-						${notice.title }
-					</a>
-					
-	
-					</td>
-					<td>${notice.inserted }</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>공지사항</h1>
+				
+				<c:if test="${not empty message }">
+					<div class="alert alert-primary">
+						${message }
+					</div>
+				</c:if>
+				
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>1</th>
+							<th>2</th>
+							<th>3</th>
+							<th>4</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${noticeList }" var="notice">
+							<tr>
+								<td>${notice.id }</td>
+								<td>
+									<c:url value="/notice/get" var="getUrl">
+										<c:param name="id" value="${notice.id }"></c:param>
+									</c:url>
+									
+									<a href="${getUrl }">
+										<c:out value="${notice.title }"></c:out>
+									</a>
+								</td>
+							<!-- <td>${notice.writerNickName }</td> -->	
+								<td>${notice.prettyInserted }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+		
 </body>
 </html>
 
