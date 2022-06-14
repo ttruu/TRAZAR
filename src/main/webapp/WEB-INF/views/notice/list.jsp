@@ -48,7 +48,7 @@
 										<c:out value="${notice.title }"></c:out>
 									</a>
 								</td>
-							<!-- <td>${notice.writerNickName }</td> -->	
+							<td>${notice.writerNickName }</td> 
 								<td>${notice.prettyInserted }</td>
 							</tr>
 						</c:forEach>
