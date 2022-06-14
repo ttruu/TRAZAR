@@ -6,7 +6,8 @@
 <c:url value="/sign/signup" var="signupUrl" ></c:url>
 <c:url value="/sign/login" var="loginUrl"></c:url>
 <c:url value="/logout" var="logoutUrl"></c:url>
-
+<c:url value="/designBoard/list" var="listUrl"></c:url>
+<c:url value="/designBoard/insert" var="insertUrl"></c:url>
 
 
 <%-- 회원정보링크 --%>
@@ -19,7 +20,12 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3">
   <div class="container">
+  <!--
     <a class="navbar-brand" href="${loginSuccess }"><i class="fa-solid fa-house"></i></a>
+  -->
+    <a class="navbar-brand" href="${listUrl }">
+			<i class="fa-solid fa-house"></i>
+	</a>
     
     <!-- button.navbar-toggler>span.navbar-toggler-icon -->
     <button class="navbar-toggler" 
@@ -30,6 +36,15 @@
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	    <li class="nav-item">
+					<a class="nav-link ${current == 'list' ? 'active' : '' }"
+						href="${listUrl }">목록보기</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link ${current == 'insert' ? 'active' : '' }"
+						href="${insertUrl }">글쓰기</a>
+				</li>
         <li class="nav-item">
         	<a href="${signupUrl }" class="nav-link ${current == 'signup' ? 'active' : '' }">회원가입</a>
         </li>
