@@ -10,6 +10,7 @@ public class ReviewDto {
 	private int designBoardId;
 	private String memberId;
 	private String content;
+	private boolean own;
 	private LocalDateTime inserted;
 	
 	
