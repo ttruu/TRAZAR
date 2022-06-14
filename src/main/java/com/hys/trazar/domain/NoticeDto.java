@@ -14,6 +14,7 @@ public class NoticeDto {
 	private String body;
 	private LocalDateTime inserted;
 	private String writerNickName;
+
 	
 	public String getPrettyInserted() {
 		// 24시간 이내면 시간만
