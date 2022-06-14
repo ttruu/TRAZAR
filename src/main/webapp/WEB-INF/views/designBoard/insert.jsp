@@ -59,18 +59,43 @@ $(document).ready(function() {
 		    // 코드보기, 확대해서보기, 도움말
 		    ['view', ['codeview','fullscreen', 'help']]
 		  ];
+	
 	var setting = {
             height : 300,
             minHeight : null,
             maxHeight : null,
             focus : true,
             lang : 'ko-KR',
-            toolbar : toolbar
+            toolbar : toolbar,
+            //콜백 함수
+            callbacks : { 
+            	onImageUpload : function(files, editor, welEditable) {
+            // 파일 업로드(다중업로드를 위해 반복문 사용)
+            for (var i = files.length - 1; i >= 0; i--) {
+            uploadSummernoteImageFile(files[i], this);
+            		}
+            	}
+            }
          };
+	
         $('#summernote').summernote(setting);
-        
-        
- });
+ 	});
+				
+		function uploadSummernoteImageFile(file, el) {
+			data = new FormData();
+			data.append("file", file);
+			$.ajax({
+				data : data,
+				type : "POST",
+				url : "uploadSummernoteImageFile",
+				contentType : false,
+				enctype : 'multipart/form-data',
+				processData : false,
+				success : function(data) {
+					$(el).summernote('editor.insertImage', data.url);
+				}
+			});
+		}
 	
    
 </script>
@@ -80,7 +105,7 @@ $(document).ready(function() {
 		<div class="row">
 			<div class="col">
 				<h1>내용 작성</h1>
-				<form action="${appRoot }/designBoard/insert" method="post">
+				<form action="${appRoot }/designBoard/insert" method="post" enctype="multipart/form-data">
 					<div>
 						<label class="form-label" for="input1">제목</label>
 						<input class="form-control" type="text" name="title" required
