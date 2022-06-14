@@ -7,8 +7,9 @@
 <c:url value="/sign/login" var="loginUrl"></c:url>
 <c:url value="/logout" var="logoutUrl"></c:url>
 
-<%-- 회원정보링크 --%>
 
+
+<%-- 회원정보링크 --%>
 <sec:authorize access="isAuthenticated()">
 <sec:authentication property="principal" var="principal"/>
 	<c:url value="/sign/modifyMember" var="memberInfoUrl">
@@ -35,7 +36,7 @@
         
        <sec:authorize access="isAuthenticated()">
        	<li class="nav-item">
-       		<a href="${memberInfoUrl }" class="nav-link ${current == 'memberInfo' ? 'active' : '' }">회원정보</a>
+       		<a href="${memberInfoUrl }" class="nav-link ${current == 'memberInfo' ? 'active' : '' }">회원정보수정</a>
        	</li>
        </sec:authorize>
         

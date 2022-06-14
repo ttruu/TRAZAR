@@ -41,6 +41,11 @@ public class SignupController {
 	public void login() {
 		
 	}
+	
+	@GetMapping("memberModifylogin")
+	public void MermberModifylogin() {
+		
+	}
 
 	@PostMapping("signup")
 	public String createUser(SignupDto dto) {
