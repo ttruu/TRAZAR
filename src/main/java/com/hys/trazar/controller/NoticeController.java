@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.NoticeDto;
 import com.hys.trazar.service.NoticeService;
 
@@ -29,7 +29,12 @@ public class NoticeController {
 	
 
 	
-
+	@GetMapping("get")
+	public void get(int id, Model model) {
+		NoticeDto dto = service.getNoticeById(id);
+		
+		model.addAttribute("notice", dto);
+	}
 	
 
 	@GetMapping("list")
