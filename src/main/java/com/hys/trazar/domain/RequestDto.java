@@ -10,9 +10,7 @@ public class RequestDto {
 	private String title;
 	private String body;
 	private int designBoardId;
-	private String managerId;
-	private String designerId;
-	private String customerId;
+	private String memberId;
 	private String price;
 	private LocalDateTime inserted;
 }

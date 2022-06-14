@@ -13,9 +13,8 @@ public class RequestService {
 	private RequestMapper mapper;
 
 	public boolean addRequest(RequestDto dto) {
-		int cnt = mapper.addRequest(dto);
+		return mapper.addRequest(dto) == 1;
 		
-		return cnt == 1;
 	}
 
 }

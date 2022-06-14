@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hys.trazar.mapper.RequestMapper">
 	<insert id="addRequest" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-		INSERT INTO Request (title, body, price)
-		VALUES (#{title}, #{body}, #{price})
+		INSERT INTO Request (title, body, price, memberId)
+		VALUES (#{title}, #{body}, #{price}, #{memberId})
 	</insert>
 	
 	
