@@ -6,7 +6,5 @@ public interface ChatMapper {
 
 	Object getChatInfo(ChatDto dto);
 	
-	Object getChatInfo2(ChatDto dto);
-
 
 }

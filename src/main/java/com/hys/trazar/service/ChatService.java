@@ -15,8 +15,4 @@ public class ChatService {
 	public Object getChatInfo(ChatDto dto) {
 		return mapper.getChatInfo(dto);
 	}
-	
-	public Object getChatInfo2(ChatDto dto) {
-		return mapper.getChatInfo(dto);
-	}
 }

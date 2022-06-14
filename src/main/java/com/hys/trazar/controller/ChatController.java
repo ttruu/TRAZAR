@@ -33,9 +33,7 @@ public class ChatController {
 	@PostMapping("/chat")
 	public void chatPost(Model model, ChatDto dto) {
 		service.getChatInfo(dto);
-		service.getChatInfo2(dto);
 		
-		model.addAttribute("user1", dto);
-		model.addAttribute("user2", dto);
+		model.addAttribute("user", dto);
 	}
 }

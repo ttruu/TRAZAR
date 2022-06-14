@@ -23,18 +23,10 @@
 //전송 버튼 누르는 이벤트
 $(document).ready(function() {
 	
-	 $('#button-send').click(function(e){
-
-         var txt = $('#msg').val();
-
-         socket.send(txt);
-
-     });
-	
-	/* $("#button-send").on("click", function(e) {
+	$("#button-send").on("click", function(e) {
 		sendMessage();
 		$('#msg').val('')
-	}); */
+	});
 	
 	var sock = new SockJS('http://localhost:8080/trazar/chatting');
 	sock.onmessage = onMessage;
@@ -86,14 +78,14 @@ $(document).ready(function() {
 	}
 	//채팅창에서 나갔을 때
 	function onClose(evt) {
-		var user = '${user1}';
+		var user = '${principal.username}';
 		var str = user + " 님이 퇴장하셨습니다.";
 		
 		$("#msgArea").append(str);
 	}
 	//채팅창에 들어왔을 때
 	function onOpen(evt) {
-		var user = '${user1}';
+		var user = '${principal.username}';
 		var str = user + "님이 입장하셨습니다.";
 		
 		$("#msgArea").append(str);
