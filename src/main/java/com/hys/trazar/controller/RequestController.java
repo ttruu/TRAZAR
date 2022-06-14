@@ -16,12 +16,12 @@ public class RequestController {
 	@Autowired
 	private RequestService service;
 	
-	@GetMapping("requestInsert")
+	@GetMapping("insert")
 	public void requestInsert() {
 		
 	}
 	
-	@PostMapping("requestInsert")
+	@PostMapping("insert")
 	public void requestInsertProcess(RequestDto dto) {
 		service.addRequest(dto);
 	}

@@ -21,7 +21,7 @@
 			
 				<h2 class="text-center">요청 사항<i class="fa-solid fa-pen-to-square"></i></h2>
 				
-				<c:url value="/request/requestInsert" var="writeLink" />
+				<c:url value="/request/insert" var="writeLink" />
 				
 				<form action="${writeLink }" method="post">
 					
