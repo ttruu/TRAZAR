@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hys.trazar.domain.DesignBoardDto;
+import com.hys.trazar.domain.ReviewDto;
 import com.hys.trazar.service.DesignBoardService;
+import com.hys.trazar.service.ReviewService;
+
 
 @Controller
 @RequestMapping("designBoard")
@@ -31,6 +35,9 @@ public class DesignBoardController {
 	
 	@Autowired
 	private DesignBoardService service;
+	
+	@Autowired
+	private ReviewService reviewService;
 	
 	@RequestMapping("list")
 	public void list(Model model) {
@@ -80,6 +87,8 @@ public class DesignBoardController {
 	@GetMapping("get")
 	public void get(int id, Model model) {
 		DesignBoardDto dto = service.getDesignBoardById(id);
+		
+		List<ReviewDto> reviewList = reviewService.getReviewByDesignBoardId(id);
 		
 		model.addAttribute("designBoard", dto);
 	}
