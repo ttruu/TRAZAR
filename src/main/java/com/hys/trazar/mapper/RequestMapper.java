@@ -14,4 +14,6 @@ public interface RequestMapper {
 
 	int updateRequest(RequestDto dto);
 
+	int removeRequestById(int id);
+
 }

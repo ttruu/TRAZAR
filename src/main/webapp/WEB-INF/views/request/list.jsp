@@ -12,6 +12,36 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+<script>
+$(document).ready(function() {
+	$(".accept-submit1").click(function(e) {
+		e.preventDefault();
+	
+		if (confirm("수락하시겠습니까?")) {
+			let form1 = $(".form2");
+			let actionAttr = "${appRoot}/chat";
+			form1.attr("action", actionAttr);
+	
+			form1.submit();
+		}
+	
+	});
+	
+	$(".reject-submit1").click(function(e) {
+		e.preventDefault();
+	
+		if (confirm("거절하시겠습니까?")) {
+			let form1 = $(".form2");
+			let actionAttr = "${appRoot}/request/remove";
+			form1.attr("action", actionAttr);
+	
+			form1.submit();
+		}
+	
+	});
+});
+</script>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -27,6 +57,7 @@
 							<th>제목</th>
 							<th>가격</th>
 							<th>요청 시간</th>
+							<th>요청 처리</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,6 +84,14 @@
 								</td>
 								<td>${req.price }</td>
 								<td>${req.inserted }</td>
+								<td>
+									<form id="" class="form2" action="${appRoot }/request/remove" method="post">
+										<input type="hidden" name="id" value="${req.id }" />
+										<button id="" class="btn btn-primary accept-submit1">수락</button>
+										<button id="" class="btn btn-primary reject-submit1">거절</button>
+										<button id="" class="btn btn-danger delete-submit1">삭제</button>
+									</form>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

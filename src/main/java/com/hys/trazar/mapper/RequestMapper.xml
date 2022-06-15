@@ -26,4 +26,9 @@
 	  	WHERE id = #{id}
 	</update>
 	
+	<delete id="removeRequestById">
+		DELETE FROM Request
+		WHERE id = #{id}
+	</delete>
+	
 </mapper>

@@ -1,6 +1,7 @@
 package com.hys.trazar.service;
 
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,14 @@ public class RequestService {
 
 	public boolean updateRequest(RequestDto dto) {
 		int cnt = mapper.updateRequest(dto);
+		
+		return cnt == 1;
+		
+	}
+
+	public boolean removeRequestById(int id) {
+		
+		int cnt = mapper.removeRequestById(id);
 		
 		return cnt == 1;
 		

@@ -54,10 +54,17 @@ public class RequestController {
 	}
 	
 	@PostMapping("modify")
-	public String modifyRequest(RequestDto dto) {
+	public String modifyRequest(RequestDto dto, RedirectAttributes rttr) {
 		service.updateRequest(dto);
+		rttr.addAttribute("id", dto.getId());
+		return "redirect:/request/get";
+	}
+	
+	@PostMapping("remove")
+	public String removeRequest(int id) {
 		
-		return "redirect:/request/" + dto.getId();
+		service.removeRequestById(id);
+		return "redirect:/request/list";
 	}
 	
 }
