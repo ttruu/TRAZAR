@@ -1,9 +1,14 @@
 package com.hys.trazar.controller.login;
 
+import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +18,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hys.trazar.domain.login.SignupDto;
+import com.hys.trazar.mapper.login.SignupMapper;
 import com.hys.trazar.service.login.SignupService;
 
 @RequestMapping("sign")
 @Controller
 public class SignupController {
+
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	@Autowired
 	private SignupService service;
-	
+
+	@Autowired
+	private SignupMapper mapper;
 
 	@GetMapping("signup")
 	public void createUserForm() {
@@ -29,22 +40,17 @@ public class SignupController {
 
 	@GetMapping("signupSuccess")
 	public void SuccessCreate() {
-			
+
 	}
-	
+
 	@GetMapping("loginSuccess")
 	public void successLogin() {
-		
+
 	}
-	
+
 	@GetMapping("login")
 	public void login() {
-		
-	}
-	
-	@GetMapping("memberModifylogin")
-	public void MermberModifylogin() {
-		
+
 	}
 
 	@PostMapping("signup")
@@ -81,10 +87,11 @@ public class SignupController {
 			return "ok";
 		}
 	}
+
 	@GetMapping(path = "check", params = "email")
 	@ResponseBody
 	public String emailCheck(String email) {
-		boolean success = service.MemberEmailCheck(email); 
+		boolean success = service.MemberEmailCheck(email);
 
 		if (success) {
 			return "notok";
@@ -92,17 +99,73 @@ public class SignupController {
 			return "ok";
 		}
 	}
-	
-	@GetMapping("modifyMember")
-	public void ModifyMember(String id, Model model) {
-		SignupDto dto = service.memberModify(id);
+
+	@GetMapping("selectMember1")
+	public void selectMember(String id, Model model) {
+		SignupDto dto = service.selectMember(id);
 		model.addAttribute("member", dto);
 	}
-	
-	@GetMapping("memberList")
-	public void memberList(Model model) {
-		List<SignupDto> dto = service.memberList();
-		model.addAttribute("memberList", dto);
+
+	@PostMapping("modify")
+	public String modifyMember(SignupDto dto) {
+		System.out.println(dto);
+		boolean success = service.modifyMember(dto);
+		if (success) {
+			return "redirect:/sign/signup";
+		} else {
+			return "redirect:/designBoard/list";
+
+		}
 	}
-	
+
+	@PostMapping("selectMember")
+	public String modifyMemberLogin(SignupDto dto, String oldPassword, RedirectAttributes rttr, String id, Model model,
+			Principal principal) {
+
+		// db에서 member 읽어서
+		SignupDto oldMember = mapper.selectMember(dto.getId());
+		// 기존 password가 일치할때만 계속 진행
+		String encodedPw = oldMember.getPassword();
+
+		SignupDto dto1 = service.selectMember(id);
+		model.addAttribute("member", dto1);
+
+		if (encoder.matches(oldPassword, encodedPw)) {
+			return null;
+		} else {
+			rttr.addAttribute("msg", "비밀번호를 다시 입력해주세요.");
+			return "redirect:/designBoard/list";
+		}
+	}
+
+	@GetMapping("selectMember")
+	public void modifyMemberLogin1() {
+		
+	}
+
+
+	@GetMapping(path = "modify", params = "nickName")
+	@ResponseBody
+	public String nickNameModifyCheck(String nickName) {
+		boolean success = service.nickNameModifyCheck(nickName);
+		if (success) {
+			return "notok";
+		} else {
+			return "ok";
+		}
+
+	}
+
+	@GetMapping(path = "modify", params = "email")
+	@ResponseBody
+	public String emailModifyCheck(String email) {
+		boolean success = service.emailModifyCheck(email);
+		if (success) {
+			return "notok";
+		} else {
+			return "ok";
+		}
+
+	}
+
 }

@@ -189,7 +189,7 @@
 					<input type="number" name="phoneNum" maxlength = "13" placeholder = "휴대폰 번호를 입력하세요." required/>
 					<br />
 					자기소개 :
-					<textarea rows="" cols="" name="introduce"></textarea>
+					<input type="text" name="introduce" />
 					<br />
 					<button class="btn btn-secondary" disabled id="CreateButton">회원가입</button>
 				</form>

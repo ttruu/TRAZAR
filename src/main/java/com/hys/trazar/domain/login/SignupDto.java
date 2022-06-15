@@ -14,4 +14,5 @@ public class SignupDto {
 	private String introduce;
 	private LocalDateTime inserted;
 	private String name;
+	private String oldPassword;
 }

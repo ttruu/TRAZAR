@@ -18,8 +18,16 @@ public interface SignupMapper {
 
 	int createAuth(@Param("id")String id, @Param("auth")String auth);
 
-	SignupDto memberModify(String id);
+	SignupDto selectMember(String id);
 
 	List<SignupDto> memberList();
+
+	int modifyMember(SignupDto dto);
+
+	int nickNameModifyCheck(String nickName);
+
+	int emailModifyCheck(String email);
+
+
 
 }

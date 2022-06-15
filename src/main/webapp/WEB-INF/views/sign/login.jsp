@@ -21,15 +21,19 @@
 			<div class="col-12 col-lg-6">
 				<h1>로그인 </h1>
 				<form action="${appRoot }/login" method="post">
-					<label for="usernameInput1" class="form-label">
-						아이디 
+					<label for="usernameInput1" class="form-label" style="position: absolute;">
 					</label>
-					<input id="usernameInput1" class="form-control" type="text" name="username" />
+					<input id="usernameInput1" class="form-control" type="text" name="username" 
+					style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px;
+					 padding: 14px;" 
+					placeholder="아이디"/>
 					
-					<label for="passwordInput1" class="form-label">
-						패스워드
+					<label for="passwordInput1" class="form-label" style="position: absolute;">
 					</label>
-					<input class="form-control" id="passwordInput1" type="password" name="password" />
+					<input class="form-control" id="passwordInput1" type="password" name="password" 
+					style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px;
+					 padding: 14px;"
+					placeholder="비밀번호" />
 					
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox" name="remember-me" id="rememberMeCheck1" />

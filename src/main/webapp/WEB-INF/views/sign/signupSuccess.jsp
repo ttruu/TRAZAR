@@ -22,6 +22,8 @@
 <body>
 <my:navBar current="memberInfo"></my:navBar>
 	<h1>회원가입이 완료되었습니다!</h1>
+	
+	<a href="${appRoot }/designBoard/list">메인페이지 바로가기</a>
 
 
 	
