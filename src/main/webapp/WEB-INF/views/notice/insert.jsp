@@ -87,15 +87,14 @@
 				<h1>내용 작성</h1>
 				<form action="${appRoot }/notice/insert" method="post">
 					<div>
-						<label class="form-label" for="input1">제목</label>
+						<label class="form-label" for="inputNoticeTitle">제목</label>
 						<input class="form-control" type="text" name="title" required
-							id="input1" />
+							id="inputNoticeTitle" />
 					</div>
 
 					<div>
-						<label class="form-label" for="textarea1">본문</label>
-						<textarea class="form-control" name="body" id="summernote"
-							cols="30" rows="10"></textarea>
+						<label class="form-label" >본문</label>
+						<textarea name="body" id="summernote"></textarea>
 					</div>
 
 					
