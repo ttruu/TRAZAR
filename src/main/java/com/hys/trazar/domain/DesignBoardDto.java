@@ -12,6 +12,7 @@ public class DesignBoardDto {
 	private String body;
 	private String price;
 	private LocalDateTime inserted;
+	private String memberId;
 	private List<String> fileName;
 	private String designerId;
 	private String managerId;

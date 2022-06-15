@@ -95,26 +95,6 @@ public class DesignBoardService {
 
 	}
 
-	// summernote용 임시 파일 저장
-	
-	public String saveFileAwsS3(int id, MultipartFile file, boolean temp) {
-		String key = "designBoard/temp/" + id + "/" + file.getOriginalFilename();
-
-		PutObjectRequest putObjectRequest = PutObjectRequest.builder().acl(ObjectCannedACL.PUBLIC_READ)
-				.bucket(bucketName).key(key).build();
-
-		RequestBody requestBody;
-		try {
-			requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
-			s3.putObject(putObjectRequest, requestBody);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-		return key;
-	}
-
 	public List<DesignBoardDto> listDesignBoard() {
 		return mapper.selectDesignBoardAll();
 	}

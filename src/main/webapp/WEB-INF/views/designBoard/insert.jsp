@@ -33,12 +33,11 @@
 <body>
 
 	<my:navBar current="insert" />
-
-
+	
+	<script src="/static/vendor/summernote/dist/summernote.min.js"></script>
 <script>
-$(document).ready(function() {
-	let temporaryId = '${designBoard.id}';
-	var toolbar = [
+	$(document).ready(function() {
+		var toolbar = [
 		    // 글꼴 설정
 		    ['fontname', ['fontname']],
 		    // 글자 크기 설정
@@ -59,45 +58,39 @@ $(document).ready(function() {
 		    ['view', ['codeview','fullscreen', 'help']]
 		  ];
 		
-	 $('#summernote').summernote({
-		 	placeholder: '최대 500자 작성 가능합니다.',
-	        height: 300,
-	        lang: 'ko-KR',
-	        toolbar : toolbar,
-	        callbacks: {
-	        	onImageUpload: function(files) {
-	        		for (file of files) {
-	        			let url = sendFile(file);
-
-	        		}
-	        		
-	        		//$summernote.summernote('insertNode', imgNode);
-	        	}
-	        }
-	 });
-	 
-	 function sendFile(file, el) {
-			var form_data = new FormData();
-			form_data.append('tempid', temporaryId);
-			form_data.append('file', file);
-			$.ajax({
-				data: form_data,
-				type : "post",
-				url: 'summer_image',
-				cache :false,
-				processData : false,
-				success : function(img_name) {
-					console.log("img : "+img_name);
-					
-        			let newImgElem = document.createElement("img");
-        			newImgElem.setAttribute("src", url);
-        			$('#summernote').summernote('insertNode', newImgElem);
-				}
-			});
-		}	 
-});
-	
-   
+		$('#summernote').summernote({
+			toolbar : toolbar,
+			height : 300,
+			placeholder: '최대 500자 작성 가능합니다.',
+			lang: 'ko-KR',
+			
+			onImageUpload : function(files, editor, welEditable) {
+				console.log(files);
+				console.log( files[0] );
+				data = new FormData();
+				data.append("file", files[0]);
+				var $note = $(this);
+				$.ajax({
+					data : data,
+					type : "POST",
+					url : '/designBoard/imageupload',
+					cache : false,
+					contentType : false,
+					processData : false,
+					success : function(url) {
+						alert(url);
+						$note.summernote('insertImage', url);
+					}
+				});
+			}
+		});
+		
+	/* 	$('#addFile').click(function(){
+			var fileIndex = $('.fileDiv').length;
+			$('#fileTable').append("<input type=\"file\" name=\"files["+fileIndex+"] class=\"fileDiv\">");
+		});
+ */
+	});
 </script>
 
 
@@ -123,7 +116,8 @@ $(document).ready(function() {
 						<input class="form-control" type="text" name="price" id="input1" />
 					</div>
 
-					<button class="btn btn-primary">업로드</button>
+					<button type="submit" class="btn btn-primary">업로드</button>
+					<!-- <button id="addFile"  type="button" class="btn btn-default">파일 폼 추가</button> -->
 				</form>
 			</div>
 		</div>
