@@ -28,8 +28,8 @@
 	<context:component-scan base-package="com.hys.trazar.controller" />
 	
 	<!-- fileupload 처리를 위한 bean -->
-	<beans:bean id="multipartResolver" 
-	class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
+<!--<beans:bean id="multipartResolver" 
+	class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean> -->	
 	
 	<websocket:handlers>
 		<websocket:mapping handler="chattingHandler" path="/chatting"/>
@@ -37,6 +37,11 @@
 	</websocket:handlers>
     
 	<beans:bean id="chattingHandler" class="com.hys.trazar.ChattingHandler"/>
+	
+	<beans:bean id="multipartResolver" 
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<beans:property name="maxUploadSize" value="100000000"></beans:property>
+	</beans:bean>
 	
 </beans:beans>
 
