@@ -29,4 +29,11 @@ public class RequestService {
 		return Request;
 	}
 
+	public boolean updateRequest(RequestDto dto) {
+		int cnt = mapper.updateRequest(dto);
+		
+		return cnt == 1;
+		
+	}
+
 }

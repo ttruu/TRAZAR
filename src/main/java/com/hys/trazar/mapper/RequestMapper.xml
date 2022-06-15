@@ -9,7 +9,7 @@
 	</insert>
 	
 	<select id="listBoard" resultType="com.hys.trazar.domain.RequestDto">
-		SELECT memberId, title, price, inserted
+		SELECT id, memberId, title, price, inserted
 		FROM Request
 		ORDER BY id DESC
 	</select>
@@ -19,5 +19,11 @@
 		FROM Request
 		WHERE id = #{id}
 	</select>
+	
+	<update id="updateRequest">
+		UPDATE Request
+	  	SET title = #{title}, body = #{body}, price = #{price}
+	  	WHERE id = #{id}
+	</update>
 	
 </mapper>
