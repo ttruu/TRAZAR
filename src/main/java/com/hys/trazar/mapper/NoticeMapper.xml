@@ -9,7 +9,7 @@
   	       n.title     title, 
   	       n.inserted  inserted,
   	       n.managerId managerId
-  	FROM ManagerBoard n 
+  	FROM ManagerBoard n
   	
 		<if test="keyword != '%%'">
 			<choose>
@@ -31,9 +31,14 @@
   </select>
   	
   	<select id="selectNoticeById" resultType="com.hys.trazar.domain.NoticeDto">
-		SELECT id, title, body, inserted
-		FROM ManagerBoard 
+		SELECT 
+				n.id, 
+				n.title, 
+				n.body, 
+				n.inserted
+		FROM ManagerBoard n
 		WHERE id = #{id}
+
 	</select>
   
   <select id="getNotice" resultType="com.hys.trazar.domain.NoticeDto">

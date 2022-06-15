@@ -59,9 +59,6 @@
 				<c:if test="${not empty message }">
 					<div class="alert alert-primary">${message }</div>
 				</c:if>
-
-
-				<!-- 게시물 보기  -->
 	
 					<input type="hidden" name="id" value="${notice.id }" />
 
