@@ -76,6 +76,7 @@
 					};
 					$('#summernote').summernote(setting);
 		
+		
 		// 페이지 로딩 후 review list 가져오는 ajax 요청
 		const listReview = function() {
 			
