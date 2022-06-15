@@ -23,18 +23,8 @@
 	crossorigin="anonymous"></script>
 
 
-<!-- 폰트크기/설정 -->
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js" integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <title>Insert title here</title>
 </head>
@@ -42,45 +32,43 @@
 
 	<my:navBar />
 
+	<!-- 댓글 스크립트 -->
 	<script>
-		$(document).ready(function() {
-					var toolbar = [
-							// 글꼴 설정
-							[ 'fontname', [ 'fontname' ] ],
-							// 글자 크기 설정
-							[ 'fontsize', [ 'fontsize' ] ],
-							// 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-							[
-									'style',
-									[ 'bold', 'italic', 'underline',
-											'strikethrough', 'clear' ] ],
-							// 글자색
-							[ 'color', [ 'forecolor', 'color' ] ],
-							// 표만들기
-							[ 'table', [ 'table' ] ],
-							// 글머리 기호, 번호매기기, 문단정렬
-							[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
-							// 줄간격
-							[ 'height', [ 'height' ] ],
-							// 그림첨부, 링크만들기, 동영상첨부
-							[ 'insert', [ 'picture', 'link', 'video' ] ],
-							// 코드보기, 확대해서보기, 도움말
-							[ 'view', [ 'codeview', 'fullscreen', 'help' ] ] ];
-					var setting = {
-						height : 300,
-						minHeight : null,
-						maxHeight : null,
-						focus : true,
-						lang : 'ko-KR',
-						toolbar : toolbar
-					};
-					$('#summernote').summernote(setting);
+	$(document).ready(function() {
 		
 		
 		// 페이지 로딩 후 review list 가져오는 ajax 요청
+		// 수정버튼 클릭스 스크립트 
+		$("#edit-button1").click(function() {
+			$("#input1").removeAttr("readonly");
+			//$("#summernote").removeAttr("readonly");
+			$("#summernote").removeClass("d-none");
+			$("#summernoteView").addClass("d-none");
+			$("#summernote").summernote();
+			$("#modify-submit1").removeClass("d-none");
+			$("#delete-submit1").removeClass("d-none");
+		});
+		
+		$("#delete-submit1").click(function(e) {
+			e.preventDefault();
+			
+			if (confirm("삭제하시겠습니까?")) {
+				let form1 = $("#form1");
+				let actionAttr = "${appRoot}/designBoard/remove";
+				form1.attr("action", actionAttr);
+				form1.submit();
+			}
+			
+		});
+		
+		
+		
+		
+	// 페이지 로딩 후 review list 가져오는 ajax 요청
 		const listReview = function() {
 			
 			const data = {designBoardId : ${designBoard.id}};
+			
 			$.ajax({
 				url : "${appRoot}/review/list",
 				type : "get",
@@ -279,12 +267,19 @@
 			});
 		});
 	});
+
 	</script>
+	
+	
 
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<h1>글 본문</h1>
+				<h1>글 본문
+					<button id="edit-button1" class="btn btn-secondary">
+						<i class="fa-solid fa-pen-to-square"></i>
+					</button>
+				</h1>
 
 				<c:if test="${not empty message }">
 					<div class="alert alert-primary">${message }</div>
@@ -310,23 +305,24 @@
 
 					<div>
 						<label class="form-label" for="textarea1">본문</label>
-						<div class="form-control" name="body" id="summernote" cols="30"
+						<div class="form-control" id="summernoteView" cols="30"
 							rows="10">${designBoard.body }</div>
+						<textarea class="form-control d-none" name="body" id="summernote">${designBoard.body }</textarea>
 					</div>
-
+					
 					<div>
 						<label for="input2" class="form-label">작성일시</label>
 						<input class="form-control" type="datetime-local"
 							value="${designBoard.inserted }" />
 					</div>
 
-					<button id="modify-submit1" class="btn btn-primary">수정</button>
+					<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
 				</form>
 
 				<c:url value="/designBoard/remove" var="removeLink" />
 				<form action="${removeLink }" method="post">
 					<input type="hidden" name="id" value="${designBoard.id }" />
-					<button id="delete-submit1" class="btn btn-danger">삭제</button>
+					<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
 				</form>
 
 			</div>
@@ -373,71 +369,10 @@
 		</form>
 	</div>
 	
+	
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
