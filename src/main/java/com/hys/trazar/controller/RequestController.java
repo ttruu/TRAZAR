@@ -46,4 +46,11 @@ public class RequestController {
 		model.addAttribute("requestList", list);
 	}
 	
+	@GetMapping("get")
+	public void get(int id, Model model) {
+		RequestDto dto = service.getRequestById(id);
+		
+		model.addAttribute("requestGet", dto);
+	}
+	
 }

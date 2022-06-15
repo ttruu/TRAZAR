@@ -1,5 +1,6 @@
 package com.hys.trazar.service;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class RequestService {
 
 	public List<RequestDto> listBoard() {
 		return mapper.listBoard();
+	}
+
+	public RequestDto getRequestById(int id) {
+		RequestDto Request = mapper.getRequestById(id);
+		return Request;
 	}
 
 }

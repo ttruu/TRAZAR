@@ -10,4 +10,6 @@ public interface RequestMapper {
 
 	List<RequestDto> listBoard();
 
+	RequestDto getRequestById(int id);
+
 }
