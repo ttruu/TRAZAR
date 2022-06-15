@@ -51,15 +51,16 @@ public class DesignBoardService {
 	}
 
 	@Transactional
-	public boolean insertDesignBoard(DesignBoardDto designBoard, MultipartFile[] files) {
+	public boolean insertDesignBoard(DesignBoardDto designBoard) {
 		// 게시물 등록
 		int cnt = mapper.insertDesignBoard(designBoard);
 
-		addFiles(designBoard.getId(), files);
+		//addFiles(designBoard.getId(), files);
 
 		return cnt == 1;
 	}
-
+	
+	/*
 	private void addFiles(int id, MultipartFile[] files) {
 		// 파일 등록
 		if (files != null) {
@@ -73,7 +74,6 @@ public class DesignBoardService {
 				}
 			}
 		}
-
 	}
 
 	private void saveFileAwsS3(int id, MultipartFile file) {
@@ -92,8 +92,8 @@ public class DesignBoardService {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-
 	}
+	 */
 
 	public List<DesignBoardDto> listDesignBoard() {
 		return mapper.selectDesignBoardAll();

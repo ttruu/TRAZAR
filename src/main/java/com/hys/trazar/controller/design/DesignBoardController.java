@@ -62,20 +62,19 @@ public class DesignBoardController {
 	}
 
 	@GetMapping("insert")
-	public void insert(@ModelAttribute("designBoard") DesignBoardDto designBoard) {
+	public void insert() {
 		
 	}
 	
-	@ResponseBody
+	
 	@PostMapping("insert")
 	public String insert(DesignBoardDto designBoard,
-				MultipartFile[] file, 
-				RedirectAttributes rttr,
-				Principal principal) {
+				Principal principal,	
+				RedirectAttributes rttr) {
 		
 		designBoard.setMemberId(principal.getName());
 		
-		boolean success = service.insertDesignBoard(designBoard, file);
+		boolean success = service.insertDesignBoard(designBoard);
 		
 		if (success) {
 			rttr.addFlashAttribute("message", "새 글이 등록되었습니다.");
@@ -86,6 +85,8 @@ public class DesignBoardController {
 		return "redirect:/designBoard/list";
 	}
 	
+
+
 	
 	@GetMapping("get")
 	public void get(int id, Model model) {
