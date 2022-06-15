@@ -7,8 +7,9 @@
 	 <select id="selectNoticeAll" resultType="com.hys.trazar.domain.NoticeDto">
   	SELECT n.id        id, 
   	       n.title     title, 
-  	       n.inserted  inserted 
-  	FROM ManagerBoard n JOIN Member m ON n.memberId = m.id
+  	       n.inserted  inserted,
+  	       n.managerId managerId
+  	FROM ManagerBoard n 
   	
 		<if test="keyword != '%%'">
 			<choose>
@@ -44,7 +45,8 @@
   <update id="updateNotice">
   	UPDATE ManagerBoard
   	SET title = #{title},
-  	    body = #{body}
+  	    body = #{body},
+  	    managerId = #{managerId}
   	WHERE id = #{id}
   </update>
   
