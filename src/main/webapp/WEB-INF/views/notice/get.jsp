@@ -83,7 +83,7 @@ $(document).ready(function() {
 				<form id="form1" action="${appRoot }/notice/modify"
 					method="post">
 					<input type="hidden" name="id" value="${notice.id }" />
-					<input type="hidden" name="managerId" value="${notice.managerId }"/>
+					<input type="hidden" name="managerId" value="${notice.memberId }"/>
 					<div>
 						<label for="input3" class="form-label">작성자</label>
 						<input class="form-control" type="text"
