@@ -50,7 +50,7 @@
 	        <label for="passwordInput5" class="form-label">
 		        암호를 입력하세요. 
 	        </label>
-	        <input class="form-control" id="passwordInput1" type="text" name="oldPassword"/>
+	        <input class="form-control" id="passwordInput1" type="password" name="oldPassword"/>
 	      </form>
       </div>
       <div class="modal-footer">
@@ -78,7 +78,7 @@
 	        <label for="passwordInput4" class="form-label">
 		        암호를 입력하세요. 
 	        </label>
-	        <input class="form-control" id="passwordInput" type="text" name="oldPassword"/>
+	        <input class="form-control" id="passwordInput" type="password" name="oldPassword"/>
 	      </form>
       </div>
       <div class="modal-footer">
