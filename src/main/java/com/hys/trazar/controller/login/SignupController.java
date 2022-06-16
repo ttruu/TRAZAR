@@ -111,9 +111,9 @@ public class SignupController {
 		System.out.println(dto);
 		boolean success = service.modifyMember(dto);
 		if (success) {
-			return "redirect:/sign/signup";
-		} else {
 			return "redirect:/designBoard/list";
+		} else {
+			return "redirect:/sign/login";
 
 		}
 	}

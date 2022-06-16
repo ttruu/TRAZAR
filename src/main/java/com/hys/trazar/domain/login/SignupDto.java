@@ -2,6 +2,9 @@ package com.hys.trazar.domain.login;
 
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import lombok.Data;
 
 @Data
@@ -12,6 +15,8 @@ public class SignupDto {
 	private String nickName;
 	private String phoneNum;
 	private String introduce;
+	
+	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime inserted;
 	private String name;
 	private String oldPassword;
