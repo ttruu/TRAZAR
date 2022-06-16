@@ -72,4 +72,8 @@ public class SignupService {
 		return mapper.emailModifyCheck(email) > 0;
 	}
 
+	public boolean deleteMember(SignupDto dto) {
+		return mapper.delete();
+	}
+
 }
