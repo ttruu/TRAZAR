@@ -113,7 +113,7 @@ public class NoticeController {
 		}
 		
 	
-		return "redirect:/notice/list";
+		return "redirect:/notice/get";
 	}
 	
 	@PostMapping("modify")

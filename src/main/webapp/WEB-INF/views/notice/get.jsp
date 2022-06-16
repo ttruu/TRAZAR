@@ -43,7 +43,7 @@ $(document).ready(function() {
 		$("#edit-button1").click(function() {
 		$("#input1").removeAttr("readonly");
 		$("#summernote").removeClass("d-none");
-		$("#summernoteView").addClass("d-none");
+		$("#view").addClass("d-none");
 		$("#summernote").summernote();
 		$("#modify-submit1").removeClass("d-none");
 		$("#delete-submit1").removeClass("d-none");
@@ -60,7 +60,8 @@ $(document).ready(function() {
 			form1.submit();
 		}
 		
-	})
+	});
+	}
 	
 	
 	
@@ -85,7 +86,7 @@ $(document).ready(function() {
 				<form id="form1" action="${appRoot }/notice/modify"
 					method="post">
 					<input type="hidden" name="id" value="${notice.id }" />
-
+					<input type="hidden" name="managerId" value="${notice.managerId }"/>
 					<div>
 						<label for="input3" class="form-label">작성자</label>
 						<input class="form-control" type="text"
@@ -100,8 +101,7 @@ $(document).ready(function() {
 
 					<div>
 						<label class="form-label" for="textarea1">본문</label>
-						<div class="form-control" id="summernoteView" cols="30"
-							rows="10">${notice.body }</div>
+						<div id="view" >${notice.body }</div>
 						<textarea class="form-control d-none" name="body" id="summernote">${notice.body }</textarea>
 					</div>
 					
