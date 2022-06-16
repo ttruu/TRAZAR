@@ -8,15 +8,13 @@ import lombok.Data;
 @Data
 public class DesignBoardDto {
 	private int id;
+	private String memberId;
 	private String title;
 	private String body;
 	private String price;
 	private LocalDateTime inserted;
-	private String memberId;
-	private List<String> fileName;
-	private String designerId;
-	private String managerId;
 	private String writerNickName;
+	private List<String> fileName;
 	
 	public String getPrettyInserted() {
 		// 24시간 이내면 시간만
