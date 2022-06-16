@@ -26,6 +26,7 @@ public class ReviewController {
 	@Autowired
 	private ReviewService service;
 	
+	// ajax 처리를 위해 ResponseEntity 사용 (success, error)
 	@PostMapping(path = "insert", produces = "text/plain;charset=UTF-8")
 	public ResponseEntity<String> insert(ReviewDto dto, Principal principal) {
 		
@@ -45,7 +46,8 @@ public class ReviewController {
 		}
 
 	}
-
+	
+	// ajax 처리를 위해 ResponseEntity 사용 (success, error)
 	@PutMapping(path = "modify", produces = "text/plain;charset=UTF-8")
 	public ResponseEntity<String> modify(@RequestBody ReviewDto dto, Principal principal) {
 		
@@ -63,6 +65,7 @@ public class ReviewController {
 		}
 	}
 	
+	// ajax 처리를 위해 ResponseEntity 사용 (success, error)
 	@DeleteMapping(path = "delete/{id}", produces = "text/plain;charset=UTF-8")
 	public ResponseEntity<String> delete(@PathVariable("id") int id, Principal principal) {
 		
@@ -80,9 +83,10 @@ public class ReviewController {
 		}
 	}
 	
+	// ReviewDto를 List로 받기 위해서는 @ResponseBody 필요
 	@GetMapping("list")
 	@ResponseBody
-	public List<ReviewDto> list(int designBoardId, Principal principal ) {
+	public List<ReviewDto> list(int designBoardId, Principal principal) {
 		if (principal == null) {
 			return service.getReviewByDesignBoardId(designBoardId);
 		} else {
