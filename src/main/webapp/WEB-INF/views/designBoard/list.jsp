@@ -73,7 +73,8 @@
 						</c:forEach>
 					</tbody>
 				</table>
-
+				
+				<!-- 광고 구현 (해당 이미지 클릭 시 url로 넘어감) -->
 				<div class="card" style="width: 20rem; cursor: pointer;"
 					onclick="location.href='https://www.google.com';">
 					<img src="../resources/picture/ad/구글1.PNG" class="card-img-top">
