@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -42,14 +45,14 @@
 								<td>
 									<c:url value="/notice/get" var="getUrl">
 										<c:param name="id" value="${notice.id }"></c:param>
-							
+										<c:param name="memberId" value="${notice.memberId }"></c:param>
 									</c:url>
 									
 									<a href="${getUrl }">
 										<c:out value="${notice.title }"></c:out>
 									</a>
 								</td>
-							<td>${notice.writerNickName }</td> 
+								<td>${notice.writerNickName }</td>
 								<td>${notice.prettyInserted }</td>
 							</tr>
 						</c:forEach>

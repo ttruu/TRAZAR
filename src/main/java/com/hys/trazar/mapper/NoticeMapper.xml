@@ -5,51 +5,33 @@
 <mapper namespace="com.hys.trazar.mapper.NoticeMapper">
 
 	 <select id="selectNoticeAll" resultType="com.hys.trazar.domain.NoticeDto">
-  	SELECT n.id        id, 
-  	       n.title     title, 
-  	       n.inserted  inserted,
-  	       n.managerId managerId
-  	FROM ManagerBoard n
-  	
-		<if test="keyword != '%%'">
-			<choose>
-				<when test="type == 'all'">
-					WHERE n.title LIKE #{keyword } OR
-					      n.body LIKE #{keyword }
-				</when>
-				<when test="type == 'title'">
-					WHERE n.title LIKE #{keyword }
-				</when>
-				<when test="type == 'body'">
-					WHERE  n.body LIKE #{keyword }
-				</when>
-			</choose>
-		</if>
-	GROUP BY n.id
-  	ORDER BY id DESC
+	SELECT n.id, 
+			   n.title, 
+			   n.body, 
+			   n.inserted,
+			   m.id memberId,
+			   m.nickName writerNickName
+		FROM ManagerBoard n JOIN Member m ON n.memberId = m.id
+		GROUP BY n.id
+		ORDER BY n.id DESC
   
   </select>
   	
   	<select id="selectNoticeById" resultType="com.hys.trazar.domain.NoticeDto">
-		SELECT 
-				n.id, 
-				n.title, 
-				n.body,
-				n.memberId, 
-				n.inserted
-	FROM ManagerBoard n JOIN Member m ON n.memberId = m.id
-	WHERE n.id = #{n.id}
-	ORDER BY n.id
-
+		SELECT n.id, 
+			   n.title, 
+			   n.body, 
+			   n.inserted,
+			   m.id memberId
+		FROM ManagerBoard n JOIN Member m ON n.memberId = m.id
+		WHERE n.id = #{id}
 	</select>
   
 
-  
   <update id="updateNotice">
   	UPDATE ManagerBoard
   	SET title = #{title},
-  	    body = #{body},
-  	    memberId = #{memberId}
+  	    body = #{body}
   	WHERE id = #{id}
   </update>
   
@@ -59,8 +41,8 @@
   </delete>
   
   <insert id="insertNotice" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-  	INSERT INTO ManagerBoard (title, body)
-  	VALUES (#{title}, #{body})
+  	INSERT INTO ManagerBoard (title, body, memberId)
+		VALUES (#{title}, #{body}, #{memberId})
   </insert>
   
 </mapper>
