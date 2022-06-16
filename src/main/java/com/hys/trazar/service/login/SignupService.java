@@ -61,10 +61,7 @@ public class SignupService {
 	// 정보 수정 할 수 있는 서비스
 	public boolean modifyMember(SignupDto dto) {
 
-		/// 암호화
-		String encodedPassword = passwordEncoder.encode(dto.getPassword());
-		// 암호화 된 암호를 다시 세팅
-		dto.setPassword(encodedPassword);
+
 		
 		return mapper.modifyMember(dto) == 1;
 	}
@@ -77,16 +74,14 @@ public class SignupService {
 		return mapper.emailModifyCheck(email) > 0;
 	}
 
-//	public boolean deleteMember(SignupDto dto) {
-//		SignupDto member = mapper.selectMember(dto.getId());
-//		reviewMapper.deleteByMemberId(dto.getId());
-//		List<DesignBoardDto> designList = boardMapper.selectDesignBoardById(dto.getId()); 
-//		for(DesignBoardDto board : designList ) {
-//			reviewMapper.deleteByDesignBoardId(board.getId());
-//		}
-//		
-//		boardMapper.deleteDesignBoard(dto.getId());
-//		
-//	}
+	public boolean passwordUpdate(SignupDto dto) {
+		
+		/// 암호화
+		String encodedPassword = passwordEncoder.encode(dto.getPassword());
+		// 암호화 된 암호를 다시 세팅
+		dto.setPassword(encodedPassword);
+				
+		return mapper.passwordUpdate(dto)==1;
+	}
 
 }

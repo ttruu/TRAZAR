@@ -19,6 +19,23 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>Insert title here</title>
 </head>
+
+<script>
+$(document).ready(function(){
+	$("#passwordModify3, #passwordModify4").keyup(function() {
+		const pw3 = $("#passwordModify3").val();
+		const pw4 = $("#passwordModify4").val();
+		
+		if (pw3 === pw4) {
+			$("#passwordMessageModify1").text("패스워드가 일치합니다.")
+			$("#passwordMessageModify1").css("color","blue")
+		} else {
+			$("#passwordMessageModify1").text("패스워드가 일치하지 않습니다.")
+			$("#passwordMessageModify1").css("color","red")
+		}
+	})
+})
+</script>
 <body>
 <body>
 	<my:navBar current="passwordModify"></my:navBar>
@@ -29,30 +46,24 @@
 		<div class="row justify-content-center">
 			<div class="col-12 col-lg-6">
 				<h1>패스워드 변경</h1>
-				<form action="${appRoot }" method="post">
-					<label for="usernameInput1" class="form-label"
-						style="position: absolute;"> </label>
-					<input id="usernameInput1" class="form-control" type="text"
-						name="username"
-						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
-						placeholder="기존 비밀번호" />
+				<form action="${appRoot }/sign/passwordUpdate" method="post">
+				
+					<label for="nameInput1" class="form-label">
+					아이디
+					</label>
+					<input id="idInput1" class="form-control" type="hidden" name="id" value="${member.id }" readonly />
 
-					<label for="passwordInput1" class="form-label"
-						style="position: absolute;"> </label>
-					<input class="form-control" id="passwordInput1" type="password"
-						name="password"
-						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
-						placeholder="변경할 비밀번호" />
-
-					<label for="passwordInput1" class="form-label"
-						style="position: absolute;"> </label>
-					<input class="form-control" id="passwordInput1" type="password"
-						name="password"
-						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
-						placeholder="비밀번호 확인" />
-
-
-					<input class="btn btn-primary" type="submit" value="비밀번호 변경" />
+					<label for="passwordInput1" class="form-label">
+					변경 할 암호
+					</label>
+					<input class="form-control" id="passwordModify3" name="password" type="password" value=""  />
+					<label for="passwordInput2" class="form-label">
+					변경 할 암호확인
+					</label>
+					<input class="form-control" id="passwordModify4" type="password" value=""  />
+					<p class="form-text" id="passwordMessageModify1"></p>
+					<br />
+					<button class="btn btn-primary">비밀번호 변경</button>
 				</form>
 
 			</div>
