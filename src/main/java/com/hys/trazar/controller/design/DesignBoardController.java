@@ -54,6 +54,7 @@ public class DesignBoardController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	
 	@RequestMapping("list")
 	public void list(Model model) {
 		List<DesignBoardDto> list = service.listDesignBoard();
@@ -85,8 +86,6 @@ public class DesignBoardController {
 		return "redirect:/designBoard/list";
 	}
 	
-
-
 	
 	@GetMapping("get")
 	public void get(int id, Model model) {
@@ -99,6 +98,7 @@ public class DesignBoardController {
 	
 	@PostMapping("modify")
 	public String modify(DesignBoardDto dto, RedirectAttributes rttr) {
+		
 		boolean success = service.updateDesignBoard(dto);
 		
 		if(success) {
@@ -147,10 +147,9 @@ public class DesignBoardController {
 		multipartFile.transferTo(file);
 
 		// 03. 마지막에 최종 주소를 반환한다.
-		// requet.getServername 을 하니, ajax에서 보내는 값이 리퀘스트 정보에 안떠서 InetAddress로
-		// 받았다.
+		// requet.getServername 을 하니, ajax에서 보내는 값이 리퀘스트 정보에 안떠서 InetAddress로 받는다 
 		String localIP = InetAddress.getLocalHost().getHostAddress();
-		// http://를 붙여줘야 에디터 창에서 불러올 수가 있다. 음.. 자바스크립트내에서 붙일까? 일단 그냥 적자.
+		// http://를 붙여줘야 에디터 창에서 불러올 수가 있다. 
 		return "http://" + localIP + ":" + request.getServerPort() + filename;
 		
 	}

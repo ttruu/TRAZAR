@@ -27,17 +27,21 @@ public class DesignBoardService {
 	@Autowired
 	private DesignBoardMapper mapper;
 
-	private S3Client s3;
+	//private S3Client s3;
 
+	/*
 	@Value("${aws.s3.bucketName}")
 	private String bucketName;
-
+	*/
+	
+	// get service
 	public DesignBoardDto getDesignBoardById(int id) {
 		DesignBoardDto designBoard = mapper.selectDesignBoardById(id);
 
 		return designBoard;
 	}
 
+	/*
 	// 객체가 생성되자마자 실행되는 메소드
 	@PostConstruct
 	public void init() {
@@ -49,7 +53,10 @@ public class DesignBoardService {
 	public void destroy() {
 		this.s3.close();
 	}
-
+	*/
+	
+	
+	// insert service
 	@Transactional
 	public boolean insertDesignBoard(DesignBoardDto designBoard) {
 		// 게시물 등록
@@ -94,16 +101,19 @@ public class DesignBoardService {
 		}
 	}
 	 */
-
+	
+	// list service	
 	public List<DesignBoardDto> listDesignBoard() {
 		return mapper.selectDesignBoardAll();
 	}
-
+	
+	// modify service
 	public boolean updateDesignBoard(DesignBoardDto dto) {
 		int cnt = mapper.updateDesignBoard(dto);
 		return cnt == 1;
 	}
 
+	// remove service
 	public boolean deleteDesignBoard(int id) {
 		return mapper.deleteDesignBoard(id) == 1;
 	}
