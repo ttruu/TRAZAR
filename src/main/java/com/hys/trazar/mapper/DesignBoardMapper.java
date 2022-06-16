@@ -20,4 +20,6 @@ public interface DesignBoardMapper {
 
 	void insertFile(@Param("designBoardId") int designBoardId, @Param("fileName") String fileName);
 
+
+
 }

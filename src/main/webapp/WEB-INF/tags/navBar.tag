@@ -6,9 +6,12 @@
 <c:url value="/sign/memberModifyLogin" var="memberLogin"></c:url>
 <c:url value="/sign/signup" var="signupUrl" ></c:url>
 <c:url value="/sign/login" var="loginUrl"></c:url>
+<c:url value="/sign/passwordModify" var="pwModify"></c:url>
 <c:url value="/logout" var="logoutUrl"></c:url>
 <c:url value="/designBoard/list" var="listUrl"></c:url>
 <c:url value="/designBoard/insert" var="insertUrl"></c:url>
+<c:url value="/notice/list" var="noticeListUrl"></c:url>
+<c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
 
 
 <%-- 회원정보링크 --%>
@@ -21,8 +24,35 @@
 
 
 <%-- 회원정보 암호 모달 --%>
-<c:url value="/notice/list" var="noticeListUrl"></c:url>
-<c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-3">
+  <div class="container">
+  
+<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">암호를 입력하세요.</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+	      <form id="form2" action="${appRoot }/sign/selectMember" method="post">
+	        <input type="hidden" value="${principal.username }" name="id" />
+	        
+	        <label for="passwordInput4" class="form-label">
+		        암호를 입력하세요. 
+	        </label>
+	        <input class="form-control" id="passwordInput" type="text" name="oldPassword"/>
+	      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        
+        <button id="modifySubmitButton2" form="form2" type="submit" class="btn btn-primary">입력</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3">
   <div class="container">
@@ -90,6 +120,13 @@
 						href="${noticeInsertUrl }">공지사항글쓰기</a>
 				</li>
         
+       <sec:authorize access="isAuthenticated()">
+       	<li class="nav-item">
+       		
+       		<a href="${pwModify }" data-bs-toggle="modal" data-bs-target="#modal2" class="nav-link ${current == 'pwModify' ? 'active' : '' }">비밀번호 변경</a>
+       	</li>
+       </sec:authorize>
+       
        <sec:authorize access="isAuthenticated()">
        	<li class="nav-item">
        		

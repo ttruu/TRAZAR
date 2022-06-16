@@ -40,5 +40,6 @@
 		VALUES (#{designBoardId}, #{fileName})
 	</insert>
 	-->
+	
 
 </mapper>

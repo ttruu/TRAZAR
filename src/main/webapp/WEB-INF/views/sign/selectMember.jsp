@@ -26,14 +26,17 @@
 
 $(document).ready(function() {
 	
+	// 수정버튼 활성화
 	let emailModify= false;
 	let nickNameModify = false;
 	let pwModify = false;
 	let introduce = true;
 	
+	// 전 이메일, 닉네임과 현재 닉네임이 같을때 수정버튼 비활성화 확인 코드
 	const oldEmail = $("#emailId").val()
 	const oldNickName = $("#nickNameId").val()
 	
+	// 자기소개 입력 시 수정버튼 활성화
 	$("#introduce").keyup(function(){
 		enableSubmitModify()
 		introduce = true;
@@ -103,6 +106,7 @@ $(document).ready(function() {
 			}
 		})
 	})
+	// 중복확인 버튼 코드
 	$("#nickNameCheckButtonModify").click(function(e) {
 		e.preventDefault()
 		const data = {
@@ -136,6 +140,7 @@ $(document).ready(function() {
 		})
 	})
 	
+	// 비밀번호 일치, 불일치 확인 코드
 	$("#passwordModify1, #passwordModify2").keyup(function() {
 		const pw1 = $("#passwordModify1").val();
 		const pw2 = $("#passwordModify2").val();
@@ -153,6 +158,8 @@ $(document).ready(function() {
 		enableSubmitModify()
 
 	});
+	
+	// 이메일, 닉네임, 비밀번호, 자기소개 등 한가지라도 입력하면 수정버튼 활성화 코드
 	const enableSubmitModify = function(){
 		if( emailModify || nickNameModify || pwModify || introduce){
 			$("#modifyButton").removeAttr("disabled")
