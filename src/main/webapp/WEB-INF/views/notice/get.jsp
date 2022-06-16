@@ -59,9 +59,6 @@
 				<c:if test="${not empty message }">
 					<div class="alert alert-primary">${message }</div>
 				</c:if>
-
-
-				<!-- 게시물 보기  -->
 	
 					<input type="hidden" name="id" value="${notice.id }" />
 
@@ -72,14 +69,14 @@
 					</div>-->
 
 					<div>
-						<label class="form-label" for="input1">제목</label>
+						<label class="form-label" for="inputNoticeTitle">제목</label>
 						<input class="form-control" type="text" name="title" required
-							id="input1" value="${notice.title }" />
+							id="inputNoticeTitle" value="${notice.title }" />
 					</div>
 
 					<div>
-						<label class="form-label" for="textarea1">본문</label>
-						<div class="form-control" name="body" >${notice.body }</div>
+						<label class="form-label" for="textareaNotice">본문</label>
+						<div name="body" >${notice.body }</div>
 					</div>
 
 					<div>

@@ -106,15 +106,14 @@
 					</div>-->
 
 					<div>
-						<label class="form-label" for="input1">제목</label>
+						<label class="form-label" for="inputNoticeTitle">제목</label>
 						<input class="form-control" type="text" name="title" required
-							id="input1" value="${notice.title }" />
+							id="inputNoticeTitle" value="${notice.title }" />
 					</div>
 
 					<div>
-						<label class="form-label" for="textarea1">본문</label>
-						<textarea class="form-control" name="body" id="summernote"
-							cols="30" rows="10" >${notice.body }</textarea>
+						<label class="form-label" >본문</label>
+						<textarea name="body" id="summernote">${notice.body }</textarea>
 					</div>
 
 					<div>
@@ -124,7 +123,6 @@
 					</div>
 					<div>
 						<input type="submit"  class="btn btn-danger" value="저장"/>
-						<input type="reset"  class="btn btn-danger" value="취소"/>
 					</div>
 				
 				</form>
