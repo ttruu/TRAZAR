@@ -34,41 +34,51 @@
 <body>
 	<my:navBar current="insert" />
 	 <script>
-	 $(document).ready(
-				function() {
-					var toolbar = [
-							// 글꼴 설정
-							[ 'fontname', [ 'fontname' ] ],
-							// 글자 크기 설정
-							[ 'fontsize', [ 'fontsize' ] ],
-							// 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-							[
-									'style',
-									[ 'bold', 'italic', 'underline',
-											'strikethrough', 'clear' ] ],
-							// 글자색
-							[ 'color', [ 'forecolor', 'color' ] ],
-							// 표만들기
-							[ 'table', [ 'table' ] ],
-							// 글머리 기호, 번호매기기, 문단정렬
-							[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
-							// 줄간격
-							[ 'height', [ 'height' ] ],
-							// 그림첨부, 링크만들기, 동영상첨부
-							[ 'insert', [ 'picture', 'link', 'video' ] ],
-							// 코드보기, 확대해서보기, 도움말
-							[ 'view', [ 'codeview', 'fullscreen', 'help' ] ] ];
-					var setting = {
-						height : 300,
-						minHeight : null,
-						maxHeight : null,
-						focus : true,
-						lang : 'ko-KR',
-						toolbar : toolbar
-					};
-					$('#summernote').summernote(setting);
-
-				});
+	 $(document).ready(function() {
+			
+			$('#summernote').summernote({
+				height : 500,
+				placeholder: '최대 500자 작성 가능합니다.',
+				lang: 'ko-KR',
+				toolbar : [
+					// 폰트랑 폰트사이즈 다시 넣어줘야함
+				    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+				    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+				    // 글자색
+				    ['color', ['forecolor','color']],
+				    // 표만들기
+				    ['table', ['table']],
+				    // 글머리 기호, 번호매기기, 문단정렬
+				    ['para', ['ul', 'ol', 'paragraph']],
+				    // 줄간격
+				    ['height', ['height']],
+				    // 그림첨부, 링크만들기, 동영상첨부
+				    ['insert',['picture','link','video']],
+				    // 코드보기, 확대해서보기, 도움말
+				    ['view', ['codeview','fullscreen', 'help']]
+				  ],
+				onImageUpload : function(files, editor, welEditable) {
+					console.log(files);
+					console.log( files[0] );
+					data = new FormData();
+					data.append("file", files[0]);
+					var $note = $(this);
+					$.ajax({
+						data : data,
+						type : "POST",
+						url : '/notice/imageupload',
+						cache : false,
+						contentType : false,
+						processData : false,
+						success : function(url) {
+							alert(url);
+							$note.summernote('insertImage', url);
+						}
+					});
+				}
+			});
+		});
+	
 	  function goWrite(frm) {
 			var title = frm.title.value;
 			
@@ -85,11 +95,11 @@
 		<div class="row">
 			<div class="col">
 				<h1>내용 작성</h1>
-				<form action="${appRoot }/notice/insert" method="post">
+				<form action="${appRoot }/notice/insert" method="post" enctype="multipart/form-data">
 					<div>
 						<label class="form-label" for="inputNoticeTitle">제목</label>
 						<input class="form-control" type="text" name="title" required
-							id="inputNoticeTitle" />
+							id="input1" />
 					</div>
 
 					<div>
