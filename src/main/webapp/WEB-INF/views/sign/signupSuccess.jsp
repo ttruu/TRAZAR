@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 	referrerpolicy="no-referrer"></script>
@@ -19,7 +20,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<my:navBar current="memberInfo"></my:navBar>
 	<h1>회원가입이 완료되었습니다!</h1>
+	
+	<a href="${appRoot }/designBoard/list">메인페이지 바로가기</a>
 
 
 	

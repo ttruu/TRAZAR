@@ -27,8 +27,25 @@
 		VALUES (#{id}, #{auth})
 	</insert>
 	
-	<select id="memberModify" resultType="com.hys.trazar.domain.login.SignupDto">
+	<select id="selectMember" resultType="com.hys.trazar.domain.login.SignupDto">
 		SELECT id, password, email, nickName, phoneNum, introduce, name, inserted FROM Member WHERE id = #{id}
 	</select>
+	
+	<update id="modifyMember">
+		UPDATE Member SET
+		password = #{password},
+		email = #{email},
+		nickName = #{nickName},
+		introduce = #{introduce} WHERE id = #{id}
+	</update>
+	
+	<select id="nickNameModifyCheck" resultType="int">
+		SELECT COUNT(nickName) FROM Member WHERE nickName = #{nickName}
+	</select>
+	
+	<select id="emailModifyCheck" resultType="int">
+		SELECT COUNT(email) FROM Member WHERE email = #{email}
+	</select>
+	
 	
 </mapper>
