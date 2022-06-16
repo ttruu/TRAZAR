@@ -11,26 +11,26 @@ import com.hys.trazar.mapper.login.SignupMapper;
 
 @Service
 public class SignupService {
-	
+
 	@Autowired
 	private SignupMapper mapper;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
 	public boolean createMember(SignupDto dto) {
-		
-		// 암호화 
+
+		// 암호화
 		String encodedPassword = passwordEncoder.encode(dto.getPassword());
-		// 암호화 된 암호를 다시 세팅 
+		// 암호화 된 암호를 다시 세팅
 		dto.setPassword(encodedPassword);
-		
-		// create member 
+
+		// create member
 		int cnt1 = mapper.createUser(dto);
-		
+
 		// insert auth (기본 권한)
 		int cnt2 = mapper.createAuth(dto.getId(), "ROLE_USER");
-		
+
 		return cnt1 == 1 && cnt2 == 2;
 	}
 
@@ -41,7 +41,6 @@ public class SignupService {
 	public boolean MemberNickNameCheck(String nickName) {
 		return mapper.MemberNickNameCheck(nickName) > 0;
 	}
-	
 
 	public boolean MemberEmailCheck(String email) {
 		return mapper.MemberEmailCheck(email) > 0;
@@ -56,8 +55,13 @@ public class SignupService {
 	}
 
 	public boolean modifyMember(SignupDto dto) {
-			
-		return mapper.modifyMember(dto)==1;
+
+		/// 암호화
+		String encodedPassword = passwordEncoder.encode(dto.getPassword());
+		// 암호화 된 암호를 다시 세팅
+		dto.setPassword(encodedPassword);
+		
+		return mapper.modifyMember(dto) == 1;
 	}
 
 	public boolean nickNameModifyCheck(String nickName) {
@@ -67,5 +71,8 @@ public class SignupService {
 	public boolean emailModifyCheck(String email) {
 		return mapper.emailModifyCheck(email) > 0;
 	}
+
+//	public boolean deleteMember(SignupDto dto) {
+//	}
 
 }

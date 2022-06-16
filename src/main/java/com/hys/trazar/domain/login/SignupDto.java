@@ -15,9 +15,8 @@ public class SignupDto {
 	private String nickName;
 	private String phoneNum;
 	private String introduce;
+	private String name;
 	
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime inserted;
-	private String name;
-	private String oldPassword;
 }

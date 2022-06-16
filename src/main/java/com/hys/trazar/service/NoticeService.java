@@ -37,8 +37,8 @@ public class NoticeService {
 
 	
 	
-	public List<NoticeDto> listNotice() {
-		return mapper.selectNotice();
+	public List<NoticeDto> listNotice(String type, String keyword) {
+		return mapper.selectNoticeAll(type, "%" + keyword + "%");
 	}
 
 	public NoticeDto getNotice(int id) {

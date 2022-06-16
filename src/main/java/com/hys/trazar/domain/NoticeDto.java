@@ -12,6 +12,7 @@ public class NoticeDto {
 	private int id;
 	private String title;
 	private String body;
+	private String managerId;
 	private LocalDateTime inserted;
 	private String writerNickName;
 
