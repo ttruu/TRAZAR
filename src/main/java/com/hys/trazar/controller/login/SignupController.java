@@ -53,6 +53,7 @@ public class SignupController {
 
 	}
 
+	// 회원가입 컨트롤러
 	@PostMapping("signup")
 	public String createUser(SignupDto dto) {
 		boolean success = service.createMember(dto);
@@ -64,6 +65,7 @@ public class SignupController {
 		}
 	}
 
+	// 중복확인 컨트롤러
 	@GetMapping(path = "check", params = "id")
 	@ResponseBody
 	public String idCheck(String id) {
@@ -76,6 +78,7 @@ public class SignupController {
 		}
 	}
 
+	// 중복확인 컨트롤러
 	@GetMapping(path = "check", params = "nickName")
 	@ResponseBody
 	public String nickNameCheck(String nickName) {
@@ -88,6 +91,7 @@ public class SignupController {
 		}
 	}
 
+	// 중복확인 컨트롤러
 	@GetMapping(path = "check", params = "email")
 	@ResponseBody
 	public String emailCheck(String email) {
@@ -100,12 +104,13 @@ public class SignupController {
 		}
 	}
 
-	@GetMapping("selectMember1")
-	public void selectMember(String id, Model model) {
-		SignupDto dto = service.selectMember(id);
-		model.addAttribute("member", dto);
-	}
+//	@GetMapping("selectMember1")
+//	public void selectMember(String id, Model model) {
+//		SignupDto dto = service.selectMember(id);
+//		model.addAttribute("member", dto);
+//	}
 
+	// 회원정보 수정 컨트롤러
 	@PostMapping("modify")
 	public String modifyMember(SignupDto dto) {
 		boolean success = service.modifyMember(dto);
@@ -117,6 +122,7 @@ public class SignupController {
 		}
 	}
 
+	// 모달 회원 패스워드 일치 시 회원정보 페이지 가능하게 하는 컨트롤러
 	@PostMapping("selectMember")
 	public String modifyMemberLogin(SignupDto dto, String oldPassword, RedirectAttributes rttr, String id, Model model,
 			Principal principal) {
@@ -167,15 +173,42 @@ public class SignupController {
 
 	}
 	
-//	@PostMapping
-//	public String removeMember(SignupDto dto) {
-//		boolean success = service.deleteMember(dto);
-//		if (success) {
-//			return "redirect:sign/login";
-//		} else {
-//			return "redirect:sign/selectMember";
-//		}
-//	}
+	// 모달 회원 패스워드 일치 시 패스워드 변경 창으로 이동 하는 컨트롤러
+		@PostMapping("passwordModify")
+		public String passwordModify(SignupDto dto, String oldPassword, RedirectAttributes rttr, String id, Model model,
+				Principal principal) {
+
+			// db에서 member 읽어서
+			SignupDto oldMember = mapper.selectMember(dto.getId());
+			// 기존 password가 일치할때만 계속 진행
+			String encodedPw = oldMember.getPassword();
+
+			SignupDto dto1 = service.selectMember(id);
+			model.addAttribute("member", dto1);
+
+			if (encoder.matches(oldPassword, encodedPw)) {
+				return null;
+			} else {
+				rttr.addAttribute("msg", "비밀번호를 다시 입력해주세요.");
+				return "redirect:/designBoard/list";
+			}
+		}
+		
+		@GetMapping("passwordModify")
+		public void passwordModify1() {
+			
+		}
+		
+		// 비밀번호 변경 코드
+		@PostMapping("passwordUpdate")
+		public String passwordUpdate(SignupDto dto) {
+			boolean success = service.passwordUpdate(dto);
+			if(success) {
+				return "redirect:/designBoard/list";
+			} else {
+				return "redirect:/designBoard/list";
+			}
+		}
 	
 
 }
