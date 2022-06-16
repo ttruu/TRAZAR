@@ -108,7 +108,6 @@ public class SignupController {
 
 	@PostMapping("modify")
 	public String modifyMember(SignupDto dto) {
-		System.out.println(dto);
 		boolean success = service.modifyMember(dto);
 		if (success) {
 			return "redirect:/designBoard/list";
