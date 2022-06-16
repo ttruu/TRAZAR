@@ -3,8 +3,12 @@ package com.hys.trazar.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
+import lombok.Data;
+import lombok.ToString;
+
+@ToString
 @Data
 public class DesignBoardDto {
 	private int id;
@@ -14,7 +18,9 @@ public class DesignBoardDto {
 	private String price;
 	private LocalDateTime inserted;
 	private String writerNickName;
-	private List<String> fileName;
+	private List<MultipartFile> fileName;
+	private List<String> uploadfiles;
+	private String imgthumbnail;
 	
 	public String getPrettyInserted() {
 		// 24시간 이내면 시간만
@@ -26,4 +32,18 @@ public class DesignBoardDto {
 			return inserted.toLocalDate().toString();
 		}
 	}
+	
+	/*
+	public String getImgthumbnail(){
+		// 썸네일  
+		if(imgthumbnail!=null){
+			if(imgthumbnail.startsWith("http")){
+				return imgthumbnail;
+			}else{
+				return "/static/images/thumbnails/"+imgthumbnail;
+			}
+		}
+		return imgthumbnail;
+	}
+	*/
 }

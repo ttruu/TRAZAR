@@ -34,7 +34,28 @@
 <body>
 
 	<my:navBar current="list" />
-
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="works-wrapper works-wrapper-top">
+				<c:forEach items="${designBoardList }" var="designBoard">
+		${designBoard.id}번 글 , 글쓴이 : ${designBoard.writerNickName }<br>
+	
+		썸네일 (썸네일을 누르면 해당 글로 이동) : <br>
+		<c:url value="/designBoard/get" var="getUrl">
+			<c:param name="id" value="${designBoard.id }"></c:param>
+			<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+		</c:url>
+		<a href="${getUrl }">
+			<img src="${designBoard.imgthumbnail }" width="150px"
+				height="150px">
+		</a>
+		<hr />
+		</c:forEach>
+				</div>
+		</div>
+	</div>
+</div>
 	<div class="container">
 		<div class="row">
 			<div class="col">
@@ -73,7 +94,7 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				
+
 				<!-- 광고 구현 (해당 이미지 클릭 시 url로 넘어감) -->
 				<div class="card" style="width: 20rem; cursor: pointer;"
 					onclick="location.href='https://www.google.com';">
