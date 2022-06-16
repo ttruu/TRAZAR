@@ -28,6 +28,8 @@ public interface SignupMapper {
 
 	int emailModifyCheck(String email);
 
+	int passwordUpdate(SignupDto dto);
+
 
 
 }

@@ -15,7 +15,7 @@
 	       r.memberId,
 	       r.body,
 	       r.inserted,
-	       IF (m.id = #{memberId}, 1, 0) own
+	       IF (m.id = #{memberId}, 1, 0) own <!-- own이 true 일 때 ajax 처리 위함(get.jsp 참고) -->
 	FROM Review r JOIN Member m ON r.memberId = m.id
 	WHERE r.designBoardId = #{designBoardId}
 	ORDER BY r.id

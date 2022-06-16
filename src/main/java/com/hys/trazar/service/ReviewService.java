@@ -57,5 +57,4 @@ public class ReviewService {
 		return mapper.selectAllDesignBoardId(designBoardId, memberId);
 	}
 
-
 }
