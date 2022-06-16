@@ -23,8 +23,14 @@
 	crossorigin="anonymous"></script>
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js" integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css"
+	integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js"
+	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <title>Insert title here</title>
 </head>
@@ -36,6 +42,8 @@
 	<script>
 	$(document).ready(function() {
 		
+		
+		// 페이지 로딩 후 review list 가져오는 ajax 요청
 		// 수정버튼 클릭스 스크립트 
 		$("#edit-button1").click(function() {
 			$("#input1").removeAttr("readonly");
@@ -59,10 +67,7 @@
 			
 		});
 		
-		
-		
-		
-	// 페이지 로딩 후 review list 가져오는 ajax 요청
+	// 댓글 목록 (review list) 가져오는 ajax
 		const listReview = function() {
 			
 			const data = {designBoardId : ${designBoard.id}};
@@ -121,7 +126,7 @@
 						reviewListElement.append(reviewElement);
 						$("#reviewContent" + list[i].id).text(list[i].body);
 						
-						// own이 true일 때만 수정,삭제 버튼 보이기
+						// own(memberId)이 true(1)일 때만 수정,삭제 버튼 보이기
 						 if (list[i].own) {
 							$("#modifyButtonWrapper" + list[i].id).html(`
 								<span class="review-edit-toggle-button badge bg-info text-dark"
@@ -138,6 +143,7 @@
 						
 					} // end of for
 					
+					// 댓글 수정
 					$(".review-modify-submit").click(function(e) {
 						e.preventDefault();
 						
@@ -205,9 +211,10 @@
 								url : "${appRoot}/review/delete/" + reviewId,
 								type : "delete",
 								success : function(data) {
-									// console.log(replyId + "댓글 삭제됨");
+									
 									// 댓글 list refresh
 									listReview();
+									
 									// 메세지 출력
 									$("#reviewMessage1").show().text(data).fadeOut(3000);
 								},
@@ -232,7 +239,7 @@
 		listReview();
 		
 		// addReviewSubmitButton1 버튼 클릭시 ajax 댓글 추가 요청
-		console.log(525252525252525);
+		// 댓글 insert 
 		$("#addReviewSubmitButton1").click(function(e) {
 			e.preventDefault();
 			
@@ -243,6 +250,7 @@
 				type : "post",
 				data : data,
 				success : function(data) {
+					
 					// 새 댓글 등록되었다는 메시지 출력
 					$("#reviewMessage1").show().text(data).fadeOut(3000);
 					
@@ -253,7 +261,6 @@
 					// 댓글 가져오는 함수 실행
 					listReview();
 					
-					// console.log(data);
 				},
 				error : function() {
 					$("#reviewMessage1").show().text("댓글을 작성할 수 없습니다.").fadeOut(3000);
@@ -267,13 +274,11 @@
 	});
 
 	</script>
-	
-	
-
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<h1>글 본문
+				<h1>
+					글 본문
 					<button id="edit-button1" class="btn btn-secondary">
 						<i class="fa-solid fa-pen-to-square"></i>
 					</button>
@@ -303,11 +308,10 @@
 
 					<div>
 						<label class="form-label" for="textarea1">본문</label>
-						<div class="form-control" id="summernoteView" cols="30"
-							rows="10">${designBoard.body }</div>
+						<div class="form-control" id="summernoteView" cols="30" rows="10">${designBoard.body }</div>
 						<textarea class="form-control d-none" name="body" id="summernote">${designBoard.body }</textarea>
 					</div>
-					
+
 					<div>
 						<label for="input2" class="form-label">작성일시</label>
 						<input class="form-control" type="datetime-local"
@@ -322,53 +326,59 @@
 					<input type="hidden" name="id" value="${designBoard.id }" />
 					<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
 				</form>
-				
+
 				<a href="${appRoot }/request/insert">요청</a>
 			</div>
 		</div>
 	</div>
-	
-	<%-- 댓글 추가 form --%>
-	<!-- .container.mt-3>.row>.col>form -->
+
+	<%-- 댓글 추가 --%>
 	<div class="container mt-3">
 		<div class="row">
 			<div class="col">
 				<form id="insertReviewForm1">
 					<div class="input-group">
-						<input type="hidden" name="designBoardId" value="${designBoard.id }" />
-						<input id="insertReviewContentInput1" class="form-control" type="text" name="body" required />
-						<button id="addReviewSubmitButton1" class="btn btn-outline-secondary"></button>
+						<input type="hidden" name="designBoardId"
+							value="${designBoard.id }" />
+						<input id="insertReviewContentInput1" class="form-control"
+							type="text" name="body" required />
+						<button id="addReviewSubmitButton1"
+							class="btn btn-outline-secondary"></button>
 					</div>
 				</form>
 			</div>
 		</div>
 		<div class="row">
-			<div class="alert alert-primary" style="display:none; " id="reviewMessage1"></div>
+			<div class="alert alert-primary" style="display: none;"
+				id="reviewMessage1"></div>
 		</div>
 	</div>
-	
-	<%-- review 목록 --%>
+
+	<%-- 댓글 목록 --%>
 	<div class="container mt-3">
 		<div class="row">
 			<div class="col">
-			
-				<h3>댓글 <span id="numOfReview1"></span> 개</h3>
+
+				<h3>
+					댓글
+					<span id="numOfReview1"></span>
+					개
+				</h3>
 
 				<ul id="reviewList1" class="list-group" />
-				
+
 			</div>
 		</div>
 	</div>
 
-	<%-- review 삭제 --%>
+	<%-- 댓글 삭제 --%>
 	<div class="d-none">
-		<form id="reviewDeleteForm1" action="${appRoot }/review/delete" method="post">
+		<form id="reviewDeleteForm1" action="${appRoot }/review/delete"
+			method="post">
 			<input id="reviewDeleteInput1" type="text" name="id" />
 			<input type="text" name="designBoardId" value="${designBoard.id }" />
 		</form>
 	</div>
-	
-	
 
 </body>
 </html>

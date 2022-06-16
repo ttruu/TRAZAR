@@ -26,14 +26,16 @@
 
 $(document).ready(function() {
 	
+	// 수정버튼 활성화
 	let emailModify= false;
 	let nickNameModify = false;
-	let pwModify = false;
 	let introduce = true;
 	
+	// 전 이메일, 닉네임과 현재 닉네임이 같을때 수정버튼 비활성화 확인 코드
 	const oldEmail = $("#emailId").val()
 	const oldNickName = $("#nickNameId").val()
 	
+	// 자기소개 입력 시 수정버튼 활성화
 	$("#introduce").keyup(function(){
 		enableSubmitModify()
 		introduce = true;
@@ -103,6 +105,7 @@ $(document).ready(function() {
 			}
 		})
 	})
+	// 중복확인 버튼 코드
 	$("#nickNameCheckButtonModify").click(function(e) {
 		e.preventDefault()
 		const data = {
@@ -135,33 +138,17 @@ $(document).ready(function() {
 			}
 		})
 	})
-	
-	$("#passwordModify1, #passwordModify2").keyup(function() {
-		const pw1 = $("#passwordModify1").val();
-		const pw2 = $("#passwordModify2").val();
-		
-		if (pw1 === pw2) {
-			$("#passwordMessageModify").text("패스워드가 일치합니다.");
-			$("#passwordMessageModify").css("color","blue")
-			pwModify = true;
-		} else {
-			$("#passwordMessageModify").text("패스워드가 일치하지 않습니다.");
-			$("#passwordMessageModify").css("color","red")
-			pwModify = false;
-		}
-		
-		enableSubmitModify()
 
-	});
+	
+	// 이메일, 닉네임, 자기소개 등 한가지라도 입력하면 수정버튼 활성화 코드
 	const enableSubmitModify = function(){
-		if( emailModify || nickNameModify || pwModify || introduce){
+		if( emailModify || nickNameModify || introduce){
 			$("#modifyButton").removeAttr("disabled")
 		} else {
 			$("#modifyButton").attr("disabled","")
+			}
 		}
-	}
-	
-})
+	})
 </script>
 </head>
 <body>
@@ -185,16 +172,6 @@ $(document).ready(function() {
 					아이디
 					</label>
 					<input id="idInput1" class="form-control" type="text" name="id" value="${member.id }" readonly />
-					
-					<label for="passwordInput1" class="form-label">
-					암호
-					</label>
-					<input class="form-control" id="passwordModify1" name="password" type="text" value=""  />
-					<label for="passwordInput2" class="form-label">
-					암호확인
-					</label>
-					<input class="form-control" id="passwordModify2" type="text" value=""  />
-					<p class="form-text" id="passwordMessageModify"></p>
 					<label for="emailInput1" class="form-label">
 					이메일
 					</label>

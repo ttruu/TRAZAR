@@ -20,7 +20,7 @@ public class SignupService {
 
 	public boolean createMember(SignupDto dto) {
 
-		// 암호화
+		// 암호화 (엔코딩)
 		String encodedPassword = passwordEncoder.encode(dto.getPassword());
 		// 암호화 된 암호를 다시 세팅
 		dto.setPassword(encodedPassword);
@@ -28,20 +28,23 @@ public class SignupService {
 		// create member
 		int cnt1 = mapper.createUser(dto);
 
-		// insert auth (기본 권한)
+		// 회원가입시 auth (기본 권한)으로 가입
 		int cnt2 = mapper.createAuth(dto.getId(), "ROLE_USER");
 
 		return cnt1 == 1 && cnt2 == 2;
 	}
 
+	// 중복확인 (id)
 	public boolean MemberIdCheck(String id) {
 		return mapper.MemberIdCheck(id) > 0;
 	}
 
+	// 중복확인 (nickName)
 	public boolean MemberNickNameCheck(String nickName) {
 		return mapper.MemberNickNameCheck(nickName) > 0;
 	}
 
+	// 중복확인 (email)
 	public boolean MemberEmailCheck(String email) {
 		return mapper.MemberEmailCheck(email) > 0;
 	}
@@ -50,16 +53,15 @@ public class SignupService {
 		return mapper.selectMember(id);
 	}
 
+	// 회원가입 한 멤버 리스트
 	public List<SignupDto> memberList() {
 		return mapper.memberList();
 	}
 
+	// 정보 수정 할 수 있는 서비스
 	public boolean modifyMember(SignupDto dto) {
 
-		/// 암호화
-		String encodedPassword = passwordEncoder.encode(dto.getPassword());
-		// 암호화 된 암호를 다시 세팅
-		dto.setPassword(encodedPassword);
+
 		
 		return mapper.modifyMember(dto) == 1;
 	}
@@ -72,7 +74,14 @@ public class SignupService {
 		return mapper.emailModifyCheck(email) > 0;
 	}
 
-//	public boolean deleteMember(SignupDto dto) {
-//	}
+	public boolean passwordUpdate(SignupDto dto) {
+		
+		/// 암호화
+		String encodedPassword = passwordEncoder.encode(dto.getPassword());
+		// 암호화 된 암호를 다시 세팅
+		dto.setPassword(encodedPassword);
+				
+		return mapper.passwordUpdate(dto)==1;
+	}
 
 }

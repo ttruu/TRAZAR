@@ -25,13 +25,10 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
-	
-<!-- 폰트크기/설정 -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
 
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js" integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 
 
@@ -40,7 +37,8 @@
 <body>
 <script>
 $(document).ready(function() {
-		$("#edit-button1").click(function() {
+	/* 수정 활성화 버튼 스크립트 */
+	$("#edit-button1").click(function() {
 		$("#input1").removeAttr("readonly");
 		$("#summernote").removeClass("d-none");
 		$("#view").addClass("d-none");
@@ -48,7 +46,6 @@ $(document).ready(function() {
 		$("#modify-submit1").removeClass("d-none");
 		$("#delete-submit1").removeClass("d-none");
 	});
-	
 		
 	$("#delete-submit1").click(function(e) {
 		e.preventDefault();
@@ -61,7 +58,7 @@ $(document).ready(function() {
 		}
 		
 	});
-	}
+});
 	
 	
 	
@@ -86,7 +83,7 @@ $(document).ready(function() {
 				<form id="form1" action="${appRoot }/notice/modify"
 					method="post">
 					<input type="hidden" name="id" value="${notice.id }" />
-					<input type="hidden" name="managerId" value="${notice.managerId }"/>
+					<input type="hidden" name="managerId" value="${notice.memberId }"/>
 					<div>
 						<label for="input3" class="form-label">작성자</label>
 						<input class="form-control" type="text"

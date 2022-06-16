@@ -28,51 +28,59 @@ $(document).ready(function() {
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
+<div class="container">
 		<div class="row">
 			<div class="col">
-				<h1>
-					글 본문
+				<h1>글 본문
 					<button id="edit-button1" class="btn btn-secondary">
 						<i class="fa-solid fa-pen-to-square"></i>
 					</button>
 				</h1>
 
-				<form action="${appRoot }/request/modify" method="post">
-				    <input type="hidden" name="id" value="${request.id }" />
-					<div>
-						<label class="form-label" for="input1">제목</label>
-						<input class="form-control mb-3" type="text" name="title" required
-							id="input1" value="${request.title }" readonly />
-					</div> 
-					
-				    <div>
-						<label class="form-label" for="textarea1">본문</label>
-						<textarea class="form-control mb-3" name="body" id="textarea1"
-							cols="30" rows="10" readonly>${request.body }</textarea>
-					</div>
-					
+				<c:if test="${not empty message }">
+					<div class="alert alert-primary">${message }</div>
+				</c:if>
+
+
+				<!-- 게시물 보기 + 수정 -->
+				<form id="form1" action="${appRoot }/notice/modify"
+					method="post">
+					<input type="hidden" name="id" value="${notice.id }" />
+
 					<div>
 						<label for="input3" class="form-label">작성자</label>
-						<input id="input3" class="form-control mb-3" type="text"
-							value="${request.memberId }" readonly />
+						<input class="form-control" type="text"
+							value="${notice.writerNickName }" />
+					</div>
+
+					<div>
+						<label class="form-label" for="input1">제목</label>
+						<input class="form-control" type="text" name="title" required
+							id="input1" value="${notice.title }" />
+					</div>
+
+					<div>
+						<label class="form-label" for="textarea1">본문</label>
+						<div class="form-control" id="summernoteView" cols="30"
+							rows="10">${notice.body }</div>
+						<textarea class="form-control d-none" name="body" id="summernote">${notice.body }</textarea>
 					</div>
 					
 					<div>
-						<label class="form-label" for="input4">가격</label>
-						<input class="form-control mb-3" type="text" name="price" required
-							id="input4" value="${request.price }" readonly />
-					</div> 
-						
-				    <div>
 						<label for="input2" class="form-label">작성일시</label>
-						<input class="form-control mb-3" type="datetime-local"
-							value="${request.inserted }" readonly />
+						<input class="form-control" type="datetime-local"
+							value="${notice.inserted }" />
 					</div>
-				
-				    <button id="modify-submit1" class="btn btn-outline-primary d-none">수정</button>
-			    </form>
 
+					<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
+				</form>
+
+				<c:url value="/notice/remove" var="removeLink" />
+				<form action="${removeLink }" method="post">
+					<input type="hidden" name="id" value="${notice.id }" />
+					<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
+				</form>
+				
 			</div>
 		</div>
 	</div>
