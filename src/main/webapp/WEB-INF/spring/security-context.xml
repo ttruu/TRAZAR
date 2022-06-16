@@ -4,24 +4,28 @@
 	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-	
-	<!--  652page -->
-	<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-	
+
+	<!-- 652page -->
+	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
 	<!-- http의 request와 response에 관련된 설정 -->
 	<security:http>
-		<security:csrf disabled="true"/>
-		<security:form-login always-use-default-target="true" default-target-url="/designBoard/list" login-page="/sign/login/"/>
+		<security:csrf disabled="true" />
+		<security:form-login
+			always-use-default-target="true"
+			default-target-url="/designBoard/list" login-page="/sign/login/" />
 		<security:logout />
 	</security:http>
-	
+
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<security:jdbc-user-service 
-			data-source-ref="dataSource"
-				users-by-username-query="SELECT id, password, 1 FROM Member WHERE id = ?"
-				authorities-by-username-query="SELECT memberId, role FROM Auth WHERE memberId = ?"
-			/>
+			<security:jdbc-user-service
+				data-source-ref="dataSource"
+				users-by-username-query=
+				"SELECT id, password, 1 FROM Member WHERE id = ?"
+				authorities-by-username-query=
+				"SELECT memberId, role FROM Auth WHERE memberId = ?" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>
