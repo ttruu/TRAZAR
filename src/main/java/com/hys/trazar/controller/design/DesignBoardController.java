@@ -85,9 +85,6 @@ public class DesignBoardController {
 		return "redirect:/designBoard/list";
 	}
 	
-
-
-	
 	@GetMapping("get")
 	public void get(int id, Model model) {
 		DesignBoardDto dto = service.getDesignBoardById(id);
@@ -98,32 +95,49 @@ public class DesignBoardController {
 	}
 	
 	@PostMapping("modify")
-	public String modify(DesignBoardDto dto, RedirectAttributes rttr) {
-		boolean success = service.updateDesignBoard(dto);
+	public String modify(DesignBoardDto dto, Principal principal, RedirectAttributes rttr) {
 		
-		if(success) {
-			rttr.addFlashAttribute("message", "글이 수정되었습니다");
+		DesignBoardDto oldBoard = service.getDesignBoardById(dto.getId());
+		
+		if(oldBoard.getMemberId().equals(principal.getName())) {
+			boolean success = service.updateDesignBoard(dto);
+			
+			if(success) {
+				rttr.addFlashAttribute("message", "글이 수정되었습니다");
+			} else {
+				rttr.addFlashAttribute("message", "글이 수정되지 않았습니다");
+			}			
 		} else {
-			rttr.addFlashAttribute("message", "글이 수정되지 않았습니다");
+			rttr.addFlashAttribute("message", "권한이 없습니다");
 		}
 		
 		rttr.addAttribute("id", dto.getId());
+		rttr.addAttribute("memberId", principal.getName());
 		
 		return "redirect:/designBoard/get";
 	}
 	
 	
 	@PostMapping("remove")
-	public String remove(int id, RedirectAttributes rttr) {
+	public String remove(DesignBoardDto dto, Principal principal, RedirectAttributes rttr) {
+		// 게시물 정보 얻고
+		DesignBoardDto oldBoard = service.getDesignBoardById(dto.getId());
 		
-		boolean success = service.deleteDesignBoard(id);
-		
-		if (success) {
-			rttr.addFlashAttribute("message", "글이 삭제 되었습니다.");
+		if(oldBoard.getMemberId().equals(principal.getName())) {
+			boolean success = service.deleteDesignBoard(dto.getId());
 			
+			if (success) {
+				rttr.addFlashAttribute("message", "글이 삭제 되었습니다.");
+				
+			} else {
+				rttr.addFlashAttribute("message", "글이 삭제 되지않았습니다.");
+			}
 		} else {
-			rttr.addFlashAttribute("message", "글이 삭제 되지않았습니다.");
+			rttr.addFlashAttribute("message", "권한이 없습니다");
+			rttr.addAttribute("id", dto.getId());
+			return "redirect:/designBoard/get";
 		}
+		
 		return "redirect:/designBoard/list";
 	}
 	

@@ -4,22 +4,35 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hys.trazar.mapper.DesignBoardMapper">
 	
+	<!-- list query -->
 	<select id="selectDesignBoardAll" resultType="com.hys.trazar.domain.DesignBoardDto">
-		SELECT id, title, body, price, inserted
-		FROM DesignBoard
-		GROUP BY id
-		ORDER BY id DESC
+		SELECT d.id, 
+			   d.title, 
+			   d.body, 
+			   d.price, 
+			   d.inserted,
+			   m.id memberId,
+			   m.nickName writerNickName
+		FROM DesignBoard d LEFT JOIN Review r ON d.id = r.memberId
+								JOIN Member m ON d.memberId = m.id
+		GROUP BY d.id
+		ORDER BY d.id DESC
 	</select>
 	
 	<insert id="insertDesignBoard" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-		INSERT INTO DesignBoard (title, body, price)
-		VALUES (#{title}, #{body}, #{price})
+		INSERT INTO DesignBoard (title, body, price, memberId)
+		VALUES (#{title}, #{body}, #{price}, #{memberId})
 	</insert>
 	
 	<select id="selectDesignBoardById" resultType="com.hys.trazar.domain.DesignBoardDto">
-		SELECT id, title, body, price, inserted
-		FROM DesignBoard 
-		WHERE id = #{id}
+		SELECT d.id, 
+			   d.title, 
+			   d.body, 
+			   d.price, 
+			   d.inserted,
+			   m.id memberId
+		FROM DesignBoard d JOIN Member m ON d.memberId = m.id
+		WHERE d.id = #{id}
 	</select>
 
 	<update id="updateDesignBoard">
@@ -32,6 +45,11 @@
 	<delete id="deleteDesignBoard">
 		DELETE FROM DesignBoard
 		WHERE id = #{id }
+	</delete>
+	
+	<delete id="deleteByMemberId">
+		DELETE FROM DesignBoard
+		WHERE memberId = #{memberId}
 	</delete>
 	
 	<!--  
