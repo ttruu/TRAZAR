@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 	referrerpolicy="no-referrer"></script>
@@ -153,7 +154,7 @@
 </script>
 </head>
 <body>
-
+<my:navBar current="signup"></my:navBar>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-12 col-lg-6">
@@ -188,7 +189,7 @@
 					<input type="number" name="phoneNum" maxlength = "13" placeholder = "휴대폰 번호를 입력하세요." required/>
 					<br />
 					자기소개 :
-					<textarea rows="" cols="" name="introduce"></textarea>
+					<input type="text" name="introduce" />
 					<br />
 					<button class="btn btn-secondary" disabled id="CreateButton">회원가입</button>
 				</form>
