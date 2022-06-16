@@ -1,6 +1,5 @@
 package com.hys.trazar.controller.design;
 
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -32,15 +31,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.jsoup.nodes.*;
+import org.jsoup.select.Elements;
+import org.jsoup.*;
+import org.jsoup.Connection.Method;
 
-import com.example.controller.Document;
-import com.example.controller.Elements;
-import com.example.domain.BoardArticle;
-import com.example.domain.FileList;
 import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.ReviewDto;
+import com.hys.trazar.mapper.DesignBoardMapper;
 import com.hys.trazar.service.DesignBoardService;
 import com.hys.trazar.service.ReviewService;
+
+import static org.imgscalr.Scalr.OP_ANTIALIAS;
+import static org.imgscalr.Scalr.OP_BRIGHTER;
+import static org.imgscalr.Scalr.pad;
+import static org.imgscalr.Scalr.resize;
+import static org.imgscalr.Scalr.*;
 
 
 @Controller
@@ -50,6 +56,7 @@ public class DesignBoardController {
 	private static final String FILE2 = "file";
 	private static final Logger LOGGER = LoggerFactory.getLogger(DesignBoardController.class);
 	private static final String UPLOADIMG = "/static/uploadimg/";
+	private static final String STATIC_IMAGES_THUMBNAILS = "/static/images/thumbnails/";
 	 
 	@Autowired
 	 ServletContext servletContext;
@@ -179,11 +186,9 @@ public class DesignBoardController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String save(DesignBoardDto designBoard) throws IOException
 	{
-		/*
-		 * 02. 글에서 추출해서 <img> 태그가 걸려있으면 썸네일 만들기  
-		 */
+		/* 02. 글에서 추출해서 <img> 태그가 걸려있으면 썸네일 만들기 */
 
-		String source = article.getContent();
+		String source = designBoard.getBody();
 		Document doc = Jsoup.parse(source);
 		Elements elements = doc.select("img");
 		String url = checkElements(elements);
@@ -202,12 +207,33 @@ public class DesignBoardController {
 				File thumbnailoutput = new File(webAppRoot + STATIC_IMAGES_THUMBNAILS + url);
 				ImageIO.write(thumbnail, ext, thumbnailoutput);
 			}
-			article.setImgthumbnail(url);
+			designBoard.setImgthumbnail(url);
 		}
-		LOGGER.debug("article : {}", article);
-		repository.save(article);
-		return "redirect:/blog";
+		LOGGER.debug("designBoard : {}", designBoard);
+		DesignBoardMapper.save(designBoard);
+		return "redirect:/designBoard";
 	}
 	
+	public String checkElements(Elements elements)
+	{
+		if (elements.size() > 0) {
+			Elements elem = elements.get(0).getElementsByAttribute("src");
+			String url = elem.toString();
+			int pos = url.indexOf("src=\"") + 5;
+			url = url.substring(pos, url.indexOf("\"", pos));
+			LOGGER.debug("img url :{}",url);
+			// System.out.println(url.startsWith("http")+":"+url);
+			return url;
+		}
+		return null;
+	}
+	
+	public static BufferedImage createThumbnail(BufferedImage img)
+	{
+		// Create quickly, then smooth and brighten it.
+		img = resize(img, org.imgscalr.Scalr.Method.SPEED, 150, OP_ANTIALIAS, OP_BRIGHTER);
+		// Let's add a little border before we return result.
+		return pad(img, 4);
+	}
 
 }

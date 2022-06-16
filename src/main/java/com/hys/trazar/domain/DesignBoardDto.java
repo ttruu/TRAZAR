@@ -15,6 +15,7 @@ public class DesignBoardDto {
 	private LocalDateTime inserted;
 	private String writerNickName;
 	private List<String> fileName;
+	private String imgthumbnail;
 	
 	public String getPrettyInserted() {
 		// 24시간 이내면 시간만
@@ -25,5 +26,17 @@ public class DesignBoardDto {
 		} else {
 			return inserted.toLocalDate().toString();
 		}
+	}
+	
+	public String getImgthumbnails(){
+		// 썸네일  
+		if(imgthumbnail!=null){
+			if(imgthumbnail.startsWith("http")){
+				return imgthumbnail;
+			}else{
+				return "/static/images/thumbnails/"+imgthumbnail;
+			}
+		}
+		return "/static/images/";
 	}
 }
