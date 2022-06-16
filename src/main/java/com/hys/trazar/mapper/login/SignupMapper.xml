@@ -33,7 +33,6 @@
 	
 	<update id="modifyMember">
 		UPDATE Member SET
-		password = #{password},
 		email = #{email},
 		nickName = #{nickName},
 		introduce = #{introduce} WHERE id = #{id}
@@ -46,6 +45,12 @@
 	<select id="emailModifyCheck" resultType="int">
 		SELECT COUNT(email) FROM Member WHERE email = #{email}
 	</select>
+	
+	<update id="passwordUpdate">
+		UPDATE Member SET
+		password = #{password}
+		WHERE id = #{id}
+	</update>
 	
 	
 </mapper>
