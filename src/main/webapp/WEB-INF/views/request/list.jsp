@@ -14,6 +14,8 @@
 
 <script>
 $(document).ready(function() {
+	
+	// 요청 수락시 chat열리게함
 	$(".accept-submit1").click(function(e) {
 		e.preventDefault();
 	
@@ -27,6 +29,7 @@ $(document).ready(function() {
 	
 	});
 	
+	// 요청 거절시 해당index에 따라 삭제되게함
 	$(".reject-submit1").click(function(e) {
 		e.preventDefault();
 	

@@ -14,6 +14,8 @@
 
 <script>
 $(document).ready(function() {
+	
+	// edit버튼 클릭됐을때 쓰기 가능하게함
 	$("#edit-button1").click(function() {
 		$("#input1").removeAttr("readonly");
 		$("#textarea1").removeAttr("readonly");

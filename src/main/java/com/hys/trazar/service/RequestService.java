@@ -15,28 +15,33 @@ public class RequestService {
 	
 	@Autowired
 	private RequestMapper mapper;
-
+	
+	// 요청 보내기
 	public boolean addRequest(RequestDto dto) {
 		return mapper.addRequest(dto) == 1;
 		
 	}
-
+	
+	// 요청 list가져오기
 	public List<RequestDto> listBoard() {
 		return mapper.listBoard();
 	}
-
+	
+	// 요청을 id기준으로 가져오기
 	public RequestDto getRequestById(int id) {
 		RequestDto Request = mapper.getRequestById(id);
 		return Request;
 	}
-
+	
+	// 요청 수정하기
 	public boolean updateRequest(RequestDto dto) {
 		int cnt = mapper.updateRequest(dto);
 		
 		return cnt == 1;
 		
 	}
-
+	
+	// 요청 삭제하기
 	public boolean removeRequestById(int id) {
 		
 		int cnt = mapper.removeRequestById(id);
