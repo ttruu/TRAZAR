@@ -27,10 +27,11 @@ public class DesignBoardService {
 	@Autowired
 	private DesignBoardMapper mapper;
 
-	private S3Client s3;
-
-	@Value("${aws.s3.bucketName}")
-	private String bucketName;
+	/*
+	 * private S3Client s3;
+	 * 
+	 * @Value("${aws.s3.bucketName}") private String bucketName;
+	 */
 
 	public DesignBoardDto getDesignBoardById(int id) {
 		DesignBoardDto designBoard = mapper.selectDesignBoardById(id);
@@ -38,17 +39,14 @@ public class DesignBoardService {
 		return designBoard;
 	}
 
-	// 객체가 생성되자마자 실행되는 메소드
-	@PostConstruct
-	public void init() {
-		Region region = Region.AP_NORTHEAST_2;
-		this.s3 = S3Client.builder().region(region).build();
-	}
-
-	@PreDestroy
-	public void destroy() {
-		this.s3.close();
-	}
+	/*
+	 * // 객체가 생성되자마자 실행되는 메소드
+	 * 
+	 * @PostConstruct public void init() { Region region = Region.AP_NORTHEAST_2;
+	 * this.s3 = S3Client.builder().region(region).build(); }
+	 * 
+	 * @PreDestroy public void destroy() { this.s3.close(); }
+	 */
 
 	@Transactional
 	public boolean insertDesignBoard(DesignBoardDto designBoard) {

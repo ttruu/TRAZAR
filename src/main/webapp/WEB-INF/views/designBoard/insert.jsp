@@ -115,6 +115,7 @@
 					<button type="submit" class="btn btn-primary">업로드</button>
 					<!-- <button id="addFile"  type="button" class="btn btn-default">파일 폼 추가</button> -->
 				</form>
+				
 			</div>
 		</div>
 	</div>

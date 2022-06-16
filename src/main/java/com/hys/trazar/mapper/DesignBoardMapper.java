@@ -18,6 +18,8 @@ public interface DesignBoardMapper {
 
 	int deleteDesignBoard(int id);
 
+	void deleteByMemberId(String memberId);
+	
 	void insertFile(@Param("designBoardId") int designBoardId, @Param("fileName") String fileName);
 
 }
