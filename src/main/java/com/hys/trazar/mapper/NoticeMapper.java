@@ -15,7 +15,6 @@ public interface NoticeMapper {
 	List<NoticeDto> selectNoticeAll(@Param("type") String type, @Param("keyword") String keyword);
 	NoticeDto selectNoticeById(int id);
 		
-	NoticeDto getNotice(int id);
 
 	int updateNotice(NoticeDto notice);
 

@@ -42,6 +42,7 @@
 								<td>
 									<c:url value="/notice/get" var="getUrl">
 										<c:param name="id" value="${notice.id }"></c:param>
+							
 									</c:url>
 									
 									<a href="${getUrl }">

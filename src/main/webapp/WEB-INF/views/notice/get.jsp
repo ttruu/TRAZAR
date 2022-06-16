@@ -40,7 +40,7 @@
 <body>
 <script>
 $(document).ready(function() {
-		$("#edit-button1").click(function() {
+	$("#edit-button1").click(function() {
 		$("#input1").removeAttr("readonly");
 		$("#summernote").removeClass("d-none");
 		$("#view").addClass("d-none");
@@ -48,7 +48,6 @@ $(document).ready(function() {
 		$("#modify-submit1").removeClass("d-none");
 		$("#delete-submit1").removeClass("d-none");
 	});
-	
 		
 	$("#delete-submit1").click(function(e) {
 		e.preventDefault();
@@ -61,7 +60,7 @@ $(document).ready(function() {
 		}
 		
 	});
-	}
+});
 	
 	
 	

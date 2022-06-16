@@ -32,8 +32,9 @@ public class NoticeController {
 
 	
 	@GetMapping("get")
-	public void get(int id, Model model) {
+	public void get(int id, String managerId, Model model) {
 		NoticeDto dto = service.getNoticeById(id);
+
 		
 		model.addAttribute("notice", dto);
 		
@@ -51,23 +52,7 @@ public class NoticeController {
 		
 	}
 	
-	/*
-	 * @GetMapping("{id}") public String getNotice(@PathVariable("id") int id, Model
-	 * model) {
-	 * 
-	 * 
-	 * 
-	 * NoticeDto dto = service.getNotice(id);
-	 * 
-	 * 
-	 * 
-	 * model.addAttribute("notice", dto);
-	 * 
-	 * 
-	 * return "/notice/get"; }
-	 */
 	
-
 	
 	@PostMapping("remove")
 	public String removeNotice(NoticeDto notice, Principal principal, RedirectAttributes rttr) {

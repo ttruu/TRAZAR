@@ -35,25 +35,21 @@
 				n.id, 
 				n.title, 
 				n.body,
-				n.managerId, 
+				n.memberId, 
 				n.inserted
-	FROM ManagerBoard n JOIN Member m ON n.managerId = m.id
+	FROM ManagerBoard n JOIN Member m ON n.memberId = m.id
 	WHERE n.id = #{n.id}
 	ORDER BY n.id
 
 	</select>
   
-  <select id="getNotice" resultType="com.hys.trazar.domain.NoticeDto">
-  	SELECT id, title, body, inserted
-  	FROM ManagerBoard
-  	WHERE id = #{id}
-  </select>
+
   
   <update id="updateNotice">
   	UPDATE ManagerBoard
   	SET title = #{title},
   	    body = #{body},
-  	    managerId = #{managerId}
+  	    memberId = #{memberId}
   	WHERE id = #{id}
   </update>
   

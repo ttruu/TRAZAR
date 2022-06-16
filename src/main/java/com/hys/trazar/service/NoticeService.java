@@ -34,17 +34,15 @@ public class NoticeService {
 		
 		return notice;
 	}
-
+	
+	
 	
 	
 	public List<NoticeDto> listNotice(String type, String keyword) {
 		return mapper.selectNoticeAll(type, "%" + keyword + "%");
 	}
 
-	public NoticeDto getNotice(int id) {
-		return mapper.getNotice(id);
-	}
-
+	
 	public boolean updateNotice(NoticeDto notice) {
 		int cnt = mapper.updateNotice(notice);
 		
