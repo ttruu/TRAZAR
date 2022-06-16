@@ -28,7 +28,7 @@ public class RequestController {
 	}
 	
 	@PostMapping("insert")
-	public void insertRequest(RequestDto dto, Principal principal, RedirectAttributes rttr) {
+	public String insertRequest(RequestDto dto, Principal principal, RedirectAttributes rttr) {
 		
 		dto.setMemberId(principal.getName());
 		boolean success = service.addRequest(dto);
@@ -38,6 +38,8 @@ public class RequestController {
 		} else {
 			rttr.addFlashAttribute("message", "새 글이 등록되지 않았습니다.");
 		}
+		
+		return "redirect:/request/list";
 
 	}
 	

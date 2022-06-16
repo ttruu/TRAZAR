@@ -48,7 +48,7 @@ $(document).ready(function() {
 						<div class="container">
 		<div class="row">
 			<div class="col">
-				<h1>글 목록</h1>
+				<h1>의뢰 목록</h1>
 				
 				<table class="table">
 					<thead>
