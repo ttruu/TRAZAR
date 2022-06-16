@@ -1,6 +1,7 @@
 package com.hys.trazar.controller.design;
 
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +33,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.controller.Document;
+import com.example.controller.Elements;
+import com.example.domain.BoardArticle;
+import com.example.domain.FileList;
 import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.ReviewDto;
 import com.hys.trazar.service.DesignBoardService;
@@ -167,6 +173,40 @@ public class DesignBoardController {
 		// http://를 붙여줘야 에디터 창에서 불러올 수가 있다. 
 		return "http://" + localIP + ":" + request.getServerPort() + filename;
 		
+	}
+	
+	// 썸네일 컨트롤러
+	@RequestMapping(method = RequestMethod.POST)
+	public String save(DesignBoardDto designBoard) throws IOException
+	{
+		/*
+		 * 02. 글에서 추출해서 <img> 태그가 걸려있으면 썸네일 만들기  
+		 */
+
+		String source = article.getContent();
+		Document doc = Jsoup.parse(source);
+		Elements elements = doc.select("img");
+		String url = checkElements(elements);
+		String localIP = InetAddress.getLocalHost().getHostAddress();
+		if (url != null) {
+			if (url.startsWith("http://"+localIP)) {
+				LOGGER.debug("썸네일 생성 작업 처리 시작.. ");
+				String webAppRoot = servletContext.getRealPath("/");
+				url = url.substring(url.lastIndexOf("/") + 1);
+				String ext = url.substring(url.lastIndexOf(".") + 1);
+			
+				File file = new File(webAppRoot + UPLOADIMG + url);
+				BufferedImage img = ImageIO.read(file);
+				BufferedImage thumbnail = createThumbnail(img);
+
+				File thumbnailoutput = new File(webAppRoot + STATIC_IMAGES_THUMBNAILS + url);
+				ImageIO.write(thumbnail, ext, thumbnailoutput);
+			}
+			article.setImgthumbnail(url);
+		}
+		LOGGER.debug("article : {}", article);
+		repository.save(article);
+		return "redirect:/blog";
 	}
 	
 
