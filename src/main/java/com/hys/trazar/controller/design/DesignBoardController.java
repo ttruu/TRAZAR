@@ -1,21 +1,24 @@
 package com.hys.trazar.controller.design;
 
+import static org.imgscalr.Scalr.OP_ANTIALIAS;
+import static org.imgscalr.Scalr.OP_BRIGHTER;
+import static org.imgscalr.Scalr.pad;
+import static org.imgscalr.Scalr.resize;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,22 +33,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.jsoup.nodes.*;
-import org.jsoup.select.Elements;
-import org.jsoup.*;
-import org.jsoup.Connection.Method;
 
 import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.ReviewDto;
 import com.hys.trazar.mapper.DesignBoardMapper;
 import com.hys.trazar.service.DesignBoardService;
 import com.hys.trazar.service.ReviewService;
-
-import static org.imgscalr.Scalr.OP_ANTIALIAS;
-import static org.imgscalr.Scalr.OP_BRIGHTER;
-import static org.imgscalr.Scalr.pad;
-import static org.imgscalr.Scalr.resize;
-import static org.imgscalr.Scalr.*;
 
 
 @Controller
@@ -73,7 +65,25 @@ public class DesignBoardController {
 	public void list(Model model) {
 		List<DesignBoardDto> list = service.listDesignBoard();
 		
+		processThumbNailImage(list);
 		model.addAttribute("designBoardList", list);
+	}
+
+	private void processThumbNailImage(List<DesignBoardDto> list) {
+//		String prefix = "/static/images/thumbnails/";
+		for (DesignBoardDto dto : list) {
+			String thumbNail = "";
+			
+			String source = dto.getBody();
+			Document doc = Jsoup.parse(source);
+			Elements elements = doc.select("img");
+			
+			if (elements.size() > 0) {
+				thumbNail = elements.get(0).attr("src").toString();
+			}
+			
+			dto.setImgthumbnail(thumbNail);
+		}
 	}
 
 	@GetMapping("insert")

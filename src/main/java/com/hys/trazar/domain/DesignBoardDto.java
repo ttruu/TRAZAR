@@ -33,6 +33,7 @@ public class DesignBoardDto {
 		}
 	}
 	
+	/*
 	public String getImgthumbnail(){
 		// 썸네일  
 		if(imgthumbnail!=null){
@@ -44,4 +45,5 @@ public class DesignBoardDto {
 		}
 		return imgthumbnail;
 	}
+	*/
 }
