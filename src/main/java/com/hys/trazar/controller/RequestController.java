@@ -40,7 +40,7 @@ public class RequestController {
 		}
 		
 		return "redirect:/request/list";
-
+		
 	}
 	
 	@RequestMapping("list")
