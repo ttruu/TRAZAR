@@ -44,7 +44,11 @@ public class SignupService {
 		return mapper.MemberEmailCheck(email) > 0;
 	}
 
-	public SignupDto memberModify(String id) {
+	public SignupDto memberModify(String id, SignupDto dto) {
+		
+		String encodedPassword = passwordEncoder.encode(dto.getPassword());
+		// 암호화 된 암호를 다시 세팅 
+		dto.setPassword(encodedPassword);
 		return mapper.memberModify(id);
 	}
 
