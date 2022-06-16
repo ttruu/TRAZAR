@@ -52,5 +52,15 @@
 		WHERE id = #{id}
 	</update>
 	
+	<delete id="deleteMember">
+		DELETE FROM Member
+		WHERE id = #{id}
+	</delete>
+	
+	<delete id="deleteAuth">
+		DELETE FROM Auth
+		WHERE memberId = #{memberId}
+	</delete>
+	
 	
 </mapper>

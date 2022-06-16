@@ -22,6 +22,8 @@ public interface DesignBoardMapper {
 	
 	void insertFile(@Param("designBoardId") int designBoardId, @Param("fileName") String fileName);
 
+	List<DesignBoardDto> listByMemberId(String id);
+
 
 
 }

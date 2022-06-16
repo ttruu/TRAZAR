@@ -209,6 +209,19 @@ public class SignupController {
 				return "redirect:/designBoard/list";
 			}
 		}
+		
+		// 아이디 탈퇴 코드
+		@PostMapping("removeMember")
+		public String removeMember(SignupDto dto) {
+			System.out.println(dto);
+			boolean success = service.removeMember(dto);
+			System.out.println(dto);
+			if(success) {
+				return "redirect:/sign/login";
+			} else {
+				return "redirect:/designBoard/list";
+			}
+		}
 	
 
 }

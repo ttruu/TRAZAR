@@ -5,8 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.login.SignupDto;
+import com.hys.trazar.mapper.DesignBoardMapper;
+import com.hys.trazar.mapper.NoticeMapper;
+import com.hys.trazar.mapper.RequestMapper;
+import com.hys.trazar.mapper.ReviewMapper;
 import com.hys.trazar.mapper.login.SignupMapper;
 
 @Service
@@ -14,9 +20,22 @@ public class SignupService {
 
 	@Autowired
 	private SignupMapper mapper;
+	
+	@Autowired
+	private ReviewMapper reviewMapper;
+	
+	@Autowired
+	private DesignBoardMapper boardMapper;
+	
+	@Autowired
+	private NoticeMapper noticeMapper;
+	
+	@Autowired
+	private RequestMapper requestMapper;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
 
 	public boolean createMember(SignupDto dto) {
 
@@ -84,4 +103,24 @@ public class SignupService {
 		return mapper.passwordUpdate(dto)==1;
 	}
 
+	@Transactional
+	public boolean removeMember(SignupDto dto) {
+		// 댓글 삭제
+		reviewMapper.deleteByMemberId(dto.getId());
+		// 멤버가 쓴 게시글에 다른 사람이 단 댓글 삭제
+		List<DesignBoardDto> boardList = boardMapper.listByMemberId(dto.getId());
+		for (DesignBoardDto board : boardList) {
+			reviewMapper.deleteByDesignBoardId(board.getId());
+		}
+		
+		// 멤버가 쓴 게시글 삭제 
+		boardMapper.deleteByMemberId(dto.getId());
+		// 리퀘스트 게시글 삭제 
+		requestMapper.deleteByMemberId(dto.getId());
+		// 공지사항 삭제
+		noticeMapper.deleteByMemberId(dto.getId());
+		// 권한 테이블 삭제 
+		mapper.deleteAuth(dto.getId());
+		return mapper.deleteMember(dto.getId()) == 1;
+	}
 }

@@ -30,6 +30,10 @@ public interface SignupMapper {
 
 	int passwordUpdate(SignupDto dto);
 
+	int deleteMember(String id);
+
+	void deleteAuth(String id);
+
 
 
 }

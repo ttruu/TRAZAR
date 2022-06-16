@@ -18,6 +18,10 @@ public interface NoticeMapper {
 	int deleteNotice(int id);
 	
 	void insertFile(@Param("noticeId") int noticeId, @Param("fileName") String fileName);
+	
+	void deleteByMemberId(String id);
+
+
 
 }
 

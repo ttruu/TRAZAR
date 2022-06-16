@@ -141,8 +141,9 @@
        	</li>
        </sec:authorize>
         
+        <form class="d-flex">
         <sec:authorize access="not isAuthenticated()">
-	        <li class="nav-item">
+	        <li class="nav-item" style="">
 	        	<a href="${loginUrl }" class="nav-link">로그인</a>
 	        </li>
         </sec:authorize>
@@ -152,6 +153,7 @@
     	    	<a href="${logoutUrl }" class="nav-link">로그아웃</a>
         	</li>
         </sec:authorize>
+        </form>
       </ul>
       
       <div class="d-none">
