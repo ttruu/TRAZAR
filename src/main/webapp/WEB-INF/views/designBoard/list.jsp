@@ -48,6 +48,7 @@
 								<td>
 									<c:url value="/designBoard/get" var="getUrl">
 										<c:param name="id" value="${designBoard.id }"></c:param>
+										<c:param name="memberId" value="${designBoard.memberId }"></c:param>
 									</c:url>
 									
 									<a href="${getUrl }">
