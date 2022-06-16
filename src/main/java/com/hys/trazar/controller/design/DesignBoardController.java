@@ -188,7 +188,6 @@ public class DesignBoardController {
 	public String save(DesignBoardDto designBoard) throws IOException
 	{
 		/* 02. 글에서 추출해서 <img> 태그가 걸려있으면 썸네일 만들기 */
-
 		String source = designBoard.getBody();
 		Document doc = Jsoup.parse(source);
 		Elements elements = doc.select("img");
@@ -212,7 +211,7 @@ public class DesignBoardController {
 		}
 		LOGGER.debug("designBoard : {}", designBoard);
 		DesignBoardMapper.save(designBoard);
-		return "redirect:/designBoard";
+		return "redirect:/designBoard/list";
 	}
 	
 	public String checkElements(Elements elements)

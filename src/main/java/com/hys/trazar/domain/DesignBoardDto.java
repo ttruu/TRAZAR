@@ -28,7 +28,7 @@ public class DesignBoardDto {
 		}
 	}
 	
-	public String getImgthumbnails(){
+	public String getImgthumbnail(){
 		// 썸네일  
 		if(imgthumbnail!=null){
 			if(imgthumbnail.startsWith("http")){
@@ -37,6 +37,6 @@ public class DesignBoardDto {
 				return "/static/images/thumbnails/"+imgthumbnail;
 			}
 		}
-		return "/static/images/";
+		return imgthumbnail;
 	}
 }
