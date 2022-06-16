@@ -89,6 +89,7 @@ public class DesignBoardController {
 	public void get(int id, Model model) {
 		DesignBoardDto dto = service.getDesignBoardById(id);
 		
+		// designBoard 내에서 review 목록을 보기 위해 추가
 		List<ReviewDto> reviewList = reviewService.getReviewByDesignBoardId(id);
 		
 		model.addAttribute("designBoard", dto);
