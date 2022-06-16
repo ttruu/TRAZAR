@@ -56,6 +56,7 @@ public class DesignBoardController {
 	private static final String FILE2 = "file";
 	private static final Logger LOGGER = LoggerFactory.getLogger(DesignBoardController.class);
 	private static final String UPLOADIMG = "/static/uploadimg/";
+	private static final String UPLOADFILES = "/static/uploadfiles/";
 	private static final String STATIC_IMAGES_THUMBNAILS = "/static/images/thumbnails/";
 	 
 	@Autowired
@@ -157,36 +158,30 @@ public class DesignBoardController {
 	}
 	
 	
-	// 썸머노트 에디터에서 받는 이미지 업로드 처리
-	@RequestMapping(value = "/imageupload", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	@ResponseBody
-	public String imageUpload(MultipartHttpServletRequest request) throws IOException {
-		
-		// 01. 리퀘스트에서 멀티파트파일을 받아서
-		MultiValueMap<String, MultipartFile> multiFileMap = request.getMultiFileMap();
-		List<MultipartFile> list = multiFileMap.get(FILE2);
-		MultipartFile multipartFile = list.get(0);
-		LOGGER.debug(multipartFile.getOriginalFilename());
-	
-
-		// 02. 파일을 전송하고
-		String webappRoot = servletContext.getRealPath("/"); 
-		String filename = UPLOADIMG + multipartFile.getOriginalFilename();
-		File file = new File(webappRoot + filename);
-		multipartFile.transferTo(file);
-
-		// 03. 마지막에 최종 주소를 반환한다.
-		// requet.getServername 을 하니, ajax에서 보내는 값이 리퀘스트 정보에 안떠서 InetAddress로 받는다 
-		String localIP = InetAddress.getLocalHost().getHostAddress();
-		// http://를 붙여줘야 에디터 창에서 불러올 수가 있다. 
-		return "http://" + localIP + ":" + request.getServerPort() + filename;
-		
-	}
-	
 	// 썸네일 컨트롤러
 	@RequestMapping(method = RequestMethod.POST)
 	public String save(DesignBoardDto designBoard) throws IOException
 	{
+		/** 01. 파일 저장 처리 */
+		List<MultipartFile> files = designBoard.getFileName();
+		List<String> uploadfiles = new ArrayList<>();
+		int sizeFile = files.size();
+		System.out.println("파일 사이즈 :" + sizeFile);
+
+		for (int i = 0; i < sizeFile; i++) {
+			MultipartFile multipartFile = files.get(i);
+			
+			if (!multipartFile.isEmpty()) {
+				String webappRoot = servletContext.getRealPath("/");
+				String filename = webappRoot + UPLOADFILES + multipartFile.getOriginalFilename();
+				File file = new File(filename);
+				multipartFile.transferTo(file);
+				uploadfiles.add(multipartFile.getOriginalFilename());
+			}
+		}
+		designBoard.setUploadfiles(uploadfiles);
+		
+		
 		/* 02. 글에서 추출해서 <img> 태그가 걸려있으면 썸네일 만들기 */
 		String source = designBoard.getBody();
 		Document doc = Jsoup.parse(source);
@@ -195,7 +190,7 @@ public class DesignBoardController {
 		String localIP = InetAddress.getLocalHost().getHostAddress();
 		if (url != null) {
 			if (url.startsWith("http://"+localIP)) {
-				LOGGER.debug("썸네일 생성 작업 처리 시작.. ");
+				LOGGER.info("썸네일 생성 작업 처리 시작.. ");
 				String webAppRoot = servletContext.getRealPath("/");
 				url = url.substring(url.lastIndexOf("/") + 1);
 				String ext = url.substring(url.lastIndexOf(".") + 1);
@@ -209,7 +204,7 @@ public class DesignBoardController {
 			}
 			designBoard.setImgthumbnail(url);
 		}
-		LOGGER.debug("designBoard : {}", designBoard);
+		LOGGER.info("designBoard : {}", designBoard);
 		DesignBoardMapper.save(designBoard);
 		return "redirect:/designBoard/list";
 	}
@@ -236,4 +231,29 @@ public class DesignBoardController {
 		return pad(img, 4);
 	}
 
+	// 썸머노트 에디터에서 받는 이미지 업로드 처리
+	@RequestMapping(value = "/imageupload", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String imageUpload(MultipartHttpServletRequest request) throws IOException {
+		
+		// 01. 리퀘스트에서 멀티파트파일을 받아서
+		MultiValueMap<String, MultipartFile> multiFileMap = request.getMultiFileMap();
+		List<MultipartFile> list = multiFileMap.get(FILE2);
+		MultipartFile multipartFile = list.get(0);
+		LOGGER.debug(multipartFile.getOriginalFilename());
+		
+		
+		// 02. 파일을 전송하고
+		String webappRoot = servletContext.getRealPath("/"); 
+		String filename = UPLOADIMG + multipartFile.getOriginalFilename();
+		File file = new File(webappRoot + filename);
+		multipartFile.transferTo(file);
+		
+		// 03. 마지막에 최종 주소를 반환한다.
+		// requet.getServername 을 하니, ajax에서 보내는 값이 리퀘스트 정보에 안떠서 InetAddress로 받는다 
+		String localIP = InetAddress.getLocalHost().getHostAddress();
+		// http://를 붙여줘야 에디터 창에서 불러올 수가 있다. 
+		return "http://" + localIP + ":" + request.getServerPort() + filename;
+		
+	}
 }

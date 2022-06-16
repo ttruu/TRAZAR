@@ -46,7 +46,7 @@
 			<c:param name="id" value="${designBoard.id }"></c:param>
 			<c:param name="memberId" value="${designBoard.memberId }"></c:param>
 		</c:url>
-		<a href="${getUrl } }">
+		<a href="${getUrl }">
 			<img src="${designBoard.imgthumbnail }" width="150px"
 				height="150px">
 		</a>
