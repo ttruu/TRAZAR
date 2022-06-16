@@ -21,8 +21,10 @@ $(document).ready(function() {
 	
 		if (confirm("수락하시겠습니까?")) {
 			let form1 = $(".form2");
+			let methodAttr = "get";
 			let actionAttr = "${appRoot}/chat";
 			form1.attr("action", actionAttr);
+			form1.attr("method", methodAttr);
 	
 			form1.submit();
 		}
