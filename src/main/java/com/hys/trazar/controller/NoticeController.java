@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.NoticeDto;
 import com.hys.trazar.service.NoticeService;
 
@@ -29,7 +29,12 @@ public class NoticeController {
 	
 
 	
-
+	@GetMapping("get")
+	public void get(int id, Model model) {
+		NoticeDto dto = service.getNoticeById(id);
+		
+		model.addAttribute("notice", dto);
+	}
 	
 
 	@GetMapping("list")
@@ -42,7 +47,7 @@ public class NoticeController {
 	
 	@GetMapping("{id}") 
 	public String getNotice(@PathVariable("id") int id, Model model) {
-		System.out.println(id);
+		
 		
 		
 		NoticeDto dto = service.getNotice(id);
@@ -55,18 +60,7 @@ public class NoticeController {
 		return "/notice/get";
 	}
 	
-	@PostMapping("modify")
-	public String modifyNotice(NoticeDto notice) {
-		boolean success = service.updateNotice(notice);
-		
-		if (success) {
-			
-		} else {
-			
-		}
-		
-		return "redirect:/notice/" + notice.getId();
-	}
+
 	
 	@PostMapping("remove")
 	public String removeNotice(int id) {
@@ -97,6 +91,27 @@ public class NoticeController {
 		}
 		
 		return "redirect:/notice/" + notice.getId();
+	}
+	
+	@GetMapping("modify")
+	public String getUpdateNotice(int id,Model model) {
+		NoticeDto dto = service.getNoticeById(id);
+		
+		model.addAttribute("notice", dto);
+		return "/notice/modify";
+	}
+	
+	@PostMapping("modify")
+	public String modifyNotice(NoticeDto notice) {
+		boolean success = service.updateNotice(notice);
+		
+		if (success) {
+			
+		} else {
+			
+		}
+		
+		return "redirect:/notice/list";
 	}
 }
 

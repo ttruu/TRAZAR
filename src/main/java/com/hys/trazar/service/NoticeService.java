@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.NoticeDto;
 import com.hys.trazar.mapper.NoticeMapper;
 
@@ -29,7 +29,13 @@ public class NoticeService {
 	@Autowired
 	private NoticeMapper mapper;
 	
+	public NoticeDto getNoticeById(int id) {
+		NoticeDto notice = mapper.selectNoticeById(id);
+		
+		return notice;
+	}
 
+	
 	
 	public List<NoticeDto> listNotice() {
 		return mapper.selectNotice();

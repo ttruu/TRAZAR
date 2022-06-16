@@ -1,22 +1,19 @@
 package com.hys.trazar.domain;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import lombok.Data;
 
 @Data
-public class DesignBoardDto {
+public class ReviewDto {
 	private int id;
-	private String title;
-	private String body;
-	private String price;
-	private LocalDateTime inserted;
+	private int designBoardId;
 	private String memberId;
-	private List<String> fileName;
-	private String designerId;
-	private String managerId;
+	private String body;
+	private boolean own;
 	private String writerNickName;
+	private LocalDateTime inserted;
+	
 	
 	public String getPrettyInserted() {
 		// 24시간 이내면 시간만
@@ -28,4 +25,5 @@ public class DesignBoardDto {
 			return inserted.toLocalDate().toString();
 		}
 	}
+	
 }

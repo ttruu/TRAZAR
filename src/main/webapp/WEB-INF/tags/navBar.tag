@@ -21,6 +21,8 @@
 
 
 <%-- 회원정보 암호 모달 --%>
+<c:url value="/notice/list" var="noticeListUrl"></c:url>
+<c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3">
   <div class="container">
@@ -79,6 +81,14 @@
         <li class="nav-item">
         	<a href="${signupUrl }" class="nav-link ${current == 'signup' ? 'active' : '' }">회원가입</a>
         </li>
+				<li class="nav-item">
+					<a class="nav-link ${current == 'list' ? 'active' : '' }"
+						href="${noticeListUrl }">공지사항보기</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ${current == 'insert' ? 'active' : '' }"
+						href="${noticeInsertUrl }">공지사항글쓰기</a>
+				</li>
         
        <sec:authorize access="isAuthenticated()">
        	<li class="nav-item">
@@ -106,14 +116,4 @@
     </div>
   </div>
 </nav>
-
-
-
-
-
-
-
-
-
-
 
