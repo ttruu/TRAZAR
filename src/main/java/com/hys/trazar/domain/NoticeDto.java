@@ -12,10 +12,10 @@ public class NoticeDto {
 	private int id;
 	private String title;
 	private String body;
-	private String managerId;
+	private String memberId;
 	private LocalDateTime inserted;
 	private String writerNickName;
-
+	private List<String> fileName;
 	
 	public String getPrettyInserted() {
 		// 24시간 이내면 시간만
