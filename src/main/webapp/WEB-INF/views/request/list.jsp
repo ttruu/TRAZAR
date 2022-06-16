@@ -31,7 +31,8 @@ $(document).ready(function() {
 		e.preventDefault();
 	
 		if (confirm("거절하시겠습니까?")) {
-			let form1 = $(".form2");
+			let idx = $(this).attr("data-index");
+			let form1 = $("#processForm" + idx);
 			let actionAttr = "${appRoot}/request/remove";
 			form1.attr("action", actionAttr);
 	
@@ -61,13 +62,14 @@ $(document).ready(function() {
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${requestList }" var="req">
+						<c:forEach items="${requestList }" var="req" varStatus="status">
 							<tr>
 								<td>${req.memberId }</td>
 								<td>
 													
 									<c:url value="/request/get" var="getUrl">
 										<c:param name="id" value="${req.id }"></c:param>
+										<c:param name="memberId" value="${req.memberId }"></c:param>
 									</c:url>
 									
 									<a href="${getUrl }">
@@ -85,10 +87,10 @@ $(document).ready(function() {
 								<td>${req.price }</td>
 								<td>${req.inserted }</td>
 								<td>
-									<form id="" class="form2" action="${appRoot }/request/remove" method="post">
+									<form id="processForm${status.index }" class="form2" action="${appRoot }/request/remove" method="post">
 										<input type="hidden" name="id" value="${req.id }" />
 										<button id="" class="btn btn-primary accept-submit1">수락</button>
-										<button id="" class="btn btn-primary reject-submit1">거절</button>
+										<button id="" data-index="${status.index }" class="btn btn-primary reject-submit1">거절</button>
 										<button id="" class="btn btn-danger delete-submit1">삭제</button>
 									</form>
 								</td>

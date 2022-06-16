@@ -56,7 +56,7 @@ public class RequestController {
 	}
 	
 	@PostMapping("modify")
-	public String modifyRequest(RequestDto dto, RedirectAttributes rttr) {
+	public String modifyRequest(RequestDto dto, RedirectAttributes rttr, Principal principal) {
 		service.updateRequest(dto);
 		rttr.addAttribute("id", dto.getId());
 		return "redirect:/request/get";
