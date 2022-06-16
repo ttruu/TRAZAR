@@ -167,15 +167,15 @@ public class SignupController {
 
 	}
 	
-	@PostMapping
-	public String removeMember(SignupDto dto) {
-		boolean success = service.deleteMember(dto);
-		if (success) {
-			return "redirect:sign/login";
-		} else {
-			return "redirect:sign/selectMember";
-		}
-	}
+//	@PostMapping
+//	public String removeMember(SignupDto dto) {
+//		boolean success = service.deleteMember(dto);
+//		if (success) {
+//			return "redirect:sign/login";
+//		} else {
+//			return "redirect:sign/selectMember";
+//		}
+//	}
 	
 
 }
