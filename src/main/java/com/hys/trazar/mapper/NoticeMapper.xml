@@ -37,9 +37,8 @@
 				n.body,
 				n.managerId, 
 				n.inserted
-		IF (m.id = #{memberId}, 1, 0) own
 	FROM ManagerBoard n JOIN Member m ON n.managerId = m.id
-	WHERE n.id = #{id}
+	WHERE n.id = #{n.id}
 	ORDER BY n.id
 
 	</select>

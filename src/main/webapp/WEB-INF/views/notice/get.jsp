@@ -33,69 +33,97 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-<script>
-		
-	
-		
-</script>
+
 
 <title>Insert title here</title>
 </head>
 <body>
-
+<script>
+$(document).ready(function() {
+		$("#edit-button1").click(function() {
+		$("#input1").removeAttr("readonly");
+		$("#summernote").removeClass("d-none");
+		$("#summernoteView").addClass("d-none");
+		$("#summernote").summernote();
+		$("#modify-submit1").removeClass("d-none");
+		$("#delete-submit1").removeClass("d-none");
+	});
+	
+		
+	$("#delete-submit1").click(function(e) {
+		e.preventDefault();
+		
+		if (confirm("삭제하시겠습니까?")) {
+			let form1 = $("#form1");
+			let actionAttr = "${appRoot}/notice/remove";
+			form1.attr("action", actionAttr);
+			form1.submit();
+		}
+		
+	})
+	
+	
+	
+		
+</script>
 <my:navBar />
-
-	<script>
-	
-	</script>
-
-
-	
 <div class="container">
 		<div class="row">
 			<div class="col">
-				<h1>글 본문</h1>
+				<h1>글 본문
+					<button id="edit-button1" class="btn btn-secondary">
+						<i class="fa-solid fa-pen-to-square"></i>
+					</button>
+				</h1>
 
 				<c:if test="${not empty message }">
 					<div class="alert alert-primary">${message }</div>
 				</c:if>
-	
+
+
+				<!-- 게시물 보기 + 수정 -->
+				<form id="form1" action="${appRoot }/notice/modify"
+					method="post">
 					<input type="hidden" name="id" value="${notice.id }" />
 
-				<!--  	<div>
+					<div>
 						<label for="input3" class="form-label">작성자</label>
 						<input class="form-control" type="text"
-							value="${designBoard.writerNickName }" />
-					</div>-->
+							value="${notice.writerNickName }" />
+					</div>
 
 					<div>
-						<label class="form-label" for="inputNoticeTitle">제목</label>
+						<label class="form-label" for="input1">제목</label>
 						<input class="form-control" type="text" name="title" required
-							id="inputNoticeTitle" value="${notice.title }" />
+							id="input1" value="${notice.title }" />
 					</div>
 
 					<div>
-						<label class="form-label" for="textareaNotice">본문</label>
-						<div name="body" >${notice.body }</div>
+						<label class="form-label" for="textarea1">본문</label>
+						<div class="form-control" id="summernoteView" cols="30"
+							rows="10">${notice.body }</div>
+						<textarea class="form-control d-none" name="body" id="summernote">${notice.body }</textarea>
 					</div>
-
+					
 					<div>
 						<label for="input2" class="form-label">작성일시</label>
 						<input class="form-control" type="datetime-local"
 							value="${notice.inserted }" />
 					</div>
 
-				<a href="/trazar/notice/modify?id=${notice.id }" role="button" class="bbtn btn-danger">수정</a>
+					<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
+				</form>
 
 				<c:url value="/notice/remove" var="removeLink" />
 				<form action="${removeLink }" method="post">
 					<input type="hidden" name="id" value="${notice.id }" />
-					<button id="delete-submit1" class="btn btn-danger">삭제</button>
+					<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
 				</form>
 
 			</div>
 		</div>
 	</div>
+	
 	
 	
 	
