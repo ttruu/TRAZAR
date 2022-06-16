@@ -11,7 +11,8 @@
 	<!-- http의 request와 response에 관련된 설정 -->
 	<security:http>
 		<security:csrf disabled="true"/>
-		<security:form-login default-target-url="/sign/loginSuccess/" login-page="/sign/login/"/>
+		<security:form-login always-use-default-target="true" default-target-url="/designBoard/list" login-page="/sign/login/"/>
+		<security:logout />
 	</security:http>
 	
 	<security:authentication-manager>

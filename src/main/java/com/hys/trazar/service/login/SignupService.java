@@ -1,5 +1,7 @@
 package com.hys.trazar.service.login;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -39,13 +41,31 @@ public class SignupService {
 	public boolean MemberNickNameCheck(String nickName) {
 		return mapper.MemberNickNameCheck(nickName) > 0;
 	}
+	
 
 	public boolean MemberEmailCheck(String email) {
 		return mapper.MemberEmailCheck(email) > 0;
 	}
 
-	public SignupDto memberModify(String id) {
-		return mapper.memberModify(id);
+	public SignupDto selectMember(String id) {
+		return mapper.selectMember(id);
+	}
+
+	public List<SignupDto> memberList() {
+		return mapper.memberList();
+	}
+
+	public boolean modifyMember(SignupDto dto) {
+			
+		return mapper.modifyMember(dto)==1;
+	}
+
+	public boolean nickNameModifyCheck(String nickName) {
+		return mapper.nickNameModifyCheck(nickName) > 0;
+	}
+
+	public boolean emailModifyCheck(String email) {
+		return mapper.emailModifyCheck(email) > 0;
 	}
 
 }
