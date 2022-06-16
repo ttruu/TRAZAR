@@ -113,15 +113,7 @@ public class NoticeController {
 		}
 		
 	
-		return "redirect:/notice/" + notice.getId();
-	}
-	
-	@GetMapping("modify")
-	public String getUpdateNotice(int id,Model model) {
-		NoticeDto dto = service.getNoticeById(id);
-		
-		model.addAttribute("notice", dto);
-		return "/notice/modify";
+		return "redirect:/notice/get";
 	}
 	
 	@PostMapping("modify")
@@ -145,7 +137,7 @@ public class NoticeController {
 	
 	rttr.addAttribute("id", notice.getId());
 
-		return "redirect:/notice/"+ notice.getId();
+		return "redirect:/notice/get";
 	}
 }
 

@@ -34,10 +34,12 @@
 		SELECT 
 				n.id, 
 				n.title, 
-				n.body, 
+				n.body,
+				n.managerId, 
 				n.inserted
-		FROM ManagerBoard n
-		WHERE id = #{id}
+	FROM ManagerBoard n JOIN Member m ON n.managerId = m.id
+	WHERE n.id = #{n.id}
+	ORDER BY n.id
 
 	</select>
   
