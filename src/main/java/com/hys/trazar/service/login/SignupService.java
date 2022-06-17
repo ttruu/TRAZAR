@@ -67,7 +67,8 @@ public class SignupService {
 	public boolean MemberEmailCheck(String email) {
 		return mapper.MemberEmailCheck(email) > 0;
 	}
-
+	
+	// id로 멤버 db에서 불러옴
 	public SignupDto selectMember(String id) {
 		return mapper.selectMember(id);
 	}
@@ -79,20 +80,20 @@ public class SignupService {
 
 	// 정보 수정 할 수 있는 서비스
 	public boolean modifyMember(SignupDto dto) {
-
-
-		
 		return mapper.modifyMember(dto) == 1;
 	}
 
+	// 닉네임 중복확인 코드
 	public boolean nickNameModifyCheck(String nickName) {
 		return mapper.nickNameModifyCheck(nickName) > 0;
 	}
 
+	// 이메일 중복확인 코드
 	public boolean emailModifyCheck(String email) {
 		return mapper.emailModifyCheck(email) > 0;
 	}
 
+	// 
 	public boolean passwordUpdate(SignupDto dto) {
 		
 		/// 암호화
@@ -104,6 +105,7 @@ public class SignupService {
 	}
 
 	@Transactional
+	// 한번에 수행 되어야 하는 어노테이션
 	public boolean removeMember(SignupDto dto) {
 		// 댓글 삭제
 		reviewMapper.deleteByMemberId(dto.getId());
