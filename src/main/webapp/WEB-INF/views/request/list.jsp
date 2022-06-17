@@ -15,6 +15,7 @@
 <script>
 $(document).ready(function() {
 	$(".accept-submit1").click(function(e) {
+<<<<<<< Updated upstream
 		e.preventDefault();
 	
 		if (confirm("수락하시겠습니까?")) {
@@ -26,6 +27,21 @@ $(document).ready(function() {
 		}
 	
 	});
+=======
+      e.preventDefault();
+   
+      if (confirm("수락하시겠습니까?")) {
+         let form1 = $(".form2");
+         let methodAttr = "get";
+         let actionAttr = "${appRoot}/chat";
+         form1.attr("action", actionAttr);
+         form1.attr("method", methodAttr);
+   
+         form1.submit();
+      }
+   
+   });
+>>>>>>> Stashed changes
 	
 	$(".reject-submit1").click(function(e) {
 		e.preventDefault();
