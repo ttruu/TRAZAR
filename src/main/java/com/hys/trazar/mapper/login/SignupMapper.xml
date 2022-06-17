@@ -28,7 +28,7 @@
 	</insert>
 	
 	<select id="selectMember" resultType="com.hys.trazar.domain.login.SignupDto">
-		SELECT id, password, email, nickName, phoneNum, introduce, name, inserted FROM Member WHERE id = #{id}
+		SELECT id, password, email, nickName, phoneNum, introduce, name, inserted, question FROM Member WHERE id = #{id}
 	</select>
 	
 	<update id="modifyMember">
@@ -61,6 +61,11 @@
 		DELETE FROM Auth
 		WHERE memberId = #{memberId}
 	</delete>
+	
+	<update id="findPassword">
+		UPDATE Member SET password = #{pw}
+		WHERE id = #{id}
+	</update>
 	
 	
 </mapper>
