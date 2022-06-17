@@ -125,4 +125,11 @@ public class SignupService {
 		mapper.deleteAuth(dto.getId());
 		return mapper.deleteMember(dto.getId()) == 1;
 	}
+
+	public void findPassword(String id) {
+		
+		String pw = passwordEncoder.encode(id);
+		mapper.findPassword(id,pw);
+		
+	}
 }

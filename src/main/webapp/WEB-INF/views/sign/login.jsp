@@ -44,6 +44,8 @@
 					</div>
 					
 					<input class="btn btn-primary" type="submit" value="로그인" />
+					<button type="button" onclick="location.href='${appRoot}/sign/findPassword';" class="btn btn-danger">비밀번호 찾기</button>
+					<button type="button" onclick="location.href='${appRoot}/sign/signup';" class="btn btn-primary">회원가입</button>
 				</form>
 			
 			</div>
