@@ -4,14 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hys.trazar.mapper.RequestMapper">
 	<insert id="addRequest" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-		INSERT INTO Request (title, body, price, memberId)
-		VALUES (#{title}, #{body}, #{price}, #{memberId})
+		INSERT INTO Request (title, body, price, memberId, designBoardId)
+		VALUES (#{title}, #{body}, #{price}, #{memberId}, #{designBoardId})
 	</insert>
 	
 	<select id="listBoard" resultType="com.hys.trazar.domain.RequestDto">
-		SELECT id, memberId, title, price, inserted
-		FROM Request
-		ORDER BY id DESC
+		SELECT r.id, r.memberId, r.title, r.price, r.inserted
+		FROM Request r 
+		JOIN DesignBoard db ON r.designBoardId = db.id
+		JOIN Member m ON m.id = db.memberId
+		WHERE m.id = db.memberId
+		ORDER BY r.id DESC
 	</select>
 	
 	<select id="getRequestById" resultType="com.hys.trazar.domain.RequestDto">

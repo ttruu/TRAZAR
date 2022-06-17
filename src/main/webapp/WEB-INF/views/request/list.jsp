@@ -51,11 +51,10 @@ $(document).ready(function() {
 <title>Insert title here</title>
 </head>
 <body>
-						<div class="container">
+	<div class="container">
 		<div class="row">
 			<div class="col">
 				<h1>의뢰 목록</h1>
-				
 				<table class="table">
 					<thead>
 						<tr>
@@ -68,6 +67,7 @@ $(document).ready(function() {
 					</thead>
 					<tbody>
 						<c:forEach items="${requestList }" var="req" varStatus="status">
+						<input type="hidden" name="memberId" value="${req.memberId }" />
 							<tr>
 								<td>${req.memberId }</td>
 								<td>

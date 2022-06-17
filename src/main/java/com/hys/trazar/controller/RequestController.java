@@ -28,7 +28,7 @@ public class RequestController {
 	}
 	
 	@PostMapping("insert")
-	public String insertRequest(RequestDto dto, Principal principal, RedirectAttributes rttr) {
+	public String insertRequest(RequestDto dto, Principal principal, RedirectAttributes rttr, Model model) {
 		
 		dto.setMemberId(principal.getName());
 		boolean success = service.addRequest(dto);
