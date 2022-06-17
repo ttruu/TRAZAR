@@ -52,6 +52,16 @@ public class SignupController {
 	public void login() {
 
 	}
+	
+	@GetMapping("findPassword")
+	public void find() {
+		
+	}
+	
+	@GetMapping("findPasswordSuccess")
+	public void findSuccess() {
+		
+	}
 
 	// 회원가입 컨트롤러
 	@PostMapping("signup")
@@ -216,6 +226,17 @@ public class SignupController {
 			}
 		}
 		
+		// 비밀번호 초기화 코드
+		@PostMapping("findPassword")
+		public String findPassword(SignupDto dto, String id, Model model) {
+			SignupDto findId = mapper.selectMember(dto.getId());
+			if(findId != null && findId.getQuestion().equals(dto.getQuestion())) {
+				service.findPassword(id);
+				return "redirect:/sign/findPasswordSuccess";
+			} else {
+				return "redirect:/designBoard/list";
+			}
+		}
 	
 
 }
