@@ -52,6 +52,11 @@ public class SignupController {
 	public void login() {
 
 	}
+	
+	@GetMapping("findPassword")
+	public void find() {
+		
+	}
 
 	// 회원가입 컨트롤러
 	@PostMapping("signup")
@@ -216,6 +221,11 @@ public class SignupController {
 			}
 		}
 		
+		// 비밀번호 초기화 코드
+		@PostMapping("findPassword")
+		public String findPassword(SignupDto dto) {
+			return null;
+		}
 	
 
 }

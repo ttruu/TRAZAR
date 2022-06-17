@@ -5,8 +5,8 @@
 <mapper namespace="com.hys.trazar.mapper.login.SignupMapper">
 
 	<insert id="createUser">
-		INSERT INTO Member(id, password, email, nickName, phoneNum, introduce, name)
-		VALUES(#{id}, #{password}, #{email}, #{nickName}, #{phoneNum}, #{introduce}, #{name})
+		INSERT INTO Member(id, password, email, nickName, phoneNum, introduce, name, question)
+		VALUES(#{id}, #{password}, #{email}, #{nickName}, #{phoneNum}, #{introduce}, #{name}, #{question})
 	</insert>
 
 	<select id="MemberIdCheck" resultType="int">
