@@ -214,10 +214,13 @@ $(document).ready(function() {
 				</div>
 				
 				<div class="mt-3">
-					<button class="btn btn-secondary" id="modifyButton" disabled> 수정</button>
-					<button class="btn btn-danger" >탈퇴</button>
+					<button class="btn btn-secondary" id="modifyButton" disabled form="formModify"> 수정</button>
+					<button class="btn btn-danger" form="deleteForm">탈퇴</button>
 				</div>
 				</form>
+					<form action="${appRoot }/sign/removeMember" method="post" id="deleteForm">
+					<input type="hidden" name="id" value="${member.id }" />
+					</form>
 			</div>
 		</div>
 	</div>
