@@ -16,6 +16,10 @@ public class RequestService {
 	@Autowired
 	private RequestMapper mapper;
 	
+	public int getDesignBoardId() {
+		return mapper.getDesignBoardId();
+	}
+	
 	// 요청 보내기
 	public boolean addRequest(RequestDto dto) {
 		return mapper.addRequest(dto) == 1;
@@ -23,8 +27,8 @@ public class RequestService {
 	}
 	
 	// 요청 list가져오기
-	public List<RequestDto> listBoard() {
-		return mapper.listBoard();
+	public List<RequestDto> listRequest() {
+		return mapper.listRequest();
 	}
 	
 	// 요청을 id기준으로 가져오기

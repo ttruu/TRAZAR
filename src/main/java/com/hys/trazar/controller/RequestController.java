@@ -23,8 +23,9 @@ public class RequestController {
 	private RequestService service;
 	
 	@GetMapping("insert")
-	public void requestInsert() {
-		
+	public void requestInsert(Model model) {
+		int DesignBoardId = service.getDesignBoardId();
+		model.addAttribute("design", DesignBoardId);
 	}
 	
 	@PostMapping("insert")
@@ -45,7 +46,7 @@ public class RequestController {
 	
 	@RequestMapping("list")
 	public void list(Model model) {
-		List<RequestDto> list = service.listBoard();
+		List<RequestDto> list = service.listRequest();
 		model.addAttribute("requestList", list);
 	}
 	

@@ -5,10 +5,12 @@ import java.util.List;
 import com.hys.trazar.domain.RequestDto;
 
 public interface RequestMapper {
-
+	
+	int getDesignBoardId();
+	
 	int addRequest(RequestDto dto);
 
-	List<RequestDto> listBoard();
+	List<RequestDto> listRequest();
 
 	RequestDto getRequestById(int id);
 
