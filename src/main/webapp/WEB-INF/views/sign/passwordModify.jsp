@@ -50,7 +50,7 @@ $(document).ready(function(){
 		<div class="row justify-content-center">
 			<div class="col-12 col-lg-6">
 				<h1>패스워드 변경</h1>
-				<form action="${appRoot }/sign/passwordUpdate" method="post">
+				<form action="${appRoot }/sign/findPassword" method="post">
 				
 					<label for="nameInput1" class="form-label">
 					아이디

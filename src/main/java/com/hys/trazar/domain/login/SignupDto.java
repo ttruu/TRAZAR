@@ -16,6 +16,7 @@ public class SignupDto {
 	private String phoneNum;
 	private String introduce;
 	private String name;
+	private String question;
 	
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime inserted;

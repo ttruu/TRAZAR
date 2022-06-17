@@ -195,6 +195,12 @@
 					휴대폰 번호 :
 					<input type="number" name="phoneNum" maxlength = "13" placeholder = "휴대폰 번호를 입력하세요." required/>
 					<br />
+					비밀번호 초기화 질문 
+					<br />
+					<input type="text" value="아버지의 성함은 ?" readonly>
+					<br />
+					<input type="text" name="question" placeholder = "질문을 입력하세요." maxlength="5" required />
+					<br />
 					자기소개 :
 					<input type="text" name="introduce" />
 					<br />
