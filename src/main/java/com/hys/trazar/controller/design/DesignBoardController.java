@@ -1,20 +1,24 @@
 package com.hys.trazar.controller.design;
 
+import static org.imgscalr.Scalr.OP_ANTIALIAS;
+import static org.imgscalr.Scalr.OP_BRIGHTER;
+import static org.imgscalr.Scalr.pad;
+import static org.imgscalr.Scalr.resize;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +26,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,6 +36,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.ReviewDto;
+import com.hys.trazar.mapper.DesignBoardMapper;
 import com.hys.trazar.service.DesignBoardService;
 import com.hys.trazar.service.ReviewService;
 
@@ -44,6 +48,8 @@ public class DesignBoardController {
 	private static final String FILE2 = "file";
 	private static final Logger LOGGER = LoggerFactory.getLogger(DesignBoardController.class);
 	private static final String UPLOADIMG = "/static/uploadimg/";
+	private static final String UPLOADFILES = "/static/uploadfiles/";
+	private static final String STATIC_IMAGES_THUMBNAILS = "/static/images/thumbnails/";
 	 
 	@Autowired
 	 ServletContext servletContext;
@@ -54,11 +60,30 @@ public class DesignBoardController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	
 	@RequestMapping("list")
 	public void list(Model model) {
 		List<DesignBoardDto> list = service.listDesignBoard();
 		
+		processThumbNailImage(list);
 		model.addAttribute("designBoardList", list);
+	}
+
+	private void processThumbNailImage(List<DesignBoardDto> list) {
+//		String prefix = "/static/images/thumbnails/";
+		for (DesignBoardDto dto : list) {
+			String thumbNail = "";
+			
+			String source = dto.getBody();
+			Document doc = Jsoup.parse(source);
+			Elements elements = doc.select("img");
+			
+			if (elements.size() > 0) {
+				thumbNail = elements.get(0).attr("src").toString();
+			}
+			
+			dto.setImgthumbnail(thumbNail);
+		}
 	}
 
 	@GetMapping("insert")
@@ -143,6 +168,79 @@ public class DesignBoardController {
 	}
 	
 	
+	// 썸네일 컨트롤러
+	@RequestMapping(method = RequestMethod.POST)
+	public String save(DesignBoardDto designBoard) throws IOException
+	{
+		/** 01. 파일 저장 처리 */
+		List<MultipartFile> files = designBoard.getFileName();
+		List<String> uploadfiles = new ArrayList<>();
+		int sizeFile = files.size();
+		System.out.println("파일 사이즈 :" + sizeFile);
+
+		for (int i = 0; i < sizeFile; i++) {
+			MultipartFile multipartFile = files.get(i);
+			
+			if (!multipartFile.isEmpty()) {
+				String webappRoot = servletContext.getRealPath("/");
+				String filename = webappRoot + UPLOADFILES + multipartFile.getOriginalFilename();
+				File file = new File(filename);
+				multipartFile.transferTo(file);
+				uploadfiles.add(multipartFile.getOriginalFilename());
+			}
+		}
+		designBoard.setUploadfiles(uploadfiles);
+		
+		
+		/* 02. 글에서 추출해서 <img> 태그가 걸려있으면 썸네일 만들기 */
+		String source = designBoard.getBody();
+		Document doc = Jsoup.parse(source);
+		Elements elements = doc.select("img");
+		String url = checkElements(elements);
+		String localIP = InetAddress.getLocalHost().getHostAddress();
+		if (url != null) {
+			if (url.startsWith("http://"+localIP)) {
+				LOGGER.info("썸네일 생성 작업 처리 시작.. ");
+				String webAppRoot = servletContext.getRealPath("/");
+				url = url.substring(url.lastIndexOf("/") + 1);
+				String ext = url.substring(url.lastIndexOf(".") + 1);
+			
+				File file = new File(webAppRoot + UPLOADIMG + url);
+				BufferedImage img = ImageIO.read(file);
+				BufferedImage thumbnail = createThumbnail(img);
+
+				File thumbnailoutput = new File(webAppRoot + STATIC_IMAGES_THUMBNAILS + url);
+				ImageIO.write(thumbnail, ext, thumbnailoutput);
+			}
+			designBoard.setImgthumbnail(url);
+		}
+		LOGGER.info("designBoard : {}", designBoard);
+		DesignBoardMapper.save(designBoard);
+		return "redirect:/designBoard/list";
+	}
+	
+	public String checkElements(Elements elements)
+	{
+		if (elements.size() > 0) {
+			Elements elem = elements.get(0).getElementsByAttribute("src");
+			String url = elem.toString();
+			int pos = url.indexOf("src=\"") + 5;
+			url = url.substring(pos, url.indexOf("\"", pos));
+			LOGGER.debug("img url :{}",url);
+			// System.out.println(url.startsWith("http")+":"+url);
+			return url;
+		}
+		return null;
+	}
+	
+	public static BufferedImage createThumbnail(BufferedImage img)
+	{
+		// Create quickly, then smooth and brighten it.
+		img = resize(img, org.imgscalr.Scalr.Method.SPEED, 150, OP_ANTIALIAS, OP_BRIGHTER);
+		// Let's add a little border before we return result.
+		return pad(img, 4);
+	}
+
 	// 썸머노트 에디터에서 받는 이미지 업로드 처리
 	@RequestMapping(value = "/imageupload", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	@ResponseBody
@@ -153,22 +251,19 @@ public class DesignBoardController {
 		List<MultipartFile> list = multiFileMap.get(FILE2);
 		MultipartFile multipartFile = list.get(0);
 		LOGGER.debug(multipartFile.getOriginalFilename());
-	
-
+		
+		
 		// 02. 파일을 전송하고
 		String webappRoot = servletContext.getRealPath("/"); 
 		String filename = UPLOADIMG + multipartFile.getOriginalFilename();
 		File file = new File(webappRoot + filename);
 		multipartFile.transferTo(file);
-
+		
 		// 03. 마지막에 최종 주소를 반환한다.
-		// requet.getServername 을 하니, ajax에서 보내는 값이 리퀘스트 정보에 안떠서 InetAddress로
-		// 받았다.
+		// requet.getServername 을 하니, ajax에서 보내는 값이 리퀘스트 정보에 안떠서 InetAddress로 받는다 
 		String localIP = InetAddress.getLocalHost().getHostAddress();
-		// http://를 붙여줘야 에디터 창에서 불러올 수가 있다. 음.. 자바스크립트내에서 붙일까? 일단 그냥 적자.
+		// http://를 붙여줘야 에디터 창에서 불러올 수가 있다. 
 		return "http://" + localIP + ":" + request.getServerPort() + filename;
 		
 	}
-	
-
 }

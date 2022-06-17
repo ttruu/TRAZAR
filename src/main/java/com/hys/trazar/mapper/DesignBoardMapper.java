@@ -25,5 +25,8 @@ public interface DesignBoardMapper {
 	List<DesignBoardDto> listByMemberId(String id);
 
 
+	static void save(DesignBoardDto designBoard) {
+		
+	}
 
 }
