@@ -46,9 +46,9 @@
   </insert>
   
   <delete id="deleteByMemberId">
-		DELETE FROM ManagerBoard
-		WHERE memberId = #{memberId}
-	</delete>
+	DELETE FROM ManagerBoard
+	WHERE memberId = #{memberId}
+  </delete>
 	
   
 </mapper>
