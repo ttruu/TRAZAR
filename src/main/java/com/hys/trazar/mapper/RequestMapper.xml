@@ -31,4 +31,9 @@
 		WHERE id = #{id}
 	</delete>
 	
+	<delete id="deleteByMemberId">
+		DELETE FROM Request
+		WHERE memberId = #{memberId}
+	</delete>
+	
 </mapper>

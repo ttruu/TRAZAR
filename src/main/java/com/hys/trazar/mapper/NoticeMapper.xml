@@ -45,6 +45,12 @@
 		VALUES (#{title}, #{body}, #{memberId})
   </insert>
   
+  <delete id="deleteByMemberId">
+		DELETE FROM ManagerBoard
+		WHERE memberId = #{memberId}
+	</delete>
+	
+  
 </mapper>
 
 

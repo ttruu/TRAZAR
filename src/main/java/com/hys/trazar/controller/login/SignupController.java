@@ -104,11 +104,6 @@ public class SignupController {
 		}
 	}
 
-//	@GetMapping("selectMember1")
-//	public void selectMember(String id, Model model) {
-//		SignupDto dto = service.selectMember(id);
-//		model.addAttribute("member", dto);
-//	}
 
 	// 회원정보 수정 컨트롤러
 	@PostMapping("modify")
@@ -209,6 +204,18 @@ public class SignupController {
 				return "redirect:/designBoard/list";
 			}
 		}
+		
+		// 아이디 탈퇴 코드
+		@PostMapping("removeMember")
+		public String removeMember(SignupDto dto) {
+			boolean success = service.removeMember(dto);
+			if(success) {
+				return "redirect:/sign/login";
+			} else {
+				return "redirect:/designBoard/list";
+			}
+		}
+		
 	
 
 }

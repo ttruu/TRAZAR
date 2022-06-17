@@ -59,5 +59,11 @@
 	</insert>
 	-->
 	
+	<select id="listByMemberId" resultType="com.hys.trazar.domain.DesignBoardDto">
+		SELECT id
+		FROM DesignBoard
+		WHERE memberId = #{memberId}
+	</select>
+	
 
 </mapper>
