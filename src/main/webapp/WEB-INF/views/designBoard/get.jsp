@@ -327,7 +327,7 @@
 					<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
 				</form>
 
-				<a href="${appRoot }/request/insert">요청</a>
+				<a href="${appRoot }/request/insert?designBoardId=${designBoard.id}">요청</a>
 			</div>
 		</div>
 	</div>

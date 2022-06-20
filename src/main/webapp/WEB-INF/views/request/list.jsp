@@ -67,6 +67,7 @@ $(document).ready(function() {
 					</thead>
 					<tbody>
 						<c:forEach items="${requestList }" var="req" varStatus="status">
+						<input type="hidden" name="designBoardId" value="" />
 						<input type="hidden" name="memberId" value="${req.memberId }" />
 							<tr>
 								<td>${req.memberId }</td>
@@ -75,6 +76,7 @@ $(document).ready(function() {
 									<c:url value="/request/get" var="getUrl">
 										<c:param name="id" value="${req.id }"></c:param>
 										<c:param name="memberId" value="${req.memberId }"></c:param>
+										<c:param name="designBoardId" value="${req.designBoardId }"></c:param>
 									</c:url>
 									
 									<a href="${getUrl }">

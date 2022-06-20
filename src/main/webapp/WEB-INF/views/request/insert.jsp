@@ -24,7 +24,6 @@
 				<c:url value="/request/insert" var="writeLink" />
 				
 				<form action="${writeLink }" method="post">
-					<input type="hidden" name="designBoardId" value="${design.designBoardId }" />
 					
 					<div>
 						<label class="form-label" for="input1">제목</label>

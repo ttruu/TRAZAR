@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.RequestDto;
 import com.hys.trazar.service.RequestService;
 
@@ -23,15 +23,15 @@ public class RequestController {
 	private RequestService service;
 	
 	@GetMapping("insert")
-	public void requestInsert(Model model) {
-		int DesignBoardId = service.getDesignBoardId();
-		model.addAttribute("design", DesignBoardId);
+	public void requestInsert() {
+		
 	}
 	
 	@PostMapping("insert")
-	public String insertRequest(RequestDto dto, Principal principal, RedirectAttributes rttr, Model model) {
+	public String insertRequest(RequestDto dto, Principal principal,DesignBoardDto designBoard, RedirectAttributes rttr) {
 		
 		dto.setMemberId(principal.getName());
+		dto.setDesignBoardId(designBoard.getId());
 		boolean success = service.addRequest(dto);
 		
 		if (success) {
@@ -39,6 +39,7 @@ public class RequestController {
 		} else {
 			rttr.addFlashAttribute("message", "새 글이 등록되지 않았습니다.");
 		}
+		
 		
 		return "redirect:/request/list";
 		

@@ -1,7 +1,5 @@
 package com.hys.trazar.service;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +14,6 @@ public class RequestService {
 	@Autowired
 	private RequestMapper mapper;
 	
-	public int getDesignBoardId() {
-		return mapper.getDesignBoardId();
-	}
 	
 	// 요청 보내기
 	public boolean addRequest(RequestDto dto) {
