@@ -1,11 +1,7 @@
 package com.hys.trazar.controller.design;
 
-import static org.imgscalr.Scalr.OP_ANTIALIAS;
-import static org.imgscalr.Scalr.OP_BRIGHTER;
-import static org.imgscalr.Scalr.pad;
-import static org.imgscalr.Scalr.resize;
 
-import java.awt.image.BufferedImage;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -13,7 +9,6 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 
 import org.jsoup.Jsoup;
@@ -47,8 +42,7 @@ public class DesignBoardController {
 	private static final String FILE2 = "file";
 	private static final Logger LOGGER = LoggerFactory.getLogger(DesignBoardController.class);
 	private static final String UPLOADIMG = "/static/uploadimg/";
-	private static final String UPLOADFILES = "/static/uploadfiles/";
-	private static final String STATIC_IMAGES_THUMBNAILS = "/static/images/thumbnails/";
+	
 
 	@Autowired
 	ServletContext servletContext;
@@ -64,6 +58,13 @@ public class DesignBoardController {
 		List<DesignBoardDto> list = service.listDesignBoard();
 
 		processThumbNailImage(list);
+		model.addAttribute("designBoardList", list);
+	}
+	
+	@RequestMapping("mainex")
+	public void list1(Model model) {
+		List<DesignBoardDto> list = service.listDesignBoard();
+
 		model.addAttribute("designBoardList", list);
 	}
 
@@ -85,6 +86,7 @@ public class DesignBoardController {
 		}
 	}
 
+	
 	@GetMapping("insert")
 	public void insert() {
 
