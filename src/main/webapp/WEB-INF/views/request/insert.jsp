@@ -36,7 +36,7 @@
 					</div>
 					
 					<div>
-						<label class="form-label" for="input1">가격</label>
+						<label class="form-label" for="input1">예산</label>
 						<input class="form-control" type="text" name="price" required id="input2" />
 					</div>
 						<button class="btn btn-outline-secondary mt-3">등록</button>

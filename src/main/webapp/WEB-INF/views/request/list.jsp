@@ -45,6 +45,7 @@ $(document).ready(function() {
 		}
 	
 	});
+	
 });
 </script>
 
@@ -60,7 +61,7 @@ $(document).ready(function() {
 						<tr>
 							<th>아이디</th>
 							<th>제목</th>
-							<th>가격</th>
+							<th>예산</th>
 							<th>요청 시간</th>
 							<th>요청 처리</th>
 						</tr>
@@ -106,6 +107,9 @@ $(document).ready(function() {
 					</tbody>
 				</table>
 			</div>
+			<form action="${appRoot }/request/insert">
+				<button id="requestAdd" class="btn btn-primary">의뢰 작성</button>
+			</form>
 		</div>
 	</div>
 </body>

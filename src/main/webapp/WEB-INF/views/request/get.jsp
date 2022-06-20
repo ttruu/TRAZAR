@@ -57,7 +57,7 @@ $(document).ready(function() {
                </div>
                
                <div>
-                  <label class="form-label" for="input4">가격</label>
+                  <label class="form-label" for="input4">예산</label>
                   <input class="form-control mb-3" type="text" name="price" required
                      id="input4" value="${request.price }" readonly />
                </div> 
