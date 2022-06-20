@@ -15,7 +15,7 @@
 <script>
 $(document).ready(function() {
 	$(".accept-submit1").click(function(e) {
-<<<<<<< Updated upstream
+
 		e.preventDefault();
 	
 		if (confirm("수락하시겠습니까?")) {
@@ -27,7 +27,7 @@ $(document).ready(function() {
 		}
 	
 	});
-=======
+
       e.preventDefault();
    
       if (confirm("수락하시겠습니까?")) {
@@ -41,7 +41,7 @@ $(document).ready(function() {
       }
    
    });
->>>>>>> Stashed changes
+
 	
 	$(".reject-submit1").click(function(e) {
 		e.preventDefault();
