@@ -19,7 +19,7 @@ public class DesignBoardDto {
 	private LocalDateTime inserted;
 	private String writerNickName;
 	private List<MultipartFile> fileName;
-	private List<String> uploadfiles;
+	//private List<String> uploadfiles;
 	private String imgthumbnail;
 	
 	public String getPrettyInserted() {
@@ -33,17 +33,5 @@ public class DesignBoardDto {
 		}
 	}
 	
-	/*
-	public String getImgthumbnail(){
-		// 썸네일  
-		if(imgthumbnail!=null){
-			if(imgthumbnail.startsWith("http")){
-				return imgthumbnail;
-			}else{
-				return "/static/images/thumbnails/"+imgthumbnail;
-			}
-		}
-		return imgthumbnail;
-	}
-	*/
+
 }
