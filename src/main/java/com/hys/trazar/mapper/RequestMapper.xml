@@ -18,7 +18,7 @@
 	</select>
 	
 	<select id="getRequestById" resultType="com.hys.trazar.domain.RequestDto">
-		SELECT r.id, r.memberId, r.title, r.body, r.price, r.inserted
+		SELECT r.id, r.memberId, r.title, r.body, r.price, r.inserted, m.phoneNum
 		FROM Request r JOIN Member m ON r.memberId = m.id
 		WHERE r.id = #{id}
 	</select>

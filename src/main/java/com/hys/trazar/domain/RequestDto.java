@@ -13,4 +13,5 @@ public class RequestDto {
 	private String memberId;
 	private String price;
 	private LocalDateTime inserted;
+	private String phoneNum;
 }
