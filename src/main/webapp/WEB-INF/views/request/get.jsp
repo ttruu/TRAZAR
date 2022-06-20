@@ -37,7 +37,6 @@ $(document).ready(function() {
                </button>
             </h1>
             <form action="${appRoot }/request/modify" method="post">
-            	<c:param name="memberId" value="${request.memberId }"></c:param>
                 <input type="hidden" name="id" value="${request.id }" />
                <div>
                   <label class="form-label" for="input1">제목</label>
