@@ -94,22 +94,6 @@
 						</c:forEach>
 					</tbody>
 				</table>
-
-				<!-- 광고 구현 (해당 이미지 클릭 시 url로 넘어감) -->
-				<div class="card" style="width: 20rem; cursor: pointer;"
-					onclick="location.href='https://www.google.com';">
-					<img src="../resources/picture/ad/구글1.PNG" class="card-img-top">
-					<div class="card-body">
-						<h5 class="card-title">광고</h5>
-						<ul class="fa-ul custom-list">
-							<!--  
-						<li>
-							<i class="fa fa-check fa-fw"></i>
-							광고내용
-						</li> -->
-						</ul>
-					</div>
-				</div>
 			</div>
 		</div>
 </body>
