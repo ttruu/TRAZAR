@@ -5,8 +5,8 @@
 <mapper namespace="com.hys.trazar.mapper.login.SignupMapper">
 
 	<insert id="createUser">
-		INSERT INTO Member(id, password, email, nickName, phoneNum, introduce, name, question)
-		VALUES(#{id}, #{password}, #{email}, #{nickName}, #{phoneNum}, #{introduce}, #{name}, #{question})
+		INSERT INTO Member(id, password, email, nickName, phoneNum, introduce, name, question, answer)
+		VALUES(#{id}, #{password}, #{email}, #{nickName}, #{phoneNum}, #{introduce}, #{name}, #{question}, #{answer})
 	</insert>
 
 	<select id="MemberIdCheck" resultType="int">
@@ -28,7 +28,7 @@
 	</insert>
 	
 	<select id="selectMember" resultType="com.hys.trazar.domain.login.SignupDto">
-		SELECT id, password, email, nickName, phoneNum, introduce, name, inserted, question FROM Member WHERE id = #{id}
+		SELECT id, password, email, nickName, phoneNum, introduce, name, inserted, question, answer FROM Member WHERE id = #{id}
 	</select>
 	
 	<update id="modifyMember">

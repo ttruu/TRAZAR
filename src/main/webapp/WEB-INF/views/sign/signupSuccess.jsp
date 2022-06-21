@@ -20,10 +20,41 @@
 <title>Insert title here</title>
 </head>
 <body>
-<my:navBar current="memberInfo"></my:navBar>
-	<h1>회원가입이 완료되었습니다!</h1>
+
+
+	<div class="main" 
+	style="display: flex; height: 100%; margin: 0; padding:0; ">
 	
-	<a href="${appRoot }/designBoard/list">메인페이지 바로가기</a>
+	<div class="main2" style="display: flex; flex:1 1;">
+	
+	
+		
+		<div class="left-area" 
+		style="position: relative; flex: 1 1; background-color: #303134; display: block;">
+			<div style="color: white; text-decoration: none; font-size: 500%; left: 15%; top: 30%; z-index: 60; position: fixed;">
+			<a href="${appRoot }/designBoard/list" style="text-decoration: none; color: white;">TRAZAR</a>
+			<div style="padding-top: 48px; color: white; font-size: 25px; text-align: center; left: 15%; top: 30%; z-index: 60;">produce by HYS</div>
+			</div>
+		</div>
+		
+		<div class="left-under" style="position: absolute; bottom: 42px; left: 3%; width: 90%;">
+			<div style="color: white; font-size: 15px;">TRAZAR</div>
+		</div>
+	
+		<div class="right-area justify-content-center" 
+		style=" position: relative; align-items: center; flex-basis: 55%; display: flex; padding: 120px 0;
+		font-size: 1.4rem; flex-direction: column;">
+				<div class="col-12 col-lg-5">
+					<h1>회원이 되신걸 축하합니다!</h1>
+					<div style="text-align: center;">
+					<a href="${appRoot }/sign/login">로그인 하러가기!</a>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+	
 
 
 	
