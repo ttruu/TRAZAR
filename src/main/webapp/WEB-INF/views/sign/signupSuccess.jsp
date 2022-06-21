@@ -44,8 +44,8 @@
 		<div class="right-area justify-content-center" 
 		style=" position: relative; align-items: center; flex-basis: 55%; display: flex; padding: 120px 0;
 		font-size: 1.4rem; flex-direction: column;">
-				<div class="col-12 col-lg-5">
-					<h1>회원이 되신걸 축하합니다!</h1>
+				<div class="col-12 col-lg-5" style="text-align: center;">
+					<h2>회원이 되신걸 축하합니다!</h2>
 					<div style="text-align: center;">
 					<a href="${appRoot }/sign/login">로그인 하러가기!</a>
 					</div>

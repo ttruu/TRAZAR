@@ -18,7 +18,22 @@
 	integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>Insert title here</title>
+
+
+<c:if test="${param.msg != null }">
+	<script>
+		alert("아이디와 답변을 확인 해주세요.")
+	</script>
+</c:if>
+
+
 </head>
+
+<style>
+	.form-control:focus {
+		box-shadow : 0 0;
+	}
+</style>
 <body>
 
 	<my:navBar></my:navBar>

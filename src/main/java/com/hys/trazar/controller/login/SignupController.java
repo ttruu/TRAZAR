@@ -3,6 +3,7 @@ package com.hys.trazar.controller.login;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.annotations.Param;
@@ -194,7 +195,7 @@ public class SignupController {
 			if (encoder.matches(oldPassword, encodedPw)) {
 				return null;
 			} else {
-				rttr.addAttribute("msg", "비밀번호를 다시 입력해주세요.");
+				rttr.addAttribute("msg","error");
 				return "redirect:/designBoard/list";
 			}
 		}
@@ -217,9 +218,10 @@ public class SignupController {
 		
 		// 아이디 탈퇴 코드
 		@PostMapping("removeMember")
-		public String removeMember(SignupDto dto) {
+		public String removeMember(SignupDto dto, HttpServletRequest req) throws ServletException {
 			boolean success = service.removeMember(dto);
 			if(success) {
+				req.logout();
 				return "redirect:/sign/login";
 			} else {
 				return "redirect:/designBoard/list";
@@ -228,14 +230,16 @@ public class SignupController {
 		
 		// 비밀번호 초기화 코드
 		@PostMapping("findPassword")
-		public String findPassword(SignupDto dto, String id, Model model) {
+		public String findPassword(SignupDto dto, String id, Model model, RedirectAttributes rttr) {
 			// selectMember id로 멤버 찾는 mapper
 			SignupDto findId = mapper.selectMember(dto.getId());
 			// id가 null이 아니고 id의 question이랑 dto의 question이랑 같을 때 서비스 실행
 			if(findId != null && findId.getQuestion().equals(dto.getQuestion()) && findId.getAnswer().equals(dto.getAnswer())) {
 				service.findPassword(id);
+				rttr.addAttribute("success","good");
 				return "redirect:/sign/findPasswordSuccess";
 			} else {
+				rttr.addAttribute("msg","error");
 				return "redirect:/sign/findPassword";
 			}
 		}
