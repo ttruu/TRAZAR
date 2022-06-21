@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko-KR">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet"
@@ -28,7 +28,6 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
 .MainHome {
