@@ -117,16 +117,11 @@ public class RequestController {
 		
 	}
 	
-	@GetMapping("myList")
+	@RequestMapping("myList")
 	public void myList(RequestDto dto, Principal principal, Model model, String memberId) {
 		dto.setMemberId(principal.getName());
-		System.out.println(dto);
 		List<RequestDto> list = service.myListRequest(memberId);
-		System.out.println(list);
 		model.addAttribute("requestMyList", list);
-		RequestDto dto1 = service.getMember(memberId);
-		System.out.println(dto1);
-		model.addAttribute("member", dto1);
 	}
 	
 }

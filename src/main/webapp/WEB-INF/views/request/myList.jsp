@@ -16,8 +16,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<h1>의뢰 목록</h1>
-				<input type="hidden" name="memberId" value="${request.memberId }" />
+				<h1>나의 의뢰 목록</h1>
 				<table class="table">
 					<thead>
 						<tr>
@@ -28,8 +27,20 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${requestMyList }" var="my" varStatus="status">
+							<input type="hidden" name="memberId" value="${my.memberId }" />
 							<tr>
-								<td>${my.title }</td>
+								<td>
+													
+									<c:url value="/request/get" var="getUrl">
+										<c:param name="id" value="${my.id }"></c:param>
+										<c:param name="memberId" value="${my.memberId }"></c:param>
+									</c:url>
+									
+									<a href="${getUrl }">
+										<c:out value="${my.title }" />
+									</a>
+									
+								</td>
 								<td>${my.inserted }</td>
 								<td>${my.state }</td>
 							</tr>

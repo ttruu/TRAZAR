@@ -54,9 +54,4 @@ public class RequestService {
 		return mapper.myListRequest(memberId);
 	}
 
-	public RequestDto getMember(String memberId) {
-		return mapper.getMember(memberId);
-	}
-
-
 }

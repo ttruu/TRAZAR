@@ -13,9 +13,6 @@
 <c:url value="/sign/passwordModify" var="passwordModify"></c:url>
 <c:url value="/notice/list" var="noticeListUrl"></c:url>
 <c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
-<c:url value="/request/myList" var="myListUrl">
-	<c:param name="memberId" value="${principal.username }" />
-</c:url>
 
 <%-- 회원정보링크 --%>
 <sec:authorize access="isAuthenticated()">
@@ -36,7 +33,7 @@
 <%-- 마이리스트 링크 --%>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
-	<c:url value="/reuqest/myList" var="myList">
+	<c:url value="/request/myList" var="myListUrl">
 		<c:param name="memberId" value="${principal.username }" />
 	</c:url>
 </sec:authorize>
