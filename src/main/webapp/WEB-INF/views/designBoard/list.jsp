@@ -52,12 +52,13 @@
 
 .left-side {
 	grid-area: left-side;
-	background-color: grey;
+	background-color: #C8C8FF;
+	padding-left: 10%;
 }
 
 .main1 {
 	grid-area: main;
-	background-color: yellow;
+	background-color: #96C7ED;
 }
 
 .right {
@@ -67,17 +68,16 @@
 
 .other {
 	grid-area: other;
-	background-color: grey;
+	background-color: #E1B771;
 }
 
 .content {
 	grid-area: content;
-	background-color: purple;
+	background-color: #D2FFD2;
 }
 
 .footer {
 	grid-area: footer;
-	background-color: green;
 }
 
 .totalLayout {
@@ -127,6 +127,8 @@
 .main-lists .thumbnail-image img {
 	width: 270px;
 	height: 270px;
+	border : 1px solid #E1F6FA;
+	border-radius : 30px;
 }
 
 .main-project-title {
@@ -152,7 +154,10 @@
 		<div class="header">
 			<my:navBar current="list" />
 		</div>
-		<div class="left-side">left-side</div>
+
+		<div class="left-side">
+			<my:sideNavBar></my:sideNavBar>
+		</div>
 		<div class="main1">
 			<div class="totalLayout">
 				<div class="totalLayout-title">
@@ -216,7 +221,7 @@
 		</div>
 		<div class="other">
 			<div class="totalLayout-title">
-				<h3 class="list-titles" style="margin-top : 40px;">작품</h3>
+				<h3 class="list-titles" style="margin-top: 40px;">작품</h3>
 			</div>
 		</div>
 		<div class="content">
@@ -250,7 +255,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer">Footer</div>
+
+		<div class="footer"><my:footer></my:footer></div>
+
 	</div>
 
 

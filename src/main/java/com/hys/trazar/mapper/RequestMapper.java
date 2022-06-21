@@ -25,7 +25,4 @@ public interface RequestMapper {
 
 	List<RequestDto> myListRequest(String memberId);
 
-	RequestDto getMember(String memberId);
-	
-
 }

@@ -84,7 +84,6 @@ $(document).ready(function() {
 					</thead>
 					<tbody>
 						<c:forEach items="${requestList }" var="req" varStatus="status">
-						<input type="hidden" name="designBoardId" value="" />
 						<input type="hidden" name="memberId" value="${req.memberId }" />
 							<tr>
 								<td>${req.memberId }</td>
