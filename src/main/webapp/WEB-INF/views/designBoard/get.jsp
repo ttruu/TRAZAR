@@ -88,40 +88,37 @@
 						const reviewElement = $("<li class='list-group-item' />");
 						reviewElement.html(`
 								
-								<div id="reviewDisplayContainer\${list[i].id }">
-									<div class="fw-bold">
-										<i class="fa-solid fa-comment"></i>
-										\${list[i].prettyInserted}
-										
-										<span id="modifyButtonWrapper\${list[i].id }">
-										</span>
-										
-									</div>
-									<span class="badge bg-light text-dark">
-										<i class="fa-solid fa-user"></i>
-										\${list[i].memberId}
-									</span>
-									<span id="reviewContent\${list[i].id }"><span>
-	
-	
-								</div>
-	
-								<div id="reviewEditFormContainer\${list[i].id }"
-									style="display: none;">
-									<form action="${appRoot }/review/modify" method="post">
-										<div class="input-group">
-											<input type="hidden" name="designBoardId" value="${designBoard.id }" />
-											<input type="hidden" name="id" value="\${list[i].id }" />
-											<input class="form-control" value="\${list[i].body }"
-												type="text" name="body" required />
-											<button data-review-id="\${list[i].id}" 
-											        class="review-modify-submit btn btn-outline-secondary">
-												<i class="fa-solid fa-comment-dots"></i>
-											</button>
+								<div>
+									<div id="reviewDisplayContainer\${list[i].id }" class="fw-bold d-flex">
+										<div class="me-auto">
+											<span class="badge text-dark">
+												<i class="fa-solid fa-user fa-2x"></i>
+											</span>
+											<span>\${list[i].memberId}</span>
+											<div id="reviewContent\${list[i].id }"></div>
+											<div class="text-color : grey;">\${list[i].prettyInserted}</div>
 										</div>
-									</form>
+										<div>
+											<span id="modifyButtonWrapper\${list[i].id }"></span>
+										</div>
+									</div>
+	
+									<div id="reviewEditFormContainer\${list[i].id }"
+										style="display: none;">
+										<form action="${appRoot }/review/modify" method="post">
+											<div class="input-group">
+												<input type="hidden" name="designBoardId" value="${designBoard.id }" />
+												<input type="hidden" name="id" value="\${list[i].id }" />
+												<input class="form-control" value="\${list[i].body }"
+													type="text" name="body" required />
+												<button data-review-id="\${list[i].id}" 
+												        class="review-modify-submit btn btn-outline-secondary">
+													<i class="fa-solid fa-comment-dots"></i>
+												</button>
+											</div>
+										</form>
+									</div>
 								</div>
-								
 								`);
 						reviewListElement.append(reviewElement);
 						$("#reviewContent" + list[i].id).text(list[i].body);
@@ -129,14 +126,14 @@
 						// own(memberId)이 true(1)일 때만 수정,삭제 버튼 보이기
 						 if (list[i].own) {
 							$("#modifyButtonWrapper" + list[i].id).html(`
-								<span class="review-edit-toggle-button badge bg-info text-dark"
+								<span class="review-edit-toggle-button badge text-dark"
 									id="reviewEditToggleButton\${list[i].id }"
 									data-review-id="\${list[i].id }">
-									<i class="fa-solid fa-pen-to-square"></i>
+									<%-- <i class="fa-solid fa-pen-to-square"></i> --%> 수정
 								</span>
-								<span class="review-delete-button badge bg-danger"
+								<span class="review-delete-button badge text-dark"
 									data-review-id="\${list[i].id }">
-									<i class="fa-solid fa-trash-can"></i>
+									<%-- <i class="fa-solid fa-trash-can"></i> --%> 삭제
 								</span>
 							`);
 						} 
@@ -192,7 +189,8 @@
 						console.log(displayDivId);
 						console.log(editFormId);
 
-						$(displayDivId).hide();
+						$(displayDivId).addClass("d-none");
+						$(displayDivId).removeClass("d-flex");
 						$(editFormId).show();
 					});
 
@@ -332,17 +330,20 @@
 	</div>
 
 	<%-- 댓글 추가 --%>
-	<div class="container mt-3">
-		<div class="row">
+	<div class="border border-black border-2 rounded-3 p-4 container">
+		<div class="row mt-3">
 			<div class="col">
-				<form id="insertReviewForm1">
+				<h4>댓글</h4>
+				<form class="mt-3" id="insertReviewForm1">
 					<div class="input-group">
 						<input type="hidden" name="designBoardId"
 							value="${designBoard.id }" />
+
 						<input id="insertReviewContentInput1" class="form-control"
 							type="text" name="body" required />
 						<button id="addReviewSubmitButton1"
-							class="btn btn-outline-secondary"></button>
+							class="btn btn-outline-secondary">등록</button>
+
 					</div>
 				</form>
 			</div>
@@ -351,18 +352,10 @@
 			<div class="alert alert-primary" style="display: none;"
 				id="reviewMessage1"></div>
 		</div>
-	</div>
 
-	<%-- 댓글 목록 --%>
-	<div class="container mt-3">
-		<div class="row">
+		<%-- 댓글 목록 --%>
+		<div class="row mt-3">
 			<div class="col">
-
-				<h3>
-					댓글
-					<span id="numOfReview1"></span>
-					개
-				</h3>
 
 				<ul id="reviewList1" class="list-group" />
 

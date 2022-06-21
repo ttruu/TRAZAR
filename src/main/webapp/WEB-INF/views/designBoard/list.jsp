@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko-KR">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet"
@@ -28,15 +28,14 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
 .MainHome {
 	display: grid;
 	grid-template-columns: 5% 60% 0% 10% 10%;
-	grid-template-rows: 50% 200% 30% 600% 150%;
+	grid-template-rows: 8% 45% 5% 90% 10%;
 	height: 100%;
-	grid-gap: 1%;
+	grid-gap: 0.5%;
 	grid-template-areas: 'header header header header header header'
 		'left-side main main main right right'
 		'left-side other other other other other'
@@ -47,6 +46,8 @@
 .header {
 	grid-area: header;
 	background-color: pink;
+	display: flex;
+	justify-content: center;
 }
 
 .left-side {
@@ -79,120 +80,171 @@
 	background-color: green;
 }
 
-
-.totalLayout{
-	justify-content : space-around;
-	margin-top: 45px;
+.totalLayout {
+	justify-content: space-around;
 }
-.totalLayout-title{
+
+.totalLayout-title {
 	margin: 20px 0
 }
+
 .list-titles {
 	color: black;
 	font-size: 20px;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: -0.4px;
+	font-weight: 700;
+	line-height: 19px;
+	align-items: center;
+	color: #161C1C;
 }
+
 .main-lists:after {
-	content:"";
-	display:block;
-	clear:both;
+	content: "";
+	display: block;
+	clear: both;
 }
-.main-lists{
+
+.main-lists {
 	display: flex;
 	flex-wrap: wrap;
+	gap: 20px;
 }
-.project-list-mini{
+
+.project-list-mini {
 	max-width: 250px;
 	margin-bottom: 55px;
 	margin-right: 20px;
 }
-.design-name{
+
+.design-name {
 	margin-top: 15px;
 	color: gray;
+	text-align: center;
 }
+
 .main-lists .thumbnail-image img {
 	width: 270px;
 	height: 270px;
 }
-.main-project-title{
+
+.main-project-title {
 	font-size: 11pt;
 	font-weight: bold;
 	height: 40px;
 	margin: 8px 0;
+	text-align: center;
 }
 </style>
 
 <title>Insert title here</title>
 </head>
 <body>
-	<my:navBar current="list" />
 
-
-
-	<!--  
-<div class="MainHome"></div>
-      <div class="header"></div>
-	<div class="left-side">left-side</div>
-      <div class="main1">Main</div>
-      <div class="right">Right</div>
-      <div class="other">Other</div>
-      <div class="content">Content</div>
-      <div class="footer">Footer</div>
- -->
-
-
-	<div class="totalLayout">
-		<div class="totalLayout-title">
-			<h3 class="list-titles">hot creator</h3>
+	<div class="MainHome">
+		<div class="header">
+			<my:navBar current="list" />
 		</div>
-		
-		<c:if test="${not empty message }">
-			<div class="alert alert-primary">${message }</div>
-		</c:if>
-
-		<div class="main-lists">
-			<c:forEach items="${designBoardList }" var="designBoard">
-				<div class="project-list-mini">
-					<c:url value="/designBoard/get" var="getUrl">
-						<c:param name="id" value="${designBoard.id }"></c:param>
-						<c:param name="memberId" value="${designBoard.memberId }"></c:param>
-					</c:url>
-					<a href="${getUrl }" class="list-thumbnail">
-						<div class="thumbnail-image">
-							<img src="${designBoard.imgthumbnail }">
-						</div>
-						<div class="design-name">
-							${designBoard.id} ㅣ
-							${designBoard.writerNickName }
-						</div>
-						<div class="main-project-title">
-							${designBoard.title }
-							${designBoard.prettyInserted }
-						</div>
-					</a>
+		<div class="left-side">left-side</div>
+		<div class="main1">
+			<div class="totalLayout">
+				<div class="totalLayout-title">
+					<h3 class="list-titles">hot creator🔥</h3>
 				</div>
-			</c:forEach>
+
+				<c:if test="${not empty message }">
+					<div class="alert alert-primary">${message }</div>
+				</c:if>
+
+				<div class="main-lists">
+					<c:forEach items="${designBoardList }" var="designBoard">
+						<div class="project-list-mini">
+							<c:url value="/designBoard/get" var="getUrl">
+								<c:param name="id" value="${designBoard.id }"></c:param>
+								<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+							</c:url>
+							<a href="${getUrl }" class="list-thumbnail">
+								<div class="thumbnail-image">
+									<img src="${designBoard.imgthumbnail }">
+								</div>
+								<div class="design-name">${designBoard.id}ㅣ
+									${designBoard.writerNickName }</div>
+								<div class="main-project-title">${designBoard.title }
+									${designBoard.prettyInserted }</div>
+							</a>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
 		</div>
-	</div>
-	
-
-	<hr />
-
-
-	<!-- 광고 구현 (해당 이미지 클릭 시 url로 넘어감) -->
-	<div class="card right" style="width: 20rem; cursor: pointer;"
-		onclick="location.href='https://www.google.com';">
-		<img src="../resources/picture/ad/구글1.PNG" class="card-img-top">
-		<div class="card-body">
-			<h5 class="card-title">광고</h5>
-			<ul class="fa-ul custom-list">
-				<!--  
-				<li>
-					<i class="fa fa-check fa-fw"></i>
-					광고내용
-				</li> 
-				-->
-			</ul>
+		<div class="right">
+			<div class="card" style="height: 50%; width: 100%; cursor: pointer;"
+				onclick="location.href='https://www.google.com';">
+				<img src="../resources/picture/ad/구글1.PNG" class="card-img-top">
+				<div class="card-body">
+					<h5 class="card-title">구글</h5>
+					<ul class="fa-ul custom-list">
+						<!--  
+						<li>
+							<i class="fa fa-check fa-fw"></i>
+							광고내용
+						</li> -->
+					</ul>
+				</div>
+			</div>
+			<div class="card" style="height: 50%; width: 100%; cursor: pointer;"
+				onclick="location.href='https://www.naver.com';">
+				<img src="../resources/picture/ad/네이버.PNG" class="card-img-top">
+				<div class="card-body">
+					<h5 class="card-title">네이버</h5>
+					<ul class="fa-ul custom-list">
+						<!--  
+						<li>
+							<i class="fa fa-check fa-fw"></i>
+							광고내용
+						</li> -->
+					</ul>
+				</div>
+			</div>
 		</div>
+		<div class="other">
+			<div class="totalLayout-title">
+				<h3 class="list-titles" style="margin-top : 40px;">작품</h3>
+			</div>
+		</div>
+		<div class="content">
+			<div class="totalLayout">
+				<!-- <div class="totalLayout-title">
+					<h3 class="list-titles">hot creator🔥</h3>
+				</div>
+
+				<c:if test="${not empty message }">
+					<div class="alert alert-primary">${message }</div>
+				</c:if>  -->
+
+				<div class="main-lists">
+					<c:forEach items="${designBoardList }" var="designBoard">
+						<div class="project-list-mini">
+							<c:url value="/designBoard/get" var="getUrl">
+								<c:param name="id" value="${designBoard.id }"></c:param>
+								<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+							</c:url>
+							<a href="${getUrl }" class="list-thumbnail">
+								<div class="thumbnail-image">
+									<img src="${designBoard.imgthumbnail }">
+								</div>
+								<div class="design-name">${designBoard.id}ㅣ
+									${designBoard.writerNickName }</div>
+								<div class="main-project-title">${designBoard.title }
+									${designBoard.prettyInserted }</div>
+							</a>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+		<div class="footer">Footer</div>
 	</div>
 
 
