@@ -27,7 +27,21 @@ $(document).ready(function() {
       $("#input4").removeAttr("readonly");
       $("#modify-submit1").removeClass("d-none");
       $("#select1").removeClass("d-none");
+      $("#delete-submit1").removeClass("d-none");
    });
+   
+   $("#delete-submit1").click(function(e) {
+		e.preventDefault();
+
+		if (confirm("삭제하시겠습니까?")) {
+			let form1 = $("#form");
+			let actionAttr = "${appRoot}/request/remove";
+			form1.attr("action", actionAttr);
+
+			form1.submit();
+		}
+
+	});
    
 });
 </script>
@@ -95,6 +109,7 @@ $(document).ready(function() {
                </div>
                
                 <button id="modify-submit1" class="btn btn-outline-primary d-none">수정</button>
+                <button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
              </form>
          </div>
       </div>
