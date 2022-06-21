@@ -22,11 +22,18 @@
 
 <c:if test="${param.msg != null }">
 	<script>
-		alert("아이디와 패스워드를 확인 해주세요.")
+		alert("아이디와 답변을 확인 해주세요.")
 	</script>
 </c:if>
 
+
 </head>
+
+<style>
+	.form-control:focus {
+		box-shadow : 0 0;
+	}
+</style>
 <body>
 
 	<my:navBar></my:navBar>

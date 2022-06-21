@@ -236,6 +236,7 @@ public class SignupController {
 			// id가 null이 아니고 id의 question이랑 dto의 question이랑 같을 때 서비스 실행
 			if(findId != null && findId.getQuestion().equals(dto.getQuestion()) && findId.getAnswer().equals(dto.getAnswer())) {
 				service.findPassword(id);
+				rttr.addAttribute("success","good");
 				return "redirect:/sign/findPasswordSuccess";
 			} else {
 				rttr.addAttribute("msg","error");

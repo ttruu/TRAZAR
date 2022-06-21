@@ -10,14 +10,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>Insert title here</title>
 </head>
+
+<c:if test="${param.success != null }">
+	<script>
+		alert("초기화 성공! 비밀번호는 아이디와 같습니다.");
+		location.href="${appRoot}/sign/login"
+	</script>
+</c:if>
 <body>
-<h1>
-비밀번호 초기화 성공!
-다시 로그인 해주세요.
-</h1>
-<br />
-비밀번호는 아이디와 같습니다.
-<a href="${appRoot }/designBoard/list">메인페이지</a>
 
 </body>
 </html>

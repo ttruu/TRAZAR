@@ -146,9 +146,21 @@ $(document).ready(function() {
 			$("#modifyButton").removeAttr("disabled")
 		} else {
 			$("#modifyButton").attr("disabled","")
-			}
+		}
+	}
+	
+	$("#deleteButton").click(function(e){
+		e.preventDefault()
+		if(confirm("삭제하시겠습니까?"))	{
+			let form1 = $("#deleteForm")
+			
+			form1.submit()
 		}
 	})
+})
+	
+	
+	
 </script>
 </head>
 <body>
@@ -215,7 +227,7 @@ $(document).ready(function() {
 				
 				<div class="mt-3">
 					<button class="btn btn-secondary" id="modifyButton" disabled form="formModify"> 수정</button>
-					<button class="btn btn-danger" form="deleteForm">탈퇴</button>
+					<button class="btn btn-danger" form="deleteForm" id="deleteButton">탈퇴</button>
 				</div>
 				</form>
 					<form action="${appRoot }/sign/removeMember" method="post" id="deleteForm">

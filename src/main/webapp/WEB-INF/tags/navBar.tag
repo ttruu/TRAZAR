@@ -2,10 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
    uri="http://www.springframework.org/security/tags"%>
-
-
-
-
 <!-- include summernote css/js -->
 <!-- <script
    src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/lang/summernote-ko-KR.js"></script> -->
@@ -27,10 +23,6 @@
 <c:url value="/sign/passwordModify" var="passwordModify"></c:url>
 <c:url value="/designBoard/list" var="listUrl"></c:url>
 <c:url value="/notice/list" var="noticeListUrl"></c:url>
-<c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
-<c:url value="/request/myList" var="myListUrl">
-	<c:param name="memberId" value="${principal.username }" />
-</c:url>
 
 
 
@@ -50,14 +42,6 @@
    </c:url>
 </sec:authorize>
 
-<%-- 마이리스트 링크 --%>
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal" />
-	<c:url value="/reuqest/myList" var="myList">
-		<c:param name="memberId" value="${principal.username }" />
-	</c:url>
-</sec:authorize>
-
 
 <%-- 회원정보 암호 모달 --%>
 
@@ -71,39 +55,6 @@
 
    <div class="container">
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				
-				<li class="nav-item">
-					<a class="nav-link ${current == 'myList' ? 'active' : '' }"
-						href="${myListUrl }">내 의뢰목록보기</a>
-				</li>
-				
-				<li class="nav-item">
-					<a class="nav-link ${current == 'list' ? 'active' : '' }"
-						href="${listUrl }">목록보기</a>
-				</li>
-					<li class="nav-item">
-						<a class="nav-link ${current == 'insert' ? 'active' : '' }"
-							href="${insertUrl }">글쓰기</a>
-					</li>
-				<li class="nav-item">
-					<a href="${signupUrl }"
-						class="nav-link ${current == 'signup' ? 'active' : '' }">회원가입</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link ${current == 'list' ? 'active' : '' }"
-						href="${noticeListUrl }">공지사항보기</a>
-				</li>
-				
-				<sec:authorize access="hasRole('ADMIN')">
-					<li class="nav-item">
-						<a class="nav-link ${current == 'insert' ? 'active' : '' }"
-							href="${noticeInsertUrl }">공지사항글쓰기</a>
-					</li>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-					<li class="nav-item">
       <div class="modal fade" id="modal2" tabindex="-1"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog">
