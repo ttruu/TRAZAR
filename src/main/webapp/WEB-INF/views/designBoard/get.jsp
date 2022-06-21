@@ -32,19 +32,8 @@
 	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<style>
-	.work-item.first {
-		margin-top : 50px;
-	}
-	.work-info {
-		background: #fff;
-	    color: #7C8484;
-	    display: flex;
-	    flex-direction: row;
-	    position: relative;
-	    border-radius: 5px;
-	}
-</style>
+<link href="${appRoot }/resources/css/get.css" rel="stylesheet"
+	type="text/css">
 
 <title>Insert title here</title>
 </head>
@@ -53,348 +42,415 @@
 	<my:navBar />
 
 
-	
-	
+
+
 	<div class="preview-work-modal vm--container scrollable">
-		<div data-modal="preview-work-modal" aria-expanded="true" class="vm--overlay">
+		<div data-modal="preview-work-modal" aria-expanded="true"
+			class="vm--overlay">
 			<div class="vm--top-right-slot"></div>
-        </div>
-		
-		<div aria-expanded="true" role="dialog" aria-modal="true" class="vm--modal" style="background-color: transparent; box-shadow: none; left: 0px; width: 1178px; height: 937px; top: 0px;">
-			
+		</div>
+
+		<div aria-expanded="true" role="dialog" aria-modal="true"
+			class="vm--modal"
+			style="background-color: transparent; box-shadow: none; left: 0px; width: 1178px; height: 937px; top: 0px;">
+
 			<div class="preview-work-content">
-            	<div class="upload-preview-scroll">
-                	<div id="preview-work">
-                		<div class="work-item first">
-                			<div class="work-info">
-                				
-                				<!--  -->
-                				
-                				<div class="work-info-title">
-                					<!--  -->
-                					<div class="work-title">
-                                    <strong> 본문 제목: JIGURANG - ZEROWASTE SERVICE APP / 지구랑 - 제로웨이스트 서비스 앱</strong>
-                                	</div>
-                                	
-                                	<div class="work-info-time">
-                                    시간이랑 태그 : 2022.5.24 | UI/UX · 그래픽 디자인
-                                    	<span class="work-category-source">
-                                        	<a class="category"></a>
-                                    	</span>
-                                	</div> 
-                				</div>
-                				
-                				<!--  -->
-                				
-                				<div class="work-info-icons">
-                					
-                					<div class="view">
-                                    	<svg class="view-icon">
+				<div class="upload-preview-scroll">
+					<div id="preview-work">
+						<div class="work-item first">
+							<div class="work-info">
+
+								<!--  -->
+
+								<div class="work-info-title">
+									<!--  -->
+									<div class="work-title">
+										<strong> 본문 제목: JIGURANG - ZEROWASTE SERVICE APP /
+											지구랑 - 제로웨이스트 서비스 앱</strong>
+									</div>
+
+									<div class="work-info-time">
+										시간이랑 태그 : 2022.5.24 | UI/UX · 그래픽 디자인
+										<span class="work-category-source">
+											<a class="category"></a>
+										</span>
+									</div>
+								</div>
+
+								<!--  -->
+
+								<div class="work-info-icons">
+
+									<div class="view">
+										<svg class="view-icon">
                                     	   <i class="fa-solid fa-eye"></i>
-                                    	</svg> 
-                                    	<span>조회수</span>
-                                	</div> 
-                				
-                					<div class="like">
-	                                    <svg class="like-icon">
+                                    	</svg>
+										<span>조회수</span>
+									</div>
+
+									<div class="like">
+										<svg class="like-icon">
 	                                        <i class="fa-solid fa-heart"></i>
-	                                    </svg> 
-	                                    <span>좋아요 수</span>
-                                	</div> 
-                                
-	                                <div class="comment">
-	                                    <svg class="comment-icon">
+	                                    </svg>
+										<span>좋아요 수</span>
+									</div>
+
+									<div class="comment">
+										<svg class="comment-icon">
 	                                        <i class="fa-solid fa-message"></i>
-	                                    </svg> 
-	                                    <span data-v-04682e25="">댓글 수</span>
-	                                </div>
-	                                
-                				</div>
-                			</div>	
-              				
-              				<!--  -->
-                				
-               				<ul class="work-contents preview-contents" style="background-color: rgb(255, 255, 255);">
-               					
-               					<li class="block-image" style="padding-left: 0px; padding-right: 0px; height: 100%; margin-bottom: 0px;">
-                                <a>
-                                    <img src="https://cdn.notefolio.net/img/98/98/98988c4269835da65a627b7583543c22b265ec1ab26a97459ed1665a66218fad_v1.jpg" alt="" style="margin-bottom: 0px; cursor: pointer;">
-                                </a> <!----> <!----> 
-                                </li>
-                                
-                                <li class="block-image" style="padding-left: 0px; padding-right: 0px; height: 100%; margin-bottom: 0px;">
-                                    <a >
-                                        <img src="https://cdn.notefolio.net/img/58/cb/58cb336e20b6c84fb9e0441486c96830573f9be600f982df8bc80a3f919b582c_v1.jpg" alt="" style="margin-bottom: 0px; cursor: pointer;">
-                                    </a> <!----> <!----> 
-                                </li>
-                                
-                                <li class="block-image" style="padding-left: 0px; padding-right: 0px; height: 100%; margin-bottom: 0px;">
-                                    <a >
-                                        <img src="https://cdn.notefolio.net/img/4b/16/4b16e886ea91af05e67afa5085066199e60f3c4d30fda5d621c054dc28e87c0f_v1.jpg" alt="" style="margin-bottom: 0px; cursor: pointer;">
-                                    </a> <!----> <!----> 
-                                </li>
-                                
-                                <li class="block-image" style="padding-left: 0px; padding-right: 0px; height: 100%; margin-bottom: 0px;">
-                                    <a >
-                                        <img src="https://cdn.notefolio.net/img/07/c5/07c5385b6d32077bd2f259ec2606a8e5ff701f58597c4b4f0aa5b03355d4e61a_v1.jpg" alt="" style="margin-bottom: 0px; cursor: pointer;">
-                                    </a> <!----> <!----> 
-                                </li>
-                                
-                                <li class="block-image" style="padding-left: 0px; padding-right: 0px; height: 100%; margin-bottom: 0px;">
-                                    <a >
-                                        <img src="https://cdn.notefolio.net/img/31/e7/31e7d47b3d69a9901215484344c670836b932cfabb79fd3c0fd736901643de74_v1.jpg" alt="" style="margin-bottom: 0px; cursor: pointer;">
-                                    </a> <!----> <!----> 
-                                </li>
-                                
-                                <li class="block-image" style="padding-left: 0px; padding-right: 0px; height: 100%; margin-bottom: 0px;">
-                                    <a >
-                                        <img src="https://cdn.notefolio.net/img/65/36/6536f58392044c67e891d0fe4a072ab0e782ce4c0e76fbb481370d33f47f968a_v1.jpg" alt="" style="margin-bottom: 0px; cursor: pointer;">
-                                    </a> <!----> <!----> 
-                                </li>
-                                
-                                <li class="block-image" style="padding-left: 0px; padding-right: 0px; height: 100%; margin-bottom: 0px;">
-                                    <a >
-                                        <img src="https://cdn.notefolio.net/img/c1/0d/c10dadf90be14157911661d868232ee81cec47291c3cdb9bcb1c513987008367_v1.jpg" alt="" style="margin-bottom: 0px; cursor: pointer;">
-                                    </a> <!----> <!----> 
-                                </li>
-                                
-                                <li class="block-image" style="padding-left: 0px; padding-right: 0px; height: 100%; margin-bottom: 0px;">
-                                    <a >
-                                        <img src="https://cdn.notefolio.net/img/25/ac/25ac75dd53a19d83fb718bd1e872233af518955b479a72a366608da4a236c5b1_v1.jpg" alt="" style="margin-bottom: 0px; cursor: pointer;">
-                                    </a> <!----> <!----> 
-                                </li>
-                                
-                                <li class="block-text" style="padding-left: 12%; padding-right: 12%; height: 100%; margin-bottom: 0px;"><!----> <!----> 
-                                    <div style="margin-bottom: 0px;"><br>
-                                        <p style="text-align: center;"></p>
-                                        <p style="text-align: center;"></p>
-                                        <p style="text-align: center;"><span style="color: #999999;">UX/UI Designer</span></p>
-                                        <p style="text-align: center;"><span>Siwon Kim</span></p>
-                                        <p style="text-align: center;"><span></span></p>
-                                        <p style="text-align: center;"><span><br></span><span style="color: #999999;">Email</span></p>
-                                        <p style="text-align: center;"><span>summerkim7845@gmail.com</span></p>
-                                        <p><br> <br> </p>
-                                        <br>
-                                    </div> 
-                                </li>
-               				</ul>
-                			
-                		<!--  -->
-                				
-               				<div class="work-add-info-container">
-               					<div class="work-button-group">
-			                        <a class="btn-like" >
-			                            <svg class="like-icon">
+	                                    </svg>
+										<span data-v-04682e25="">댓글 수</span>
+									</div>
+
+								</div>
+							</div>
+
+							<!-- content 부분 -->
+
+							<div id="root">
+								<div class="sc-gKclnd dSodpA">
+									<div class="content">
+										<div class="sc-bdvvtL dKygck">
+											<div class="image-wrap fill">
+												<div class="image">
+													<img
+														src="https://cdn-bastani.stunning.kr/prod/portfolios/5091d7c7-81a2-4bdb-ab81-44cb28316371/contents/d5bd48c65cecfec721b2e868bf7825a0ad46f5c0fa5900c788d34264a8c7366a_v1.jpg"
+														alt="">
+												</div>
+											</div>
+										</div>
+										<div class="sc-iCfMLu jlbBQo" style="margin-top: 10px;"></div>
+									</div>
+									<div class="content">
+										<div class="sc-bdvvtL dKygck">
+											<div class="image-wrap fill">
+												<div class="image">
+													<img
+														src="https://cdn-bastani.stunning.kr/prod/portfolios/5091d7c7-81a2-4bdb-ab81-44cb28316371/contents/5403c23185ebbaf8a64d8cd7196355926083f226b021032eaac8cac7dab11714_v1.jpg"
+														alt="">
+												</div>
+											</div>
+										</div>
+										<div class="sc-iCfMLu jlbBQo" style="margin-top: 10px;"></div>
+									</div>
+									<div class="content">
+										<div class="sc-bdvvtL dKygck">
+											<div class="image-wrap fill">
+												<div class="image">
+													<img
+														src="https://cdn-bastani.stunning.kr/prod/portfolios/5091d7c7-81a2-4bdb-ab81-44cb28316371/contents/1ce2f8fdf033e403490251d5da7f1521e12fbeaf6fefc32d4671d1e1306b5358_v1.jpg"
+														alt="">
+												</div>
+											</div>
+										</div>
+										<div class="sc-iCfMLu jlbBQo" style="margin-top: 10px;"></div>
+									</div>
+									<div class="content">
+										<div class="sc-bdvvtL dKygck">
+											<div class="image-wrap fill">
+												<div class="image">
+													<img
+														src="https://cdn-bastani.stunning.kr/prod/portfolios/5091d7c7-81a2-4bdb-ab81-44cb28316371/contents/966480b6887b506144a98968ad63483ada366ae941497897f34980e3c13c1345_v1.jpg"
+														alt="">
+												</div>
+											</div>
+										</div>
+										<div class="sc-iCfMLu jlbBQo" style="margin-top: 10px;"></div>
+									</div>
+									<div class="content">
+										<div class="sc-bdvvtL dKygck">
+											<div class="image-wrap fill">
+												<div class="image">
+													<img
+														src="https://cdn-bastani.stunning.kr/prod/portfolios/5091d7c7-81a2-4bdb-ab81-44cb28316371/contents/a3b23c16cdba1c70aa8c0daf1dffeb164a94abf0225b98c9fb05dbfd420053ec_v1.jpg"
+														alt="">
+												</div>
+											</div>
+										</div>
+										<div class="sc-iCfMLu jlbBQo" style="margin-top: 10px;"></div>
+									</div>
+									<div class="content">
+										<div class="sc-bdvvtL dKygck">
+											<div class="image-wrap fill">
+												<div class="image">
+													<img
+														src="https://cdn-bastani.stunning.kr/prod/portfolios/5091d7c7-81a2-4bdb-ab81-44cb28316371/contents/3e37970f71efbed899986eb2183768bc3ecd401f174f15d183d3572204e13f86_v1.jpg"
+														alt="">
+												</div>
+											</div>
+										</div>
+										<div class="sc-iCfMLu jlbBQo" style="margin-top: 10px;"></div>
+									</div>
+									<div class="content">
+										<div class="sc-bdvvtL dKygck">
+											<div class="image-wrap fill">
+												<div class="image">
+													<img
+														src="https://cdn-bastani.stunning.kr/prod/portfolios/5091d7c7-81a2-4bdb-ab81-44cb28316371/contents/a918b10569af7fba1ed217a2926705db122fc469662b669b2de318223c615b23_v1.jpg"
+														alt="">
+												</div>
+											</div>
+										</div>
+										<div class="sc-iCfMLu jlbBQo" style="margin-top: 10px;"></div>
+									</div>
+									<div class="content">
+										<div class="sc-bdvvtL dKygck">
+											<div class="image-wrap fill">
+												<div class="image">
+													<img
+														src="https://cdn-bastani.stunning.kr/prod/portfolios/5091d7c7-81a2-4bdb-ab81-44cb28316371/contents/ed01718d0f16cf4a5093b825b2b76061f5bf7ad15def0fdc851020ea493548bc_v1.jpg"
+														alt="">
+												</div>
+											</div>
+										</div>
+										<div class="sc-iCfMLu jlbBQo" style="margin-top: 10px;"></div>
+									</div>
+									<div class="content">
+										<div class="sc-gsDKAQ jLbqfb">
+											<div class="contents">
+												<p style="text-align: center;">
+													<strong></strong>
+												</p>
+												<p style="text-align: center;">
+													<strong>특수설정 미스터리 소설 &lt;낙원은 탐정의 부재&gt; 표지, 본문 디자인</strong>
+												</p>
+												<p style="text-align: center;">
+													<strong>일러스트: Sujan</strong>
+												</p>
+											</div>
+										</div>
+										<div class="sc-iCfMLu jlbBQo" style="margin-top: 10px;"></div>
+									</div>
+								</div>
+							</div>
+
+							<!--  -->
+
+							<div class="work-add-info-container">
+								<div class="work-button-group">
+									<a class="btn-like">
+										<svg class="like-icon">
 			                                <i class="fa-regular fa-heart"></i>
-			                            </svg> 
-			                            
-			                            <svg class="like-icon-fill">
+			                            </svg>
+
+										<svg class="like-icon-fill">
 			                                <i class="fa-solid fa-heart"></i>
-			                            </svg> 
-			                            
-			                            <span class="btn-name">좋아요</span> 
-			                            <span class="like-cnt">갯수</span>
-			                        </a> 
-			                 
-	                    		</div> 
-	                    		
-	                    		<div class="pick-comment">               
-			                        <div class="tag-container">
-			                            <h1 style="display: flex; flex-wrap: wrap;">
-			                                <div class="tag-item">uxui</div>
-			                                <div class="tag-item">uiux</div>
-			                                <div class="tag-item">포트폴리오</div>
-			                                <div class="tag-item">ui 디자인</div>
-			                                <div class="tag-item">앱 디자인</div>
-			                                <div class="tag-item">제로웨이스트</div>
-			                                <div class="tag-item">챌린지</div>
-			                                <div class="tag-item">ui design</div>
-			                                <div class="tag-item">portfolio</div>
-			                                <div class="tag-item">ux/ui</div>
-			                                <div class="tag-item">ui/ux</div>
-			                                <div class="tag-item">icon</div>
-			                            </h1>
-			                        </div>
-			                    </div> 
-			                    
-               				</div> <!-- work-add-info-container end -->
-               				
-               			<!--  -->
-                			<div class="work-actions">
-			                    <div class="comment-wrapper"><!---->  
-			                        <form class="comment-block create">
-			                            <div class="comment-profile-input-form">
-			                                <a class="comment-profile-area">
-			                                    <div class="profile-item" style="width: 48px; height: 48px;">
-			                                        <img src="https://cdn.notefolio.net/profiles/rhdtlr3006380_face.jpg" class="hide"> 
-			                                        <span class="show">R</span> <!----> <!---->
-			                                    </div>
-			                                </a> 
-			                                
-			                                <textarea tabindex="1" rows="4" placeholder=" 이 작업에 대한 댓글을 남겨주세요." class="comment-textarea comment-textform comment-textarea-form"></textarea>
-			                            </div> 
-			                            <div class="comment-action-area">
-			                                <div tabindex="2" class="comment-submit-btn">댓글작성</div>
-			                            </div>
-			                        </form>
-			                    </div>
-                			</div>		
-                				
-                		</div>
-                	</div>
-             	</div>
-             	
-             <!--  -->
-             
-            <div class="preview-sidebar">
-	            <div class="profile">
-	                <div class="profile-wrapper">
-	                    <div class="profile-image-container">
-	                        <div class="v-popover">
-	                            <div class="trigger" style="display: inline-block;">
-	                                <div class="profile-image">
-	                                    <div  class="profile-item pointer-cursor" style="width: 46px; height: 46px;">
-	                                        <img src="https://cdn-bastani.stunning.kr/prod/users/0c9b5107-86f1-4e2f-ab14-e423b7df62c7/avatar/aezcK9ztSbZ3a7hU.시현하다_시원.jpeg.small?q=80&amp;t=crop&amp;s=100x100&amp;version=1a22780"> 
-	                                        <span class="hide">S</span> <!----> <!---->
-	                                    </div>
-	                                </div> 
-	                            </div> 
-	                        </div>
-	                    </div> 
-	                    <span >프로필</span>
-	                </div>
-	            </div> 
-            
-	              
-	            <div class="like">
-	                <div class="like-work-wrapper">
-	                    <div class="v-popover">
-	                        <div class="trigger" style="display: inline-block;">
-	                            <div class="btn-like pointer-cursor">
-	                                <svg class="like-icon">
+			                            </svg>
+
+										<span class="btn-name">좋아요</span>
+										<span class="like-cnt">갯수</span>
+									</a>
+
+								</div>
+
+								<div class="pick-comment">
+									<div class="tag-container">
+										<h1 style="display: flex; flex-wrap: wrap;">
+											<div class="tag-item">uxui</div>
+											<div class="tag-item">uiux</div>
+											<div class="tag-item">포트폴리오</div>
+											<div class="tag-item">ui 디자인</div>
+											<div class="tag-item">앱 디자인</div>
+											<div class="tag-item">제로웨이스트</div>
+											<div class="tag-item">챌린지</div>
+											<div class="tag-item">ui design</div>
+											<div class="tag-item">portfolio</div>
+											<div class="tag-item">ux/ui</div>
+											<div class="tag-item">ui/ux</div>
+											<div class="tag-item">icon</div>
+										</h1>
+									</div>
+								</div>
+
+							</div>
+							<!-- work-add-info-container end -->
+
+							<!--  -->
+							<div class="work-actions">
+								<div class="comment-wrapper">
+									<!---->
+									<form class="comment-block create">
+										<div class="comment-profile-input-form">
+											<a class="comment-profile-area">
+												<div class="profile-item" style="width: 48px; height: 48px;">
+													<img
+														src="https://cdn.notefolio.net/profiles/rhdtlr3006380_face.jpg"
+														class="hide">
+													<span class="show">R</span>
+													<!---->
+													<!---->
+												</div>
+											</a>
+
+											<textarea tabindex="1" rows="4"
+												placeholder=" 이 작업에 대한 댓글을 남겨주세요."
+												class="comment-textarea comment-textform comment-textarea-form"></textarea>
+										</div>
+										<div class="comment-action-area">
+											<div tabindex="2" class="comment-submit-btn">댓글작성</div>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<!--  -->
+
+				<div class="preview-sidebar">
+					<div class="profile">
+						<div class="profile-wrapper">
+							<div class="profile-image-container">
+								<div class="v-popover">
+									<div class="trigger" style="display: inline-block;">
+										<div class="profile-image">
+											<div class="profile-item pointer-cursor"
+												style="width: 46px; height: 46px;">
+												<img
+													src="https://cdn-bastani.stunning.kr/prod/users/0c9b5107-86f1-4e2f-ab14-e423b7df62c7/avatar/aezcK9ztSbZ3a7hU.시현하다_시원.jpeg.small?q=80&amp;t=crop&amp;s=100x100&amp;version=1a22780">
+												<span class="hide">S</span>
+												<!---->
+												<!---->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<span>프로필</span>
+						</div>
+					</div>
+
+
+					<div class="like">
+						<div class="like-work-wrapper">
+							<div class="v-popover">
+								<div class="trigger" style="display: inline-block;">
+									<div class="btn-like pointer-cursor">
+										<svg class="like-icon">
 	                                    <use href="#like-icon"></use>
-	                                </svg> 
-	                                <svg class="like-icon-fill">
+	                                </svg>
+										<svg class="like-icon-fill">
 	                                    <use href="#like-icon-fill"></use>
 	                                </svg>
-	                            </div> 
-	                        </div> 
-	                    </div> 
-	                    <span >좋아요</span>
-	                </div>
-	            </div> 
-        </div>	
-             	
-             	
-             	
-        	</div>
-             
-		<div class="col">
-				<h1>
-					글 본문
-					<button id="edit-button1" class="btn btn-secondary">
-						<i class="fa-solid fa-pen-to-square"></i>
-					</button>
-				</h1>
-
-				<c:if test="${not empty message }">
-					<div class="alert alert-primary">${message }</div>
-				</c:if>
+									</div>
+								</div>
+							</div>
+							<span>좋아요</span>
+						</div>
+					</div>
+				</div>
 
 
-				<!-- 게시물 보기 + 수정 -->
-				<form id="form1" action="${appRoot }/designBoard/modify"
+
+			</div>
+
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<h1>
+							글 본문
+							<button id="edit-button1" class="btn btn-secondary">
+								<i class="fa-solid fa-pen-to-square"></i>
+							</button>
+						</h1>
+
+						<c:if test="${not empty message }">
+							<div class="alert alert-primary">${message }</div>
+						</c:if>
+
+
+						<!-- 게시물 보기 + 수정 -->
+						<form id="form1" action="${appRoot }/designBoard/modify"
+							method="post">
+							<input type="hidden" name="id" value="${designBoard.id }" />
+
+							<div>
+								<label for="input3" class="form-label">작성자</label>
+								<input class="form-control" type="text"
+									value="${designBoard.writerNickName }" />
+							</div>
+
+							<div>
+								<label class="form-label" for="input1">제목</label>
+								<input class="form-control" type="text" name="title" required
+									id="input1" value="${designBoard.title }" />
+							</div>
+
+							<div>
+								<label class="form-label" for="textarea1">본문</label>
+								<div class="form-control" id="summernoteView" cols="30"
+									rows="10">${designBoard.body }</div>
+								<textarea class="form-control d-none" name="body"
+									id="summernote">${designBoard.body }</textarea>
+							</div>
+
+							<div>
+								<label for="input2" class="form-label">작성일시</label>
+								<input class="form-control" type="datetime-local"
+									value="${designBoard.inserted }" />
+							</div>
+
+							<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
+						</form>
+
+						<c:url value="/designBoard/remove" var="removeLink" />
+						<form action="${removeLink }" method="post">
+							<input type="hidden" name="id" value="${designBoard.id }" />
+							<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
+						</form>
+
+						<a href="${appRoot }/request/insert">요청</a>
+					</div>
+				</div>
+			</div>
+
+			<%-- 댓글 추가 --%>
+			<div class="border border-black border-2 rounded-3 p-4 container">
+				<div class="row mt-3">
+					<div class="col">
+						<h4>댓글</h4>
+						<form class="mt-3" id="insertReviewForm1">
+							<div class="input-group">
+								<input type="hidden" name="designBoardId"
+									value="${designBoard.id }" />
+
+								<input id="insertReviewContentInput1" class="form-control"
+									type="text" name="body" required />
+								<button id="addReviewSubmitButton1"
+									class="btn btn-outline-secondary">등록</button>
+
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="alert alert-primary" style="display: none;"
+						id="reviewMessage1"></div>
+				</div>
+
+				<%-- 댓글 목록 --%>
+				<div class="row mt-3">
+					<div class="col">
+
+						<ul id="reviewList1" class="list-group" />
+
+					</div>
+				</div>
+			</div>
+
+			<%-- 댓글 삭제 --%>
+			<div class="d-none">
+				<form id="reviewDeleteForm1" action="${appRoot }/review/delete"
 					method="post">
-					<input type="hidden" name="id" value="${designBoard.id }" />
-
-					<div>
-						<label for="input3" class="form-label">작성자</label>
-						<input class="form-control" type="text"
-							value="${designBoard.writerNickName }" />
-					</div>
-
-					<div>
-						<label class="form-label" for="input1">제목</label>
-						<input class="form-control" type="text" name="title" required
-							id="input1" value="${designBoard.title }" />
-					</div>
-
-					<div>
-						<label class="form-label" for="textarea1">본문</label>
-						<div class="form-control" id="summernoteView" cols="30" rows="10">${designBoard.body }</div>
-						<textarea class="form-control d-none" name="body" id="summernote">${designBoard.body }</textarea>
-					</div>
-
-					<div>
-						<label for="input2" class="form-label">작성일시</label>
-						<input class="form-control" type="datetime-local"
-							value="${designBoard.inserted }" />
-					</div>
-
-					<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
-				</form>
-
-				<c:url value="/designBoard/remove" var="removeLink" />
-				<form action="${removeLink }" method="post">
-					<input type="hidden" name="id" value="${designBoard.id }" />
-					<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
-				</form>
-
-				<a href="${appRoot }/request/insert">요청</a>
-			</div>
-		</div>
-	</div>
-	
-
-	<%-- 댓글 추가 --%>
-	<div class="container mt-3">
-		<div class="row">
-			<div class="col">
-				<form id="insertReviewForm1">
-					<div class="input-group">
-						<input type="hidden" name="designBoardId"
-							value="${designBoard.id }" />
-						<input id="insertReviewContentInput1" class="form-control"
-							type="text" name="body" required />
-						<button id="addReviewSubmitButton1"
-							class="btn btn-outline-secondary"></button>
-					</div>
+					<input id="reviewDeleteInput1" type="text" name="id" />
+					<input type="text" name="designBoardId" value="${designBoard.id }" />
 				</form>
 			</div>
-		</div>
-		<div class="row">
-			<div class="alert alert-primary" style="display: none;"
-				id="reviewMessage1"></div>
+
 		</div>
 	</div>
-
-	<%-- 댓글 목록 --%>
-	<div class="container mt-3">
-		<div class="row">
-			<div class="col">
-
-				<h3>
-					댓글
-					<span id="numOfReview1"></span>
-					개
-				</h3>
-
-				<ul id="reviewList1" class="list-group" />
-
-			</div>
-		</div>
-	</div>
-
-	<%-- 댓글 삭제 --%>
-	<div class="d-none">
-		<form id="reviewDeleteForm1" action="${appRoot }/review/delete"
-			method="post">
-			<input id="reviewDeleteInput1" type="text" name="id" />
-			<input type="text" name="designBoardId" value="${designBoard.id }" />
-		</form>
-	</div>
-</div>
-
 
 
 
@@ -632,106 +688,6 @@
 	});
 
 	</script>
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<h1>
-					글 본문
-					<button id="edit-button1" class="btn btn-secondary">
-						<i class="fa-solid fa-pen-to-square"></i>
-					</button>
-				</h1>
-
-				<c:if test="${not empty message }">
-					<div class="alert alert-primary">${message }</div>
-				</c:if>
-
-
-				<!-- 게시물 보기 + 수정 -->
-				<form id="form1" action="${appRoot }/designBoard/modify"
-					method="post">
-					<input type="hidden" name="id" value="${designBoard.id }" />
-
-					<div>
-						<label for="input3" class="form-label">작성자</label>
-						<input class="form-control" type="text"
-							value="${designBoard.writerNickName }" />
-					</div>
-
-					<div>
-						<label class="form-label" for="input1">제목</label>
-						<input class="form-control" type="text" name="title" required
-							id="input1" value="${designBoard.title }" />
-					</div>
-
-					<div>
-						<label class="form-label" for="textarea1">본문</label>
-						<div class="form-control" id="summernoteView" cols="30" rows="10">${designBoard.body }</div>
-						<textarea class="form-control d-none" name="body" id="summernote">${designBoard.body }</textarea>
-					</div>
-
-					<div>
-						<label for="input2" class="form-label">작성일시</label>
-						<input class="form-control" type="datetime-local"
-							value="${designBoard.inserted }" />
-					</div>
-
-					<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
-				</form>
-
-				<c:url value="/designBoard/remove" var="removeLink" />
-				<form action="${removeLink }" method="post">
-					<input type="hidden" name="id" value="${designBoard.id }" />
-					<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
-				</form>
-
-				<a href="${appRoot }/request/insert">요청</a>
-			</div>
-		</div>
-	</div>
-
-	<%-- 댓글 추가 --%>
-	<div class="border border-black border-2 rounded-3 p-4 container">
-		<div class="row mt-3">
-			<div class="col">
-				<h4>댓글</h4>
-				<form class="mt-3" id="insertReviewForm1">
-					<div class="input-group">
-						<input type="hidden" name="designBoardId"
-							value="${designBoard.id }" />
-
-						<input id="insertReviewContentInput1" class="form-control"
-							type="text" name="body" required />
-						<button id="addReviewSubmitButton1"
-							class="btn btn-outline-secondary">등록</button>
-
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="row">
-			<div class="alert alert-primary" style="display: none;"
-				id="reviewMessage1"></div>
-		</div>
-
-		<%-- 댓글 목록 --%>
-		<div class="row mt-3">
-			<div class="col">
-
-				<ul id="reviewList1" class="list-group" />
-
-			</div>
-		</div>
-	</div>
-
-	<%-- 댓글 삭제 --%>
-	<div class="d-none">
-		<form id="reviewDeleteForm1" action="${appRoot }/review/delete"
-			method="post">
-			<input id="reviewDeleteInput1" type="text" name="id" />
-			<input type="text" name="designBoardId" value="${designBoard.id }" />
-		</form>
-	</div>
 
 </body>
 </html>
