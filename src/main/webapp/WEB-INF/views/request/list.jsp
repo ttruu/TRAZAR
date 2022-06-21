@@ -17,6 +17,7 @@ $(document).ready(function() {
 	
 	// 요청 수락시 chat열리게함
 	$(".accept-submit1").click(function(e) {
+
 		e.preventDefault();
 	
 		if (confirm("수락하시겠습니까?")) {
@@ -30,6 +31,21 @@ $(document).ready(function() {
 		}
 	
 	});
+
+      e.preventDefault();
+   
+      if (confirm("수락하시겠습니까?")) {
+         let form1 = $(".form2");
+         let methodAttr = "get";
+         let actionAttr = "${appRoot}/chat";
+         form1.attr("action", actionAttr);
+         form1.attr("method", methodAttr);
+   
+         form1.submit();
+      }
+   
+   });
+
 	
 	// 요청 거절시 해당index에 따라 삭제되게함
 	$(".reject-submit1").click(function(e) {

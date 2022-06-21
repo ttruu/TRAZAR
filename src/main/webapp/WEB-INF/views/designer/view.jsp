@@ -51,7 +51,6 @@
 						<input type="text" name="introduce" value="${member.introduce }" size="74" id="introduce" /> 
 					</div>
 		
-
 	
 </body>
 </html>
