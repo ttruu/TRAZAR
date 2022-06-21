@@ -24,6 +24,8 @@ public interface RequestMapper {
 	void deleteByMemberId(String memberId);
 
 	List<RequestDto> myListRequest(String memberId);
+
+	RequestDto getMember(String memberId);
 	
 
 }

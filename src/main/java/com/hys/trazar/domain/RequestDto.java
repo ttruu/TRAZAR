@@ -16,4 +16,5 @@ public class RequestDto {
 	private String phoneNum;
 	private String term;
 	private String state;
+	private String m_id;
 }

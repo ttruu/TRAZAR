@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.RequestDto;
+import com.hys.trazar.domain.login.SignupDto;
 import com.hys.trazar.service.RequestService;
 
 @Controller
@@ -116,12 +117,16 @@ public class RequestController {
 		
 	}
 	
-	@RequestMapping("myList")
+	@GetMapping("myList")
 	public void myList(RequestDto dto, Principal principal, Model model, String memberId) {
 		dto.setMemberId(principal.getName());
-		System.out.println(principal.getName());
+		System.out.println(dto);
 		List<RequestDto> list = service.myListRequest(memberId);
+		System.out.println(list);
 		model.addAttribute("requestMyList", list);
+		RequestDto dto1 = service.getMember(memberId);
+		System.out.println(dto1);
+		model.addAttribute("member", dto1);
 	}
 	
 }

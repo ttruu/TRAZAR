@@ -17,6 +17,7 @@
 		<div class="row">
 			<div class="col">
 				<h1>의뢰 목록</h1>
+				<input type="hidden" name="memberId" value="${request.memberId }" />
 				<table class="table">
 					<thead>
 						<tr>
@@ -27,7 +28,6 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${requestMyList }" var="my" varStatus="status">
-						<input type="hidden" name="memberId" value="${my.memberId }" />
 							<tr>
 								<td>${my.title }</td>
 								<td>${my.inserted }</td>
