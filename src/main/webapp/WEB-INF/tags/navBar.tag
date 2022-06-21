@@ -46,6 +46,14 @@
    </c:url>
 </sec:authorize>
 
+<%-- 마이리스트 링크 --%>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+	<c:url value="/request/myList" var="myListUrl">
+		<c:param name="memberId" value="${principal.username }" />
+	</c:url>
+</sec:authorize>
+
 
 <%-- 회원정보 암호 모달 --%>
 
@@ -135,7 +143,13 @@
       <div class="collapse navbar-collapse justify-content-end"
          id="collapsibleNavbar">
          <ul class="navbar-nav">
-
+			<sec:authorize access="isAuthenticated()">
+               <li class="nav-item">
+                  <a class="nav-link${current == 'myList' ? 'active' : '' }"
+                     href="${myListUrl }">내 의뢰목록</a>
+               </li>
+            </sec:authorize>
+			
             <sec:authorize access="isAuthenticated()">
                <li class="nav-item">
                   <a class="nav-link${current == 'insert' ? 'active' : '' }"
