@@ -36,7 +36,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light mb-3">
 	<form>
-		<a class="navbar-brand" href="/trazar/test/grid">
+		<a class="navbar-brand" href="/trazar/designBoard/list">
 			<img src="../resources/picture/logo/로고.png" />
 		</a>
 	</form>
