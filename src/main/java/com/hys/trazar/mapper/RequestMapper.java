@@ -22,6 +22,8 @@ public interface RequestMapper {
 	int removeRequestById(int id);
 	
 	void deleteByMemberId(String memberId);
+
+	List<RequestDto> myListRequest(String memberId);
 	
 
 }

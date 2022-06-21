@@ -48,5 +48,10 @@ public class RequestService {
 		return cnt == 1;
 		
 	}
+	
+	// 내 요청 가져오기
+	public List<RequestDto> myListRequest(String memberId) {
+		return mapper.myListRequest(memberId);
+	}
 
 }

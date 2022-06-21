@@ -50,7 +50,6 @@ public class RequestController {
 	public String insertRequest(RequestDto dto, Principal principal,DesignBoardDto designBoard, RedirectAttributes rttr) {
 		
 		dto.setMemberId(principal.getName());
-		dto.setDesignBoardId(designBoard.getId());
 		boolean success = service.addRequest(dto);
 		
 		if (success) {
@@ -117,5 +116,12 @@ public class RequestController {
 		
 	}
 	
+	@RequestMapping("myList")
+	public void myList(RequestDto dto, Principal principal, Model model, String memberId) {
+		dto.setMemberId(principal.getName());
+		System.out.println(principal.getName());
+		List<RequestDto> list = service.myListRequest(memberId);
+		model.addAttribute("requestMyList", list);
+	}
 	
 }

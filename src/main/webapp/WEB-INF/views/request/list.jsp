@@ -84,13 +84,6 @@ $(document).ready(function() {
 										<c:out value="${req.title }" />
 									</a>
 									
-									<%-- <c:if test="${board.numOfReply > 0 }">
-										<span class="badge rounded-pill bg-light text-dark">
-											<i class="fa-solid fa-comment-dots"></i>
-											${board.numOfReply }
-										</span>
-									</c:if> --%>
-									
 								</td>
 								<td>${req.price }</td>
 								<td>${req.inserted }</td>

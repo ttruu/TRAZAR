@@ -17,6 +17,14 @@
 		ORDER BY r.id DESC
 	</select>
 	
+	<select id="myListRequest" resultType="com.hys.trazar.domain.RequestDto">
+		SELECT r.id, r.memberId, r.title, r.price, r.inserted, r.state
+		FROM Request r 
+		JOIN Member m ON m.id = r.memberId
+		WHERE r.memberId = #{memberId}
+		ORDER BY r.id DESC
+	</select>
+	
 	<select id="getRequestById" resultType="com.hys.trazar.domain.RequestDto">
 		SELECT r.id, r.memberId, r.title, r.body, r.price, r.inserted, m.phoneNum, r.term, r.state
 		FROM Request r JOIN Member m ON r.memberId = m.id
