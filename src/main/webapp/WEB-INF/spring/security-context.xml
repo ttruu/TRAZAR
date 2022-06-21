@@ -16,6 +16,11 @@
 			always-use-default-target="true"
 			default-target-url="/designBoard/list" login-page="/sign/login/" />
 		<security:logout />
+		<security:remember-me/>
+		
+		<!-- 로그인 권한 -->
+		<security:intercept-url pattern="/designBoard/insert" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/notice/insert" access="hasRole('ADMIN')"/>
 	</security:http>
 
 	<security:authentication-manager>
