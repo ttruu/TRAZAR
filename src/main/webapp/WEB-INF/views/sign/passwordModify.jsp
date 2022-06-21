@@ -50,11 +50,8 @@ $(document).ready(function(){
 		<div class="row justify-content-center">
 			<div class="col-12 col-lg-6">
 				<h1>패스워드 변경</h1>
-				<form action="${appRoot }/sign/findPassword" method="post">
+				<form action="${appRoot }/sign/passwordUpdate" method="post">
 				
-					<label for="nameInput1" class="form-label">
-					아이디
-					</label>
 					<input id="idInput1" class="form-control" type="hidden" name="id" value="${member.id }" readonly />
 
 					<label for="passwordInput1" class="form-label">
@@ -62,7 +59,7 @@ $(document).ready(function(){
 					</label>
 					<input class="form-control" id="passwordModify3" name="password" type="password" value=""  />
 					<label for="passwordInput2" class="form-label">
-					변경 할 암호확인
+					변경 후 암호확인
 					</label>
 					<input class="form-control" id="passwordModify4" type="password" value=""  />
 					<p class="form-text" id="passwordMessageModify1"></p>
