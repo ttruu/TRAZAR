@@ -49,7 +49,7 @@
 
 <%-- 회원정보 암호 모달 --%>
 
-<nav class="navbar navbar-expand-lg bg-white >
+<nav class="navbar navbar-expand-lg bg-white">
 	<div class="container">
 
 		<div class="modal fade" id="modal2" tabindex="-1"
