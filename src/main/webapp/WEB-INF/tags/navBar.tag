@@ -41,6 +41,14 @@
 	</c:url>
 </sec:authorize>
 
+<%-- 마이리스트 링크 --%>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+	<c:url value="/request/myList" var="myListUrl">
+		<c:param name="memberId" value="${principal.username }" />
+	</c:url>
+</sec:authorize>
+
 
 <%-- 회원정보 암호 모달 --%>
 
@@ -161,30 +169,103 @@
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li class="dropdown-item">
 
-								<a href="${passwordModify }" data-bs-toggle="modal"
-									data-bs-target="#modal3"
-									class="nav-link ${current == 'passwordModify' ? 'active' : '' }">비밀번호
-									변경</a>
-							</li>
-							<li class="dropdown-item">
+      <div class="collapse navbar-collapse justify-content-end"
+         id="collapsibleNavbar">
+         <ul class="navbar-nav">
+			<sec:authorize access="isAuthenticated()">
+               <li class="nav-item">
+                  <a class="nav-link${current == 'myList' ? 'active' : '' }"
+                     href="${myListUrl }">내 의뢰목록</a>
+               </li>
+            </sec:authorize>
+			
+            <sec:authorize access="isAuthenticated()">
+               <li class="nav-item">
+                  <a class="nav-link${current == 'insert' ? 'active' : '' }"
+                     href="${insertUrl }">글쓰기</a>
+               </li>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+               <li class="nav-item">
+                  <a class="nav-link"
+                     href="#">알람</a>
+               </li>
+            </sec:authorize>
+            <sec:authorize access="not isAuthenticated()">
+               <li class="nav-item" style="">
+                  <a href="${loginUrl }" class="nav-link">로그인</a>
+               </li>
+            </sec:authorize>
+            
+            <sec:authorize access="not isAuthenticated()">
+               <li class="nav-item">
+                  <a class="nav-link${current == 'signup' ? 'active' : '' }"
+                     href="${signupUrl }">회원가입</a>
+               </li>
+            </sec:authorize>
 
-								<a href="${memberInfoUrl }" data-bs-toggle="modal"
-									data-bs-target="#modal2"
-									class="nav-link ${current == 'memberInfo' ? 'active' : '' }">회원정보수정</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider">
-							</li>
-							<li>
-								<a href="${logoutUrl }" class="dropdown-item">로그아웃</a>
-							</li>
-						</ul>
-					</li>
-				</sec:authorize>
-			</ul>
-			<div class="d-none">
-				<form action="${logoutUrl }" id="logoutform1" method="post" /></form>
-			</div>
-		</div>
-	</div>
+
+
+            <sec:authorize access="isAuthenticated()">
+               <li class="nav-item dropdown">
+                  <button class="btn dropdown-toggle" type="button"
+                     id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                     aria-expanded="false">
+                     <i class="fa-solid fa-circle-user"></i>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                     <li class="dropdown-item">
+
+                        <a href="${passwordModify }" data-bs-toggle="modal"
+                           data-bs-target="#modal3"
+                           class="nav-link ${current == 'passwordModify' ? 'active' : '' }">비밀번호
+                           변경</a>
+                     </li>
+                     <li class="dropdown-item">
+
+                        <a href="${memberInfoUrl }" data-bs-toggle="modal"
+                           data-bs-target="#modal2"
+                           class="nav-link ${current == 'memberInfo' ? 'active' : '' }">회원정보수정</a>
+                     </li>
+                     <li>
+                        <hr class="dropdown-divider">
+                     </li>
+                     <li>
+                        <a href="${logoutUrl }" class="dropdown-item">로그아웃</a>
+                     </li>
+                  </ul>
+               </li>
+            </sec:authorize>
+         </ul>
+         <div class="d-none">
+            <form action="${logoutUrl }" id="logoutform1" method="post" /></form>
+         </div>
+      </div>
+   </div>
 </nav>
+<%--사이드 nav 바 --%>
+
+<ul class="nav flex-column position-fixed">
+   <li class="nav-item">
+      <a class="nav-link ${current == 'list' ? 'active' : '' }"
+         aria-current="page" href="${listUrl }">
+         <i class="fa-solid fa-square-list"></i>
+      </a>
+      <p>Trazar</p>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link" href="${noticeListUrl }">
+         <i class="fa-solid fa-bullhorn"></i>
+      </a>
+      <p>공지사항</p>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link" href="#">
+         <i class="fa-solid fa-comments-question-check"></i>
+      </a>
+      <p>의뢰</p>
+   </li>
+   <li class="nav-item">
+      <i class="fa-solid fa-chevron-down"></i>
+   </li>
+</ul>

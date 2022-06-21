@@ -29,10 +29,4 @@ public class ChatController {
 		model.addAttribute("userid", userDetails.getUsername());
 	}
 	
-	@PostMapping("/chat")
-	public void chatPost(Model model, String message) {
-		service.getChatInfo(message);
-		
-		model.addAttribute("user", message);
-	}
 }
