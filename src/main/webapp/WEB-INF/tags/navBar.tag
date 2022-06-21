@@ -159,7 +159,7 @@
 					</li>
 				</sec:authorize>
 
-				<sec:authorize access="isAuthenticated()">
+<%-- lim.... 지워요... 				<sec:authorize access="isAuthenticated()">
 					<li class="nav-item dropdown">
 						<button class="btn dropdown-toggle" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
@@ -167,7 +167,7 @@
 							<i class="fa-solid fa-circle-user"></i>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-							<li class="dropdown-item">
+							<li class="dropdown-item"> --%>
 
       <div class="collapse navbar-collapse justify-content-end"
          id="collapsibleNavbar">
