@@ -14,24 +14,46 @@
 
 <script>
 $(document).ready(function() {
+	
+	// 요청 수락시 chat열리게함
 	$(".accept-submit1").click(function(e) {
+
 		e.preventDefault();
 	
 		if (confirm("수락하시겠습니까?")) {
 			let form1 = $(".form2");
+			let methodAttr = "get";
 			let actionAttr = "${appRoot}/chat";
 			form1.attr("action", actionAttr);
+			form1.attr("method", methodAttr);
 	
 			form1.submit();
 		}
 	
 	});
+
+      e.preventDefault();
+   
+      if (confirm("수락하시겠습니까?")) {
+         let form1 = $(".form2");
+         let methodAttr = "get";
+         let actionAttr = "${appRoot}/chat";
+         form1.attr("action", actionAttr);
+         form1.attr("method", methodAttr);
+   
+         form1.submit();
+      }
+   
+   });
+
 	
+	// 요청 거절시 해당index에 따라 삭제되게함
 	$(".reject-submit1").click(function(e) {
 		e.preventDefault();
 	
 		if (confirm("거절하시겠습니까?")) {
-			let form1 = $(".form2");
+			let idx = $(this).attr("data-index");
+			let form1 = $("#processForm" + idx);
 			let actionAttr = "${appRoot}/request/remove";
 			form1.attr("action", actionAttr);
 	
@@ -39,64 +61,56 @@ $(document).ready(function() {
 		}
 	
 	});
+	
 });
 </script>
 
 <title>Insert title here</title>
 </head>
 <body>
-						<div class="container">
+	<div class="container">
 		<div class="row">
 			<div class="col">
 				<h1>의뢰 목록</h1>
-				
 				<table class="table">
 					<thead>
 						<tr>
 							<th>아이디</th>
 							<th>제목</th>
-							<th>가격</th>
+							<th>예산</th>
 							<th>요청 시간</th>
 							<th>요청 처리</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${requestList }" var="req">
+						<c:forEach items="${requestList }" var="req" varStatus="status">
+						<input type="hidden" name="memberId" value="${req.memberId }" />
 							<tr>
 								<td>${req.memberId }</td>
 								<td>
 													
 									<c:url value="/request/get" var="getUrl">
 										<c:param name="id" value="${req.id }"></c:param>
+										<c:param name="memberId" value="${req.memberId }"></c:param>
+										<c:param name="designBoardId" value="${req.designBoardId }"></c:param>
 									</c:url>
 									
 									<a href="${getUrl }">
 										<c:out value="${req.title }" />
 									</a>
 									
-									<%-- <c:if test="${board.numOfReply > 0 }">
-										<span class="badge rounded-pill bg-light text-dark">
-											<i class="fa-solid fa-comment-dots"></i>
-											${board.numOfReply }
-										</span>
-									</c:if> --%>
-									
 								</td>
 								<td>${req.price }</td>
 								<td>${req.inserted }</td>
-								<td>
-									<form id="" class="form2" action="${appRoot }/request/remove" method="post">
-										<input type="hidden" name="id" value="${req.id }" />
-										<button id="" class="btn btn-primary accept-submit1">수락</button>
-										<button id="" class="btn btn-primary reject-submit1">거절</button>
-										<button id="" class="btn btn-danger delete-submit1">삭제</button>
-									</form>
-								</td>
+								<td>${req.state }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
+			<form action="${appRoot }/request/insert">
+				<button id="requestAdd" class="btn btn-primary">의뢰 작성</button>
+			</form>
 		</div>
 	</div>
 </body>

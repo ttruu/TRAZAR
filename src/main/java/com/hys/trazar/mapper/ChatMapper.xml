@@ -8,7 +8,7 @@
 		FROM ChatMessage cm
 			JOIN ChatUser cu ON cm.chatUserId = cu.id
 			JOIN DesignBoard db ON cu.designBoardId = db.id
-			JOIN Member m ON db.designerId = m.id
+			JOIN Member m ON db.memberId = m.id
 	</select>
 	
 </mapper>
