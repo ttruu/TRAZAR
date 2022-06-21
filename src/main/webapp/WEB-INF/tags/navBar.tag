@@ -14,6 +14,8 @@
    integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <%@ attribute name="current"%>
+
+
 <c:url value="/sign/loginSuccess" var="loginSuccess"></c:url>
 <c:url value="/sign/memberModifyLogin" var="memberLogin"></c:url>
 <c:url value="/sign/signup" var="signupUrl"></c:url>
