@@ -13,7 +13,9 @@
 <c:url value="/sign/passwordModify" var="passwordModify"></c:url>
 <c:url value="/notice/list" var="noticeListUrl"></c:url>
 <c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
-
+<c:url value="/request/myList" var="myListUrl">
+	<c:param name="memberId" value="${principal.username }" />
+</c:url>
 
 <%-- 회원정보링크 --%>
 <sec:authorize access="isAuthenticated()">
@@ -28,6 +30,14 @@
 	<sec:authentication property="principal" var="principal" />
 	<c:url value="/sign/passwordModify" var="passwordModify">
 		<c:param name="id" value="${principal.username }" />
+	</c:url>
+</sec:authorize>
+
+<%-- 마이리스트 링크 --%>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+	<c:url value="/reuqest/myList" var="myList">
+		<c:param name="memberId" value="${principal.username }" />
 	</c:url>
 </sec:authorize>
 
@@ -116,7 +126,12 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+				
+				<li class="nav-item">
+					<a class="nav-link ${current == 'myList' ? 'active' : '' }"
+						href="${myListUrl }">내 의뢰목록보기</a>
+				</li>
+				
 				<li class="nav-item">
 					<a class="nav-link ${current == 'list' ? 'active' : '' }"
 						href="${listUrl }">목록보기</a>
