@@ -29,6 +29,7 @@
 <c:url value="/notice/list" var="noticeListUrl"></c:url>
 
 
+
 <%-- 회원정보링크 --%>
 <sec:authorize access="isAuthenticated()">
    <sec:authentication property="principal" var="principal" />
@@ -66,36 +67,6 @@
 
    <div class="container">
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				
-				<li class="nav-item">
-					<a class="nav-link ${current == 'myList' ? 'active' : '' }"
-						href="${myListUrl }">내 의뢰목록보기</a>
-				</li>
-				
-				<li class="nav-item">
-					<a class="nav-link ${current == 'list' ? 'active' : '' }"
-						href="${listUrl }">목록보기</a>
-				</li>
-					<li class="nav-item">
-						<a class="nav-link ${current == 'insert' ? 'active' : '' }"
-							href="${insertUrl }">글쓰기</a>
-					</li>
-				<li class="nav-item">
-					<a href="${signupUrl }"
-						class="nav-link ${current == 'signup' ? 'active' : '' }">회원가입</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link ${current == 'list' ? 'active' : '' }"
-						href="${noticeListUrl }">공지사항보기</a>
-				</li>
-					<li class="nav-item">
-						<a class="nav-link ${current == 'insert' ? 'active' : '' }"
-							href="${noticeInsertUrl }">공지사항글쓰기</a>
-					</li>
-				<sec:authorize access="isAuthenticated()">
-					<li class="nav-item">
       <div class="modal fade" id="modal2" tabindex="-1"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog">
@@ -172,7 +143,13 @@
       <div class="collapse navbar-collapse justify-content-end"
          id="collapsibleNavbar">
          <ul class="navbar-nav">
-
+			<sec:authorize access="isAuthenticated()">
+               <li class="nav-item">
+                  <a class="nav-link${current == 'myList' ? 'active' : '' }"
+                     href="${myListUrl }">내 의뢰목록</a>
+               </li>
+            </sec:authorize>
+			
             <sec:authorize access="isAuthenticated()">
                <li class="nav-item">
                   <a class="nav-link${current == 'insert' ? 'active' : '' }"
