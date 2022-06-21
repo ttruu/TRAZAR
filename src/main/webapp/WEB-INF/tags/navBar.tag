@@ -2,17 +2,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+
+
+
+
+<!-- include summernote css/js -->
+<!-- <script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/lang/summernote-ko-KR.js"></script> -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css"
+	integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js"
+	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <%@ attribute name="current"%>
 <c:url value="/sign/loginSuccess" var="loginSuccess"></c:url>
 <c:url value="/sign/memberModifyLogin" var="memberLogin"></c:url>
 <c:url value="/sign/signup" var="signupUrl"></c:url>
 <c:url value="/sign/login" var="loginUrl"></c:url>
 <c:url value="/logout" var="logoutUrl"></c:url>
-<c:url value="/designBoard/list" var="listUrl"></c:url>
 <c:url value="/designBoard/insert" var="insertUrl"></c:url>
 <c:url value="/sign/passwordModify" var="passwordModify"></c:url>
+<c:url value="/designBoard/list" var="listUrl"></c:url>
 <c:url value="/notice/list" var="noticeListUrl"></c:url>
-<c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
+
 
 
 <%-- 회원정보링크 --%>
@@ -34,12 +49,9 @@
 
 <%-- 회원정보 암호 모달 --%>
 
-<nav class="navbar navbar-expand-md navbar-light mb-3">
-	<form>
-		<a class="navbar-brand" href="/trazar/designBoard/list">
-			<img src="../resources/picture/logo/로고.png" />
-		</a>
-	</form>
+
+	
+<nav class="navbar navbar-expand-md navbar-light mb-3" >
 	<div class="container">
 		<div class="modal fade" id="modal2" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -108,74 +120,103 @@
 
 
 
-		<a class="navbar-brand" href="${listUrl }">
-			<i class="fa-solid fa-house"></i>
+		<form>
+		<a class="navbar-brand" href="/trazar/designBoard/list">
+			<img src="../resources/picture/logo/로고.png" />
 		</a>
+	</form>
 
 		<!-- button.navbar-toggler>span.navbar-toggler-icon -->
-		<button class="navbar-toggler" data-bs-toggle="collapse"
-			data-bs-target="#navbarSupportedContent">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-				<li class="nav-item">
-					<a class="nav-link ${current == 'list' ? 'active' : '' }"
-						href="${listUrl }">목록보기</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link ${current == 'insert' ? 'active' : '' }"
-						href="${insertUrl }">글쓰기</a>
-				</li>
-				<li class="nav-item">
-					<a href="${signupUrl }"
-						class="nav-link ${current == 'signup' ? 'active' : '' }">회원가입</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link ${current == 'list' ? 'active' : '' }"
-						href="${noticeListUrl }">공지사항보기</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link ${current == 'insert' ? 'active' : '' }"
-						href="${noticeInsertUrl }">공지사항글쓰기</a>
-				</li>
-				<sec:authorize access="isAuthenticated()">
-					<li class="nav-item">
-
-						<a href="${passwordModify }" data-bs-toggle="modal"
-							data-bs-target="#modal3"
-							class="nav-link ${current == 'passwordModify' ? 'active' : '' }">비밀번호
-							변경</a>
-					</li>
-				</sec:authorize>
+		<div class="collapse navbar-collapse justify-content-end"
+			id="collapsibleNavbar">
+			<ul class="navbar-nav">
 
 				<sec:authorize access="isAuthenticated()">
 					<li class="nav-item">
-
-						<a href="${memberInfoUrl }" data-bs-toggle="modal"
-							data-bs-target="#modal2"
-							class="nav-link ${current == 'memberInfo' ? 'active' : '' }">회원정보수정</a>
+						<a class="nav-link"
+							href="#">알람</a>
 					</li>
 				</sec:authorize>
-
 				<sec:authorize access="not isAuthenticated()">
 					<li class="nav-item" style="text-align: right;">
 						<a href="${loginUrl }" class="nav-link">로그인</a>
 					</li>
 				</sec:authorize>
+				
+				<sec:authorize access="not isAuthenticated()">
+					<li class="nav-item">
+						<a class="nav-link${current == 'signup' ? 'active' : '' }"
+							href="${signupUrl }">회원가입</a>
+					</li>
+				</sec:authorize>
+
+
 
 				<sec:authorize access="isAuthenticated()">
-					<li class="nav-item">
-						<a href="${logoutUrl }" class="nav-link">로그아웃</a>
+					<li class="nav-item dropdown">
+						<button class="btn dropdown-toggle" type="button"
+							id="dropdownMenuButton1" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							<i class="fa-solid fa-circle-user"></i>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							<li class="dropdown-item">
+
+								<a href="${passwordModify }" data-bs-toggle="modal"
+									data-bs-target="#modal3"
+									class="nav-link ${current == 'passwordModify' ? 'active' : '' }">비밀번호
+									변경</a>
+							</li>
+							<li class="dropdown-item">
+
+								<a href="${memberInfoUrl }" data-bs-toggle="modal"
+									data-bs-target="#modal2"
+									class="nav-link ${current == 'memberInfo' ? 'active' : '' }">회원정보수정</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li>
+								<a href="${logoutUrl }" class="dropdown-item">로그아웃</a>
+							</li>
+						</ul>
 					</li>
 				</sec:authorize>
 			</ul>
-
 			<div class="d-none">
 				<form action="${logoutUrl }" id="logoutform1" method="post" /></form>
 			</div>
 		</div>
 	</div>
 </nav>
+<%--사이드 nav 바 --%>
+
+<ul class="nav flex-column position-fixed">
+	<li class="nav-item">
+		<a class="nav-link ${current == 'list' ? 'active' : '' }"
+			aria-current="page" href="${listUrl }">
+			<i class="fa-solid fa-square-list"></i>
+		</a>
+		<p>Trazar</p>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="${noticeListUrl }">
+			<i class="fa-solid fa-bullhorn"></i>
+		</a>
+		<p>공지사항</p>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="#">
+			<i class="fa-solid fa-comments-question-check"></i>
+		</a>
+		<p>의뢰</p>
+	</li>
+	<li class="nav-item">
+		<i class="fa-solid fa-chevron-down"></i>
+	</li>
+</ul>
