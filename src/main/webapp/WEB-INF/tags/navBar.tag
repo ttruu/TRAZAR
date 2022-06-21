@@ -157,7 +157,7 @@
 				</sec:authorize>
 
 				<sec:authorize access="not isAuthenticated()">
-					<li class="nav-item" style="">
+					<li class="nav-item" style="text-align: right;">
 						<a href="${loginUrl }" class="nav-link">로그인</a>
 					</li>
 				</sec:authorize>

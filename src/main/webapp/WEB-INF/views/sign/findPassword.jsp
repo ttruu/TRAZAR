@@ -40,8 +40,12 @@
 						
 					<label for="usernameInput1" class="form-label"
 						style="position: absolute;"> </label>
-					<input id="usernameInput1" class="form-control" type="text"
-						value="아버지의 성함은?" readonly /> <br /> <br />
+					<select id="usernameInput1" class="form-control">
+					<option value="1">내가 좋아하는 캐릭터는 ?</option>
+					<option value="2">기억에 남는 추억의 장소는 ?</option>
+					<option value="3">인상 깊게 읽은 책 이름은 ?</option>
+					<option value="4">아버지의 성함은 ?</option>
+					</select> <br /> <br />
 
 
 					<label for="passwordInput1" class="form-label"
