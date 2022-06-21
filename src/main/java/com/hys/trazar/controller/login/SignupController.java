@@ -232,7 +232,7 @@ public class SignupController {
 			// selectMember id로 멤버 찾는 mapper
 			SignupDto findId = mapper.selectMember(dto.getId());
 			// id가 null이 아니고 id의 question이랑 dto의 question이랑 같을 때 서비스 실행
-			if(findId != null && findId.getQuestion().equals(dto.getQuestion())) {
+			if(findId != null && findId.getQuestion().equals(dto.getQuestion()) && findId.getAnswer().equals(dto.getAnswer())) {
 				service.findPassword(id);
 				return "redirect:/sign/findPasswordSuccess";
 			} else {

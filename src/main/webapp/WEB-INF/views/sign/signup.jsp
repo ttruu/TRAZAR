@@ -263,11 +263,11 @@
 						비밀번호 초기화 질문
 					</label>
 					<div class="input-group">
-						<select id="usernameInput1" class="form-control">
-						<option value="1">내가 좋아하는 캐릭터는 ?</option>
-						<option value="2">기억에 남는 추억의 장소는 ?</option>
-						<option value="3">인상 깊게 읽은 책 이름은 ?</option>
-						<option value="4">아버지의 성함은 ?</option>
+						<select id="usernameInput1" class="form-control" name="question">
+						<option value="내가 좋아하는 캐릭터는 ?">내가 좋아하는 캐릭터는 ?</option>
+						<option value="기억에 남는 추억의 장소는 ?">기억에 남는 추억의 장소는 ?</option>
+						<option value="인상 깊게 읽은 책 이름은 ?">인상 깊게 읽은 책 이름은 ?</option>
+						<option value="아버지의 성함은 ?">아버지의 성함은 ?</option>
 						</select>
 					</div>
 					
@@ -276,7 +276,7 @@
 						답변
 					</label>
 					<div class="input-group">
-						<input id="answer" class="form-control" type="text" name="question" /> 	
+						<input id="answer" class="form-control" type="text" name="answer" /> 	
 					</div>
 					
 					<button class = "btn btn-dark" type="submit" style="margin-top: 37px; position: relative; display: block; height: 58px; text-align: center;

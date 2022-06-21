@@ -40,18 +40,18 @@
 						
 					<label for="usernameInput1" class="form-label"
 						style="position: absolute;"> </label>
-					<select id="usernameInput1" class="form-control">
-					<option value="1">내가 좋아하는 캐릭터는 ?</option>
-					<option value="2">기억에 남는 추억의 장소는 ?</option>
-					<option value="3">인상 깊게 읽은 책 이름은 ?</option>
-					<option value="4">아버지의 성함은 ?</option>
+					<select id="usernameInput1" class="form-control" name="question">
+					<option value="내가 좋아하는 캐릭터는 ?">내가 좋아하는 캐릭터는 ?</option>
+					<option value="기억에 남는 추억의 장소는 ?">기억에 남는 추억의 장소는 ?</option>
+					<option value="인상 깊게 읽은 책 이름은 ?">인상 깊게 읽은 책 이름은 ?</option>
+					<option value="아버지의 성함은 ?">아버지의 성함은 ?</option>
 					</select> <br /> <br />
 
 
 					<label for="passwordInput1" class="form-label"
 						style="position: absolute;"> </label>
 					<input class="form-control" id="passwordInput1" type="text"
-						name="question" placeholder="답변" /> <br /> <br />
+						name="answer" placeholder="답변" /> <br /> <br />
 
 					<input class="btn btn-primary" type="submit" value="비밀번호 초기화" />
 				</form>
