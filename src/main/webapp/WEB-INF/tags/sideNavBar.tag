@@ -3,6 +3,7 @@
 
 <c:url value="/designBoard/list" var="listUrl"></c:url>
 <c:url value="/notice/list" var="noticeListUrl"></c:url>
+<c:url value="/request/list" var="requestListUrl"></c:url>
 
 <%--사이드 nav 바 --%>
 
@@ -21,7 +22,7 @@
 		<p>공지사항</p>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="#">
+		<a class="nav-link" href="${requestListUrl }">
 			<i class="fa-solid fa-comments-question-check"></i>
 		</a>
 		<p>의뢰</p>

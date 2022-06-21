@@ -131,7 +131,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse justify-content-end"
+		<%-- <div class="collapse navbar-collapse justify-content-end"
 			id="collapsibleNavbar">
 			<ul class="navbar-nav">
 
@@ -157,7 +157,7 @@
 						<a class="nav-link${current == 'signup' ? 'active' : '' }"
 							href="${signupUrl }">회원가입</a>
 					</li>
-				</sec:authorize>
+				</sec:authorize> --%>
 
 <%-- lim.... 지워요... 				<sec:authorize access="isAuthenticated()">
 					<li class="nav-item dropdown">
@@ -172,12 +172,12 @@
       <div class="collapse navbar-collapse justify-content-end"
          id="collapsibleNavbar">
          <ul class="navbar-nav">
-			<sec:authorize access="isAuthenticated()">
+	<%-- 		<sec:authorize access="isAuthenticated()">
                <li class="nav-item">
                   <a class="nav-link${current == 'myList' ? 'active' : '' }"
                      href="${myListUrl }">내 의뢰목록</a>
                </li>
-            </sec:authorize>
+            </sec:authorize> --%>
 			
             <sec:authorize access="isAuthenticated()">
                <li class="nav-item">
@@ -222,6 +222,10 @@
                            변경</a>
                      </li>
                      <li class="dropdown-item">
+                  <a class="nav-link${current == 'myList' ? 'active' : '' }"
+                     href="${myListUrl }">내 의뢰목록</a>
+               </li>
+                     <li class="dropdown-item">
 
                         <a href="${memberInfoUrl }" data-bs-toggle="modal"
                            data-bs-target="#modal2"
@@ -243,29 +247,4 @@
       </div>
    </div>
 </nav>
-<%--사이드 nav 바 --%>
 
-<ul class="nav flex-column position-fixed">
-   <li class="nav-item">
-      <a class="nav-link ${current == 'list' ? 'active' : '' }"
-         aria-current="page" href="${listUrl }">
-         <i class="fa-solid fa-square-list"></i>
-      </a>
-      <p>Trazar</p>
-   </li>
-   <li class="nav-item">
-      <a class="nav-link" href="${noticeListUrl }">
-         <i class="fa-solid fa-bullhorn"></i>
-      </a>
-      <p>공지사항</p>
-   </li>
-   <li class="nav-item">
-      <a class="nav-link" href="#">
-         <i class="fa-solid fa-comments-question-check"></i>
-      </a>
-      <p>의뢰</p>
-   </li>
-   <li class="nav-item">
-      <i class="fa-solid fa-chevron-down"></i>
-   </li>
-</ul>
