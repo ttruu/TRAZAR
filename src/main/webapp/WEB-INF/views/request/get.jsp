@@ -26,6 +26,7 @@ $(document).ready(function() {
       $("#textarea1").removeAttr("readonly");
       $("#input4").removeAttr("readonly");
       $("#modify-submit1").removeClass("d-none");
+      $("#select1").removeClass("d-none");
    });
    
 });
@@ -43,14 +44,21 @@ $(document).ready(function() {
                </button>
             </h1>
             <form id="form" action="${appRoot }/request/modify" method="post">
-                <input type="hidden" name="id" value="${request.id }" />
+               <input type="hidden" name="id" value="${request.id }" />
                <div>
                   <label class="form-label" for="input1">제목</label>
                   <input class="form-control mb-3" type="text" name="title" required
                      id="input1" value="${request.title }" readonly />
                </div> 
                
-                <div>
+               <select id="select1" class="form-select d-none" aria-label="Default select example" name="state">
+				  <option selected>상태 선택하기</option>
+				  <option value="대기중">대기중</option>
+				  <option value="진행중">진행중</option>
+				  <option value="완료">완료</option>
+			   </select>
+               
+               <div>
                   <label class="form-label" for="textarea1">본문</label>
 					<div id="view" >${request.body }</div>
 					<textarea class="form-control d-none" name="body" id="summernote">${request.body }</textarea>
@@ -79,6 +87,13 @@ $(document).ready(function() {
                   <input class="form-control mb-3" type="text" name="phoneNum"
                      id="input5" value="${request.phoneNum }" readonly />
                </div>
+               
+               <div>
+                  <label class="form-label" for="input6">기간</label>
+                  <input class="form-control mb-3" type="text" name="term"
+                     id="input6" value="${request.term }" readonly />
+               </div>
+               
                 <button id="modify-submit1" class="btn btn-outline-primary d-none">수정</button>
              </form>
          </div>

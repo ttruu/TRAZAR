@@ -94,14 +94,7 @@ $(document).ready(function() {
 								</td>
 								<td>${req.price }</td>
 								<td>${req.inserted }</td>
-								<td>
-									<form id="processForm${status.index }" class="form2" action="${appRoot }/request/remove" method="post">
-										<input type="hidden" name="id" value="${req.id }" />
-										<button id="" class="btn btn-primary accept-submit1">수락</button>
-										<button id="" data-index="${status.index }" class="btn btn-primary reject-submit1">거절</button>
-										<button id="" class="btn btn-danger delete-submit1">삭제</button>
-									</form>
-								</td>
+								<td>${req.state }</td>
 							</tr>
 						</c:forEach>
 					</tbody>

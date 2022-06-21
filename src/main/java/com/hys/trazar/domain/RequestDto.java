@@ -14,4 +14,6 @@ public class RequestDto {
 	private String price;
 	private LocalDateTime inserted;
 	private String phoneNum;
+	private String term;
+	private String state;
 }
