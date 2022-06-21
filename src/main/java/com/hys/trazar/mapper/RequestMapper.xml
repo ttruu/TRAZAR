@@ -26,8 +26,8 @@
 	</select>
 	
 	<select id="getMember" resultType="com.hys.trazar.domain.RequestDto">
-		SELECT m.id m_id
-		FROM Request r JOIN Member m ON m.id = r.memberId
+		SELECT memberId
+		FROM Request 
 		WHERE memberId = #{memberId}
 	</select>
 	
