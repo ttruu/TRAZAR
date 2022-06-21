@@ -229,12 +229,14 @@ public class SignupController {
 		// 비밀번호 초기화 코드
 		@PostMapping("findPassword")
 		public String findPassword(SignupDto dto, String id, Model model) {
+			// selectMember id로 멤버 찾는 mapper
 			SignupDto findId = mapper.selectMember(dto.getId());
-			if(findId != null && findId.getQuestion().equals(dto.getQuestion())) {
+			// id가 null이 아니고 id의 question이랑 dto의 question이랑 같을 때 서비스 실행
+			if(findId != null && findId.getQuestion().equals(dto.getQuestion()) && findId.getAnswer().equals(dto.getAnswer())) {
 				service.findPassword(id);
 				return "redirect:/sign/findPasswordSuccess";
 			} else {
-				return "redirect:/designBoard/list";
+				return "redirect:/sign/findPassword";
 			}
 		}
 	
