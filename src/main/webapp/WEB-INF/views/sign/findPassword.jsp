@@ -24,9 +24,7 @@
 
 </head>
 <body>
-<c:if test="${param.error != null }">
-ppppppp
-</c:if>
+
 	<my:navBar></my:navBar>
 
 	<div class="container">
