@@ -32,6 +32,11 @@
 	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<style>
+.list-group-item {
+	border : none;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -89,18 +94,26 @@
 						reviewElement.html(`
 								
 								<div>
-									<div id="reviewDisplayContainer\${list[i].id }" class="fw-bold d-flex">
-										<div class="me-auto">
+									<div id="reviewDisplayContainer\${list[i].id }" class="fw-bold">
+										<div class="d-flex">
 											<span class="badge text-dark">
-												<i class="fa-solid fa-user fa-2x"></i>
+												<i class="fa-solid fa-circle-user fa-3x"></i>
 											</span>
-											<span>\${list[i].memberId}</span>
-											<div id="reviewContent\${list[i].id }"></div>
-											<div class="text-color : grey;">\${list[i].prettyInserted}</div>
+											<span class="me-auto" style="font-size:large;">\${list[i].memberId}</span> 
+											<div>
+												<span id="modifyButtonWrapper\${list[i].id }"></span>
+											</div>
 										</div>
-										<div>
-											<span id="modifyButtonWrapper\${list[i].id }"></span>
+											
+										<div class="border border-black border-2 rounded-3 p-2 container">
+											<div class="row mt-3">
+												<div class="col">
+													<div id="reviewContent\${list[i].id }"></div>
+												</div>
+											</div>
 										</div>
+										<span style="font-size:small; color:grey;">\${list[i].prettyInserted}</span>
+											<%-- <div>\${list[i].prettyInserted}</div> --%>
 									</div>
 	
 									<div id="reviewEditFormContainer\${list[i].id }"
@@ -357,7 +370,7 @@
 		<div class="row mt-3">
 			<div class="col">
 
-				<ul id="reviewList1" class="list-group" />
+				<div id="reviewList1" class="list-group" />
 
 			</div>
 		</div>
