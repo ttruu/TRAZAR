@@ -18,9 +18,15 @@
 	integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>Insert title here</title>
+
+
+
+
 </head>
 <body>
-
+<c:if test="${param.error != null }">
+ppppppp
+</c:if>
 	<my:navBar></my:navBar>
 
 	<div class="container">

@@ -16,6 +16,11 @@
 		box-shadow : 0 0;
 	}
 </style>
+<c:if test="${param.error != null }">
+	<script>
+	alert("아이디와 패스워드를 확인 해주세요.");
+	</script>
+</c:if>
 <body>
 	
 	<div class="main" 

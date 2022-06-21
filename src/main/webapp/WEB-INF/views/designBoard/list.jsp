@@ -123,6 +123,12 @@
 
 <title>Insert title here</title>
 </head>
+
+<c:if test="${param.msg != null }">
+	<script>
+		alert("아이디와 패스워드를 확인 해주세요.")
+	</script>
+</c:if>
 <body>
 	<my:navBar current="list" />
 

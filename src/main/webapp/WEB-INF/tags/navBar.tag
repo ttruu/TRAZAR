@@ -133,10 +133,13 @@
 					<a class="nav-link ${current == 'list' ? 'active' : '' }"
 						href="${noticeListUrl }">공지사항보기</a>
 				</li>
+				
+				<sec:authorize access="hasRole('ADMIN')">
 					<li class="nav-item">
 						<a class="nav-link ${current == 'insert' ? 'active' : '' }"
 							href="${noticeInsertUrl }">공지사항글쓰기</a>
 					</li>
+				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li class="nav-item">
 
