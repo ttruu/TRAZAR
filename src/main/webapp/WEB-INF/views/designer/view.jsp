@@ -5,25 +5,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" 
-	integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"	referrerpolicy="no-referrer"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-	crossorigin="anonymous"></script>
+		<title>Strata by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="${appRoot}/resources/css/designer/main.css" />
+	</head>
+	<body class="is-preload">
 
-<title>Insert title here</title>
-</head>
-<body>
-<h1>디자이너 정보</h1>
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<!--<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a> -->
+					<h1><strong>DisignerName</strong><br>
+							<h2> ${member.id }</h2><br>
+						<h1><strong>Email</strong><br />
+							<h2> ${member.email }</h2><br>
+							<h1><strong>NickName</strong><br />
+								<h2> ${member.nickName }</h2><br>
+			
+				</div>
+			</header>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- One -->
+					<section id="one">
+						<header class="major">
+							<h2>자기소개</h2>
+						</header>
+						<p>${member.introduce }</p>
+						
+					</section>
+
+				<!-- Two -->
+					<section id="two">
+						<h2>Recent Work</h2>
+						<div class="row">
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
+								<h3>Magna sed consequat tempus</h3>
+								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+							</article>
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="" /></a>
+								<h3>Ultricies lacinia interdum</h3>
+								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+							</article>
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="" /></a>
+								<h3>Tortor metus commodo</h3>
+								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+							</article>
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="" /></a>
+								<h3>Quam neque phasellus</h3>
+								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+							</article>
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/fulls/05.jpg" class="image fit thumb"><img src="images/thumbs/05.jpg" alt="" /></a>
+								<h3>Nunc enim commodo aliquet</h3>
+								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+							</article>
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="" /></a>
+								<h3>Risus ornare lacinia</h3>
+								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+							</article>
+						</div>
+						<ul class="actions">
+							<li><a href="#" class="button">Full Portfolio</a></li>
+						</ul>
+					</section>
+
+		
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; TRAZAR</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="${appRoot}/resources/css/designer/jquery.min.js"></script>
+			<script src="${appRoot}/resources/css/designer/jquery.poptrox.min.js"></script>
+			<script src="${appRoot}/resources/css/designer/browser.min.js"></script>
+			<script src="${appRoot}/resources/css/designer/breakpoints.min.js"></script>
+			<script src="${appRoot}/resources/css/designer/util.js"></script>
+			<script src="${appRoot}/resources/css/designer/main.js"></script>
+
+	</body>
+
+<%-- 
 					<div>
 					<input type="hidden" name="id" value="${member.id }">
 					<label for="name" class="form-label">
@@ -40,17 +117,14 @@
 					<label for="nickName" class="form-label">
 					닉네임
 					</label>
-						<input class="form-control" type="text" name="nickName" id="nickName" value="${member.nickName }"/> 
+						<input class="form-control" type="text" name="nickName" id="nickName" value="${member.nickName }"/>  --%>
 		
 		
-
+<%-- 
 					<label for="introduce" class="form-label">
 					자기소개
 					</label>
 					<div class="input-group">
 						<input type="text" name="introduce" value="${member.introduce }" size="74" id="introduce" /> 
-					</div>
-		
+					</div> --%>
 	
-</body>
-</html>
