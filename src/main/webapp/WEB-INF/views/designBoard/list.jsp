@@ -4,153 +4,14 @@
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html lang="ko-KR">
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
-	integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-	referrerpolicy="no-referrer"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-	crossorigin="anonymous"></script>
 
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-
-<style>
-.MainHome {
-	display: grid;
-	grid-template-columns: 5% 60% 0% 10% 10%;
-	grid-template-rows: 8% 45% 5% 90% 10%;
-	height: 100%;
-	grid-gap: 0.5%;
-	grid-template-areas: 'header header header header header header'
-		'left-side main main main right right'
-		'left-side other other other other other'
-		'left-side content content content content content'
-		'footer footer footer footer footer footer';
-}
-
-.header {
-	grid-area: header;
-	background-color: pink;
-	display: flex;
-	justify-content: center;
-}
-
-.left-side {
-	grid-area: left-side;
-	background-color: #C8C8FF;
-	padding-left: 10%;
-}
-
-.main1 {
-	grid-area: main;
-	background-color: #96C7ED;
-}
-
-.right {
-	grid-area: right;
-	background-color: red;
-}
-
-.other {
-	grid-area: other;
-	background-color: #E1B771;
-}
-
-.content {
-	grid-area: content;
-	background-color: #D2FFD2;
-}
-
-.footer {
-	grid-area: footer;
-}
-
-.totalLayout {
-	justify-content: space-around;
-}
-
-.totalLayout-title {
-	margin: 20px 0
-}
-
-.list-titles {
-	color: black;
-	font-size: 20px;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: -0.4px;
-	font-weight: 700;
-	line-height: 19px;
-	align-items: center;
-	color: #161C1C;
-}
-
-.main-lists:after {
-	content: "";
-	display: block;
-	clear: both;
-}
-
-.main-lists {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-}
-
-.project-list-mini {
-	max-width: 250px;
-	margin-bottom: 55px;
-	margin-right: 20px;
-}
-
-.design-name {
-	margin-top: 15px;
-	color: gray;
-	text-align: center;
-}
-
-.main-lists .thumbnail-image img {
-	width: 270px;
-	height: 270px;
-	border : 1px solid #E1F6FA;
-	border-radius : 30px;
-}
-
-.main-project-title {
-	font-size: 11pt;
-	font-weight: bold;
-	height: 40px;
-	margin: 8px 0;
-	text-align: center;
-}
-</style>
-
-<title>Insert title here</title>
-</head>
-
-<c:if test="${param.msg != null }">
+<%-- <c:if test="${param.msg != null }">
 	<script>
 		alert("아이디와 패스워드를 확인 해주세요.")
 	</script>
-</c:if>
-<body>
+</c:if> --%>
+<%-- <body>
 
-	<div class="MainHome">
 		<div class="header">
 			<my:navBar current="list" />
 		</div>
@@ -256,10 +117,362 @@
 			</div>
 		</div>
 
-		<div class="footer"><my:footer></my:footer></div>
+		<div class="footer">
+			<my:footer></my:footer>
+		</div>
 
 	</div>
 
+
+</body> --%>
+<head>
+<title>Phantom by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="${appRoot }/resources/css/main/main.css" />
+<noscript>
+	<link rel="stylesheet"
+		href="${appRoot }/resources/css/main/noscript.css" />
+</noscript>
+</head>
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="index.html" class="logo">
+					<span class="symbol">
+						<img src="${appRoot }/resources/css/main/images/logo.svg" alt="" />
+					</span>
+					<span class="title">Phantom</span>
+				</a>
+
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li>
+							<a href="#menu">Menu</a>
+						</li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li>
+					<a href="index.html">Home</a>
+				</li>
+				<li>
+					<a href="generic.html">Ipsum veroeros</a>
+				</li>
+				<li>
+					<a href="generic.html">Tempus etiam</a>
+				</li>
+				<li>
+					<a href="generic.html">Consequat dolor</a>
+				</li>
+				<li>
+					<a href="elements.html">Elements</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<header>
+					<h1>
+						This is Phantom, a free, fully responsive site
+						<br />
+						template designed by
+						<a href="http://html5up.net">HTML5 UP</a>
+						.
+					</h1>
+					<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu
+						euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu
+						vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros
+						aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
+				</header>
+				<!--  <div class="main-lists">
+					<c:forEach items="${designBoardList }" var="designBoard">
+						<div class="project-list-mini">
+							<c:url value="/designBoard/get" var="getUrl">
+								<c:param name="id" value="${designBoard.id }"></c:param>
+								<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+							</c:url>
+							<a href="${getUrl }" class="list-thumbnail">
+								<div class="thumbnail-image">
+									<img src="${designBoard.imgthumbnail }">
+								</div>
+								<div class="design-name">${designBoard.id}ㅣ
+									${designBoard.writerNickName }</div>
+								<div class="main-project-title">${designBoard.title }
+									${designBoard.prettyInserted }</div>
+							</a>
+						</div>
+					</c:forEach>
+				</div> -->
+				<section class="tiles">
+					<c:forEach items="${designBoardList }" var="designBoard">
+						<article class="style1">
+							<span class="image">
+								<c:url value="/designBoard/get" var="getUrl">
+									<c:param name="id" value="${designBoard.id }"></c:param>
+									<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+								</c:url>
+								<a href="${getUrl }" class="list-thumbnail">
+								<div class="thumbnail-image">
+									<img src="${designBoard.imgthumbnail }">
+								</div>
+								</a>
+							</span>
+							<a href="generic.html" />
+							</a>
+						</article>
+						<article class="style2">
+							<span class="image">
+								<img src="${appRoot }/resources/css/main/images/pic02.jpg"
+									alt="" />
+							</span>
+							<a href="generic.html">
+								<h2>Lorem</h2>
+								<div class="content">
+									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
+										veroeros et feugiat.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style3">
+							<span class="image">
+								<img src="${appRoot }/resources/css/main/images/pic03.jpg"
+									alt="" />
+							</span>
+							<a href="generic.html">
+								<h2>Feugiat</h2>
+								<div class="content">
+									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
+										veroeros et feugiat.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style4">
+							<span class="image">
+								<img src="${appRoot }/resources/css/main/images/pic04.jpg"
+									alt="" />
+							</span>
+							<a href="generic.html">
+								<h2>Tempus</h2>
+								<div class="content">
+									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
+										veroeros et feugiat.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style5">
+							<span class="image">
+								<img src="${appRoot }/resources/css/main/images/pic05.jpg"
+									alt="" />
+							</span>
+							<a href="generic.html">
+								<h2>Aliquam</h2>
+								<div class="content">
+									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
+										veroeros et feugiat.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style6">
+							<span class="image">
+								<img src="${appRoot }/resources/css/main/images/pic06.jpg"
+									alt="" />
+							</span>
+							<a href="generic.html">
+								<h2>Veroeros</h2>
+								<div class="content">
+									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
+										veroeros et feugiat.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style2">
+							<span class="image">
+								<img src="${appRoot }/resources/css/main/images/pic07.jpg"
+									alt="" />
+							</span>
+							<a href="generic.html">
+								<h2>Ipsum</h2>
+								<div class="content">
+									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
+										veroeros et feugiat.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style3">
+							<span class="image">
+								<img src="${appRoot }/resources/css/main/images/pic08.jpg"
+									alt="" />
+							</span>
+							<a href="generic.html">
+								<h2>Dolor</h2>
+								<div class="content">
+									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
+										veroeros et feugiat.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style1">
+							<span class="image">
+								<img src="${appRoot }/resources/css/main/images/pic09.jpg"
+									alt="" />
+							</span>
+							<a href="generic.html">
+								<h2>Nullam</h2>
+								<div class="content">
+									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
+										veroeros et feugiat.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style5">
+							<span class="image">
+								<img src="${appRoot }/resources/css/main/images/pic10.jpg"
+									alt="" />
+							</span>
+							<a href="generic.html">
+								<h2>Ultricies</h2>
+								<div class="content">
+									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
+										veroeros et feugiat.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style6">
+							<span class="image">
+								<img src="${appRoot }/resources/css/main/images/pic11.jpg"
+									alt="" />
+							</span>
+							<a href="generic.html">
+								<h2>Dictum</h2>
+								<div class="content">
+									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
+										veroeros et feugiat.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style4">
+							<span class="image">
+								<img src="${appRoot }/resources/css/main/images/pic12.jpg"
+									alt="" />
+							</span>
+							<a href="generic.html">
+								<h2>Pretium</h2>
+								<div class="content">
+									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
+										veroeros et feugiat.</p>
+								</div>
+							</a>
+						</article>
+				</section>
+				</c:forEach>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<section>
+					<h2>Get in touch</h2>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field half">
+								<input type="text" name="name" id="name" placeholder="Name" />
+							</div>
+							<div class="field half">
+								<input type="email" name="email" id="email" placeholder="Email" />
+							</div>
+							<div class="field">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li>
+								<input type="submit" value="Send" class="primary" />
+							</li>
+						</ul>
+					</form>
+				</section>
+				<section>
+					<h2>Follow</h2>
+					<ul class="icons">
+						<li>
+							<a href="#" class="icon brands style2 fa-twitter">
+								<span class="label">Twitter</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="icon brands style2 fa-facebook-f">
+								<span class="label">Facebook</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="icon brands style2 fa-instagram">
+								<span class="label">Instagram</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="icon brands style2 fa-dribbble">
+								<span class="label">Dribbble</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="icon brands style2 fa-github">
+								<span class="label">GitHub</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="icon brands style2 fa-500px">
+								<span class="label">500px</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="icon solid style2 fa-phone">
+								<span class="label">Phone</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="icon solid style2 fa-envelope">
+								<span class="label">Email</span>
+							</a>
+						</li>
+					</ul>
+				</section>
+				<ul class="copyright">
+					<li>&copy; Untitled. All rights reserved</li>
+					<li>
+						Design:
+						<a href="http://html5up.net">HTML5 UP</a>
+					</li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="${appRoot }/resources/css/main/jquery.min.js"></script>
+	<script src="${appRoot }/resources/css/main/browser.min.js"></script>
+	<script src="${appRoot }/resources/css/main/breakpoints.min.js"></script>
+	<script src="${appRoot }/resources/css/main/util.js"></script>
+	<script src="${appRoot }/resources/css/main/main.js"></script>
 
 </body>
 </html>
