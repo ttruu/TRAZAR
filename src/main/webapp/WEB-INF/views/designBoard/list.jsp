@@ -145,11 +145,11 @@
 			<div class="inner">
 
 				<!-- Logo -->
-				<a href="index.html" class="logo">
+				<a href="/trazar/designBoard/list" class="logo">
 					<span class="symbol">
-						<img src="${appRoot }/resources/css/main/images/logo.svg" alt="" />
+						<img src="../resources/picture/logo/로고.png" alt="" />
 					</span>
-					<span class="title">Phantom</span>
+					<span class="title">TRAZAR</span>
 				</a>
 
 				<!-- Nav -->
@@ -190,206 +190,38 @@
 		<div id="main">
 			<div class="inner">
 				<header>
-					<h1>
-						This is Phantom, a free, fully responsive site
-						<br />
-						template designed by
-						<a href="http://html5up.net">HTML5 UP</a>
-						.
-					</h1>
-					<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu
-						euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu
-						vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros
-						aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
+					<h1>It's a site that deals in designer's works.</h1>
 				</header>
-				<!--  <div class="main-lists">
-					<c:forEach items="${designBoardList }" var="designBoard">
-						<div class="project-list-mini">
-							<c:url value="/designBoard/get" var="getUrl">
-								<c:param name="id" value="${designBoard.id }"></c:param>
-								<c:param name="memberId" value="${designBoard.memberId }"></c:param>
-							</c:url>
-							<a href="${getUrl }" class="list-thumbnail">
-								<div class="thumbnail-image">
-									<img src="${designBoard.imgthumbnail }">
-								</div>
-								<div class="design-name">${designBoard.id}ㅣ
-									${designBoard.writerNickName }</div>
-								<div class="main-project-title">${designBoard.title }
-									${designBoard.prettyInserted }</div>
-							</a>
-						</div>
-					</c:forEach>
-				</div> -->
 				<section class="tiles">
-					<c:forEach items="${designBoardList }" var="designBoard">
-						<article class="style1">
-							<span class="image">
-								<c:url value="/designBoard/get" var="getUrl">
-									<c:param name="id" value="${designBoard.id }"></c:param>
-									<c:param name="memberId" value="${designBoard.memberId }"></c:param>
-								</c:url>
-								<a href="${getUrl }" class="list-thumbnail">
-								<div class="thumbnail-image">
-									<img src="${designBoard.imgthumbnail }">
-								</div>
-								</a>
-							</span>
-							<a href="generic.html" />
-							</a>
-						</article>
-						<article class="style2">
-							<span class="image">
-								<img src="${appRoot }/resources/css/main/images/pic02.jpg"
-									alt="" />
-							</span>
-							<a href="generic.html">
-								<h2>Lorem</h2>
-								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-										veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style3">
-							<span class="image">
-								<img src="${appRoot }/resources/css/main/images/pic03.jpg"
-									alt="" />
-							</span>
-							<a href="generic.html">
-								<h2>Feugiat</h2>
-								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-										veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style4">
-							<span class="image">
-								<img src="${appRoot }/resources/css/main/images/pic04.jpg"
-									alt="" />
-							</span>
-							<a href="generic.html">
-								<h2>Tempus</h2>
-								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-										veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style5">
-							<span class="image">
-								<img src="${appRoot }/resources/css/main/images/pic05.jpg"
-									alt="" />
-							</span>
-							<a href="generic.html">
-								<h2>Aliquam</h2>
-								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-										veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style6">
-							<span class="image">
-								<img src="${appRoot }/resources/css/main/images/pic06.jpg"
-									alt="" />
-							</span>
-							<a href="generic.html">
-								<h2>Veroeros</h2>
-								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-										veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style2">
-							<span class="image">
-								<img src="${appRoot }/resources/css/main/images/pic07.jpg"
-									alt="" />
-							</span>
-							<a href="generic.html">
-								<h2>Ipsum</h2>
-								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-										veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style3">
-							<span class="image">
-								<img src="${appRoot }/resources/css/main/images/pic08.jpg"
-									alt="" />
-							</span>
-							<a href="generic.html">
-								<h2>Dolor</h2>
-								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-										veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style1">
-							<span class="image">
-								<img src="${appRoot }/resources/css/main/images/pic09.jpg"
-									alt="" />
-							</span>
-							<a href="generic.html">
-								<h2>Nullam</h2>
-								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-										veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style5">
-							<span class="image">
-								<img src="${appRoot }/resources/css/main/images/pic10.jpg"
-									alt="" />
-							</span>
-							<a href="generic.html">
-								<h2>Ultricies</h2>
-								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-										veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style6">
-							<span class="image">
-								<img src="${appRoot }/resources/css/main/images/pic11.jpg"
-									alt="" />
-							</span>
-							<a href="generic.html">
-								<h2>Dictum</h2>
-								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-										veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style4">
-							<span class="image">
-								<img src="${appRoot }/resources/css/main/images/pic12.jpg"
-									alt="" />
-							</span>
-							<a href="generic.html">
-								<h2>Pretium</h2>
-								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-										veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
+					<article class="style2">
+						<div class="main-lists">
+							<c:forEach items="${designBoardList }" var="designBoard">
+								<span class="image">
+									<c:url value="/designBoard/get" var="getUrl">
+										<c:param name="id" value="${designBoard.id }"></c:param>
+										<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+									</c:url>
+									<a href="${getUrl }" class="list-thumbnail">
+										<div class="thumbnail-image">
+											<img src="${designBoard.imgthumbnail }">
+										</div>
+										<div class="design-name">${designBoard.id}ㅣ
+											${designBoard.writerNickName }</div>
+										<div class="main-project-title">${designBoard.title }
+											${designBoard.prettyInserted }</div>
+									</a>
+								</span>
+							</c:forEach>
+						</div>
+					</article>
 				</section>
-				</c:forEach>
 			</div>
 		</div>
 
 		<!-- Footer -->
 		<footer id="footer">
 			<div class="inner">
-				<section>
+				<!-- <section>
 					<h2>Get in touch</h2>
 					<form method="post" action="#">
 						<div class="fields">
@@ -409,8 +241,8 @@
 							</li>
 						</ul>
 					</form>
-				</section>
-				<section>
+				</section> 
+				<!-- <section>
 					<h2>Follow</h2>
 					<ul class="icons">
 						<li>
@@ -454,7 +286,7 @@
 							</a>
 						</li>
 					</ul>
-				</section>
+				</section> -->
 				<ul class="copyright">
 					<li>&copy; Untitled. All rights reserved</li>
 					<li>
