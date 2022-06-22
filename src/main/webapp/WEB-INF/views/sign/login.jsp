@@ -51,14 +51,17 @@
 					<form action="${appRoot }/login" method="post">
 						<label for="usernameInput1" class="form-label" style="position: absolute;">
 						</label>
+						<div class="passwordInput">
 						<input id="usernameInput1" class="form-control" type="text" name="username"
 						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px;
 						 padding: 17px;" 
 						placeholder="아이디"/>
+						<i class="fa-solid fa-eye"></i>
+						</div>
 						
 						<label for="passwordInput1" class="form-label" style="position: absolute;">
 						</label>
-						<input class="form-control" id="passwordInput1" type="password" name="password" 
+						<input class="form-control" id="passwordInput1" type="text" name="password" 
 						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px;
 						 padding: 17px; outline-style: none;"
 						placeholder="비밀번호" />
