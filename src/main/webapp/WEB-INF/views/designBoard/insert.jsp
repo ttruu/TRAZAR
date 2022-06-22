@@ -26,8 +26,8 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/lang/summernote-ko-KR.js"></script>  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js" integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
+<!-- ckeditor -->
+<script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -39,7 +39,18 @@
 <script>
 	$(document).ready(function() {
 		
-		$('#summernote').summernote({
+		
+
+		CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용
+		    width:'auto',
+		    height:'300px',
+		    filebrowserUploadUrl:  "fileupload.do"
+		});
+	
+		
+		
+		
+		/* $('#summernote').summernote({
 			height : 500,
 			placeholder: '최대 500자 작성 가능합니다.',
 			lang: 'ko-KR',
@@ -78,8 +89,8 @@
 						$note.summernote('insertImage', url);
 					}
 				});
-			}
-		});
+			} 
+		});*/
 		
 	/* 	$('#addFile').click(function(){
 			var fileIndex = $('.fileDiv').length;
@@ -103,7 +114,7 @@
 
 					<div>
 						<label class="form-label" for="textarea1">본문</label>
-						<textarea class="form-control" name="body" id="summernote"
+						<textarea class="form-control" name="body" id="ckeditor"
 							cols="30" rows="10"></textarea>
 					</div>
 

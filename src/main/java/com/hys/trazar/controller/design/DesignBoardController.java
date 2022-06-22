@@ -1,15 +1,19 @@
 package com.hys.trazar.controller.design;
 
-
-
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -29,6 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.JsonObject;
 import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.ReviewDto;
 import com.hys.trazar.mapper.DesignBoardMapper;
@@ -42,7 +47,6 @@ public class DesignBoardController {
 	private static final String FILE2 = "file";
 	private static final Logger LOGGER = LoggerFactory.getLogger(DesignBoardController.class);
 	private static final String UPLOADIMG = "/static/uploadimg/";
-	
 
 	@Autowired
 	ServletContext servletContext;
@@ -60,17 +64,10 @@ public class DesignBoardController {
 		processThumbNailImage(list);
 		model.addAttribute("designBoardList", list);
 	}
-	
-	@RequestMapping("mainex")
-	public void list1(Model model) {
-		List<DesignBoardDto> list = service.listDesignBoard();
-
-		model.addAttribute("designBoardList", list);
-	}
 
 	// 썸네일에 이미지 출력
 	private void processThumbNailImage(List<DesignBoardDto> list) {
-		
+
 		for (DesignBoardDto dto : list) {
 			String thumbNail = "";
 
@@ -86,7 +83,6 @@ public class DesignBoardController {
 		}
 	}
 
-	
 	@GetMapping("insert")
 	public void insert() {
 
@@ -166,29 +162,30 @@ public class DesignBoardController {
 		return "redirect:/designBoard/list";
 	}
 
-
 	// 썸머노트 에디터에서 받는 이미지 업로드 처리
-	@RequestMapping(value = "/imageupload", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	/*@RequestMapping(value = "/imageupload", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
 	public String imageUpload(MultipartHttpServletRequest request) throws IOException {
-
+	
 		// 01. 리퀘스트에서 멀티파트파일을 받아서
 		MultiValueMap<String, MultipartFile> multiFileMap = request.getMultiFileMap();
 		List<MultipartFile> list = multiFileMap.get(FILE2);
 		MultipartFile multipartFile = list.get(0);
 		LOGGER.debug(multipartFile.getOriginalFilename());
-
+	
 		// 02. 파일을 전송하고
 		String webappRoot = servletContext.getRealPath("/");
 		String filename = UPLOADIMG + multipartFile.getOriginalFilename();
 		File file = new File(webappRoot + filename);
 		multipartFile.transferTo(file);
-
+	
 		// 03. 마지막에 최종 주소를 반환한다.
 		// requet.getServername 을 하니, ajax에서 보내는 값이 리퀘스트 정보에 안떠서 InetAddress로 받는다 
 		String localIP = InetAddress.getLocalHost().getHostAddress();
 		// http://를 붙여줘야 에디터 창에서 불러올 수가 있다. 
 		return "http://" + localIP + ":" + request.getServerPort() + filename;
+	
+	}*/
 
-	}
+	
 }
