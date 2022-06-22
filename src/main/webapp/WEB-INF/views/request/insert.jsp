@@ -14,10 +14,15 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/lang/summernote-ko-KR.js"></script>  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js" integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+<style>
+	.ck-editor__editable { height: 400px; }
+</style>
 <script>
 	 $(document).ready(function() {
-			
-			$('#summernote').summernote({
+		 ClassicEditor.create( document.querySelector( '#ckEditor' ) );
+			/* $('#summernote').summernote({
 				height : 500,
 				placeholder: '최대 500자 작성 가능합니다.',
 				lang: 'ko-KR',
@@ -57,10 +62,10 @@
 						}
 					});
 				}
-			});
+			}); */
 		});
 	
-	  function goWrite(frm) {
+	  /* function goWrite(frm) {
 			var title = frm.title.value;
 			
 			
@@ -70,7 +75,7 @@
 			}
 			
 			frm.submit();
-		}
+		} */
   </script>
 
 <title>Insert title here</title>
@@ -108,7 +113,7 @@
 					
 					<div>
 						<label class="form-label" >내용</label>
-						<textarea name="body" id="summernote"></textarea>
+						<textarea name="body" id="ckEditor"></textarea>
 					</div>
 					
 					<div>
