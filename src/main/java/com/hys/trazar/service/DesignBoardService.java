@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hys.trazar.domain.DesignBoardDto;
+import com.hys.trazar.domain.RequestDto;
 import com.hys.trazar.mapper.DesignBoardMapper;
 
 import software.amazon.awssdk.core.sync.RequestBody;
@@ -117,5 +118,8 @@ public class DesignBoardService {
 	public boolean deleteDesignBoard(int id) {
 		return mapper.deleteDesignBoard(id) == 1;
 	}
-
+	//멤버 아이디로 가져오기 디자이너 정보용 리스트 
+	public List<DesignBoardDto> myDesignBoard(String memberId) {
+		return mapper.myDesignBoard(memberId);
+	}
 }

@@ -43,6 +43,14 @@
 	<beans:property name="maxUploadSize" value="100000000"></beans:property>
 	</beans:bean>
 	
-</beans:beans>
+	
+		<!--websocket handler  -->
+		<beans:bean id="replyEchoHandler" class="com.hys.trazar.handler.ReplyEchoHandler"/>
+			<websocket:mapping handler="replyEchoHandler" path="/replyEcho">ssdsd=sd==sd=sds</websocket:mapping>
+			<websocket:handshake-interceptors>
+			<beans:bean 
+				class="org.springframwork.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+			</websocket:handshake-interceptors>
+			</beans:beans>
 
 

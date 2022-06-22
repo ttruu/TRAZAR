@@ -64,6 +64,12 @@
 		FROM DesignBoard
 		WHERE memberId = #{memberId}
 	</select>
-	
-
+	<!-- 메버 아이디 셀렉 -->
+<select id="myDesignBoard" resultType="com.hys.trazar.domain.DesignBoardDto">
+		SELECT d.id, d.memberId, d.title, d.price, d.inserted
+		FROM DesignBoard d 
+		JOIN Member m ON m.id = d.memberId
+		WHERE d.memberId = #{memberId}
+		ORDER BY d.id DESC
+	</select>
 </mapper>

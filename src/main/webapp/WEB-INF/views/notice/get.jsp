@@ -62,8 +62,30 @@ $(document).ready(function() {
 });
 	
 	
+</script>
+<script>
+
+var ws = new WebSocket("ws://localhost:8080/replyEcho?bno=1234");
+
+ws.onopen = function(){
+	console.log('Info:connection opened.');
+	setTimeout( function(){connect(); }, 1000);
+	};
 	
-		
+	ws.onmessage = function (event) {
+		console.log(event.data+'\n');
+	};
+	
+	ws.onclose = function (event) { console.log('Info: connection closed.'); };
+	ws.onerror = function (event) { console.log('Info: connection closed.'); };
+	
+	$('#btnSend').on('click',function(evt){
+		evt.preventDefault();
+		if (socket.readyState !== 1) return;
+		let msg = $('input#msg').val();
+		ws.send(msg);
+	});
+	
 </script>
 <my:navBar />
 <div class="container">

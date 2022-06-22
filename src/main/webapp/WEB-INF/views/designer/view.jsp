@@ -41,6 +41,26 @@
 				<!-- Two -->
 					<section id="two">
 						<h2>Recent Work</h2>
+						
+							<ul id="reviewList1" class="list-group" />
+						<c:forEach items="${DesginerBoards }" var="designer" varStatus="status">
+							<input type="hidden" name="memberId" value="${designer.memberId }" />
+							<tr>
+								<td>
+													
+									<c:url value="#" var="getUrl">
+										<c:param name="id" value="${designer.id }"></c:param>
+										<c:param name="memberId" value="${designer.memberId }"></c:param>
+									</c:url>
+									
+									<a href="${getUrl }">
+										<c:out value="${designer.title }" />
+									</a>
+									
+								</td>
+								<td>${designer.inserted }</td>
+							</tr>
+						</c:forEach>
 						<div class="row">
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
