@@ -48,9 +48,6 @@
 
 	<my:navBar />
 
-
-
-
 	<div class="preview-work-modal vm--container scrollable">
 		<div data-modal="preview-work-modal" aria-expanded="true"
 			class="vm--overlay">
@@ -459,12 +456,9 @@
 		</div>
 	</div>
 
-
-
 	<!-- 댓글 스크립트 -->
 	<script>
 	$(document).ready(function() {
-		
 		
 		// 페이지 로딩 후 review list 가져오는 ajax 요청
 		// 수정버튼 클릭스 스크립트 
