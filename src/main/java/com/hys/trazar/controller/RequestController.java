@@ -8,6 +8,9 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +28,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.RequestDto;
-import com.hys.trazar.domain.login.SignupDto;
 import com.hys.trazar.service.RequestService;
 
 @Controller
@@ -67,7 +69,26 @@ public class RequestController {
 	@RequestMapping("list")
 	public void list(Model model) {
 		List<RequestDto> list = service.listRequest();
+		processThumbNailImage(list);
 		model.addAttribute("requestList", list);
+	}
+	
+	//썸네일에 이미지 출력
+	private void processThumbNailImage(List<RequestDto> list) {
+		
+		for (RequestDto dto : list) {
+			String thumbNail = "";
+
+			String source = dto.getBody();
+			Document doc = Jsoup.parse(source);
+			Elements elements = doc.select("img");
+
+			if (elements.size() > 0) {
+				thumbNail = elements.get(0).attr("src").toString();
+			}
+
+			dto.setImgthumbnail(thumbNail);
+		}
 	}
 	
 	@GetMapping("get")
@@ -91,7 +112,7 @@ public class RequestController {
 	}
 	
 	// 썸머노트 에디터에서 받는 이미지 업로드 처리
-	@RequestMapping(value = "/requestImageupload", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@RequestMapping(value = "/Imageupload", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public String imageUpload(MultipartHttpServletRequest request) throws IOException {
 		
@@ -124,4 +145,6 @@ public class RequestController {
 		model.addAttribute("requestMyList", list);
 	}
 	
+	
+
 }

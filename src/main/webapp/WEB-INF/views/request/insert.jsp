@@ -47,7 +47,7 @@
 					$.ajax({
 						data : data,
 						type : "POST",
-						url : '/request/requestImageupload',
+						url : '/request/Imageupload',
 						cache : false,
 						contentType : false,
 						processData : false,
