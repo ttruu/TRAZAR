@@ -1,7 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
-   uri="http://www.springframework.org/security/tags"%>
+	uri="http://www.springframework.org/security/tags"%>
 <!-- include summernote css/js -->
 <!-- <script
    src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/lang/summernote-ko-KR.js"></script> -->
@@ -25,8 +25,7 @@
 <c:url value="/sign/passwordModify" var="passwordModify"></c:url>
 <c:url value="/designBoard/list" var="listUrl"></c:url>
 <c:url value="/notice/list" var="noticeListUrl"></c:url>
-
-
+<c:url value="/request/list" var="requestListUrl"></c:url>
 
 <%-- 회원정보링크 --%>
 <sec:authorize access="isAuthenticated()">
@@ -129,6 +128,21 @@
 				</div>
 			</div>
 		</div>
+	<ul class="nav">
+				
+					<li class="nav-item">
+						<a class="nav-link" href="${noticeListUrl }">
+							<i class="fa-solid fa-bullhorn"></i>
+						</a>
+						<p>공지사항</p>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="${requestListUrl }">
+							<i class="fa-solid fa-comments-question-check"></i>
+						</a>
+						<p>의뢰</p>
+					</li>
+				</ul>
 
 		<!-- button.navbar-toggler>span.navbar-toggler-icon -->
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -136,78 +150,79 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		
 
-      <div class="collapse navbar-collapse justify-content-end"
-         id="collapsibleNavbar">
-         <ul class="navbar-nav">
+
+		<div class="collapse navbar-collapse justify-content-end"
+			id="collapsibleNavbar">
+			<ul class="navbar-nav">
+
+				<sec:authorize access="isAuthenticated()">
+					<li class="nav-item">
+						<a class="nav-link${current == 'insert' ? 'active' : '' }"
+							href="${insertUrl }">글쓰기</a>
+					</li>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+					<li class="nav-item">
+						<a class="nav-link" href="#">알람</a>
+					</li>
+				</sec:authorize>
+				<sec:authorize access="not isAuthenticated()">
+					<li class="nav-item" style="">
+						<a href="${loginUrl }" class="nav-link">로그인</a>
+					</li>
+				</sec:authorize>
+
+				<sec:authorize access="not isAuthenticated()">
+					<li class="nav-item">
+						<a class="nav-link${current == 'signup' ? 'active' : '' }"
+							href="${signupUrl }">회원가입</a>
+					</li>
+				</sec:authorize>
+
 			
-            <sec:authorize access="isAuthenticated()">
-               <li class="nav-item">
-                  <a class="nav-link${current == 'insert' ? 'active' : '' }"
-                     href="${insertUrl }">글쓰기</a>
-               </li>
-            </sec:authorize>
-            <sec:authorize access="isAuthenticated()">
-               <li class="nav-item">
-                  <a class="nav-link"
-                     href="#">알람</a>
-               </li>
-            </sec:authorize>
-            <sec:authorize access="not isAuthenticated()">
-               <li class="nav-item" style="">
-                  <a href="${loginUrl }" class="nav-link">로그인</a>
-               </li>
-            </sec:authorize>
-            
-            <sec:authorize access="not isAuthenticated()">
-               <li class="nav-item">
-                  <a class="nav-link${current == 'signup' ? 'active' : '' }"
-                     href="${signupUrl }">회원가입</a>
-               </li>
-            </sec:authorize>
 
 
 
-            <sec:authorize access="isAuthenticated()">
-               <li class="nav-item dropdown">
-                  <button class="btn dropdown-toggle" type="button"
-                     id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                     aria-expanded="false">
-                     <i class="fa-solid fa-circle-user"></i>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                     <li class="dropdown-item">
+				<sec:authorize access="isAuthenticated()">
+					<li class="nav-item dropdown">
+						<button class="btn dropdown-toggle" type="button"
+							id="dropdownMenuButton1" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							<i class="fa-solid fa-circle-user"></i>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							<li class="dropdown-item">
 
-                        <a href="${passwordModify }" data-bs-toggle="modal"
-                           data-bs-target="#modal3"
-                           class="nav-link ${current == 'passwordModify' ? 'active' : '' }">비밀번호
-                           변경</a>
-                     </li>
-                     <li class="dropdown-item">
-                  <a class="nav-link${current == 'myList' ? 'active' : '' }"
-                     href="${myListUrl }">내 의뢰목록</a>
-               </li>
-                     <li class="dropdown-item">
+								<a href="${passwordModify }" data-bs-toggle="modal"
+									data-bs-target="#modal3"
+									class="nav-link ${current == 'passwordModify' ? 'active' : '' }">비밀번호
+									변경</a>
+							</li>
+							<li class="dropdown-item">
+								<a class="nav-link${current == 'myList' ? 'active' : '' }"
+									href="${myListUrl }">내 의뢰목록</a>
+							</li>
+							<li class="dropdown-item">
 
-                        <a href="${memberInfoUrl }" data-bs-toggle="modal"
-                           data-bs-target="#modal2"
-                           class="nav-link ${current == 'memberInfo' ? 'active' : '' }">회원정보수정</a>
-                     </li>
-                     <li>
-                        <hr class="dropdown-divider">
-                     </li>
-                     <li>
-                        <a href="${logoutUrl }" class="dropdown-item">로그아웃</a>
-                     </li>
-                  </ul>
-               </li>
-            </sec:authorize>
-         </ul>
-         <div class="d-none">
-            <form action="${logoutUrl }" id="logoutform1" method="post" /></form>
-         </div>
-      </div>
-   </div>
+								<a href="${memberInfoUrl }" data-bs-toggle="modal"
+									data-bs-target="#modal2"
+									class="nav-link ${current == 'memberInfo' ? 'active' : '' }">회원정보수정</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li>
+								<a href="${logoutUrl }" class="dropdown-item">로그아웃</a>
+							</li>
+						</ul>
+					</li>
+				</sec:authorize>
+			</ul>
+			<div class="d-none">
+				<form action="${logoutUrl }" id="logoutform1" method="post" /></form>
+			</div>
+		</div>
+	</div>
 </nav>
 

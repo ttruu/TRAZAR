@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="my" tagdir="/WEB-INF/tags/" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags/"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,69 +23,95 @@
 	crossorigin="anonymous"></script>
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js" integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css"
+	integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js"
+	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <title>Insert title here</title>
 </head>
+<style>
+table.type09 {
+	border-collapse: collapse;
+	text-align: left;
+	line-height: 1.5;
+}
+
+table.type09 thead th {
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	color: #369;
+	border-bottom: 3px solid #036;
+}
+
+table.type09 tbody th {
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #f3f6f7;
+}
+
+table.type09 td {
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+}
+</style>
 <body>
-<my:navBar current="list" />
-
-
-
+	<my:center/>
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<h1>공지사항</h1>
-					<c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
-						<a id="insert-button1" href="${noticeInsertUrl }" class="btn btn-secondary">
-							<i class="fa-solid fa-pen-to-square"></i>
+	<h1>공지사항</h1>
+	<table class="type09">
+		<c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
+		<a id="insert-button1" href="${noticeInsertUrl }"
+			class="btn btn-secondary">
+			<i class="fa-solid fa-pen-to-square"></i>
+		</a>
+		<c:if test="${not empty message }">
+			<div class="alert alert-primary">${message }</div>
+		</c:if>
+		<thead>
+			<tr>
+				<th scope="cols">글번호</th>
+				<th scope="cols">제목</th>
+				<th scope="cols">작성자</th>
+				<th scope="cols">작성시간</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${noticeList }" var="notice">
+				<tr>
+					<th scope="row">${notice.id }</th>
+					<td>
+						<c:url value="/notice/get" var="getUrl">
+							<c:param name="id" value="${notice.id }"></c:param>
+							<c:param name="memberId" value="${notice.memberId }"></c:param>
+						</c:url>
+
+						<a href="${getUrl }">
+							<c:out value="${notice.title }"></c:out>
 						</a>
-				<c:if test="${not empty message }">
-					<div class="alert alert-primary">
-						${message }
-					</div>
-				</c:if>
-				
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>1</th>
-							<th>2</th>
-							<th>3</th>
-							<th>4</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${noticeList }" var="notice">
-							<tr>
-								<td>${notice.id }</td>
-								<td>
-									<c:url value="/notice/get" var="getUrl">
-										<c:param name="id" value="${notice.id }"></c:param>
-										<c:param name="memberId" value="${notice.memberId }"></c:param>
-									</c:url>
-									
-									<a href="${getUrl }">
-										<c:out value="${notice.title }"></c:out>
-									</a>
-								</td>
-								<td>${notice.writerNickName }</td>
-								<td>${notice.prettyInserted }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
+					</td>
+					<th scope="row">${notice.writerNickName }</th>
+					<td>${notice.prettyInserted }</td>
+				</tr>
+					</c:forEach>
+		</tbody>
+	</table>
+		</div>
 		</div>
 	</div>
-	
-	
-		
 </body>
 </html>
-
-
-
 
 
 

@@ -158,7 +158,7 @@
 		</div>
 
 		<div class="left-side">
-			<my:sideNavBar></my:sideNavBar>
+		
 		</div>
 		<div class="main1">
 			<div class="totalLayout">
