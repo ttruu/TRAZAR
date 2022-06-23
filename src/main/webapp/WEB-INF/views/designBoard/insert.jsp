@@ -49,7 +49,7 @@
 	<script>
 		$(document).ready(function() {
 
-			var ckeditor_config = {
+			/* var ckeditor_config = {
 				resize_enaleb : false,
 				enterMode : CKEDITOR.ENTER_BR,
 				shiftEnterMode : CKEDITOR.ENTER_P,
@@ -57,7 +57,7 @@
 			};
 
 			CKEDITOR.replace('ckeditor', ckeditor_config);
-
+ */
 			/* 
 
 			CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용
@@ -131,7 +131,7 @@
 
 					<div>
 						<label class="form-label" for="textarea1">본문</label>
-						<textarea class="form-control" name="body" id="ckeditor" cols="30"
+						<textarea class="form-control" name="body" id="summernote" cols="30"
 							rows="10"></textarea>
 					</div>
 
