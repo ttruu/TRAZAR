@@ -29,7 +29,37 @@
 <script>
 	$(document).ready(
 			function() {
-
+				$("#eye1").hide()
+				$("#close1").on('click',function(){
+					$("#close1").hide()
+					$("#eye1").show()
+					var passwordField = $("#pwCheck1")
+					var passwordField1 = $("#pwCheck2")
+					var passwordFieldType = passwordField.attr('type')
+					var passwordFieldType1 = passwordField1.attr('type')
+					if (passwordFieldType && passwordFieldType == 'password'){
+						passwordField.attr('type', 'text')
+						passwordField1.attr('type', 'text')
+					} else {
+						passwordField.attr('type','password')
+						passwordField1.attr('type','password')
+					}
+				})
+				$("#eye1").on('click',function(){
+					$("#eye1").hide()
+					$("#close1").show()
+					var passwordField = $("#pwCheck1")
+					var passwordField1 = $("#pwCheck2")
+					var passwordFieldType = passwordField.attr('type')
+					var passwordFieldType1 = passwordField1.attr('type')
+					if (passwordFieldType && passwordFieldType == 'password'){
+						passwordField.attr('type', 'text')
+						passwordField1.attr('type', 'text')
+					} else {
+						passwordField.attr('type','password')
+						passwordField1.attr('type','password')
+					}
+				})
 				// 기본값 false, true시 수정버튼 활성화
 				let idCheck = false;
 				let emailCheck = false;
@@ -219,7 +249,7 @@
 					}
 					enableSubmit()
 				}
-
+				
 			})
 </script>
 </head>
@@ -236,7 +266,7 @@
 			<div class="left-area"
 				style="position: relative; flex: 1 1; background-color: #303134; display: block;">
 				<div
-					style="color: white; text-decoration: none; font-size: 500%; left: 15%; top: 30%; z-index: 60;">
+					style="color: white; text-decoration: none; font-size: 500%; left: 15%; top: 30%; z-index: 60; position:fixed;">
 					<a href="${appRoot }/designBoard/list"
 						style="text-decoration: none; color: white;">TRAZAR</a>
 					<div
@@ -246,7 +276,7 @@
 			</div>
 
 			<div class="left-under"
-				style="position: absolute; bottom: 42px; left: 3%; width: 90%;">
+				style="position: fixed; bottom: 42px; left: 3%; width: 90%;">
 				<div style="color: white; font-size: 15px;">TRAZAR</div>
 			</div>
 
@@ -284,9 +314,13 @@
 						<div class="form-text" id="idCheckMessage"></div>
 
 						<%-- 패스워드 --%>
-						<label for="passwordInput1" class="form-label"> 패스워드 </label>
-						<input class="form-control" id="pwCheck1" type="password"
-							name="password" />
+						<div class="eyes">
+							<label for="passwordInput1" class="form-label"> 패스워드 </label>
+							<input class="form-control" id="pwCheck1" type="password"
+								name="password" />
+							<i class="fa-solid fa-eye" style="position: absolute; left: 67%; top: 30%;" id="eye1"></i>
+							<i class="fa-solid fa-eye-slash" style="position: absolute; left: 67%; top: 30%;" id="close1"></i>
+						</div>
 
 						<%-- 패스워드 확인 --%>
 						<label for="passwordInput2" class="form-label"> 패스워드확인 </label>
