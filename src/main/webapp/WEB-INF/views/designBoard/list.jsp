@@ -33,7 +33,7 @@
 .MainHome {
 	display: grid;
 	grid-template-columns: 5% 60% 0% 10% 10%;
-	grid-template-rows: 8% 50% 5% 90% 10%;
+	grid-template-rows: 5% 50% 5% 90% 10%;
 	height: 100%;
 	grid-gap: 0.5%;
 	grid-template-areas: 'header header header header header header'
