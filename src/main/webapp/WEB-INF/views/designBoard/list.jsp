@@ -181,11 +181,19 @@
 								<div class="thumbnail-image">
 									<img src="${designBoard.imgthumbnail }">
 								</div>
+									</a>
+									
+								<c:url value="/designer/view" var="viewUrl">
+								<c:param name="memberId" value="${designBoard.memberId }" ></c:param>
+								</c:url>
+								<a href="${viewUrl }" >
 								<div class="design-name">${designBoard.id}ㅣ
 									${designBoard.writerNickName }</div>
+									</a>
+								
 								<div class="main-project-title">${designBoard.title }
 									${designBoard.prettyInserted }</div>
-							</a>
+						
 						</div>
 					</c:forEach>
 				</div>
