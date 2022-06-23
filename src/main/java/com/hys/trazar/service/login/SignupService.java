@@ -138,4 +138,8 @@ public class SignupService {
 		
 	}
 
+	//해당 디자이너 보드 가져오기
+	public List<DesignBoardDto> DesignListRequest(String memberId) {
+		return mapper.DesignerlistByMemberId(memberId);
+	}
 }
