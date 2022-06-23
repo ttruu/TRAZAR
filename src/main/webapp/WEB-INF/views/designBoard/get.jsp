@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,9 +32,9 @@
 	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	
-<script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>	
-<link href="${appRoot }/resources/css/style.css" rel="stylesheet"
-	type="text/css">
+<!-- <script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>	 -->
+<%-- <link href="${appRoot }/resources/css/style.css" rel="stylesheet"
+	type="text/css"> --%>
 
 <style>
 .list-group-item {
@@ -256,6 +258,7 @@
 		
 		// addReviewSubmitButton1 버튼 클릭시 ajax 댓글 추가 요청
 		// 댓글 insert 
+		
 		$("#addReviewSubmitButton1").click(function(e) {
 			e.preventDefault();
 			
@@ -279,7 +282,7 @@
 					
 				},
 				error : function() {
-					$("#reviewMessage1").show().text("댓글을 작성할 수 없습니다.").fadeOut(3000);
+					$("#reviewMessage1").show().text("로그인이 필요합니다.").fadeOut(3000);
 					console.log("문제 발생");
 				},
 				complete : function() {
@@ -303,10 +306,18 @@
 	<div class="container">
 			<div class="row">
 				<div class="col">
-					<button id="edit-button1" class="btn btn-secondary">
+				
+				<sec:authorize access="isAuthenticated()">
+						<sec:authentication property="principal" var="principal" />
+						<c:if test="${principal.username == designBoard.memberId }">
+							<button id="edit-button1" class="btn btn-secondary">
 								<i class="fa-solid fa-pen-to-square"></i>
-					</button>
+							</button>
+						</c:if>
+					</sec:authorize>
 					
+					
+
 					<c:if test="${not empty message }">
 						<div class="alert alert-primary">${message }</div>
 					</c:if>

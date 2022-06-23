@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags/" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,10 +38,16 @@
 		<div class="row">
 			<div class="col">
 				<h1>공지사항</h1>
+				
+					<sec:authorize access="hasRole('ADMIN')">
+						<sec:authentication property="principal" var="principal" />
+
+						
 					<c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
 						<a id="insert-button1" href="${noticeInsertUrl }" class="btn btn-secondary">
 							<i class="fa-solid fa-pen-to-square"></i>
 						</a>
+					</sec:authorize>
 				<c:if test="${not empty message }">
 					<div class="alert alert-primary">
 						${message }

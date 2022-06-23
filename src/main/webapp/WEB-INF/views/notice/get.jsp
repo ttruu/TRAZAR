@@ -70,9 +70,14 @@ $(document).ready(function() {
 		<div class="row">
 			<div class="col">
 				<h1>글 본문
-					<button id="edit-button1" class="btn btn-secondary">
-						<i class="fa-solid fa-pen-to-square"></i>
-					</button>
+					<sec:authorize access="isAuthenticated()">
+						<sec:authentication property="principal" var="principal" />
+						<c:if test="${principal.username == notice.memberId }">
+							<button id="edit-button1" class="btn btn-secondary">
+								<i class="fa-solid fa-pen-to-square"></i>
+							</button>
+						</c:if>
+					</sec:authorize>
 				</h1>
 
 				<c:if test="${not empty message }">

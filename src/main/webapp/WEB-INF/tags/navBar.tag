@@ -193,34 +193,32 @@
 		</button>
 
 
-
-		<div class="collapse navbar-collapse justify-content-end"
-			id="collapsibleNavbar">
-			<ul class="navbar-nav">
-
-				<sec:authorize access="isAuthenticated()">
-					<li class="nav-item">
-						<a class="nav-link${current == 'insert' ? 'active' : '' }"
-							href="${insertUrl }">글쓰기</a>
-					</li>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-					<li class="nav-item">
-						<a class="nav-link" href="#">알람</a>
-					</li>
-				</sec:authorize>
-				<sec:authorize access="not isAuthenticated()">
-					<li class="nav-item" style="">
-						<a href="${loginUrl }" class="nav-link">로그인</a>
-					</li>
-				</sec:authorize>
-
-				<sec:authorize access="not isAuthenticated()">
-					<li class="nav-item">
-						<a class="nav-link${current == 'signup' ? 'active' : '' }"
-							href="${signupUrl }">회원가입</a>
-					</li>
-				</sec:authorize>
+      <div class="collapse navbar-collapse justify-content-end"
+         id="collapsibleNavbar">
+         <ul class="navbar-nav">
+			
+               <li class="nav-item">
+                  <a class="nav-link${current == 'insert' ? 'active' : '' }"
+                     href="${insertUrl }">글쓰기</a>
+               </li>
+            <sec:authorize access="isAuthenticated()">
+               <li class="nav-item">
+                  <a class="nav-link"
+                     href="#">알람</a>
+               </li>
+            </sec:authorize>
+            <sec:authorize access="not isAuthenticated()">
+               <li class="nav-item" style="">
+                  <a href="${loginUrl }" class="nav-link">로그인</a>
+               </li>
+            </sec:authorize>
+            
+            <sec:authorize access="not isAuthenticated()">
+               <li class="nav-item">
+                  <a class="nav-link${current == 'signup' ? 'active' : '' }"
+                     href="${signupUrl }">회원가입</a>
+               </li>
+            </sec:authorize>
 
 
 
