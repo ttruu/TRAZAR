@@ -32,9 +32,9 @@
 	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	
-<script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>	
-<link href="${appRoot }/resources/css/style.css" rel="stylesheet"
-	type="text/css">
+<!-- <script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>	 -->
+<%-- <link href="${appRoot }/resources/css/style.css" rel="stylesheet"
+	type="text/css"> --%>
 
 <style>
 .list-group-item {
@@ -316,12 +316,6 @@
 						</c:if>
 					</sec:authorize>
 					
-					<sec:authorize access="isAuthenticated()">
-						<sec:authentication property="principal" var="principal" />
-							<button id="addReviewSubmitButton1" class="btn btn-secondary">
-								<i class="fa-solid fa-pen-to-square"></i>
-							</button>
-					</sec:authorize>
 					
 
 					<c:if test="${not empty message }">
