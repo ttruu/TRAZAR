@@ -21,7 +21,6 @@
 		<!-- 로그인 권한 -->
 		<security:intercept-url pattern="/designBoard/insert" access="isAuthenticated()"/>
 		<security:intercept-url pattern="/notice/insert" access="hasRole('ADMIN')"/>
-		<security:intercept-url pattern="/review/insert" access="isAuthenticated()"/>
 	</security:http>
 
 	<security:authentication-manager>

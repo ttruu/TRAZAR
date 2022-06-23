@@ -282,7 +282,7 @@
 					
 				},
 				error : function() {
-					$("#reviewMessage1").show().text("댓글을 작성할 수 없습니다.").fadeOut(3000);
+					$("#reviewMessage1").show().text("로그인이 필요합니다.").fadeOut(3000);
 					console.log("문제 발생");
 				},
 				complete : function() {
