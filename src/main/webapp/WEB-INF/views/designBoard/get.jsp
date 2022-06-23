@@ -396,6 +396,102 @@
 			</form>
 		</div>
 		
+		
+		<!-- 연습해볼것 -->
+		<!--  
+		<div class="work-add-info-container">
+			<div class="work-button-group">
+				<a class="btn-like">
+					<svg class="like-icon">
+			                                <i class="fa-regular fa-heart"></i>
+			                            </svg>
+
+					<svg class="like-icon-fill">
+			                                <i class="fa-solid fa-heart"></i>
+			                            </svg>
+
+					<span class="btn-name">좋아요</span>
+					<span class="like-cnt">갯수</span>
+				</a>
+
+			</div>
+		</div>
+
+		<!-- work-add-info-container end -->
+
+		<!-- 
+		<div class="work-actions">
+			<div class="comment-wrapper">
+				
+				<form class="comment-block create">
+					<div class="comment-profile-input-form">
+						<a class="comment-profile-area">
+							<div class="profile-item" style="width: 48px; height: 48px;">
+								<img
+									src="https://cdn.notefolio.net/profiles/rhdtlr3006380_face.jpg"
+									class="hide">
+								<span class="show">R</span>
+								
+								
+							</div>
+						</a>
+
+						<textarea tabindex="1" rows="4" placeholder=" 이 작업에 대한 댓글을 남겨주세요."
+							class="comment-textarea comment-textform comment-textarea-form"></textarea>
+					</div>
+					<div class="comment-action-area">
+						<div tabindex="2" class="comment-submit-btn">댓글작성</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+			
+
+		<div class="preview-sidebar">
+			<div class="profile">
+				<div class="profile-wrapper">
+					<div class="profile-image-container">
+						<div class="v-popover">
+							<div class="trigger" style="display: inline-block;">
+								<div class="profile-image">
+									<div class="profile-item pointer-cursor"
+										style="width: 46px; height: 46px;">
+										<img
+											src="https://cdn-bastani.stunning.kr/prod/users/0c9b5107-86f1-4e2f-ab14-e423b7df62c7/avatar/aezcK9ztSbZ3a7hU.시현하다_시원.jpeg.small?q=80&amp;t=crop&amp;s=100x100&amp;version=1a22780">
+										<span class="hide">S</span>
+										
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<span>프로필</span>
+				</div>
+			</div>
+
+
+			<div class="like">
+				<div class="like-work-wrapper">
+					<div class="v-popover">
+						<div class="trigger" style="display: inline-block;">
+							<div class="btn-like pointer-cursor">
+								<svg class="like-icon">
+	                                    <use href="#like-icon"></use>
+	                                </svg>
+								<svg class="like-icon-fill">
+	                                    <use href="#like-icon-fill"></use>
+	                                </svg>
+							</div>
+						</div>
+					</div>
+					<span>좋아요</span>
+				</div>
+			</div>
+		</div> -->
+		
+		
 </body>
 </html>
 
