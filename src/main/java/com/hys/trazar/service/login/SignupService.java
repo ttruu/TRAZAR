@@ -68,6 +68,11 @@ public class SignupService {
 		return mapper.MemberEmailCheck(email) > 0;
 	}
 	
+	// 중복확인 (phoneNum)
+	public boolean MemberPhoneNumCheck(String phoneNum) {
+		return mapper.MemberPhoneNumCheck(phoneNum) > 0;
+	}
+	
 	// id로 멤버 db에서 불러옴
 	public SignupDto selectMember(String id) {
 		return mapper.selectMember(id);
@@ -93,7 +98,7 @@ public class SignupService {
 		return mapper.emailModifyCheck(email) > 0;
 	}
 
-	// 
+	// 패스워드 변경
 	public boolean passwordUpdate(SignupDto dto) {
 		
 		/// 암호화
@@ -132,6 +137,7 @@ public class SignupService {
 		mapper.findPassword(id,pw);
 		
 	}
+
 	//해당 디자이너 보드 가져오기
 	public List<DesignBoardDto> DesignListRequest(String memberId) {
 		return mapper.DesignerlistByMemberId(memberId);
