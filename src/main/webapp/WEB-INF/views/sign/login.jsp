@@ -10,6 +10,33 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>Insert title here</title>
+<script>
+	$(document).ready(function(){
+		$("#eye").hide()
+		$("#close").on('click',function(){
+			$("#close").hide()
+			$("#eye").show()
+			var passwordField = $("#passwordInput1")
+			var passwordFieldType = passwordField.attr('type')
+			if (passwordFieldType == 'password'){
+				passwordField.attr('type', 'text')
+			} else {
+				passwordField.attr('type','password')
+			}
+		})
+		$("#eye").on('click',function(){
+			$("#eye").hide()
+			$("#close").show()
+			var passwordField = $("#passwordInput1")
+			var passwordFieldType = passwordField.attr('type')
+			if (passwordFieldType == 'password'){
+				passwordField.attr('type', 'text')
+			} else {
+				passwordField.attr('type','password')
+			}
+		})
+	})
+</script>
 </head>
 <style>
 	.form-control:focus {
@@ -21,6 +48,7 @@
 	alert("아이디와 패스워드를 확인 해주세요.");
 	</script>
 </c:if>
+
 <body>
 	
 	<div class="main" 
@@ -49,21 +77,31 @@
 					style="font-weight: 700; font-size: 25px; line-height: 130%; margin-bottom: 12px; padding-bottom: 14px;
 					text-align: center; font-size: 150%;">로그인하기 </h1>
 					<form action="${appRoot }/login" method="post">
+					
+						<%-- 아이디 --%>
 						<label for="usernameInput1" class="form-label" style="position: absolute;">
 						</label>
+						<div class="passwordInput">
 						<input id="usernameInput1" class="form-control" type="text" name="username"
 						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px;
 						 padding: 17px;" 
 						placeholder="아이디"/>
+						</div>
 						
+						<%-- 패스워드 --%>
+						<div class="passwordEye">
 						<label for="passwordInput1" class="form-label" style="position: absolute;">
 						</label>
 						<input class="form-control" id="passwordInput1" type="password" name="password" 
 						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px;
 						 padding: 17px; outline-style: none;"
 						placeholder="비밀번호" />
+						<i class="fa-solid fa-eye" style="position: absolute; left: 67%; top: 44%;" id="eye"></i>
+						<i class="fa-solid fa-eye-slash" style="position: absolute; left: 67%; top: 44%;" id="close" id=""></i>
+						</div>
 						
 						
+						<%-- 로그인 --%>
 						<button class = "btn btn-dark" type="submit" style="margin-top: 37px; position: relative; display: block; height: 58px; text-align: center;
 						font-size: 18px; width: 100%; font-weight: 500; line-height: normal;">로그인</button>
 						
@@ -74,8 +112,12 @@
 							<label for="rememberMeCheck1" class="form-check-label" style="position: relative; color:#979797">
 								로그인유지
 							</label>
-							<a href="${appRoot}/sign/findPassword" style="position: absolute; right: 0; text-decoration: none; color: #979797;">비밀번호 찾기></a>
+							<a href="${appRoot}/sign/findId" style="position: absolute; right:42%; text-decoration: none; color: #979797;"> 아이디 찾기</a>
+							<a href="${appRoot}/sign/findPassword" style="position: absolute; right: 0; text-decoration: none; color: #979797;">비밀번호 초기화</a>
 						</div>
+						
+						
+						
 						
 						<div style="padding: 20px; text-align: center; font-size: 16;">
 							<a href="${appRoot}/sign/signup" style="color: black; text-decoration: none;">회원가입 하러가기</a>
