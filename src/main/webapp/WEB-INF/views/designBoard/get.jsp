@@ -30,9 +30,9 @@
 	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	
-<script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>	
-<link href="${appRoot }/resources/css/style.css" rel="stylesheet"
-	type="text/css">
+<!-- <script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>	 -->
+<%-- <link href="${appRoot }/resources/css/style.css" rel="stylesheet"
+	type="text/css"> --%>
 
 <style>
 .list-group-item {
