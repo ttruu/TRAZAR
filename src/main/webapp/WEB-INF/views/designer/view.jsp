@@ -19,38 +19,84 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+	
+<title>Strata by HTML5 UP</title>
+ 
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="${appRoot }/resources/css/designer/main.css" />
+	</head>
+	<body class="is-preload">
 
-<title>Insert title here</title>
-</head>
-<body>
-<h1>디자이너 정보</h1>
-					<div>
-					<input type="hidden" name="id" value="${member.id }">
-					<label for="name" class="form-label">
-					이름
-					</label>
-					<input id="name" class="form-control" type="text" name="name" value="${member.name }" />
-		
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<!--<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a> -->
+					<h1><strong>DisignerName</strong><br>
+							<h2> ${member.id }</h2><br>
+						<h1><strong>Email</strong><br />
+							<h2> ${member.email }</h2><br>
+							<h1><strong>NickName</strong><br />
+								<h2> ${member.nickName }</h2><br>
+			
+				</div>
+			</header>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- One -->
+					<section id="one">
+				
+						<header class="major">
+						
+							<h2>	<a href="/trazar/designBoard/list"><img src="../resources/picture/logo/로고.png" /></a>자기소개</h2> 
+						</header>
+						<p>${member.introduce }</p>
+						
+					</section>
+
+				<!-- Two -->
+					<section id="two">
+						<h2>Recent Work</h2>
+			
+						<div class="row">
+						<c:forEach items="${designerBoardList}" var="designBoard" varStatus="status">
+							<input type="hidden" name="memberId" value="${designBoard.memberId }" />
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
+							
+								<c:url value="/designBoard/get" var="designBoardUrl">
+									<c:param name="id" value="${designBoard.id }"></c:param>
+									<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+									</c:url>
+							
+							<a href="${designBoardUrl }"><h3>${designBoard.title }</h3></a>
+								<p>${designBoard.inserted }</p>
+							</article>
+							</c:forEach>						
+						</div>
 					
-					<label for="email class="form-label">
-					이메일
-					</label>
-						<input class="form-control" type="text" name="email"  id="email" value="${member.email }" /> 
-	
-					<label for="nickName" class="form-label">
-					닉네임
-					</label>
-						<input class="form-control" type="text" name="nickName" id="nickName" value="${member.nickName }"/> 
-		
-		
+					</section>
 
-					<label for="introduce" class="form-label">
-					자기소개
-					</label>
-					<div class="input-group">
-						<input type="text" name="introduce" value="${member.introduce }" size="74" id="introduce" /> 
-					</div>
 		
-	
-</body>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; TRAZAR</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="${appRoot}/resources/css/designer/jquery.min.js"></script>
+			<script src="${appRoot}/resources/css/designer/jquery.poptrox.min.js"></script>
+			<script src="${appRoot}/resources/css/designer/browser.min.js"></script>
+			<script src="${appRoot}/resources/css/designer/breakpoints.min.js"></script>
+			<script src="${appRoot}/resources/css/designer/util.js"></script>
+			<script src="${appRoot}/resources/css/designer/main.js"></script>
+	</body>
 </html>
