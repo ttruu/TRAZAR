@@ -16,6 +16,8 @@ public interface SignupMapper {
 	int MemberNickNameCheck(String nickName);
 
 	int MemberEmailCheck(String email);
+	
+	int MemberPhoneNumCheck(String phoneNum);
 
 	int createAuth(@Param("id")String id, @Param("auth")String auth);
 
@@ -36,6 +38,10 @@ public interface SignupMapper {
 	void deleteAuth(String id);
 
 	void findPassword(@Param("id")String id, @Param("pw")String pw);
+	
+	
+
+
 
 	List<DesignBoardDto> DesignerlistByMemberId(String id);
 

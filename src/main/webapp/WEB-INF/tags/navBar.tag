@@ -142,12 +142,10 @@
          id="collapsibleNavbar">
          <ul class="navbar-nav">
 			
-            <sec:authorize access="isAuthenticated()">
                <li class="nav-item">
                   <a class="nav-link${current == 'insert' ? 'active' : '' }"
                      href="${insertUrl }">글쓰기</a>
                </li>
-            </sec:authorize>
             <sec:authorize access="isAuthenticated()">
                <li class="nav-item">
                   <a class="nav-link"

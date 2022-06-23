@@ -4,6 +4,15 @@
 		font-family : 'Pretendard', 'Pretendard Variable';
 	}
 	
+	.vm--container.scrollable {
+	    height: 100%;
+	    min-height: 100vh;
+/* 	    overflow-y: auto; */
+    }
+    
+    .vm--container {
+	    /* position: fixed; */
+	    box-sizing: border-box;
     
     .vm--container {
 	    position: fixed;
