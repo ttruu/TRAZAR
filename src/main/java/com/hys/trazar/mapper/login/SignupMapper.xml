@@ -71,9 +71,6 @@
 		WHERE id = #{id}
 	</update>
 	
-	<select id="findId" resultType="void">
-		SELECT id FROM Member WHERE name = #{name}
-	</select>
 	
 	
 </mapper>

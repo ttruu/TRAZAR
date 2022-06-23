@@ -45,26 +45,24 @@
 			<div class="col-12 col-lg-6">
 				<form action="${appRoot}/sign/findPassword" method="post">
 
-					<label for="passwordInput1" class="form-label"
-						style="position: absolute;"> </label>
+						<label for="idInput1" class="form-label"> 아이디 </label>
 					<input class="form-control" id="passwordInput1" type="text"
 						name="id"
 						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
 						placeholder="아이디를 입력하세요" /> <br /> <br />
 						
 						
-					<label for="usernameInput1" class="form-label"
-						style="position: absolute;"> </label>
-					<select id="usernameInput1" class="form-control" name="question" style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;">
+					<label for="questionInput1" class="form-label"> 비밀번호 초기화 질문 </label>
+					<select id="usernameInput1"  name="question" style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;">
 					<option value="내가 좋아하는 캐릭터는 ?">내가 좋아하는 캐릭터는 ?</option>
 					<option value="기억에 남는 추억의 장소는 ?">기억에 남는 추억의 장소는 ?</option>
 					<option value="인상 깊게 읽은 책 이름은 ?">인상 깊게 읽은 책 이름은 ?</option>
 					<option value="아버지의 성함은 ?">아버지의 성함은 ?</option>
-					</select> <br /> <br />
+					</select>
+					<br /><br /><br />
 
 
-					<label for="passwordInput1" class="form-label"
-						style="position: absolute;"> </label>
+					<label for="answerInput1" class="form-label"> 비밀번호 초기화 답변 </label>
 					<input class="form-control" id="passwordInput1" type="text" style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
 						name="answer" placeholder="답변" /> <br /> <br />
 

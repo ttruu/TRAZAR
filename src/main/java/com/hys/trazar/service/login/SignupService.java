@@ -138,8 +138,4 @@ public class SignupService {
 		
 	}
 
-	public void findName(String name) {
-		mapper.findId(name);
-	}
-
 }

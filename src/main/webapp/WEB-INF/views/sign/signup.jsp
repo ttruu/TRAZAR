@@ -253,6 +253,19 @@
 			})
 </script>
 </head>
+
+<style>
+	.form-control:focus {
+	box-shadow: 0 0;
+	
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  }
+</style>
 <body>
 
 
@@ -314,18 +327,18 @@
 						<div class="form-text" id="idCheckMessage"></div>
 
 						<%-- 패스워드 --%>
-						<div class="eyes">
-							<label for="passwordInput1" class="form-label"> 패스워드 </label>
-							<input class="form-control" id="pwCheck1" type="password"
-								name="password" />
-							<i class="fa-solid fa-eye" style="position: absolute; left: 67%; top: 30%;" id="eye1"></i>
-							<i class="fa-solid fa-eye-slash" style="position: absolute; left: 67%; top: 30%;" id="close1"></i>
+						<label for="passwordInput1" class="form-label"> 패스워드 </label>
+						<div class="input-group mb-3">
+							<input class="form-control" id="pwCheck1" type="password" name="password" style="border-right: none;" />
+							<span class="input-group-text" id="basic-addon1" style="background: white; border-left: none;">
+								<i class="fa-solid fa-eye" id="eye1"></i>
+								<i class="fa-solid fa-eye-slash" id="close1"></i>
+							</span>
 						</div>
 
 						<%-- 패스워드 확인 --%>
 						<label for="passwordInput2" class="form-label"> 패스워드확인 </label>
-						<input class="form-control" id="pwCheck2" type="password"
-							name="passwordConfirm" />
+						<input class="form-control" id="pwCheck2" type="password" name="passwordConfirm" />
 						<div class="form-text" id="passwordCheck"></div>
 
 						<%-- 이메일 --%>
@@ -353,7 +366,7 @@
 							입력) </label>
 						<div class="input-group">
 							<input id="idInput1" class="form-control" type="number"
-								name="phoneNum" />
+								name="phoneNum" style="" />
 							<button class="btn btn-secondary" id="phoneNumCheckButton"
 								type="button">휴대폰 번호 확인</button>
 						</div>

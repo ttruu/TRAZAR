@@ -33,6 +33,11 @@
 .form-control:focus {
 	box-shadow: 0 0;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  }
 </style>
 <body>
 
@@ -46,8 +51,7 @@
 				<form action="${appRoot}/sign/findId" method="post">
 
 					<%-- 이름 입력  --%>
-					<label for="passwordInput1" class="form-label"
-						style="position: absolute;"> </label>
+					<label for="nameInput1" class="form-label"> 이름 </label>
 					<input class="form-control" id="passwordInput1" type="text"
 						name="name"
 						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
@@ -57,8 +61,7 @@
 					
 					
 					<%-- 휴대폰 번호 입력 --%>
-					<label for="passwordInput1" class="form-label"
-						style="position: absolute;"> </label>
+					<label for="phoneInput1" class="form-label">휴대폰 번호 </label>
 					<input class="form-control" id="passwordInput1" type="number"
 						name="phoneNum"
 						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
@@ -67,8 +70,7 @@
 					<br />
 					
 					<%-- 이메일 입력 --%>
-					<label for="passwordInput1" class="form-label"
-						style="position: absolute;"> </label>
+					<label for="emailInput1" class="form-label"> 이메일 </label>
 					<input class="form-control" id="passwordInput1" type="email"
 						name="email"
 						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"

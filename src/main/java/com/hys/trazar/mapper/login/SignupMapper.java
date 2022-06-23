@@ -37,8 +37,10 @@ public interface SignupMapper {
 	void deleteAuth(String id);
 
 	void findPassword(@Param("id")String id, @Param("pw")String pw);
+	
+	
 
-	void findId(String name);
+
 
 
 
