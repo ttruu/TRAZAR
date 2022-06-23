@@ -354,7 +354,49 @@
 				</div>
 			</div>
 		</div>
+		
+		<%-- 댓글 추가 --%>
+		<div class="border border-black border-2 rounded-3 p-4 container">
+			<div class="row mt-3">
+				<div class="col">
+					<h4>댓글</h4>
+					<form class="mt-3" id="insertReviewForm1">
+						<div class="input-group">
+							<input type="hidden" name="designBoardId"
+								value="${designBoard.id }" />
 
+							<input id="insertReviewContentInput1" class="form-control"
+								type="text" name="body" required />
+							<button id="addReviewSubmitButton1"
+								class="btn btn-outline-secondary">등록</button>
+
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="alert alert-primary" style="display: none;" id="reviewMessage1"></div>
+			</div>
+
+			<%-- 댓글 목록 --%>
+			<div class="row mt-3">
+				<div class="col">
+
+					<ul id="reviewList1" class="list-group" />
+
+				</div>
+			</div>
+		</div>
+
+		<%-- 댓글 삭제 --%>
+		<div class="d-none">
+			<form id="reviewDeleteForm1" action="${appRoot }/review/delete"
+				method="post">
+				<input id="reviewDeleteInput1" type="text" name="id" />
+				<input type="text" name="designBoardId" value="${designBoard.id }" />
+			</form>
+		</div>
+		
 </body>
 </html>
 
