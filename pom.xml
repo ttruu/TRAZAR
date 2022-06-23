@@ -53,7 +53,6 @@
               <version>2.11.0</version>
           </dependency>
 		
-		
           <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
           <!-- json 변환 -->
           <dependency>

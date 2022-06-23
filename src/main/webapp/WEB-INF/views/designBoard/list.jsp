@@ -127,8 +127,8 @@
 .main-lists .thumbnail-image img {
 	width: 270px;
 	height: 270px;
-	border : 1px solid #E1F6FA;
-	border-radius : 30px;
+	border: 1px solid #E1F6FA;
+	border-radius: 30px;
 }
 
 .main-project-title {
@@ -142,6 +142,14 @@
 
 <title>Insert title here</title>
 </head>
+
+<c:if test="${param.msg != null }">
+	<script>
+		alert("아이디와 패스워드를 확인 해주세요.")
+	</script>
+</c:if>
+
+
 <body>
 
 	<div class="MainHome">
@@ -258,10 +266,10 @@
 			</div>
 		</div>
 
-		<div class="footer"><my:footer></my:footer></div>
-
+		<div class="footer">
+			<my:footer></my:footer>
+		</div>
 	</div>
-
 
 </body>
 </html>
