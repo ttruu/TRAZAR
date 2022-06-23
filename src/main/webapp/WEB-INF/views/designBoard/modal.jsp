@@ -310,7 +310,7 @@
 										<h2
 											class="portfolio-modal-title text-secondary text-uppercase mb-0">
 											${designBoard.title }
-											<button id="edit-button1"  data-bs-dismiss="modal" class="btn btn-secondary">
+											<button 수정버튼 밑으로 내리기 id="edit-button1"  data-bs-dismiss="modal" class="btn btn-secondary">
 												<i class="fa-solid fa-pen-to-square"></i>
 											</button>
 										</h2>
@@ -318,6 +318,8 @@
 										<c:if test="${not empty message }">
 											<div class="alert alert-primary">${message }</div>
 										</c:if>
+										
+										
 										<!-- Icon Divider-->
 										<div class="divider-custom"
 											style="display: flex; flex-direction: row;">

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -163,7 +165,7 @@ public class DesignBoardController {
 	}
 
 	// 썸머노트 에디터에서 받는 이미지 업로드 처리
-	/*@RequestMapping(value = "/imageupload", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@RequestMapping(value = "/imageupload", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
 	public String imageUpload(MultipartHttpServletRequest request) throws IOException {
 	
@@ -185,7 +187,9 @@ public class DesignBoardController {
 		// http://를 붙여줘야 에디터 창에서 불러올 수가 있다. 
 		return "http://" + localIP + ":" + request.getServerPort() + filename;
 	
-	}*/
-
+	}
+	
+	
+	
 	
 }
