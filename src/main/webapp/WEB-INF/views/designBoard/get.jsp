@@ -316,12 +316,6 @@
 						</c:if>
 					</sec:authorize>
 					
-					<sec:authorize access="isAuthenticated()">
-						<sec:authentication property="principal" var="principal" />
-							<button id="addReviewSubmitButton1" class="btn btn-secondary">
-								<i class="fa-solid fa-pen-to-square"></i>
-							</button>
-					</sec:authorize>
 					
 
 					<c:if test="${not empty message }">
