@@ -227,16 +227,16 @@
 
 
 	<div class="main"
-		style="display: flex; height: 100%; margin: 0; padding: 0;">
+		style="display: flex; height: 107%; margin: 0; padding: 0;">
 
 		<div class="main2" style="display: flex; flex: 1 1;">
 
 
 
 			<div class="left-area"
-				style="position: relative; flex: 1 1; background-color: #303134; display: block; overflow: visible;">
+				style="position: relative; flex: 1 1; background-color: #303134; display: block;">
 				<div
-					style="color: white; text-decoration: none; font-size: 500%; left: 15%; top: 30%; z-index: 60; position:relative;">
+					style="color: white; text-decoration: none; font-size: 500%; left: 15%; top: 30%; z-index: 60;">
 					<a href="${appRoot }/designBoard/list"
 						style="text-decoration: none; color: white;">TRAZAR</a>
 					<div
@@ -251,7 +251,7 @@
 			</div>
 
 			<div class="right-area justify-content-start"
-				style="position: relative; align-items: center; flex-basis: 55%; display: flex; padding: 20px 0; font-size: 1.4rem; flex-direction: column;">
+				style="position: relative; align-items: center; flex-basis: 55%; display: flex; padding: 30px 0; font-size: 1.4rem; flex-direction: column;">
 				<div class="col-12 col-lg-5">
 					<div
 						style="position: absolute; top: 20px; right: 8%; font-size: 14px; color: #aeaeae; font-weight: 500; line-height: 36px;">
