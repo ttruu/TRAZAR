@@ -127,8 +127,8 @@
 .main-lists .thumbnail-image img {
 	width: 270px;
 	height: 270px;
-	border : 1px solid #E1F6FA;
-	border-radius : 30px;
+	border: 1px solid #E1F6FA;
+	border-radius: 30px;
 }
 
 .main-project-title {
@@ -148,6 +148,8 @@
 		alert("아이디와 패스워드를 확인 해주세요.")
 	</script>
 </c:if>
+
+
 <body>
 
 	<div class="MainHome">
@@ -179,11 +181,19 @@
 								<div class="thumbnail-image">
 									<img src="${designBoard.imgthumbnail }">
 								</div>
+									</a>
+									
+								<c:url value="/designer/view" var="viewUrl">
+								<c:param name="memberId" value="${designBoard.memberId }" ></c:param>
+								</c:url>
+								<a href="${viewUrl }" >
 								<div class="design-name">${designBoard.id}ㅣ
 									${designBoard.writerNickName }</div>
+									</a>
+								
 								<div class="main-project-title">${designBoard.title }
 									${designBoard.prettyInserted }</div>
-							</a>
+						
 						</div>
 					</c:forEach>
 				</div>
@@ -256,10 +266,10 @@
 			</div>
 		</div>
 
-		<div class="footer"><my:footer></my:footer></div>
-
+		<div class="footer">
+			<my:footer></my:footer>
+		</div>
 	</div>
-
 
 </body>
 </html>

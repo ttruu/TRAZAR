@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.login.SignupDto;
 
 public interface SignupMapper {
@@ -36,6 +37,6 @@ public interface SignupMapper {
 
 	void findPassword(@Param("id")String id, @Param("pw")String pw);
 
-
+	List<DesignBoardDto> DesignerlistByMemberId(String id);
 
 }

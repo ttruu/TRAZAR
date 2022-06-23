@@ -1,22 +1,19 @@
-
+/* 
 	.preview-work-modal.vm--container {
 		background-color: black;
 		font-family : 'Pretendard', 'Pretendard Variable';
 	}
 	
-	.vm--container.scrollable {
-	    height: 100%;
-	    min-height: 100vh;
-	    overflow-y: auto;
-    }
     
     .vm--container {
 	    position: fixed;
-	    box-sizing: border-box;
+		box-sizing: border-box;
 	    left: 0;
 	    top: 0;
-	    width: 100%;
-	    z-index: 100000 !important;
+	}
+
+	.vm--container {
+		z-index: 100000 !important;
 	}
 	
 	.vm--overlay {
@@ -42,4 +39,4 @@
 	    flex-direction: row;
 	    position: relative;
 	    border-radius: 5px;
-	}
+	} */
