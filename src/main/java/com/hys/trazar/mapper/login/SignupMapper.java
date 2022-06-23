@@ -38,6 +38,8 @@ public interface SignupMapper {
 
 	void findPassword(@Param("id")String id, @Param("pw")String pw);
 
+	void findId(String name);
+
 
 
 }

@@ -260,8 +260,20 @@ public class SignupController {
 		
 		// 아이디 찾기 코드
 		@PostMapping("findId")
-		public String findId() {
-			return null;
+		public String findId(SignupDto dto, String name, RedirectAttributes rttr) {
+			SignupDto findName = mapper.selectMember(dto.getName());
+			if(findName != null && findName.getPhoneNum().equals(dto.getPhoneNum()) && findName.getEmail().equals(dto.getEmail())) {
+				boolean success = service.findName(name);
+				if(success) {
+					
+					rttr.addAttribute("success" , "good");
+					return "redirect:/sign/findIdSuccess";
+				} else {
+					
+					rttr.addAttribute("msg","error");
+					return "redirect:/sign/login";
+				}
+			}
 		}
 		
 		@GetMapping("findId")
