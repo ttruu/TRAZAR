@@ -112,14 +112,14 @@ public class SignupService {
 	@Transactional
 	// 한번에 수행 되어야 하는 어노테이션
 	public boolean removeMember(SignupDto dto) {
-		// 댓글 삭제
-		reviewMapper.deleteByMemberId(dto.getId());
 		// 멤버가 쓴 게시글에 다른 사람이 단 댓글 삭제
 		List<DesignBoardDto> boardList = boardMapper.listByMemberId(dto.getId());
 		for (DesignBoardDto board : boardList) {
 			reviewMapper.deleteByDesignBoardId(board.getId());
 		}
 		
+		// 댓글 삭제
+		reviewMapper.deleteByMemberId(dto.getId());
 		// 멤버가 쓴 게시글 삭제 
 		boardMapper.deleteByMemberId(dto.getId());
 		// 리퀘스트 게시글 삭제 
