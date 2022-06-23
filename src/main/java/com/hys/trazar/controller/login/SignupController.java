@@ -114,6 +114,19 @@ public class SignupController {
 			return "ok";
 		}
 	}
+	
+	// 중복확인 컨트롤러
+	@GetMapping(path = "check", params = "phoneNum")
+	@ResponseBody
+	public String phoneNumCheck(String phoneNum) {
+		boolean success = service.MemberPhoneNumCheck(phoneNum);
+
+		if (success) {
+			return "notok";
+		} else {
+			return "ok";
+		}
+	}
 
 
 	// 회원정보 수정 컨트롤러
@@ -179,6 +192,7 @@ public class SignupController {
 
 	}
 	
+	
 	// 모달 회원 패스워드 일치 시 패스워드 변경 창으로 이동 하는 컨트롤러
 		@PostMapping("passwordModify")
 		public String passwordModify(SignupDto dto, String oldPassword, RedirectAttributes rttr, String id, Model model,
@@ -242,6 +256,17 @@ public class SignupController {
 				rttr.addAttribute("msg","error");
 				return "redirect:/sign/findPassword";
 			}
+		}
+		
+		// 아이디 찾기 코드
+		@PostMapping("findId")
+		public String findId() {
+			return null;
+		}
+		
+		@GetMapping("findId")
+		public void findId1() {
+			
 		}
 	
 

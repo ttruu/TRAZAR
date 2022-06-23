@@ -15,6 +15,8 @@ public interface SignupMapper {
 	int MemberNickNameCheck(String nickName);
 
 	int MemberEmailCheck(String email);
+	
+	int MemberPhoneNumCheck(String phoneNum);
 
 	int createAuth(@Param("id")String id, @Param("auth")String auth);
 

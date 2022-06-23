@@ -21,6 +21,10 @@
 		SELECT COUNT(email) FROM Member WHERE email = #{email}
 	</select>
 	
+	<select id="MemberPhoneNumCheck" resultType="int">
+		SELECT COUNT(phoneNum) FROM Member WHERE phoneNum = #{phoneNum}
+	</select>
+	
 	<!-- 권한 추가 -->
 	<insert id="createAuth">
 		INSERT INTO Auth (memberId, role)

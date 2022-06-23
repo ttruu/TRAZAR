@@ -30,9 +30,9 @@
 </head>
 
 <style>
-	.form-control:focus {
-		box-shadow : 0 0;
-	}
+.form-control:focus {
+	box-shadow: 0 0;
+}
 </style>
 <body>
 
@@ -43,32 +43,39 @@
 
 		<div class="row justify-content-center">
 			<div class="col-12 col-lg-6">
-				<form action="${appRoot}/sign/findPassword" method="post">
+				<form action="${appRoot}/sign/findId" method="post">
 
+					<%-- 이름 입력  --%>
 					<label for="passwordInput1" class="form-label"
 						style="position: absolute;"> </label>
 					<input class="form-control" id="passwordInput1" type="text"
-						name="id"
+						name="name"
 						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
-						placeholder="아이디를 입력하세요" /> <br /> <br />
-						
-						
-					<label for="usernameInput1" class="form-label"
-						style="position: absolute;"> </label>
-					<select id="usernameInput1" class="form-control" name="question" style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;">
-					<option value="내가 좋아하는 캐릭터는 ?">내가 좋아하는 캐릭터는 ?</option>
-					<option value="기억에 남는 추억의 장소는 ?">기억에 남는 추억의 장소는 ?</option>
-					<option value="인상 깊게 읽은 책 이름은 ?">인상 깊게 읽은 책 이름은 ?</option>
-					<option value="아버지의 성함은 ?">아버지의 성함은 ?</option>
-					</select> <br /> <br />
-
-
+						placeholder="이름을 입력하세요" />
+					<br />
+					<br />
+					
+					
+					<%-- 휴대폰 번호 입력 --%>
 					<label for="passwordInput1" class="form-label"
 						style="position: absolute;"> </label>
-					<input class="form-control" id="passwordInput1" type="text" style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
-						name="answer" placeholder="답변" /> <br /> <br />
-
-					<input class="btn btn-dark" type="submit" value="비밀번호 초기화" style="width: 100%;" />
+					<input class="form-control" id="passwordInput1" type="number"
+						name="phoneNum"
+						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
+						placeholder="휴대폰 번호를 입력하세요 ( - 빼고 입력)" />
+					<br />
+					<br />
+					
+					<%-- 이메일 입력 --%>
+					<label for="passwordInput1" class="form-label"
+						style="position: absolute;"> </label>
+					<input class="form-control" id="passwordInput1" type="email"
+						name="email"
+						style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
+						placeholder="이메일을 입력하세요" />
+					<br />
+					<br />
+					<input class="btn btn-dark" type="submit" value="아이디 찾기" style="width: 100%;"/>
 				</form>
 			</div>
 		</div>

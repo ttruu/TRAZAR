@@ -7,11 +7,11 @@
 	.vm--container.scrollable {
 	    height: 100%;
 	    min-height: 100vh;
-	    overflow-y: auto;
+/* 	    overflow-y: auto; */
     }
     
     .vm--container {
-	    position: fixed;
+	    /* position: fixed; */
 	    box-sizing: border-box;
 	    left: 0;
 	    top: 0;
