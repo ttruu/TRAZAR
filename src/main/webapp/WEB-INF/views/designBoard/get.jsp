@@ -32,20 +32,13 @@
 	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	
-<!-- <script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>	 -->
-<%-- <link href="${appRoot }/resources/css/style.css" rel="stylesheet"
-	type="text/css"> --%>
+
+<link href="${appRoot }/resources/css/designBoard/style.css" rel="stylesheet" type="text/css">
+<noscript><link rel="stylesheet" href="${appRoot }/resources/css/designBoard/noscript.css" /></noscript>
 
 <style>
 .list-group-item {
 	border: none;
-}
-.row {
-	background-color: rgb(245, 245, 245);
-}
-
-.form-control {
-	border-radius : 5px;
 }
 </style>
 
@@ -302,9 +295,10 @@
 
 	<my:navBar />
 		
+ 	<div id="wrapper">
  	
-	<div class="container">
-			<div class="row">
+	<div class="is-preload main container">
+			<div class="inner row">
 				<div class="col">
 				
 				<sec:authorize access="isAuthenticated()">
@@ -329,15 +323,16 @@
 						<input type="hidden" name="id" value="${designBoard.id }" />
 
 						<div>
-							<label class="form-label" for="input1"></label>
-							<input class="form-control" maxlength="50" placeholder="제목을 입력하세요" type="text" name="title" required
+							<!-- <label class="form-label" for="input1"></label> -->
+							<input class="form-control" maxlength="50" placeholder="제목을 입력하세요"  type="text" name="title" required
 								id="input1" value="${designBoard.title }" readonly/>
+							<span class="d-none">${designBoard.title }</span>
 						</div>
 
 						<div style="background-color: rgb(255, 255, 255);">
 							<label class="form-label" for="textarea1"></label>
 							<textarea class="form-control d-none" name="body" rows="30" cols="10" id="summernote" readonly>${designBoard.body }</textarea>
-						 	<div id="summernoteView">${designBoard.body }</div>
+						 	<div class="image main" id="summernoteView">${designBoard.body }</div>
 						</div>
 						
 						<div>
@@ -406,7 +401,7 @@
 				<input type="text" name="designBoardId" value="${designBoard.id }" />
 			</form>
 		</div>
-		
+	</div>
 		
 		<!-- 연습해볼것 -->
 		<!--  
@@ -501,6 +496,13 @@
 				</div>
 			</div>
 		</div> -->
+		
+		<!-- Scripts -->
+			<script src="${appRoot }/resources/css/designBoard/jquery.min.js"></script>
+			<script src="${appRoot }/resources/css/designBoard/browser.min.js"></script>
+			<script src="${appRoot }/resources/css/designBoard/breakpoints.min.js"></script>
+			<script src="${appRoot }/resources/css/designBoard/util.js"></script>
+			<script src="${appRoot }/resources/css/designBoard/main.js"></script>
 		
 		
 </body>
