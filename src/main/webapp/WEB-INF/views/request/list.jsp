@@ -9,6 +9,7 @@
 <%-- <title>Insert title here</title>
 </head>
 <body>
+<my:navBar/>
 	<div class="container">
 		<div class="row">
 			<div class="col">
