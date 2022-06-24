@@ -151,14 +151,15 @@
 
 
 <body>
-
+	<my:navBar/>
 	<div class="MainHome">
+
 		<div class="header">
-			<my:navBar current="list" />
+			<!-- navBAR원래 위치 -->
 		</div>
 
 		<div class="left-side">
-			<my:sideNavBar></my:sideNavBar>
+		
 		</div>
 		<div class="main1">
 			<div class="totalLayout">
