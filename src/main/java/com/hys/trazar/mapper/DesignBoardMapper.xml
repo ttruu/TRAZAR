@@ -38,7 +38,13 @@
 	<update id="updateDesignBoard">
 		UPDATE DesignBoard
 		SET title = #{title},
-			body = #{body}
+			body = #{body},
+		WHERE id = #{id}
+	</update>
+	
+	<update id="increamentClicked">
+		UPDATE DesignBoard
+		SET clicked = clicked + 1
 		WHERE id = #{id}
 	</update>
 	
