@@ -15,7 +15,6 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <%@ attribute name="current"%>
 
-
 <c:url value="/sign/loginSuccess" var="loginSuccess"></c:url>
 <c:url value="/sign/memberModifyLogin" var="memberLogin"></c:url>
 <c:url value="/sign/signup" var="signupUrl"></c:url>
@@ -130,62 +129,6 @@
 			</div>
 		</div>
 
-		<!-- Button trigger modal -->
-		<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-			data-bs-target="#exampleModal">Launch demo modal</button> -->
-
-		<!-- Modal -->
-		<div class="modal fade" id="myListModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<table class="table">
-					<thead>
-						<tr>
-							<th>제목</th>
-							<th>요청 시간</th>
-							<th>요청 처리</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${requestMyList }" var="my" >
-							<input type="hidden" name="memberId" value="${my.memberId }" />
-							<tr>
-								<td>
-													
-									<c:url value="/request/get" var="getUrl">
-										<c:param name="id" value="${my.id }"></c:param>
-										<c:param name="memberId" value="${my.memberId }"></c:param>
-									</c:url>
-									
-									<a href="${getUrl }">
-										<c:out value="${my.title }" />
-									</a>
-									
-								</td>
-								<td>${my.inserted }</td>
-								<td>${my.state }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
-							changes</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<!-- button.navbar-toggler>span.navbar-toggler-icon -->
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#collapsibleNavbar">
@@ -238,8 +181,7 @@
 									변경</a>
 							</li>
 							<li class="dropdown-item">
-								<a class="nav-link${current == 'myList' ? 'active' : '' }"
-									data-bs-toggle="modal" data-bs-target="#myListModal" 
+								<a id="myListLink" class="nav-link${current == 'myList' ? 'active' : '' }"
 									href="${myListUrl }">내 의뢰목록</a>
 							</li>
 							<li class="dropdown-item">
