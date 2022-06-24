@@ -92,8 +92,8 @@ $(document).ready(function() {
 					<input type="hidden" name="managerId" value="${notice.memberId }"/>
 					<div>
 						<label for="input3" class="form-label">작성자</label>
-						<input class="form-control" type="text"
-							value="${notice.writerNickName }" />
+						<input class="form-control" 
+							value="관리자" />
 					</div>
 
 					<div>
@@ -104,7 +104,7 @@ $(document).ready(function() {
 
 					<div>
 						<label class="form-label" for="textarea1">본문</label>
-						<div id="view" >${notice.body }</div>
+						<div id="view"  rows="20" cols="10" style="width:100%">${notice.body }</div>
 						<textarea class="form-control d-none" name="body" id="summernote">${notice.body }</textarea>
 					</div>
 					
