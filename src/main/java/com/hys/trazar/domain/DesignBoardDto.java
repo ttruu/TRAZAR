@@ -11,6 +11,7 @@ import lombok.ToString;
 @ToString
 @Data
 public class DesignBoardDto {
+	private int clicked;
 	private int id;
 	private String memberId;
 	private String title;
