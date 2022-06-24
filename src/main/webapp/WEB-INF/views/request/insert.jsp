@@ -55,6 +55,7 @@
 		 function ajax_file_upload(p) {	if (!p.files || !p.loader || !p.path) return new XMLHttpRequest;		var formData = new FormData();		for (var idx in p.files) {			formData.append("uploadfile", p.files[idx]);		}		formData.append("path", p.path);				return $.ajax({			url: '/request/Imageupload',			processData: false,			contentType: false,			data: formData,			type: 'POST',			onprogress: function (e) {				p.fn_progress && p.fn_progress(e);			},			success: function(e){				p.fn_success && p.fn_success(e);			},			error: function (e) {				p.fn_error && p.fn_error;			},			abort: function (e) {				p.fn_abort && p.fn_abort(e);			}		});	} */
 		 
 		 $('#summernote').summernote({
+			 	maximumImageFileSize: 1024*1024,
 				height : 500,
 				placeholder: '최대 500자 작성 가능합니다.',
 				lang: 'ko-KR',
