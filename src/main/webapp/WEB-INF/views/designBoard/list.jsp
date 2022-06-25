@@ -32,38 +32,40 @@
 <style>
 .MainHome {
 	display: grid;
-	grid-template-columns: 5% 60% 0% 10% 10%;
-	grid-template-rows: 5% 50% 5% 90% 10%;
+	grid-template-columns: 5% 63% 5% 10% 10%;
+	grid-template-rows: 40% 5% 60% 5% 90% 10%;
 	height: 100%;
 	grid-gap: 0.5%;
-	grid-template-areas: 'header header header header header header'
-		'left-side main main main right right'
+	grid-template-areas: 
+		'left-side main main main right right-side'
 		'left-side other other other other other'
 		'left-side content content content content content'
 		'footer footer footer footer footer footer';
 }
 
-.header {
-	grid-area: header;
-	background-color: pink;
-	display: flex;
-	justify-content: center;
-}
-
 .left-side {
 	grid-area: left-side;
-	background-color: #C8C8FF;
 	padding-left: 10%;
 }
 
 .main1 {
 	grid-area: main;
-	background-color: #96C7ED;
 }
 
 .right {
 	grid-area: right;
-	background-color: red;
+	background-color : blue;
+	justify-content : space-around;
+}
+
+.card {
+	justify-content : space-around;
+}
+
+.right-side {
+	grid-area : right-side;
+	padding-right : 10%
+	background-color : yellow;
 }
 
 .other {
@@ -73,7 +75,6 @@
 
 .content {
 	grid-area: content;
-	background-color: #D2FFD2;
 }
 
 .footer {
@@ -124,7 +125,7 @@
 	text-align: center;
 }
 
-.main-lists .thumbnail-image img {
+.main-lists .thumbnail-image img  {
 	width: 270px;
 	height: 270px;
 	border: 1px solid #E1F6FA;
@@ -153,10 +154,6 @@
 <body>
 	<my:navBar/>
 	<div class="MainHome">
-
-		<div class="header">
-			<!-- navBAR원래 위치 -->
-		</div>
 
 		<div class="left-side">
 		
@@ -201,7 +198,7 @@
 			</div>
 		</div>
 		<div class="right">
-			<div class="card" style="height: 50%; width: 100%; cursor: pointer;"
+			<div class="card" cursor: pointer;"
 				onclick="location.href='https://www.google.com';">
 				<img src="../resources/picture/ad/구글1.PNG" class="card-img-top">
 				<div class="card-body">
@@ -215,21 +212,23 @@
 					</ul>
 				</div>
 			</div>
-			<div class="card" style="height: 50%; width: 100%; cursor: pointer;"
+			<!-- <div class="card" style="height: 20%; width: 100%; cursor: pointer;"
 				onclick="location.href='https://www.naver.com';">
 				<img src="../resources/picture/ad/네이버.PNG" class="card-img-top">
 				<div class="card-body">
 					<h5 class="card-title">네이버</h5>
 					<ul class="fa-ul custom-list">
-						<!--  
+						 
 						<li>
 							<i class="fa fa-check fa-fw"></i>
 							광고내용
-						</li> -->
+						</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 		</div>
+		
+		<div clss="right-side"></div>
 		<div class="other">
 			<div class="totalLayout-title">
 				<h3 class="list-titles" style="margin-top: 40px;">작품</h3>
