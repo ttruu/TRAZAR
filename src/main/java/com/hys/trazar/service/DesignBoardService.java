@@ -118,4 +118,9 @@ public class DesignBoardService {
 		return mapper.deleteDesignBoard(id) == 1;
 	}
 
+	public boolean increamentClicked(DesignBoardDto dto) {
+		int cnt = mapper.increamentClicked(dto);
+		return cnt == 1;
+	}
+
 }

@@ -109,8 +109,9 @@ public class DesignBoardController {
 	}
 
 	@GetMapping("get")
-	public void get(int id, Model model) {
+	public void get(int id, Model model, DesignBoardDto dto2) {
 		DesignBoardDto dto = service.getDesignBoardById(id);
+		service.increamentClicked(dto2);
 
 		// designBoard 내에서 review 목록을 보기 위해 추가
 		List<ReviewDto> reviewList = reviewService.getReviewByDesignBoardId(id);
