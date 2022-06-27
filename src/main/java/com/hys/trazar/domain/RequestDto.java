@@ -18,4 +18,5 @@ public class RequestDto {
 	private String term;
 	private String state;
 	private String imgthumbnail;
+	private String getImg;
 }
