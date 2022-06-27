@@ -54,7 +54,6 @@
 <script>
 	$(document).ready(function() {
 		
-		
 		// 페이지 로딩 후 review list 가져오는 ajax 요청
 		// 수정버튼 클릭스 스크립트 
 		$("#edit-button1").click(function() {
