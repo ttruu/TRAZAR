@@ -93,6 +93,9 @@
 			<div class="col">
 				<h1>내용 작성</h1>
 				<form action="${appRoot }/notice/insert" method="post" enctype="multipart/form-data">
+						<div>	
+						<input class="form-control" type="hidden" value="${notice.writerNickName }" />
+					</div>
 					<div>
 						<label class="form-label" for="inputNoticeTitle">제목</label>
 						<input class="form-control" type="text" name="title" required
