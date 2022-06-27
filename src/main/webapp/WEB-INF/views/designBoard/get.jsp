@@ -354,10 +354,10 @@
 								</div>
 							</div>
 
-							<div class="col-sm-6 mb-3 mb-sm-2">
+							<div class="col-sm-6 mb-3 mb-sm-2" style="text-align : center;  ">
 								<!-- <label class="form-label" for="textarea1"></label> -->
 								<textarea class="form-control d-none" name="body" rows="30"
-									cols="10" id="summernote" readonly>${designBoard.body }</textarea>
+									cols="10" id="summernote"  readonly>${designBoard.body }</textarea>
 								<div class="card-img-top" id="summernoteView">${designBoard.body }</div>
 								<span class="d-none">${designBoard.body }</span>
 							</div>

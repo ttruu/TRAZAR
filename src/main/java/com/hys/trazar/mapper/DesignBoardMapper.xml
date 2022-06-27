@@ -47,7 +47,8 @@
 			   d.body, 
 			   d.price, 
 			   d.inserted,
-			   m.id memberId
+			   m.id memberId,
+			   d.clicked
 		FROM DesignBoard d JOIN Member m ON d.memberId = m.id
 		WHERE d.id = #{id}
 	</select>
