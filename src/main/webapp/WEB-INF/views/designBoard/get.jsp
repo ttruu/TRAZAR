@@ -350,6 +350,7 @@
 								<div class="col-sm-3 mt-3">
 									<i class="fa-solid fa-eye"></i>
 									<h6 class="like">조회수</h6>
+									<h6>${designBoard.clicked }</h6>
 								</div>
 							</div>
 
