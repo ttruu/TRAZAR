@@ -24,5 +24,8 @@ public interface DesignBoardMapper {
 
 	List<DesignBoardDto> listByMemberId(String id);
 
+	int increamentClicked(DesignBoardDto dto);
+
+
 	
 }

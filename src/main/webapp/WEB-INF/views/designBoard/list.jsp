@@ -32,48 +32,48 @@
 <style>
 .MainHome {
 	display: grid;
-	grid-template-columns: 5% 60% 0% 10% 10%;
-	grid-template-rows: 8% 45% 5% 90% 10%;
+	grid-template-columns: 5% 62% 4% 10% 10%;
+	grid-template-rows: 45% 5% 60% 5% 90% 10%;
 	height: 100%;
 	grid-gap: 0.5%;
-	grid-template-areas: 'header header header header header header'
-		'left-side main main main right right'
+	grid-template-areas: 
+		'left-side main main main right right-side'
 		'left-side other other other other other'
 		'left-side content content content content content'
 		'footer footer footer footer footer footer';
 }
 
-.header {
-	grid-area: header;
-	background-color: pink;
-	display: flex;
-	justify-content: center;
-}
-
 .left-side {
 	grid-area: left-side;
-	background-color: #C8C8FF;
 	padding-left: 10%;
 }
 
 .main1 {
-	grid-area: main;
-	background-color: #96C7ED;
+	grid-area: main;	
+	padding-top : 50px;
 }
 
 .right {
 	grid-area: right;
-	background-color: red;
+	justify-content : space-around;
+	padding-top : 100px;
+}
+
+.card {
+	justify-content : space-around;
+}
+
+.right-side {
+	grid-area : right-side;
+	padding-right : 10%
 }
 
 .other {
 	grid-area: other;
-	background-color: #E1B771;
 }
 
 .content {
 	grid-area: content;
-	background-color: #D2FFD2;
 }
 
 .footer {
@@ -109,7 +109,7 @@
 .main-lists {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 20px;
+	gap: 60px;
 }
 
 .project-list-mini {
@@ -124,7 +124,7 @@
 	text-align: center;
 }
 
-.main-lists .thumbnail-image img {
+.main-lists .thumbnail-image img  {
 	width: 270px;
 	height: 270px;
 	border: 1px solid #E1F6FA;
@@ -151,14 +151,11 @@
 
 
 <body>
-
+	<my:navBar/>
 	<div class="MainHome">
-		<div class="header">
-			<my:navBar current="list" />
-		</div>
 
 		<div class="left-side">
-			<my:sideNavBar></my:sideNavBar>
+		
 		</div>
 		<div class="main1">
 			<div class="totalLayout">
@@ -200,35 +197,37 @@
 			</div>
 		</div>
 		<div class="right">
-			<div class="card" style="height: 50%; width: 100%; cursor: pointer;"
+			<div class="card" style="padding-top : 50px; height: 35%; width: 130%; cursor: pointer;"
 				onclick="location.href='https://www.google.com';">
 				<img src="../resources/picture/ad/구글1.PNG" class="card-img-top">
 				<div class="card-body">
-					<h5 class="card-title">구글</h5>
+					<h5 class="card-title"></h5>
 					<ul class="fa-ul custom-list">
-						<!--  
-						<li>
+						  
+						<!-- <li>
 							<i class="fa fa-check fa-fw"></i>
 							광고내용
 						</li> -->
 					</ul>
 				</div>
 			</div>
-			<div class="card" style="height: 50%; width: 100%; cursor: pointer;"
+			<div class="card" style="padding-top : 50px; height: 35%; width: 130%; cursor: pointer;"
 				onclick="location.href='https://www.naver.com';">
 				<img src="../resources/picture/ad/네이버.PNG" class="card-img-top">
 				<div class="card-body">
-					<h5 class="card-title">네이버</h5>
+					<h5 class="card-title"></h5>
 					<ul class="fa-ul custom-list">
-						<!--  
-						<li>
+						 
+						<!-- <li>
 							<i class="fa fa-check fa-fw"></i>
 							광고내용
 						</li> -->
 					</ul>
 				</div>
-			</div>
+			</div> 
 		</div>
+		
+		<div clss="right-side"></div>
 		<div class="other">
 			<div class="totalLayout-title">
 				<h3 class="list-titles" style="margin-top: 40px;">작품</h3>

@@ -5,9 +5,15 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletContext;
 
+import org.apache.commons.io.FilenameUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +24,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.RequestDto;
-import com.hys.trazar.domain.login.SignupDto;
 import com.hys.trazar.service.RequestService;
 
 @Controller
@@ -67,7 +74,26 @@ public class RequestController {
 	@RequestMapping("list")
 	public void list(Model model) {
 		List<RequestDto> list = service.listRequest();
+		processThumbNailImage(list);
 		model.addAttribute("requestList", list);
+	}
+	
+	//썸네일에 이미지 출력
+	private void processThumbNailImage(List<RequestDto> list) {
+		
+		for (RequestDto dto : list) {
+			String thumbNail = "";
+
+			String source = dto.getBody();
+			Document doc = Jsoup.parse(source);
+			Elements elements = doc.select("img");
+
+			if (elements.size() > 0) {
+				thumbNail = elements.get(0).attr("src").toString();
+			}
+
+			dto.setImgthumbnail(thumbNail);
+		}
 	}
 	
 	@GetMapping("get")
@@ -90,8 +116,20 @@ public class RequestController {
 		return "redirect:/request/list";
 	}
 	
-	// 썸머노트 에디터에서 받는 이미지 업로드 처리
-	@RequestMapping(value = "/requestImageupload", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	@PostMapping("/Imageupload")
+	public Map<String, Object> uploadImage(@RequestParam Map<String, Object> paramMap, MultipartRequest request) throws Exception
+	{
+		MultipartFile uploadFile = request.getFile("upload");
+		String uploadDir = servletContext.getRealPath("/").replace("\\", "/") + "/static/upload/images/";
+		String uploadId = UUID.randomUUID().toString() + "." + FilenameUtils.getExtension(uploadFile.getOriginalFilename());
+		uploadFile.transferTo(new File(uploadDir + uploadId));
+		paramMap.put("url", "/static/upload/images/" + uploadId);
+		return paramMap;
+	}
+	
+//	// 썸머노트 에디터에서 받는 이미지 업로드 처리
+	@RequestMapping(value = "/Imageupload", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public String imageUpload(MultipartHttpServletRequest request) throws IOException {
 		
@@ -124,4 +162,6 @@ public class RequestController {
 		model.addAttribute("requestMyList", list);
 	}
 	
+	
+
 }
