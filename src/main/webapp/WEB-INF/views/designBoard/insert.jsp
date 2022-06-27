@@ -117,24 +117,27 @@
 	</script>
 
 
-	<div class="container">
+	<div class="container" >
 		<div class="row">
-			<div class="col">
-				<h1>내용 작성</h1>
+			<div class="col-lg-4" style="">
+			
 				<form action="${appRoot }/designBoard/insert" method="post"
 					enctype="multipart/form-data">
-					<div>
+					<div style="">
 						<label class="form-label" for="input1">제목</label>
 						<input class="form-control" type="text" name="title" required
 							id="input1" />
 					</div>
 
-					<div>
+					<div style="">
 						<label class="form-label" for="textarea1">본문</label>
 						<textarea class="form-control" name="body" id="summernote" cols="30"
 							rows="10"></textarea>
 					</div>
-
+				</form>
+			</div>
+			<div class="col">
+				<form action="${appRoot }/designBoard/insert" method="post">
 					<div>
 						<label class="form-label" for="input1">가격</label>
 						<input class="form-control" type="text" name="price" id="input1" />
@@ -143,7 +146,6 @@
 					<button type="submit" class="btn btn-primary">업로드</button>
 					<!-- <button id="addFile"  type="button" class="btn btn-default">파일 폼 추가</button> -->
 				</form>
-
 			</div>
 		</div>
 	</div>
