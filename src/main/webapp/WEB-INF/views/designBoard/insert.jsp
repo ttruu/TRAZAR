@@ -39,9 +39,9 @@
 <script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>
 <title>Insert title here</title>
 </head>
-<body>
+<body class="pt-5">
 
-	<my:navBar current="insert" />
+	<my:navBar />
 
 	<!-- <script src="/static/vendor/summernote/dist/summernote.min.js"></script> -->
 	 

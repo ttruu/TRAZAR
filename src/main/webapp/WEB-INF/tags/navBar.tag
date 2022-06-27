@@ -58,9 +58,10 @@ background-color: #303134;
 font-weight: 600;
 color: #FFFFFF;
 }
+
 </style>
 
-<header class="p-3 mb-3 border-bottom fixed-top">
+<header class="p-3 border-bottom fixed">
     <div class="container">
     	<div class="modal fade" id="modal2" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -133,9 +134,7 @@ color: #FFFFFF;
         <ul id="front-nav-font" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="${noticeListUrl }" class="nav-link px-2 link-light">공지사항</a></li>
           <li><a href="${requestListUrl }" class="nav-link px-2 link-light">의뢰</a></li>
-          <sec:authorize access="isAuthenticated()">
-          <li><a href="${insertUrl }" class="nav-link px-2 link-light">글쓰기</a></li>
-         </sec:authorize>
+        
         </ul>
 <sec:authorize access="not isAuthenticated()">
         <ul class="nav nav-pills" id="front-nav-font">
