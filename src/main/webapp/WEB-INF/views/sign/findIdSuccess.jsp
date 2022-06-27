@@ -14,5 +14,6 @@
 
 <h1>아이디 찾기 성공 !</h1>
 
+<p>${findId.id }</p>
 </body>
 </html>

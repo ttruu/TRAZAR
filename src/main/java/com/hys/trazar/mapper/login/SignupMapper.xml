@@ -78,5 +78,14 @@
 		ORDER BY d.id DESC
 	</select>
 	
+	<select id="selectMember1" resultType="com.hys.trazar.domain.login.SignupDto">
+		SELECT email, phoneNum, name FROM Member WHERE email = #{email}
+	</select>
+	
+	<select id="findId" resultType="com.hys.trazar.domain.login.SignupDto">
+		SELECT id FROM Member WHERE email = #{email}
+	</select>
+	
+	
 	
 </mapper>

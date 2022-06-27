@@ -142,4 +142,12 @@ public class SignupService {
 	public List<DesignBoardDto> DesignListRequest(String memberId) {
 		return mapper.DesignerlistByMemberId(memberId);
 	}
+
+	public SignupDto findId(String email) {
+		return mapper.findId(email);
+	}
+	
+	public SignupDto selectMember1(String email) {
+		return mapper.selectMember1(email);
+	}
 }

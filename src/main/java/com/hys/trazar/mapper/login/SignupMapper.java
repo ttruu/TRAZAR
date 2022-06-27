@@ -39,10 +39,10 @@ public interface SignupMapper {
 
 	void findPassword(@Param("id")String id, @Param("pw")String pw);
 	
-	
-
-
-
 	List<DesignBoardDto> DesignerlistByMemberId(String id);
+
+	SignupDto findId(String email);
+
+	SignupDto selectMember1(String email);
 
 }

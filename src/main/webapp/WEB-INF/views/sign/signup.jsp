@@ -270,7 +270,7 @@ input::-webkit-inner-spin-button {
 
 
 	<div class="main"
-		style="display: flex; height: 107%; margin: 0; padding: 0;">
+		style="display: flex; height: 110%; margin: 0; padding: 0;">
 
 		<div class="main2" style="display: flex; flex: 1 1;">
 
