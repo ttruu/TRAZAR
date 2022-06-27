@@ -264,14 +264,13 @@ public class SignupController {
 	@PostMapping("findId")
 	public String findId(SignupDto dto, String email, Model model, RedirectAttributes rttr) {
 		SignupDto find = mapper.selectMember1(dto.getEmail());
-		System.out.println(dto);
 		if(find != null && find.getName().equals(dto.getName()) && find.getPhoneNum().equals(dto.getPhoneNum())) {
 			SignupDto findId = service.findId(email);
 			rttr.addFlashAttribute("findId", findId);
-			System.out.println(findId);
 			return "redirect:/sign/findIdSuccess";
 		} else {
-			return "redirect:/sign/login";
+			rttr.addAttribute("msg", "error");
+			return "redirect:/sign/findId";
 		}
 	}
 	
