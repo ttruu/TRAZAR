@@ -134,7 +134,7 @@ color: #FFFFFF;
           <li><a href="${noticeListUrl }" class="nav-link px-2 link-light">공지사항</a></li>
           <li><a href="${requestListUrl }" class="nav-link px-2 link-light">의뢰</a></li>
           <sec:authorize access="isAuthenticated()">
-          <li><a href="${insertUrl }" class="nav-link px-2 link-light">글쓰기</a></li>
+          <li><a href="${insertUrl }" class="nav-link px-2 link-light">디자인 올리기</a></li>
          </sec:authorize>
         </ul>
 <sec:authorize access="not isAuthenticated()">

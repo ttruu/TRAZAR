@@ -150,7 +150,7 @@
 </c:if>
 
 
-<body>
+<body class="pt-5">
 	<my:mainNav/>
 	<div class="MainHome">
 
