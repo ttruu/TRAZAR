@@ -60,13 +60,22 @@ public class DesignBoardController {
 	private ReviewService reviewService;
 
 	@RequestMapping("list")
-	public void list(Model model) {
+	public void list( Model model) {
 		List<DesignBoardDto> list = service.listDesignBoard();
 
 		processThumbNailImage(list);
 		model.addAttribute("designBoardList", list);
 	}
+	//검색 기능 메소드 서비스,맵퍼.java, 쿼리 수정해야함
+	@RequestMapping("search")
+	public void searchList(@RequestParam(name = "keyword", defaultValue = "") String keyword,
+			 @RequestParam(name = "type", defaultValue = "") String type,
+			 Model model) {
+		List<DesignBoardDto> list = service.searchListDesignBoard(type, keyword);
 
+		processThumbNailImage(list);
+		model.addAttribute("designBoardList", list);
+	}
 	// 썸네일에 이미지 출력
 	private void processThumbNailImage(List<DesignBoardDto> list) {
 

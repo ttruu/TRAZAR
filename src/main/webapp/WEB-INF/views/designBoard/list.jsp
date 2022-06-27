@@ -151,7 +151,7 @@
 
 
 <body>
-	<my:navBar/>
+	<my:mainNav/>
 	<div class="MainHome">
 
 		<div class="left-side">
@@ -229,8 +229,23 @@
 		
 		<div clss="right-side"></div>
 		<div class="other">
-			<div class="totalLayout-title">
-				<h3 class="list-titles" style="margin-top: 40px;">작품</h3>
+			<div class="totalLayout-title ">
+				<h3 class="list-titles " style="margin-top: 40px;">작품</h3>
+				<c:url value="/designBoard/search" var="searchUrl"></c:url>
+		  <form action="${searchUrl }" class=" float-start">
+      	<div class="input-group">
+	      	<!-- select.form-select>option*3 -->
+	      	<select name="type" id="" class="form-select" style="flex:0 0 100px;">
+	      		<option value="bodyTitle" ${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>제목+본문</option>
+	      		<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
+	      		<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
+	      		<option value="writerNickName" ${param.type == 'writerNickName' ? 'selected' : ''}>작성자</option>
+	      	</select>
+	      
+	      	<input type="search" class="form-control" name="keyword"/>
+	      	<button class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass"></i></button>
+      	</div>
+      </form>
 			</div>
 		</div>
 		<div class="content">
