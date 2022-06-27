@@ -22,13 +22,9 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-
+<link rel="stylesheet" href="${appRoot }/resources/search/css/main.css" />
+		<noscript><link rel="stylesheet" href="${appRoot }/resources/search/css/noscript.css" /></noscript>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,56 +32,9 @@
 <title>Insert title here</title>
 </head>
 <style>
-.main-lists .thumbnail-image img  {
-	width: 270px;
-	height: 270px;
-	border: 1px solid #E1F6FA;
-	border-radius: 30px;
-}
 
-.main-project-title {
-	font-size: 11pt;
-	font-weight: bold;
-	height: 40px;
-	margin: 8px 0;
-	text-align: center;
-}
-.design-name {
-	margin-top: 15px;
-	color: gray;
-	text-align: center;
-}
-.list-titles {
-	color: black;
-	font-size: 20px;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: -0.4px;
-	font-weight: 700;
-	line-height: 19px;
-	align-items: center;
-	color: #161C1C;
-}
-
-.main-lists:after {
-	content: "";
-	display: block;
-	clear: both;
-}
-
-.main-lists {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 60px;
-}
-
-.project-list-mini {
-	max-width: 250px;
-	margin-bottom: 55px;
-	margin-right: 20px;
-}
 </style>
-<body>
+<body class="is-preload pt-5">
 <my:navBar/>
 <c:url value="/designBoard/search" var="searchUrl"></c:url>
   <form action="${searchUrl }" class="center">
@@ -102,8 +51,8 @@
 	      	<button class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass"></i></button>
       	</div>
       </form>
-<div class="content">
-			<div class="totalLayout">
+<div id="wrapper">
+			<div id="main">
 				<!-- <div class="totalLayout-title">
 					<h3 class="list-titles">hot creator🔥</h3>
 				</div>
@@ -112,29 +61,31 @@
 					<div class="alert alert-primary">${message }</div>
 				</c:if>  -->
 
-				<div class="main-lists">
+
 					<c:forEach items="${designBoardList }" var="designBoard">
-						<div class="project-list-mini">
 							<c:url value="/designBoard/get" var="getUrl">
 								<c:param name="id" value="${designBoard.id }"></c:param>
 								<c:param name="memberId" value="${designBoard.memberId }"></c:param>
 							</c:url>
-							<a href="${getUrl }" class="list-thumbnail">
-								<div class="thumbnail-image">
-									<img src="${designBoard.imgthumbnail }">
-								</div>
-								<div class="main-project-title">${designBoard.title }
-									${designBoard.prettyInserted }</div>
-								<div class="design-name">${designBoard.id}ㅣ
-									${designBoard.writerNickName }</div>
-								
-							</a>
-						</div>
+							<article class="thumb">
+							<a href="${getUrl }" class="image"><img src="${designBoard.imgthumbnail }" alt="" /></a>
+							<h2>${designBoard.title }</h2>
+						</article>
+				
+
+					
 					</c:forEach>
-				</div>
+				
 			</div>
 		</div>
 
+	<!-- Scripts -->
+			<script src="${appRoot }/resources/search/js/jquery.min.js"></script>
+			<script src="${appRoot }/resources/search/js/jquery.poptrox.min.js"></script>
+			<script src="${appRoot }/resources/search/js/browser.min.js"></script>
+			<script src="${appRoot }/resources/search/js/breakpoints.min.js"></script>
+			<script src="${appRoot }/resources/search/js/util.js"></script>
+			<script src="${appRoot }/resources/search/js/main.js"></script>
 		<div class="footer">
 			<my:footer></my:footer>
 		</div>
