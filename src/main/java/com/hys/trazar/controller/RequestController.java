@@ -155,6 +155,7 @@ public class RequestController {
 		
 	}
 	
+	// 내 의뢰목록 보여주기
 	@RequestMapping("myList")
 	public void myList(RequestDto dto, Principal principal, Model model, String memberId) {
 		dto.setMemberId(principal.getName());
