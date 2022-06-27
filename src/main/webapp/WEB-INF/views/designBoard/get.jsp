@@ -323,10 +323,16 @@
 										<c:if test="${principal.username == designBoard.memberId }">
 											<button id="edit-button1" class="btn btn-light">
 												수정하기
-												</i>
 											</button>
 										</c:if>
 									</sec:authorize>
+									
+									<c:url value="/designBoard/remove" var="removeLink" />
+									<form action="${removeLink }" method="post">
+										<input type="hidden" name="id" value="${designBoard.id }" />
+										<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
+									</form>
+									
 								</div>
 								<div class="col-sm-6 mb-3 mb-sm-2" style="">
 									<label class="form-label" for="input1"></label>
@@ -377,16 +383,16 @@
 	</form>
 
 	<div class="card shadow mb-4">
-	
+		<div>
+			<label for="input3" class="form-label">작성자</label>
+			<input class="form-control" type="text"
+				value="${designBoard.memberId }" readonly />
+			<span class="d-none">${designBoard.memberId }</span>
+		</div>
 	</div>
 	
 	
 	
-	<c:url value="/designBoard/remove" var="removeLink" />
-	<form action="${removeLink }" method="post">
-		<input type="hidden" name="id" value="${designBoard.id }" />
-		<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
-	</form>
 
 
 
