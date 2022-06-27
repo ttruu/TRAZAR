@@ -295,11 +295,11 @@
 
 	<my:navBar />
 		
- 	<div id="wrapper">
+ 	<div class="is-preload" >
  	
-	<div class="is-preload main container">
-			<div class="inner row">
-				<div class="col">
+	<div id="wrapper" class="container" >
+			<div id="main" class="row" >
+				<div class="inner col">
 				
 				<sec:authorize access="isAuthenticated()">
 						<sec:authentication property="principal" var="principal" />
@@ -329,22 +329,25 @@
 							<span class="d-none">${designBoard.title }</span>
 						</div>
 
-						<div style="background-color: rgb(255, 255, 255);">
-							<label class="form-label" for="textarea1"></label>
+						<div>
+							<!-- <label class="form-label" for="textarea1"></label> -->
 							<textarea class="form-control d-none" name="body" rows="30" cols="10" id="summernote" readonly>${designBoard.body }</textarea>
-						 	<div class="image main" id="summernoteView">${designBoard.body }</div>
+						 	<div class="image" id="summernoteView">${designBoard.body }</div>
+						 	<span class="d-none">${designBoard.body }</span>
 						</div>
 						
 						<div>
 							<label for="input3" class="form-label">작성자</label>
 							<input class="form-control" type="text"
-								value="${designBoard.writerNickName }" readonly />
+								value="${designBoard.memberId }" readonly />
+							<span class="d-none">${designBoard.memberId }</span>
 						</div>
 						
 						<div>
 						<label for="input2" class="form-label">작성일시</label>
 						<input class="form-control mb-3" type="datetime-local"
 							value="${designBoard.inserted }" readonly />
+						<span class="d-none">${designBoard.inserted }</span>
 					</div>
 
 						<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
