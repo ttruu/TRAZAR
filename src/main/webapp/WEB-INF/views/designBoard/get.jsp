@@ -331,7 +331,7 @@
 									<c:url value="/designBoard/remove" var="removeLink" />
 									<form action="${removeLink }" method="post">
 										<input type="hidden" name="id" value="${designBoard.id }" />
-										<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
+										<button id="delete-submit1" class="btn btn-danger d-none">삭제하기</button>
 									</form>
 									
 								</div>
@@ -353,7 +353,7 @@
 								</div>
 							</div>
 
-							<div>
+							<div class="col-sm-6 mb-3 mb-sm-2">
 								<!-- <label class="form-label" for="textarea1"></label> -->
 								<textarea class="form-control d-none" name="body" rows="30"
 									cols="10" id="summernote" readonly>${designBoard.body }</textarea>
@@ -393,11 +393,6 @@
 			</div>
 		</div>
 	</form>
-
-
-	
-	
-
 
 
 	<%-- 댓글 추가 --%>
