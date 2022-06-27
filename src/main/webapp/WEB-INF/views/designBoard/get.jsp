@@ -376,21 +376,25 @@
 							</div>
 						</div>
 						<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
+						
 					</div>
+						<div class="col-lg-3">
+						<div class="card shadow mb-4">
+							<div class="card-body">
+							<label for="input3" class="form-label">작성자</label>
+							<button class="btn btn-primary btn-circle btn-sm">${designBoard.memberId }</button>
+							<input class="form-control" type="text"
+								value="${designBoard.memberId }" readonly />
+							<span class="d-none">${designBoard.memberId }</span>
+							</div>
+						</div>
+						</div>
 				</div>
 			</div>
 		</div>
 	</form>
 
-	<div class="card shadow mb-4">
-		<div>
-			<label for="input3" class="form-label">작성자</label>
-			<input class="form-control" type="text"
-				value="${designBoard.memberId }" readonly />
-			<span class="d-none">${designBoard.memberId }</span>
-		</div>
-	</div>
-	
+
 	
 	
 
