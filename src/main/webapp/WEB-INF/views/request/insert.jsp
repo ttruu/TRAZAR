@@ -5,6 +5,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
 <!-- <head> -->
@@ -100,26 +101,13 @@
         <meta name="author" content="" />
         <title>Blog Home - Start Bootstrap Template</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="${appRoot }/resources/css/requestInsert/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="${appRoot }/resources/css/requestInsert/styles.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <my:navBar/>
         <!-- Page header with logo and tagline-->
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
@@ -129,31 +117,40 @@
                 </div>
             </div>
         </header>
+        <form action="${appRoot }/request/insert" method="post">
         <!-- Page content-->
         <div class="container">
             <div class="row">
                 <!-- Blog entries-->
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2022</div>
-                            <h2 class="card-title">Featured Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
-                    </div>
+                    <div>
+						<label class="form-label" for="input1">제목</label>
+						<input class="form-control" type="text" name="title" required
+							id="input1" />
+					</div>
+                    <div>
+						<label class="form-label">내용</label>
+						<textarea name="body" id="summernote"></textarea>
+					</div>
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
                     <!-- Search widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Search</div>
+                        <div class="card-header">예산</div>
                         <div class="card-body">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                                <input name="price" class="form-control" type="text" placeholder="예산을 입력해주세요." aria-label="예산을 입력해주세요."  />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">기간</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input name="term" class="form-control" type="text" placeholder="기간을 입력해주세요." aria-label="기간을 입력해주세요."  />
                             </div>
                         </div>
                     </div>
@@ -184,9 +181,11 @@
                         <div class="card-header">Side Widget</div>
                         <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
                     </div>
+                    <button class="btn btn-outline-secondary mt-3">등록</button>
                 </div>
             </div>
         </div>
+        </form>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
@@ -194,7 +193,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="/resources/css/requestInsert/scripts.js"></script>
+        <script src="${appRoot }/resources/css/requestInsert/scripts.js"></script>
     </body>
 
 
