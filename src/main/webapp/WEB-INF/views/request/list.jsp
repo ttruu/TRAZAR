@@ -7,57 +7,6 @@
 <!DOCTYPE html>
 <html>
 
-<%-- <title>Insert title here</title>
-</head>
-<body>
-<my:navBar/>
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<h1>의뢰 목록</h1>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>아이디</th>
-							<th>제목</th>
-							<th>예산</th>
-							<th>요청 시간</th>
-							<th>요청 처리</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${requestList }" var="req" varStatus="status">
-						<input type="hidden" name="memberId" value="${req.memberId }" />
-							<tr>
-								<td>${req.memberId }</td>
-								<td>
-													
-									<c:url value="/request/get" var="getUrl">
-										<c:param name="id" value="${req.id }"></c:param>
-										<c:param name="memberId" value="${req.memberId }"></c:param>
-										<c:param name="designBoardId" value="${req.designBoardId }"></c:param>
-									</c:url>
-									
-									<a href="${getUrl }">
-										<c:out value="${req.title }" />
-									</a>
-									
-								</td>
-								<td>${req.price }</td>
-								<td>${req.inserted }</td>
-								<td>${req.state }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<form action="${appRoot }/request/insert">
-				<button id="requestAdd" class="btn btn-primary">의뢰 작성</button>
-			</form>
-		</div>
-	</div>
-</body> --%>
-
 <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -70,8 +19,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="${appRoot }/resources/css/requestList/styles.css" rel="stylesheet" />
-    </head>
-    <body>
+</head>
+<body>
         <!-- Navigation-->
         <my:navBar/>
         <!-- Header-->
@@ -127,5 +76,5 @@
         <form action="${appRoot }/request/insert">
 				<button id="requestAdd" class="btn btn-primary">의뢰 작성</button>
 			</form>
-    </body>
+</body>
 </html>
