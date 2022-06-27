@@ -25,7 +25,7 @@
 <c:url value="/designBoard/list" var="listUrl"></c:url>
 <c:url value="/notice/list" var="noticeListUrl"></c:url>
 <c:url value="/request/list" var="requestListUrl"></c:url>
-
+<c:url value="/designBoard/search" var="searchUrl"></c:url>
 
 <%-- 회원정보링크 --%>
 <sec:authorize access="isAuthenticated()">
@@ -50,9 +50,17 @@
 		<c:param name="memberId" value="${principal.username }" />
 	</c:url>
 </sec:authorize>
+<style>
+header{
+background-color: #303134;
+}
+#front-nav-font{
+font-weight: 600;
+color: #FFFFFF;
+}
+</style>
 
-
-<header class="p-3 mb-3 border-bottom">
+<header class="p-3 mb-3 border-bottom fixed-top">
     <div class="container">
     	<div class="modal fade" id="modal2" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -117,29 +125,30 @@
 			</div>
 		</div>
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+       
         <a href="/trazar/designBoard/list" class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><img src="../resources/picture/logo/로고.png" /></svg>
         </a>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="${noticeListUrl }" class="nav-link px-2 link-secondary">공지사항</a></li>
-          <li><a href="${requestListUrl }" class="nav-link px-2 link-dark">의뢰</a></li>
+        <ul id="front-nav-font" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="${noticeListUrl }" class="nav-link px-2 link-light">공지사항</a></li>
+          <li><a href="${requestListUrl }" class="nav-link px-2 link-light">의뢰</a></li>
           <sec:authorize access="isAuthenticated()">
-          <li><a href="${insertUrl }" class="nav-link${current == 'insert' ? 'active' : '' } px-2 link-dark">글쓰기</a></li>
+          <li><a href="${insertUrl }" class="nav-link px-2 link-light">글쓰기</a></li>
          </sec:authorize>
         </ul>
 <sec:authorize access="not isAuthenticated()">
-        <ul class="nav nav-pills">
-          <li class="nav-item "><a href="${loginUrl }" class="nav-link">로그인</a> </li>
-       		<li class="nav-item "><a href="${signupUrl }" class="nav-link">회원가입</a> </li>
+        <ul class="nav nav-pills" id="front-nav-font">
+          <li class="nav-item "><a href="${loginUrl }" class="nav-link link-light">로그인</a> </li>
+       		<li class="nav-item "><a href="${signupUrl }" class="nav-link link-light">회원가입</a> </li>
         <ul>
 </sec:authorize>
 	<sec:authorize access="isAuthenticated()">
         <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-               <i class="fa-solid fa-circle-user"></i>
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle text-light" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+               <i class="fa-solid fa-circle-user text-light"></i>
           </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <ul class="dropdown-menu text-small" id="front-nav-font"aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item"data-bs-toggle="modal"
                            data-bs-target="#modal3" href="${passwordModify }">비밀번호 변경</a></li>
             <li><a class="dropdown-item" href="${myListUrl }">내 의뢰목록</a></li>
@@ -153,6 +162,7 @@
         <div class="d-none">
             <form action="${logoutUrl }" id="logoutform1" method="post" /></form>
          </div>
+        
       </div>
     </div>
   </header>

@@ -15,6 +15,23 @@
 			   m.nickName writerNickName
 		FROM DesignBoard d LEFT JOIN Review r ON d.id = r.memberId
 								JOIN Member m ON d.memberId = m.id
+		<if test="keyword != '%%'">
+			<choose>
+				<when test="type == 'bodyTitle'">
+					WHERE d.title LIKE #{keyword } OR
+					      d.body LIKE #{keyword }
+				</when>
+				<when test="type == 'title'">
+					WHERE d.title LIKE #{keyword }
+				</when>
+				<when test="type == 'body'">
+					WHERE  d.body LIKE #{keyword }
+				</when>
+				<when test="type == 'writerNickName'">
+					WHERE   m.nickName LIKE #{keyword }
+				</when>
+			</choose>
+		</if>
 		GROUP BY d.id
 		ORDER BY d.id DESC
 	</select>
