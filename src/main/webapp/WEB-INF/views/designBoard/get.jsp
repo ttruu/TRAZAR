@@ -306,9 +306,10 @@
 
 	<form id="form1" action="${appRoot }/designBoard/modify" method="post">
 		<input type="hidden" name="id" value="${designBoard.id }" />
+		
 		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col">
+			<div class="row">
+				<div class="col-lg-9">
 
 					<!-- 게시물 보기 + 수정 -->
 					<div class="card shadow mb-4">
@@ -352,8 +353,7 @@
 								</div>
 							</div>
 
-							<div
-								style="text-align: center; -moz-text-align-last: center; text-align-last: center;">
+							<div>
 								<!-- <label class="form-label" for="textarea1"></label> -->
 								<textarea class="form-control d-none" name="body" rows="30"
 									cols="10" id="summernote" readonly>${designBoard.body }</textarea>
@@ -378,6 +378,7 @@
 						<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
 						
 					</div>
+				</div>
 						<div class="col-lg-3">
 						<div class="card shadow mb-4">
 							<div class="card-body">
@@ -389,7 +390,6 @@
 							</div>
 						</div>
 						</div>
-				</div>
 			</div>
 		</div>
 	</form>

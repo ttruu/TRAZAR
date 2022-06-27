@@ -66,6 +66,25 @@ public class DesignBoardController {
 		processThumbNailImage(list);
 		model.addAttribute("designBoardList", list);
 	}
+	
+	// 썸네일에 이미지 출력
+	private void processThumbNailImage(List<DesignBoardDto> list) {
+		
+		for (DesignBoardDto dto : list) {
+			String thumbNail = "";
+			
+			String source = dto.getBody();
+			Document doc = Jsoup.parse(source);
+			Elements elements = doc.select("img");
+			
+			if (elements.size() > 0) {
+				thumbNail = elements.get(0).attr("src").toString();
+			}
+			
+			dto.setImgthumbnail(thumbNail);
+		}
+	}
+	
 	//검색 기능 메소드 서비스,맵퍼.java, 쿼리 수정해야함
 	@RequestMapping("search")
 	public void searchList(@RequestParam(name = "keyword", defaultValue = "") String keyword,
@@ -76,23 +95,7 @@ public class DesignBoardController {
 		processThumbNailImage(list);
 		model.addAttribute("designBoardList", list);
 	}
-	// 썸네일에 이미지 출력
-	private void processThumbNailImage(List<DesignBoardDto> list) {
-
-		for (DesignBoardDto dto : list) {
-			String thumbNail = "";
-
-			String source = dto.getBody();
-			Document doc = Jsoup.parse(source);
-			Elements elements = doc.select("img");
-
-			if (elements.size() > 0) {
-				thumbNail = elements.get(0).attr("src").toString();
-			}
-
-			dto.setImgthumbnail(thumbNail);
-		}
-	}
+	
 
 	@GetMapping("insert")
 	public void insert() {
