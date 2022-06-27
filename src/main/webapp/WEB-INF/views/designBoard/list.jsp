@@ -32,8 +32,8 @@
 <style>
 .MainHome {
 	display: grid;
-	grid-template-columns: 5% 63% 5% 10% 10%;
-	grid-template-rows: 40% 5% 60% 5% 90% 10%;
+	grid-template-columns: 5% 62% 4% 10% 10%;
+	grid-template-rows: 45% 5% 60% 5% 90% 10%;
 	height: 100%;
 	grid-gap: 0.5%;
 	grid-template-areas: 
@@ -49,13 +49,14 @@
 }
 
 .main1 {
-	grid-area: main;
+	grid-area: main;	
+	padding-top : 50px;
 }
 
 .right {
 	grid-area: right;
-	background-color : blue;
 	justify-content : space-around;
+	padding-top : 100px;
 }
 
 .card {
@@ -65,12 +66,10 @@
 .right-side {
 	grid-area : right-side;
 	padding-right : 10%
-	background-color : yellow;
 }
 
 .other {
 	grid-area: other;
-	background-color: #E1B771;
 }
 
 .content {
@@ -110,7 +109,7 @@
 .main-lists {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 20px;
+	gap: 60px;
 }
 
 .project-list-mini {
@@ -198,34 +197,34 @@
 			</div>
 		</div>
 		<div class="right">
-			<div class="card" cursor: pointer;"
+			<div class="card" style="padding-top : 50px; height: 35%; width: 130%; cursor: pointer;"
 				onclick="location.href='https://www.google.com';">
 				<img src="../resources/picture/ad/구글1.PNG" class="card-img-top">
 				<div class="card-body">
-					<h5 class="card-title">구글</h5>
+					<h5 class="card-title"></h5>
 					<ul class="fa-ul custom-list">
-						<!--  
-						<li>
+						  
+						<!-- <li>
 							<i class="fa fa-check fa-fw"></i>
 							광고내용
 						</li> -->
 					</ul>
 				</div>
 			</div>
-			<!-- <div class="card" style="height: 20%; width: 100%; cursor: pointer;"
+			<div class="card" style="padding-top : 50px; height: 35%; width: 130%; cursor: pointer;"
 				onclick="location.href='https://www.naver.com';">
 				<img src="../resources/picture/ad/네이버.PNG" class="card-img-top">
 				<div class="card-body">
-					<h5 class="card-title">네이버</h5>
+					<h5 class="card-title"></h5>
 					<ul class="fa-ul custom-list">
 						 
-						<li>
+						<!-- <li>
 							<i class="fa fa-check fa-fw"></i>
 							광고내용
-						</li>
+						</li> -->
 					</ul>
 				</div>
-			</div> -->
+			</div> 
 		</div>
 		
 		<div clss="right-side"></div>
