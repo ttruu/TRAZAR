@@ -20,7 +20,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="${appRoot }/resources/css/requestList/styles.css" rel="stylesheet" />
 </head>
-<body>
+<body class="pt-5">
         <!-- Navigation-->
         <my:navBar/>
         <!-- Header-->
