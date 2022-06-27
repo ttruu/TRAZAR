@@ -7,9 +7,10 @@
 %>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
-<head>
+<!-- <head> -->
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -67,7 +68,91 @@
 
 	});
 </script>
-<title>Insert title here</title>
+
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Blog Post - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="${appRoot }/resources/css/requestList/styles.css" rel="stylesheet" />
+</head>
+
+ <body>
+ 		<my:navBar/>
+ 		<form id="form" action="${appRoot }/request/modify" method="post">
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">${request.title }</h1>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2">${request.inserted }</div>
+                            <!-- Post categories-->
+                            <a class="badge bg-secondary text-decoration-none link-light" >${request.memberId }</a>
+                            <sec:authorize access="isAuthenticated()">
+								<sec:authentication property="principal" var="principal" />
+								<c:if test="${principal.username == request.memberId }">
+									<button id="edit-button1" class="btn btn-secondary">
+										<i class="fa-solid fa-pen-to-square"></i>
+									</button>
+								</c:if>
+							</sec:authorize>
+                        </header>
+                        <!-- Preview image figure-->
+                        <!-- <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
+                        <!-- Post content-->
+                        <section class="mb-5">
+                            <p class="fs-5 mb-4">${request.body }</p>
+                        </section>
+                    </article>
+                </div>
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">의뢰상태</div>
+                        <div class="card-body">${request.state }</div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">기간</div>
+                        <div class="card-body">${request.term }</div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">예산</div>
+                        <div class="card-body">${request.price }</div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">연락처</div>
+                        <div class="card-body">${request.phoneNum }</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+
+
+<%-- <title>Insert title here</title>
 </head>
 <body>
 	<div class="container">
@@ -142,5 +227,5 @@
 			</div>
 		</div>
 	</div>
-</body>
+</body> --%>
 </html>
