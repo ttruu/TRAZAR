@@ -31,10 +31,14 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js"
 	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	
 
-<link href="${appRoot }/resources/css/designBoard/style.css" rel="stylesheet" type="text/css">
-<noscript><link rel="stylesheet" href="${appRoot }/resources/css/designBoard/noscript.css" /></noscript>
+
+<link href="${appRoot }/resources/css/designBoard/style.css"
+	rel="stylesheet" type="text/css">
+<noscript>
+	<link rel="stylesheet"
+		href="${appRoot }/resources/css/designBoard/noscript.css" />
+</noscript>
 
 <style>
 .list-group-item {
@@ -293,141 +297,149 @@
 <body>
 
 	<my:navBar />
-		
- 	<div class="is-preload" >
- 	
-	<div id="wrapper" class="container" >
-			<div id="main" class="row" >
-				<div class="inner col">
-				
-				<sec:authorize access="isAuthenticated()">
-						<sec:authentication property="principal" var="principal" />
-						<c:if test="${principal.username == designBoard.memberId }">
-							<button id="edit-button1" class="btn btn-secondary">
-								<i class="fa-solid fa-pen-to-square"></i>
-							</button>
-						</c:if>
-					</sec:authorize>
-					
-					
 
-					<c:if test="${not empty message }">
-						<div class="alert alert-primary">${message }</div>
-					</c:if>
+	<c:if test="${not empty message }">
+		<div class="alert alert-light">${message }</div>
+	</c:if>
 
+	<!-- Page Content -->
+
+	<form id="form1" action="${appRoot }/designBoard/modify" method="post">
+		<input type="hidden" name="id" value="${designBoard.id }" />
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col">
 
 					<!-- 게시물 보기 + 수정 -->
-					<form id="form1" action="${appRoot }/designBoard/modify"
-						method="post">
-						<input type="hidden" name="id" value="${designBoard.id }" />
+					<div class="card shadow mb-4">
 
-						<div>
-							<!-- <label class="form-label" for="input1"></label> -->
-							<input class="form-control" maxlength="50" placeholder="제목을 입력하세요"  type="text" name="title" required
-								id="input1" value="${designBoard.title }" readonly/>
-							<span class="d-none">${designBoard.title }</span>
-						</div>
+						<div class="card-body">
 
-						<div>
-							<!-- <label class="form-label" for="textarea1"></label> -->
-							<textarea class="form-control d-none" name="body" rows="30" cols="10" id="summernote" readonly>${designBoard.body }</textarea>
-						 	<div class="image" id="summernoteView">${designBoard.body }</div>
-						 	<span class="d-none">${designBoard.body }</span>
-						</div>
-						
-						<div>
-							<label for="input3" class="form-label">작성자</label>
-							<input class="form-control" type="text"
-								value="${designBoard.memberId }" readonly />
-							<span class="d-none">${designBoard.memberId }</span>
-						</div>
-						
-						<div>
-						<label for="input2" class="form-label">작성일시</label>
-						<input class="form-control mb-3" type="datetime-local"
-							value="${designBoard.inserted }" readonly />
-						<span class="d-none">${designBoard.inserted }</span>
-					</div>
+							<div class="form-group row" style="text-align: center;">
+								<div class="mb-3 mb-sm-2" style="text-align: left;">
+									<!-- 권한설정 -->
+									<sec:authorize access="isAuthenticated()">
+										<sec:authentication property="principal" var="principal" />
+										<c:if test="${principal.username == designBoard.memberId }">
+											<button id="edit-button1" class="btn btn-light">
+												수정하기
+												</i>
+											</button>
+										</c:if>
+									</sec:authorize>
+								</div>
+								<div class="col-sm-6 mb-3 mb-sm-2" style="">
+									<label class="form-label" for="input1"></label>
+									<input class="form-control d-none" maxlength="50" type="text"
+										name="title" required id="input1"
+										value="${designBoard.title }" readonly />
+									<h2 class="card-title h4">${designBoard.title }</h2>
+									<div class="small text-muted">${designBoard.inserted }</div>
+								</div>
+								<div class="col-sm-3 mt-3">
+									<i class="fa-solid fa-heart"></i>
+									<h6 class="like">좋아요</h6>
+								</div>
+								<div class="col-sm-3 mt-3">
+									<i class="fa-solid fa-eye"></i>
+									<h6 class="like">조회수</h6>
+								</div>
+							</div>
 
+							<div
+								style="text-align: center; -moz-text-align-last: center; text-align-last: center;">
+								<!-- <label class="form-label" for="textarea1"></label> -->
+								<textarea class="form-control d-none" name="body" rows="30"
+									cols="10" id="summernote" readonly>${designBoard.body }</textarea>
+								<div class="card-img-top" id="summernoteView">${designBoard.body }</div>
+								<span class="d-none">${designBoard.body }</span>
+							</div>
+
+							<div>
+								<label for="input3" class="form-label">작성자</label>
+								<input class="form-control" type="text"
+									value="${designBoard.memberId }" readonly />
+								<span class="d-none">${designBoard.memberId }</span>
+							</div>
+
+							<div class="small text-muted">
+								<label for="input2" class="form-label">작성일시</label>
+								<input class="form-control mb-3" type="datetime-local"
+									value="${designBoard.inserted }" readonly />
+								<span class="d-none">${designBoard.inserted }</span>
+							</div>
+						</div>
 						<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
-					</form>
-
-					<c:url value="/designBoard/remove" var="removeLink" />
-					<form action="${removeLink }" method="post">
-						<input type="hidden" name="id" value="${designBoard.id }" />
-						<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
-					</form>
-
+					</div>
 				</div>
 			</div>
 		</div>
-		
-		<%-- 댓글 추가 --%>
-		<div class="border border-black border-2 rounded-3 p-4 container">
-			<div class="row mt-3">
-				<div class="col">
-					<h4>댓글</h4>
-					<form class="mt-3" id="insertReviewForm1">
-						<div class="input-group">
-							<input type="hidden" name="designBoardId"
-								value="${designBoard.id }" />
+	</form>
 
-							<input id="insertReviewContentInput1" class="form-control"
-								type="text" name="body" required />
-							<button id="addReviewSubmitButton1"
-								class="btn btn-outline-secondary">등록</button>
+	<div class="card shadow mb-4">
+	
+	</div>
+	
+	
+	
+	<c:url value="/designBoard/remove" var="removeLink" />
+	<form action="${removeLink }" method="post">
+		<input type="hidden" name="id" value="${designBoard.id }" />
+		<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
+	</form>
 
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="row">
-				<div class="alert alert-primary" style="display: none;" id="reviewMessage1"></div>
-			</div>
 
-			<%-- 댓글 목록 --%>
-			<div class="row mt-3">
-				<div class="col">
 
-					<ul id="reviewList1" class="list-group" />
+	<%-- 댓글 추가 --%>
+	<div class="border border-black border-2 rounded-3 p-4 container">
+		<div class="row mt-3">
+			<div class="col">
+				<h4>댓글</h4>
+				<form class="mt-3" id="insertReviewForm1">
+					<div class="input-group">
+						<input type="hidden" name="designBoardId"
+							value="${designBoard.id }" />
 
-				</div>
+						<input id="insertReviewContentInput1" class="form-control"
+							type="text" name="body" required />
+						<button id="addReviewSubmitButton1"
+							class="btn btn-outline-secondary">등록</button>
+
+					</div>
+				</form>
 			</div>
 		</div>
+		<div class="row">
+			<div class="alert alert-primary" style="display: none;"
+				id="reviewMessage1"></div>
+		</div>
 
-		<%-- 댓글 삭제 --%>
-		<div class="d-none">
-			<form id="reviewDeleteForm1" action="${appRoot }/review/delete"
-				method="post">
-				<input id="reviewDeleteInput1" type="text" name="id" />
-				<input type="text" name="designBoardId" value="${designBoard.id }" />
-			</form>
+		<%-- 댓글 목록 --%>
+		<div class="row mt-3">
+			<div class="col">
+
+				<ul id="reviewList1" class="list-group" />
+
+			</div>
 		</div>
 	</div>
-		
-		<!-- 연습해볼것 -->
-		<!--  
-		<div class="work-add-info-container">
-			<div class="work-button-group">
-				<a class="btn-like">
-					<svg class="like-icon">
-			                                <i class="fa-regular fa-heart"></i>
-			                            </svg>
 
-					<svg class="like-icon-fill">
-			                                <i class="fa-solid fa-heart"></i>
-			                            </svg>
+	<%-- 댓글 삭제 --%>
+	<div class="d-none">
+		<form id="reviewDeleteForm1" action="${appRoot }/review/delete"
+			method="post">
+			<input id="reviewDeleteInput1" type="text" name="id" />
+			<input type="text" name="designBoardId" value="${designBoard.id }" />
+		</form>
+	</div>
 
-					<span class="btn-name">좋아요</span>
-					<span class="like-cnt">갯수</span>
-				</a>
 
-			</div>
-		</div>
+	<!-- 연습해볼것 -->
 
-		<!-- work-add-info-container end -->
 
-		<!-- 
+	<!-- work-add-info-container end -->
+
+	<!-- 
 		<div class="work-actions">
 			<div class="comment-wrapper">
 				
@@ -498,15 +510,15 @@
 				</div>
 			</div>
 		</div> -->
-		
-		<!-- Scripts -->
-			<script src="${appRoot }/resources/css/designBoard/jquery.min.js"></script>
-			<script src="${appRoot }/resources/css/designBoard/browser.min.js"></script>
-			<script src="${appRoot }/resources/css/designBoard/breakpoints.min.js"></script>
-			<script src="${appRoot }/resources/css/designBoard/util.js"></script>
-			<script src="${appRoot }/resources/css/designBoard/main.js"></script>
-		
-		
+
+	<!-- Scripts -->
+	<script src="${appRoot }/resources/css/designBoard/jquery.min.js"></script>
+	<script src="${appRoot }/resources/css/designBoard/browser.min.js"></script>
+	<script src="${appRoot }/resources/css/designBoard/breakpoints.min.js"></script>
+	<script src="${appRoot }/resources/css/designBoard/util.js"></script>
+	<script src="${appRoot }/resources/css/designBoard/main.js"></script>
+
+
 </body>
 </html>
 

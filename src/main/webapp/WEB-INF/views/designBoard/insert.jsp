@@ -67,8 +67,8 @@
 			}); */
 
 			 $('#summernote').summernote({
-				height : 500,
-				placeholder: '최대 500자 작성 가능합니다.',
+				height : 400,
+				placeholder: '콘텐츠를 선택하여 업로드를 시작하세요',
 				lang: 'ko-KR',
 				toolbar : [
 					// 폰트랑 폰트사이즈 다시 넣어줘야함
@@ -116,38 +116,38 @@
 		});
 	</script>
 
-
+	<!-- page content -->
+	<form action="${appRoot }/designBoard/insert" method="post"	enctype="multipart/form-data">
 	<div class="container" >
 		<div class="row">
-			<div class="col-lg-4" style="">
-			
-				<form action="${appRoot }/designBoard/insert" method="post"
-					enctype="multipart/form-data">
-					<div style="">
-						<label class="form-label" for="input1">제목</label>
-						<input class="form-control" type="text" name="title" required
-							id="input1" />
+			<div class="col-lg-9" style="">
+				<div class="card shadow mb-4">				
+					<div class="card-body">
+					<input class="form-control" type="text" name="title" required id="input1" placeholder="제목을 입력해주세요." aria-label="제목을 입력해주세요."/>
+					<label class="form-label" for="textarea1"></label>
+					<textarea class="form-control" name="body" id="summernote" cols="30"
+						rows="10"></textarea>
 					</div>
-
-					<div style="">
-						<label class="form-label" for="textarea1">본문</label>
-						<textarea class="form-control" name="body" id="summernote" cols="30"
-							rows="10"></textarea>
-					</div>
-				</form>
+				</div>
 			</div>
-			<div class="col">
-				<form action="${appRoot }/designBoard/insert" method="post">
-					<div>
-						<label class="form-label" for="input1">가격</label>
-						<input class="form-control" type="text" name="price" id="input1" />
+			 <!-- Side widgets-->
+			<div class="col-lg-3">
+					<div class="card shadow mb-4">
+						<div class="card-header py-2">
+							<h6 class="m-0 font-weight-bold text-secondary">가격</h6>
+						</div>
+						 <div class="card-body">
+						<input class="form-control" type="text" name="price" placeholder="가격을 입력해주세요." aria-label="가격을 입력해주세요." />
+						</div>
 					</div>
-
-					<button type="submit" class="btn btn-primary">업로드</button>
-					<!-- <button id="addFile"  type="button" class="btn btn-default">파일 폼 추가</button> -->
-				</form>
+					
+					<div class="my-4">
+					<button type="submit" class="btn btn-secondary btn-icon-split btn-block">업로드</button>
+					</div>
+					
 			</div>
 		</div>
 	</div>
+</form>
 </body>
 </html>
