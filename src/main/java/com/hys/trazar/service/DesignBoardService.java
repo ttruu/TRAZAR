@@ -128,4 +128,15 @@ public class DesignBoardService {
 		return cnt == 1;
 	}
 
+	public List<DesignBoardDto> listDesignBoard(String categoryName) {
+		
+		return mapper.selectDesignBoardCategory(categoryName);
+	}
+
+	// hotlist service
+	public List<DesignBoardDto> hotList() {
+		return mapper.hotList();
+		
+	}
+
 }

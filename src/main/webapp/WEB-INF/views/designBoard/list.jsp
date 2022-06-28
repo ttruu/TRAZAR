@@ -87,7 +87,7 @@
 }
 
 .totalLayout-title {
-	margin: 20px 0
+	margin: 0px 0
 }
 
 .list-titles {
@@ -151,7 +151,16 @@
 	</script>
 </c:if>
 
+<script>
 
+$(" .top").on("click", function(e) {
+
+    $("html, body").animate({scrollTop:0}, '500');
+
+    return false;
+
+});
+</script>
 <body class="pt-5">
 	<my:mainNav />
 	<div class="MainHome">
@@ -168,31 +177,32 @@
 				</c:if>
 
 				<div class="main-lists">
-					<c:forEach items="${designBoardList }" var="designBoard">
+					<c:forEach items="${hotList }" var="hot">
 						<div class="project-list-mini">
 							<c:url value="/designBoard/get" var="getUrl">
-								<c:param name="id" value="${designBoard.id }"></c:param>
-								<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+								<c:param name="id" value="${hot.id }"></c:param>
+								<c:param name="memberId" value="${hot.memberId }"></c:param>
 							</c:url>
 							<a href="${getUrl }" class="list-thumbnail">
 								<div class="thumbnail-image">
-									<img src="${designBoard.imgthumbnail }">
+									<img src="${hot.imgthumbnail }">
 								</div>
 							</a>
 
 							<c:url value="/designer/view" var="viewUrl">
-								<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+								<c:param name="memberId" value="${hot.memberId }"></c:param>
 							</c:url>
 							<a href="${viewUrl }">
-								<div class="design-name">${designBoard.id}ㅣ
-									${designBoard.writerNickName }</div>
+								<div class="design-name">${hot.id}ㅣ
+									${hot.writerNickName }</div>
 							</a>
 
-							<div class="main-project-title">${designBoard.title }
-								${designBoard.prettyInserted }</div>
+							<div class="main-project-title">${hot.title }
+								${hot.prettyInserted }</div>
 
 						</div>
 					</c:forEach>
+				<hr />
 				</div>
 			</div>
 		</div>
@@ -207,36 +217,30 @@
 				<img src="../resources/picture/ad/아이패드.PNG" class="card-img-top">
 			</div>
 		</div>
-
+			
 		<div class="other">
-			<div class="totalLayout-title ">
-				<h3 class="list-titles " style="margin-top: 40px;">작품</h3>
-				<a href="./list">전체</a>
-				<a href="./list?category=1">일러스트</a>
-				<a href="./list?category=2">웹 디자인</a>
-				<a href="./list?category=3">인테리어</a>
-				<c:url value="/designBoard/search" var="searchUrl"></c:url>
-				<form action="${searchUrl }" class=" float-start">
-					<div class="input-group">
-						<!-- select.form-select>option*3 -->
-						<select name="type" id="" class="form-select"
-							style="flex: 0 0 130px; text-align: center;">
-							<option value="bodyTitle" style="width: 100px;"
-								${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>제목+본문</option>
-							<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
-							<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
-							<option value="writerNickName"
-								${param.type == 'writerNickName' ? 'selected' : ''}>작성자</option>
-						</select>
-
-						<input type="search" class="form-control" name="keyword" />
-						<button class="btn btn-outline-dark">
-							<i class="fa-solid fa-magnifying-glass"></i>
-						</button>
-					</div>
+			<div class="totalLayout-title top">
+				<h3 class="list-titles" >작품</h3>
+				<form action="${appRoot}/designBoard/list" method="get">
+					
+				<ul class="nav nav-tabs">
+				  <li class="nav-item">
+				    <a class="nav-link active" aria-current="page" href="${appRoot }/designBoard/list">전체</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link active" aria-current="page" href="${appRoot }/designBoard/list?categoryName=illust">일러스트</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link active" aria-current="page" href="${appRoot }/designBoard/list?categoryName=web">웹디자인</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link active" aria-current="page" href="${appRoot }/designBoard/list?categoryName=interior">인테리어</a>
+				  </li>
+				</ul>
 				</form>
 			</div>
 		</div>
+		
 		<div class="content">
 			<div class="totalLayout">
 				<!-- <div class="totalLayout-title">
@@ -271,6 +275,25 @@
 
 		<div class="footer">
 			<my:footer></my:footer>
+						<form action="${searchUrl }" class="float-start">
+					<div class="input-group">
+						<!-- select.form-select>option*3 -->
+						<select name="type" id="" class="form-select"
+							style="flex: 0 0 130px; text-align:center;">
+							<option value="bodyTitle" style="width:100px;"
+								${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>제목+본문</option>
+							<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
+							<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
+							<option value="writerNickName"
+								${param.type == 'writerNickName' ? 'selected' : ''}>작성자</option>
+						</select>
+
+						<input type="search" class="form-control" name="keyword" />
+						<button class="btn btn-outline-dark">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</div>
+				</form>
 		</div>
 	</div>
 
