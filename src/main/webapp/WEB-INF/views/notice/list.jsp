@@ -73,9 +73,9 @@ table.type09 td {
 
 	<div class="container">
 		<div class="row">
-			<div class="col">
+			<div class="col-8">
 				<h1>공지사항</h1>
-				<table class="type09">
+				<table class="type09 text-center">
 					<sec:authorize access="hasRole('ADMIN')">
 						<sec:authentication property="principal" var="principal" />
 
@@ -114,7 +114,41 @@ table.type09 td {
 						</c:forEach>
 					</tbody>
 				</table>
+				</div>
+				<div class="col">
+			<div class="card"
+				style="padding-top: 50px; height: 75%; width: 100%; cursor: pointer;"
+				onclick="location.href='https://www.google.com';">
+				<img src="../resources/picture/ad/구글1.PNG" class="card-img-top">
+				<div class="card-body">
+					<h5 class="card-title"></h5>
+					<ul class="fa-ul custom-list">
+
+						<!-- <li>
+							<i class="fa fa-check fa-fw"></i>
+							광고내용
+						</li> -->
+					</ul>
+				</div>
 			</div>
+		
+			<div class="card"
+				style="padding-top: 50px; height: 75%; width: 100%; cursor: pointer;"
+				onclick="location.href='https://www.naver.com';">
+				<img src="../resources/picture/ad/네이버.PNG" class="card-img-top">
+				<div class="card-body">
+					<h5 class="card-title"></h5>
+					<ul class="fa-ul custom-list">
+
+						<!-- <li>
+							<i class="fa fa-check fa-fw"></i>
+							광고내용
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+				
 		</div>
 	</div>
 </body>

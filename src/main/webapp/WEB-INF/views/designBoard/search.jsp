@@ -1,4 +1,4 @@
-F<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
@@ -24,68 +24,67 @@ F<%@ page language="java" contentType="text/html; charset=UTF-8"
 
 
 <link rel="stylesheet" href="${appRoot }/resources/search/css/main.css" />
-		<noscript><link rel="stylesheet" href="${appRoot }/resources/search/css/noscript.css" /></noscript>
+<noscript>
+	<link rel="stylesheet"
+		href="${appRoot }/resources/search/css/noscript.css" />
+</noscript>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<style>
+<body class="is-preload">
+	<my:navBar />
+	<c:url value="/designBoard/search" var="searchUrl"></c:url>
+	<form action="${searchUrl }" class="center">
+		<div class="input-group ">
+			<!-- select.form-select>option*3 -->
+			<select name="type" id="" class="form-select"
+				style="flex: 0 0 100px;">
+				<option value="bodyTitle"
+					${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>제목+본문</option>
+				<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
+				<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
+				<option value="writerNickName"
+					${param.type == 'writerNickName' ? 'selected' : ''}>작성자</option>
+			</select>
 
-</style>
-<body class="is-preload pt-5">
-<my:navBar/>
-<c:url value="/designBoard/search" var="searchUrl"></c:url>
-  <form action="${searchUrl }" class="center">
-      	<div class="input-group">
-	      	<!-- select.form-select>option*3 -->
-	      	<select name="type" id="" class="form-select" style="flex:0 0 100px;">
-	      		<option value="bodyTitle" ${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>제목+본문</option>
-	      		<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
-	      		<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
-	      		<option value="writerNickName" ${param.type == 'writerNickName' ? 'selected' : ''}>작성자</option>
-	      	</select>
-	      
-	      	<input type="search" class="form-control" name="keyword"/>
-	      	<button class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass"></i></button>
-      	</div>
-      </form>
-<div id="wrapper">
-			<div id="main">
-				<!-- <div class="totalLayout-title">
-					<h3 class="list-titles">hot creator🔥</h3>
-				</div>
-
-				<c:if test="${not empty message }">
-					<div class="alert alert-primary">${message }</div>
-				</c:if>  -->
-
-					<c:forEach items="${designBoardList }" var="designBoard">
-							<c:url value="/designBoard/get" var="getUrl">
-								<c:param name="id" value="${designBoard.id }"></c:param>
-								<c:param name="memberId" value="${designBoard.memberId }"></c:param>
-							</c:url>
-							<article class="thumb">
-							<a href="${getUrl }" class="image"><img src="${designBoard.imgthumbnail }" alt="" /></a>
-							<h2>${designBoard.title }</h2>
-						</article>
-					</c:forEach>
-				
-			</div>
+			<input type="search" class="form-control" name="keyword" />
+			<button class="btn btn-outline-success">
+				<i class="fa-solid fa-magnifying-glass"></i>
+			</button>
 		</div>
+	</form>
+	<div id="wrapper">
+		<div id="main">
+	
+			<c:forEach items="${designBoardList }" var="designBoard">
+				<c:url value="/designBoard/get" var="getUrl">
+					<c:param name="id" value="${designBoard.id }"></c:param>
+					<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+				</c:url>
+				<article class="thumb">
+					<a href="${getUrl }" class="image">
+						<img src="${designBoard.imgthumbnail }" alt="" />
+					</a>
+					<h2>${designBoard.title }</h2>
+				</article>
+			</c:forEach>
+
+		</div>
+	</div>
 
 	<!-- Scripts -->
-			<script src="${appRoot }/resources/search/js/jquery.min.js"></script>
-			<script src="${appRoot }/resources/search/js/jquery.poptrox.min.js"></script>
-			<script src="${appRoot }/resources/search/js/browser.min.js"></script>
-			<script src="${appRoot }/resources/search/js/breakpoints.min.js"></script>
-			<script src="${appRoot }/resources/search/js/util.js"></script>
-			<script src="${appRoot }/resources/search/js/main.js"></script>
-		<div class="footer">
-			<my:footer></my:footer>
-		</div>
-		
+	<script src="${appRoot }/resources/search/js/jquery.min.js"></script>
+	
+	<script src="${appRoot }/resources/search/js/browser.min.js"></script>
+	<script src="${appRoot }/resources/search/js/breakpoints.min.js"></script>
+	<script src="${appRoot }/resources/search/js/main.js"></script>
+	<div class="footer">
+		<my:footer></my:footer>
+	</div>
+
 </body>
 </html>
 
