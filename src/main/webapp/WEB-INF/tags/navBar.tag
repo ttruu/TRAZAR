@@ -51,7 +51,7 @@
 	</c:url>
 </sec:authorize>
 <style>
-header{
+#nav-header{
 background-color: #303134;
 }
 #front-nav-font{
@@ -61,7 +61,7 @@ color: #FFFFFF;
 
 </style>
 
-<header class="p-3 border-bottom">
+<header id="nav-header"class="p-3 border-bottom fixed">
     <div class="container">
     	<div class="modal fade" id="modal2" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
