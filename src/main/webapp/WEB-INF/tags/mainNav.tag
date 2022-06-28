@@ -127,7 +127,7 @@ color: #FFFFFF;
       <div class="d-flex flex-wrap align-items-center justify-content-start">
        
         <a href="/trazar/designBoard/list" class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><img src="../resources/picture/logo/아.PNG" /></svg>
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><img src="../resources/picture/logo/악.PNG" /></svg>
         </a>
 
         <ul id="front-nav-font" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-start mb-md-0">

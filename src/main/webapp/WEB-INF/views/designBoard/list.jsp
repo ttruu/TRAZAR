@@ -33,7 +33,7 @@
 .MainHome {
 	display: grid;
 	grid-template-columns: 3% 55% 4% 10% 10%;
-	grid-template-rows: 60% 3% 50% 6%;
+	grid-template-rows: 22% 3% 70% 7%;
 	height: 100%;
 	
 	grid-template-areas: 'left-side main main main right right'
@@ -49,13 +49,13 @@
 
 .main1 {
 	grid-area: main;
-	padding-top: 4%;
+	padding-top: 7%;
 }
 
 .right {
 	grid-area: right;
 	justify-content: space-around;
-	padding-top: 13%;
+	margin-top: 19%;
 	padding-right: 10%;
 }
 
@@ -100,6 +100,7 @@
 	line-height: 19px;
 	align-items: center;
 	color: #161C1C;
+	
 }
 
 .main-lists:after {
@@ -111,7 +112,8 @@
 .main-lists {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 60px;
+	gap: 4%;
+	padding-top : 1.5%;
 }
 
 .project-list-mini {
@@ -212,15 +214,15 @@ $(" .top").on("click", function(e) {
 				<img src="../resources/picture/ad/펜2.PNG" class="card-img-top">
 			</div>
 			
-			<div style="width: 100%; cursor: pointer;"
+			<!-- <div style="width: 100%; cursor: pointer;"
 				onclick="location.href='https://notefolioacademy.com/products/30';">
 				<img src="../resources/picture/ad/아이패드.PNG" class="card-img-top">
-			</div>
+			</div> -->
 		</div>
 			
 		<div class="other">
 			<div class="totalLayout-title top">
-				<h3 class="list-titles" >작품</h3>
+				<h3 class="list-titles" style="padding-bottom : 0.5%;">작품</h3>
 				<form action="${appRoot}/designBoard/list" method="get">
 					
 				<ul class="nav nav-tabs">
