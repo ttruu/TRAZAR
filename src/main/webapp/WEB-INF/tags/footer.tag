@@ -5,8 +5,9 @@
 
 .copyright {
 	text-align : center;
-	padding : 100px 0;
+	padding : 4% 0 0;
 	font-weight : bold;
+	color : white;
 }
 
 </style>
