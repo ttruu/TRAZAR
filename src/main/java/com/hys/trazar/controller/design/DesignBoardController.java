@@ -134,7 +134,7 @@ public class DesignBoardController {
 	@GetMapping("modify") 
 	public void getmodify(int id, Model model) {
 		DesignBoardDto dto = service.getDesignBoardById(id);
-		model.addAttribute("designBoardModify", dto);
+		model.addAttribute("designBoard", dto);
 	}
 	
 	@PostMapping("modify")

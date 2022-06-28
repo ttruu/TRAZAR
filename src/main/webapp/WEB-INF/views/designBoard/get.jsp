@@ -303,10 +303,10 @@
 	</c:if>
 
 	<!-- Page Content -->
-
+<%-- 
 	<form id="form1" action="${appRoot }/designBoard/modify" method="post">
 		<input type="hidden" name="id" value="${designBoard.id }" />
-		
+		 --%>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-9">
@@ -318,6 +318,7 @@
 
 							<div class="form-group row" style="text-align: center;">
 								<div class="mb-3 mb-sm-2" style="text-align: left;">
+								
 									<c:url value="/designBoard/modify" var="modifyLink">
                             		<c:param name="id" value="${designBoard.id }"></c:param>
                             		</c:url>
@@ -325,7 +326,7 @@
 									<sec:authorize access="isAuthenticated()">
 										<sec:authentication property="principal" var="principal" />
 										<c:if test="${principal.username == designBoard.memberId }">
-											<button id="edit-button1" class="btn btn-light" onclick="location.href = ${modifyLink}">
+											<button id="edit-button1" class="btn btn-light" onclick="location.href = '${modifyLink}'">
 												수정하기
 											</button>
 										</c:if>
@@ -354,10 +355,7 @@
 							</div>
 
 							<div class="col-sm-6 mb-3 mb-sm-2" style="text-align : center;  ">
-								<!-- <label class="form-label" for="textarea1"></label> -->
-								<textarea class="form-control d-none" name="body" rows="30"
-									cols="10" id="summernote"  readonly>${designBoard.body }</textarea>
-								<div class="card-img-top" id="summernoteView">${designBoard.body }</div>
+								<div class="card-img-top" >${designBoard.body }</div>
 								
 							</div>
 
@@ -383,7 +381,7 @@
 						</div>
 			</div>
 		</div>
-	</form>
+	<!-- </form> -->
 
 
 	<%-- 댓글 추가 --%>
