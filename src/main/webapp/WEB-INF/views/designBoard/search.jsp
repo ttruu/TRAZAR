@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+F<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
@@ -61,7 +61,6 @@
 					<div class="alert alert-primary">${message }</div>
 				</c:if>  -->
 
-
 					<c:forEach items="${designBoardList }" var="designBoard">
 							<c:url value="/designBoard/get" var="getUrl">
 								<c:param name="id" value="${designBoard.id }"></c:param>
@@ -71,9 +70,6 @@
 							<a href="${getUrl }" class="image"><img src="${designBoard.imgthumbnail }" alt="" /></a>
 							<h2>${designBoard.title }</h2>
 						</article>
-				
-
-					
 					</c:forEach>
 				
 			</div>
@@ -89,5 +85,17 @@
 		<div class="footer">
 			<my:footer></my:footer>
 		</div>
+		
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
