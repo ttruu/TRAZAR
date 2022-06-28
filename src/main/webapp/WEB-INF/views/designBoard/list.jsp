@@ -238,7 +238,6 @@ $(" .top").on("click", function(e) {
 		<div class="other">
 			<div class="totalLayout-title top">
 				<h3 class="list-titles" >작품</h3>
-				<form action="${appRoot}/designBoard/list" method="get">
 					
 				<ul class="nav nav-tabs">
 				  <li class="nav-item">
@@ -254,7 +253,6 @@ $(" .top").on("click", function(e) {
 				    <a class="nav-link active" aria-current="page" href="${appRoot }/designBoard/list?categoryName=interior">인테리어</a>
 				  </li>
 				</ul>
-				</form>
 			</div>
 		</div>
 		
