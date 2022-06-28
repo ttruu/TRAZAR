@@ -35,11 +35,11 @@
         <!-- Navigation-->
         <my:navBar/>
         <!-- Header-->
-        <header class="bg-dark py-5">
+        <header class="bg-white py-5">
             <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
+                <div class="text-center text-black">
                     <h1 class="display-4 fw-bolder">Commission</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Write your commission here</p>
+                    <p class="lead fw-normal text-black-50 mb-0">Write your commission here</p>
                 </div>
             </div>
         </header>
