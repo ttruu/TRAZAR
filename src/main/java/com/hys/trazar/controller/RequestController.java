@@ -71,28 +71,20 @@ public class RequestController {
 		
 	}
 	
-	@RequestMapping("modify")
-	public void modify(RequestDto dto2, int id, Model model, RedirectAttributes rttr) {
+	@GetMapping("modify")
+	public void modify(int id, Model model) {
 		RequestDto dto = service.getRequestById(id);
 		model.addAttribute("request", dto);
-		service.updateRequest(dto2);
-		rttr.addAttribute("id", dto2.getId());
 	}
 	
-//	@GetMapping("modify")
-//	public String modify(RequestDto dto2, int id, Model model, RedirectAttributes rttr) {
-//		RequestDto dto = service.getRequestById(id);
-//		model.addAttribute("request", dto);
-//		service.updateRequest(dto2);
-//		rttr.addAttribute("id", dto2.getId());
-//		return "redirect:/request/get";
-//	}
-	
-//	@PostMapping("modify")
-//	public String modifyRequest(RequestDto dto, RedirectAttributes rttr, Principal principal) {
-//		
-//		return "redirect:/request/get";
-//	}
+	@PostMapping("modify")
+	public String modifyRequest(RequestDto dto, RedirectAttributes rttr) {
+		
+		service.updateRequest(dto);
+		rttr.addAttribute("id", dto.getId());
+		
+		return "redirect:/request/get";
+	}
 	
 	@RequestMapping("list")
 	public void list(Model model) {

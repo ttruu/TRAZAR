@@ -4,10 +4,15 @@
 <%@ page import="java.util.*" %>
 <% request.setCharacterEncoding("utf-8"); %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+
 <!DOCTYPE html>
 <html>
 
 <head>
+		<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -20,6 +25,12 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="${appRoot }/resources/css/requestList/styles.css" rel="stylesheet" />
 </head>
+<style>
+	.card-img-top {
+		hegith : 1000px;
+		width : 100%;
+	}
+</style>
 <body class="pt-5">
         <!-- Navigation-->
         <my:navBar/>
