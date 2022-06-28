@@ -127,13 +127,7 @@
 								<input class="form-control" type="text" name="title" required
 									id="input1" value="${request.title }" />
 							</div>
-                            <!-- Post meta content-->
-                            <%-- <div class="text-muted fst-italic mb-2">${request.inserted }</div> --%>
-                            <!-- Post categories-->
-                            <%-- <a class="badge bg-secondary text-decoration-none link-light" >${request.memberId }</a> --%>
                         </header>
-                        <!-- Preview image figure-->
-                        <!-- <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
                         <!-- Post content-->
                         <section class="mb-5">
 							<label class="form-label">내용</label>
@@ -145,7 +139,7 @@
                 <div class="col-lg-4">
                     <!-- Side widget-->
                     <div class="card mb-4">
-	                    <select id="select1" class="form-select d-none"
+	                    <select id="select1" class="form-select"
 							aria-label="Default select example" name="state">
 							<option selected>상태 선택하기</option>
 							<option value="대기중">대기중</option>
@@ -186,80 +180,4 @@
         <script src="${appRoot }/resources/css/requestGet/scripts.js"></script>
     </body>
     
-    <%-- <title>Insert title here</title>
-</head>
-<body>
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<h1>
-					글 본문
-					<sec:authorize access="isAuthenticated()">
-						<sec:authentication property="principal" var="principal" />
-						<c:if test="${principal.username == request.memberId }">
-							<button id="edit-button1" class="btn btn-secondary">
-								<i class="fa-solid fa-pen-to-square"></i>
-							</button>
-						</c:if>
-					</sec:authorize>
-				</h1>
-				<form id="form" action="${appRoot }/request/modify" method="post">
-					<input type="hidden" name="id" value="${request.id }" />
-					<div>
-						<label class="form-label" for="input1">제목</label>
-						<input class="form-control mb-3" type="text" name="title" required
-							id="input1" value="${request.title }" readonly />
-					</div>
-
-					<select id="select1" class="form-select d-none"
-						aria-label="Default select example" name="state">
-						<option selected>상태 선택하기</option>
-						<option value="대기중">대기중</option>
-						<option value="진행중">진행중</option>
-						<option value="완료">완료</option>
-					</select>
-
-					<div>
-						<label class="form-label" for="textarea1">본문</label>
-						<div id="view">${request.body }</div>
-						<textarea class="form-control d-none" name="body" id="summernote">${request.body }</textarea>
-					</div>
-
-					<div>
-						<label for="input3" class="form-label">작성자</label>
-						<input id="input3" class="form-control mb-3" type="text"
-							value="${request.memberId }" readonly />
-					</div>
-
-					<div>
-						<label class="form-label" for="input4">예산</label>
-						<input class="form-control mb-3" type="text" name="price" required
-							id="input4" value="${request.price }" readonly />
-					</div>
-
-					<div>
-						<label for="input2" class="form-label">작성일시</label>
-						<input class="form-control mb-3" type="datetime-local"
-							value="${request.inserted }" readonly />
-					</div>
-
-					<div>
-						<label class="form-label" for="input5">연락처</label>
-						<input class="form-control mb-3" type="text" name="phoneNum"
-							id="input5" value="${request.phoneNum }" readonly />
-					</div>
-
-					<div>
-						<label class="form-label" for="input6">기간</label>
-						<input class="form-control mb-3" type="text" name="term"
-							id="input6" value="${request.term }" readonly />
-					</div>
-
-					<button id="modify-submit1" class="btn btn-outline-primary d-none">수정</button>
-					<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
-				</form>
-			</div>
-		</div>
-	</div>
-</body> --%>
 </html>
