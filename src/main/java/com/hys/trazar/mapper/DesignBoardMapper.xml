@@ -56,7 +56,8 @@
 	<update id="updateDesignBoard">
 		UPDATE DesignBoard
 		SET title = #{title},
-			body = #{body}
+			body = #{body},
+			price = #{price}			
 		WHERE 
 			id = #{id}
 	</update>

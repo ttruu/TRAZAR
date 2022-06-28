@@ -130,23 +130,17 @@ public class DesignBoardController {
 
 		model.addAttribute("designBoard", dto);
 	}
-
+	
+	@GetMapping("modify") 
+	public void getmodify(int id, Model model) {
+		DesignBoardDto dto = service.getDesignBoardById(id);
+		model.addAttribute("designBoardModify", dto);
+	}
+	
 	@PostMapping("modify")
 	public String modify(DesignBoardDto dto, Principal principal, RedirectAttributes rttr) {
 
-		DesignBoardDto oldBoard = service.getDesignBoardById(dto.getId());
-
-		if (oldBoard.getMemberId().equals(principal.getName())) {
-			boolean success = service.updateDesignBoard(dto);
-
-			if (success) {
-				rttr.addFlashAttribute("message", "글이 수정되었습니다");
-			} else {
-				rttr.addFlashAttribute("message", "글이 수정되지 않았습니다");
-			}
-		} else {
-			rttr.addFlashAttribute("message", "권한이 없습니다");
-		}
+		service.updateDesignBoard(dto);
 
 		rttr.addAttribute("id", dto.getId());
 		rttr.addAttribute("memberId", principal.getName());

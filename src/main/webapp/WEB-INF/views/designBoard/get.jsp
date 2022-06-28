@@ -53,7 +53,7 @@
 		
 		// 페이지 로딩 후 review list 가져오는 ajax 요청
 		// 수정버튼 클릭스 스크립트 
-		$("#edit-button1").click(function() {
+/* 		$("#edit-button1").click(function() {
 			$("#input1").removeAttr("readonly");
 			//$("#summernote").removeAttr("readonly");
 			$("#summernote").removeClass("d-none");
@@ -61,7 +61,7 @@
 			$("#summernote").summernote();
 			$("#modify-submit1").removeClass("d-none");
 			$("#delete-submit1").removeClass("d-none");
-		});
+		}); */
 		
 		$("#delete-submit1").click(function(e) {
 			e.preventDefault();
@@ -318,11 +318,14 @@
 
 							<div class="form-group row" style="text-align: center;">
 								<div class="mb-3 mb-sm-2" style="text-align: left;">
+									<c:url value="/designBoard/modify" var="modifyLink">
+                            		<c:param name="id" value="${designBoard.id }"></c:param>
+                            		</c:url>
 									<!-- 권한설정 -->
 									<sec:authorize access="isAuthenticated()">
 										<sec:authentication property="principal" var="principal" />
 										<c:if test="${principal.username == designBoard.memberId }">
-											<button id="edit-button1" class="btn btn-light">
+											<button id="edit-button1" class="btn btn-light" onclick="location.href = ${modifyLink}">
 												수정하기
 											</button>
 										</c:if>
@@ -336,10 +339,6 @@
 									
 								</div>
 								<div class="col-sm-6 mb-3 mb-sm-2" style="">
-									<label class="form-label" for="input1"></label>
-									<input class="form-control d-none" maxlength="50" type="text"
-										name="title" required id="input1"
-										value="${designBoard.title }" readonly />
 									<h2 class="card-title h4">${designBoard.title }</h2>
 									<div class="small text-muted">${designBoard.inserted }</div>
 								</div>
@@ -359,22 +358,13 @@
 								<textarea class="form-control d-none" name="body" rows="30"
 									cols="10" id="summernote"  readonly>${designBoard.body }</textarea>
 								<div class="card-img-top" id="summernoteView">${designBoard.body }</div>
-								<span class="d-none">${designBoard.body }</span>
+								
 							</div>
 
 							<div>
-								<label for="input3" class="form-label">작성자</label>
-								<input class="form-control" type="text"
-									value="${designBoard.memberId }" readonly />
-								<span class="d-none">${designBoard.memberId }</span>
+								<span class="">${designBoard.memberId }</span>
 							</div>
 
-							<div class="small text-muted">
-								<label for="input2" class="form-label">작성일시</label>
-								<input class="form-control mb-3" type="datetime-local"
-									value="${designBoard.inserted }" readonly />
-								<span class="d-none">${designBoard.inserted }</span>
-							</div>
 						</div>
 						<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
 						
