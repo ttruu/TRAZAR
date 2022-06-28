@@ -71,6 +71,21 @@ public class RequestController {
 		
 	}
 	
+	@GetMapping("modify")
+	public void modify(int id, Model model) {
+		RequestDto dto = service.getRequestById(id);
+		model.addAttribute("request", dto);
+	}
+	
+	@PostMapping("modify")
+	public String modifyRequest(RequestDto dto, RedirectAttributes rttr) {
+		
+		service.updateRequest(dto);
+		rttr.addAttribute("id", dto.getId());
+		
+		return "redirect:/request/get";
+	}
+	
 	@RequestMapping("list")
 	public void list(Model model) {
 		List<RequestDto> list = service.listRequest();
@@ -96,18 +111,28 @@ public class RequestController {
 		}
 	}
 	
+//	private void processThumbNailImage2(RequestDto dto) {
+//		
+//			String thumbNail = "";
+//
+//			String source = dto.getBody();
+//			Document doc = Jsoup.parse(source);
+//			Elements elements = doc.select("img");
+//
+//			if (elements.size() > 0) {
+//				thumbNail = elements.get(0).attr("src").toString();
+//			}
+//
+//			dto.setGetImg(thumbNail);
+//	}
+	
 	@GetMapping("get")
 	public void get(int id, Model model) {
 		RequestDto dto = service.getRequestById(id);
+//		processThumbNailImage2(dto);
 		model.addAttribute("request", dto);
 	}
 	
-	@PostMapping("modify")
-	public String modifyRequest(RequestDto dto, RedirectAttributes rttr, Principal principal) {
-		service.updateRequest(dto);
-		rttr.addAttribute("id", dto.getId());
-		return "redirect:/request/get";
-	}
 	
 	@PostMapping("remove")
 	public String removeRequest(int id) {
@@ -116,17 +141,17 @@ public class RequestController {
 		return "redirect:/request/list";
 	}
 	
-	@ResponseBody
-	@PostMapping("/Imageupload")
-	public Map<String, Object> uploadImage(@RequestParam Map<String, Object> paramMap, MultipartRequest request) throws Exception
-	{
-		MultipartFile uploadFile = request.getFile("upload");
-		String uploadDir = servletContext.getRealPath("/").replace("\\", "/") + "/static/upload/images/";
-		String uploadId = UUID.randomUUID().toString() + "." + FilenameUtils.getExtension(uploadFile.getOriginalFilename());
-		uploadFile.transferTo(new File(uploadDir + uploadId));
-		paramMap.put("url", "/static/upload/images/" + uploadId);
-		return paramMap;
-	}
+//	@ResponseBody
+//	@PostMapping("/Imageupload")
+//	public Map<String, Object> uploadImage(@RequestParam Map<String, Object> paramMap, MultipartRequest request) throws Exception
+//	{
+//		MultipartFile uploadFile = request.getFile("upload");
+//		String uploadDir = servletContext.getRealPath("/").replace("\\", "/") + "/static/upload/images/";
+//		String uploadId = UUID.randomUUID().toString() + "." + FilenameUtils.getExtension(uploadFile.getOriginalFilename());
+//		uploadFile.transferTo(new File(uploadDir + uploadId));
+//		paramMap.put("url", "/static/upload/images/" + uploadId);
+//		return paramMap;
+//	}
 	
 //	// 썸머노트 에디터에서 받는 이미지 업로드 처리
 	@RequestMapping(value = "/Imageupload", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")

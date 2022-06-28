@@ -107,6 +107,11 @@ public class DesignBoardService {
 		return mapper.selectDesignBoardAll();
 	}
 	
+	//search service
+	public List<DesignBoardDto> searchListDesignBoard(String type, String keyword) {
+		return mapper.selectDesignBoardAll(type, "%" + keyword + "%");
+	}
+	
 	// modify service
 	public boolean updateDesignBoard(DesignBoardDto dto) {
 		int cnt = mapper.updateDesignBoard(dto);

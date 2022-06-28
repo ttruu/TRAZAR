@@ -39,113 +39,157 @@
 <script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>
 <title>Insert title here</title>
 </head>
-<body>
+<body class="pt-5">
 
-	<my:navBar current="insert" />
+	<my:navBar />
 
 	<!-- <script src="/static/vendor/summernote/dist/summernote.min.js"></script> -->
 	 
-	
 	<script>
-		$(document).ready(function() {
+		$(document)
+				.ready(
+						function() {
 
-			/* var ckeditor_config = {
-				resize_enaleb : false,
-				enterMode : CKEDITOR.ENTER_BR,
-				shiftEnterMode : CKEDITOR.ENTER_P,
-				filebrowserUploadUrl : "/designBoard/ckUpload"
-			};
+							/* var ckeditor_config = {
+								resize_enaleb : false,
+								enterMode : CKEDITOR.ENTER_BR,
+								shiftEnterMode : CKEDITOR.ENTER_P,
+								filebrowserUploadUrl : "/designBoard/ckUpload"
+							};
 
-			CKEDITOR.replace('ckeditor', ckeditor_config);
- */
-			/* 
+							CKEDITOR.replace('ckeditor', ckeditor_config);
+							 */
+							/* 
 
-			CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용
-			    width:'auto',
-			    height:'300px',
-			    filebrowserUploadUrl:  "fileupload.do"
-			}); */
+							CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용
+							    width:'auto',
+							    height:'300px',
+							    filebrowserUploadUrl:  "fileupload.do"
+							}); */
 
-			 $('#summernote').summernote({
-				height : 500,
-				placeholder: '최대 500자 작성 가능합니다.',
-				lang: 'ko-KR',
-				toolbar : [
-					// 폰트랑 폰트사이즈 다시 넣어줘야함
-				    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-				    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-				    // 글자색
-				    ['color', ['forecolor','color']],
-				    // 표만들기
-				    ['table', ['table']],
-				    // 글머리 기호, 번호매기기, 문단정렬
-				    ['para', ['ul', 'ol', 'paragraph']],
-				    // 줄간격
-				    ['height', ['height']],
-				    // 그림첨부, 링크만들기, 동영상첨부
-				    ['insert',['picture','link','video']],
-				    // 코드보기, 확대해서보기, 도움말
-				    ['view', ['codeview','fullscreen', 'help']]
-				  ],
-				onImageUpload : function(files, editor, welEditable) {
-					console.log(files);
-					console.log( files[0] );
-					data = new FormData();
-					data.append("file", files[0]);
-					var $note = $(this);
-					$.ajax({
-						data : data,
-						type : "POST",
-						url : '/designBoard/imageupload',
-						cache : false,
-						contentType : false,
-						processData : false,
-						success : function(url) {
-							alert(url);
-							$note.summernote('insertImage', url);
-						}
-					});
-				} 
-			});
+							$('#summernote')
+									.summernote(
+											{
+												height : 400,
+												placeholder : '콘텐츠를 선택하여 업로드를 시작하세요',
+												lang : 'ko-KR',
+												toolbar : [
+														// 폰트랑 폰트사이즈 다시 넣어줘야함
+														// 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+														[
+																'style',
+																[
+																		'bold',
+																		'italic',
+																		'underline',
+																		'strikethrough',
+																		'clear' ] ],
+														// 글자색
+														[
+																'color',
+																[ 'forecolor',
+																		'color' ] ],
+														// 표만들기
+														[ 'table', [ 'table' ] ],
+														// 글머리 기호, 번호매기기, 문단정렬
+														[
+																'para',
+																[ 'ul', 'ol',
+																		'paragraph' ] ],
+														// 줄간격
+														[ 'height',
+																[ 'height' ] ],
+														// 그림첨부, 링크만들기, 동영상첨부
+														[
+																'insert',
+																[ 'picture',
+																		'link',
+																		'video' ] ],
+														// 코드보기, 확대해서보기, 도움말
+														[
+																'view',
+																[
+																		'codeview',
+																		'fullscreen',
+																		'help' ] ] ],
+												onImageUpload : function(files,
+														editor, welEditable) {
+													console.log(files);
+													console.log(files[0]);
+													data = new FormData();
+													data.append("file",
+															files[0]);
+													var $note = $(this);
+													$
+															.ajax({
+																data : data,
+																type : "POST",
+																url : '/designBoard/imageupload',
+																cache : false,
+																contentType : false,
+																processData : false,
+																success : function(
+																		url) {
+																	alert(url);
+																	$note
+																			.summernote(
+																					'insertImage',
+																					url);
+																}
+															});
+												}
+											});
 
-			/* 	$('#addFile').click(function(){
-					var fileIndex = $('.fileDiv').length;
-					$('#fileTable').append("<input type=\"file\" name=\"files["+fileIndex+"] class=\"fileDiv\">");
-				});
-			 */
-		});
+							/* 	$('#addFile').click(function(){
+									var fileIndex = $('.fileDiv').length;
+									$('#fileTable').append("<input type=\"file\" name=\"files["+fileIndex+"] class=\"fileDiv\">");
+								});
+							 */
+						});
 	</script>
 
+	<!-- page content -->
+	<form action="${appRoot }/designBoard/insert" method="post"
+		enctype="multipart/form-data">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9" style="">
+					<div class="card shadow mb-4">
+						<div class="card-body">
+							<input class="form-control" type="text" name="title" required
+								id="input1" placeholder="제목을 입력해주세요." aria-label="제목을 입력해주세요." />
+							<label class="form-label" for="textarea1"></label>
+							<textarea class="form-control" name="body" id="summernote"
+								cols="30" rows="10"></textarea>
+						</div>
+					</div>
+					<select name="category" id="cate">
+						<option value="1">일러스트레이션</option>
+						<option value="2">웹 디자인</option>
+						<option value="3">인테리어</option>
 
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<h1>내용 작성</h1>
-				<form action="${appRoot }/designBoard/insert" method="post"
-					enctype="multipart/form-data">
-					<div>
-						<label class="form-label" for="input1">제목</label>
-						<input class="form-control" type="text" name="title" required
-							id="input1" />
+					</select>
+				</div>
+				<!-- Side widgets-->
+				<div class="col-lg-3">
+					<div class="card shadow mb-4">
+						<div class="card-header py-2">
+							<h6 class="m-0 font-weight-bold text-secondary">가격</h6>
+						</div>
+						<div class="card-body">
+							<input class="form-control" type="text" name="price"
+								placeholder="가격을 입력해주세요." aria-label="가격을 입력해주세요." />
+						</div>
 					</div>
 
-					<div>
-						<label class="form-label" for="textarea1">본문</label>
-						<textarea class="form-control" name="body" id="summernote" cols="30"
-							rows="10"></textarea>
+					<div class="my-4">
+						<button type="submit"
+							class="btn btn-secondary btn-icon-split btn-block">업로드</button>
 					</div>
 
-					<div>
-						<label class="form-label" for="input1">가격</label>
-						<input class="form-control" type="text" name="price" id="input1" />
-					</div>
-
-					<button type="submit" class="btn btn-primary">업로드</button>
-					<!-- <button id="addFile"  type="button" class="btn btn-default">파일 폼 추가</button> -->
-				</form>
-
+				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 </body>
 </html>

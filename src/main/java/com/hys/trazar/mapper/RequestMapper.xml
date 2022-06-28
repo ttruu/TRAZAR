@@ -33,7 +33,7 @@
 	
 	<update id="updateRequest">
 		UPDATE Request
-	  	SET title = #{title}, body = #{body}, price = #{price}, state = #{state}
+	  	SET title = #{title}, body = #{body}, price = #{price}, state = #{state}, term = #{term}
 	  	WHERE id = #{id}
 	</update>
 	
