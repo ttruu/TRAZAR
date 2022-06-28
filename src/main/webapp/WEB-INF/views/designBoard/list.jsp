@@ -239,7 +239,6 @@ $(" .top").on("click", function(e) {
 				    <a class="nav-link active" aria-current="page" href="${appRoot }/designBoard/list?categoryName=interior">인테리어</a>
 				  </li>
 				</ul>
-				</form>
 			</div>
 		</div>
 		
