@@ -39,7 +39,7 @@
 	
 	<insert id="insertDesignBoard" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 		INSERT INTO DesignBoard (title, body, price, memberId, categoryName)
-		VALUES (#{title}, #{body}, #{price}, #{memberId}, #{category})
+		VALUES (#{title}, #{body}, #{price}, #{memberId}, #{categoryName})
 	</insert>
 	
 	<select id="selectDesignBoardById" resultType="com.hys.trazar.domain.DesignBoardDto">
@@ -100,7 +100,6 @@
 			   d.body, 
 			   d.price, 
 			   d.inserted,
-			   d.category,
 			   m.id memberId,
 			   m.nickName writerNickName
 		FROM DesignBoard d LEFT JOIN Review r ON d.id = r.memberId
@@ -117,7 +116,6 @@
 			   d.body, 
 			   d.price, 
 			   d.inserted,
-			   d.category,
 			   m.id memberId,
 			   m.nickName writerNickName
 		FROM DesignBoard d LEFT JOIN Review r ON d.id = r.memberId

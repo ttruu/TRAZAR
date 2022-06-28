@@ -46,106 +46,63 @@
 	<!-- <script src="/static/vendor/summernote/dist/summernote.min.js"></script> -->
 	 
 	<script>
-		$(document)
-				.ready(
-						function() {
-
-							/* var ckeditor_config = {
-								resize_enaleb : false,
-								enterMode : CKEDITOR.ENTER_BR,
-								shiftEnterMode : CKEDITOR.ENTER_P,
-								filebrowserUploadUrl : "/designBoard/ckUpload"
-							};
-
-							CKEDITOR.replace('ckeditor', ckeditor_config);
-							 */
-							/* 
-
-							CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용
-							    width:'auto',
-							    height:'300px',
-							    filebrowserUploadUrl:  "fileupload.do"
-							}); */
-
-							$('#summernote')
-									.summernote(
-											{
-												height : 400,
-												placeholder : '콘텐츠를 선택하여 업로드를 시작하세요',
-												lang : 'ko-KR',
-												toolbar : [
-														// 폰트랑 폰트사이즈 다시 넣어줘야함
-														// 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-														[
-																'style',
-																[
-																		'bold',
-																		'italic',
-																		'underline',
-																		'strikethrough',
-																		'clear' ] ],
-														// 글자색
-														[
-																'color',
-																[ 'forecolor',
-																		'color' ] ],
-														// 표만들기
-														[ 'table', [ 'table' ] ],
-														// 글머리 기호, 번호매기기, 문단정렬
-														[
-																'para',
-																[ 'ul', 'ol',
-																		'paragraph' ] ],
-														// 줄간격
-														[ 'height',
-																[ 'height' ] ],
-														// 그림첨부, 링크만들기, 동영상첨부
-														[
-																'insert',
-																[ 'picture',
-																		'link',
-																		'video' ] ],
-														// 코드보기, 확대해서보기, 도움말
-														[
-																'view',
-																[
-																		'codeview',
-																		'fullscreen',
-																		'help' ] ] ],
-												onImageUpload : function(files,
-														editor, welEditable) {
-													console.log(files);
-													console.log(files[0]);
-													data = new FormData();
-													data.append("file",
-															files[0]);
-													var $note = $(this);
-													$
-															.ajax({
-																data : data,
-																type : "POST",
-																url : '/designBoard/imageupload',
-																cache : false,
-																contentType : false,
-																processData : false,
-																success : function(
-																		url) {
-																	alert(url);
-																	$note
-																			.summernote(
-																					'insertImage',
-																					url);
-																}
-															});
-												}
-											});
-
-							/* 	$('#addFile').click(function(){
-									var fileIndex = $('.fileDiv').length;
-									$('#fileTable').append("<input type=\"file\" name=\"files["+fileIndex+"] class=\"fileDiv\">");
+		$(document).ready(function() {
+			$('#summernote').summernote({	
+						height : 400,
+						placeholder : '콘텐츠를 선택하여 업로드를 시작하세요',
+						lang : 'ko-KR',
+						toolbar : [
+						// 폰트랑 폰트사이즈 다시 넣어줘야함
+						// 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+						['style',['bold','italic','underline','strikethrough','clear' ] ],
+						// 글자색
+						['color',[ 'forecolor','color' ] ],
+						// 표만들기
+						[ 'table', [ 'table' ] ],
+						// 글머리 기호, 번호매기기, 문단정렬
+						['para',[ 'ul', 'ol','paragraph' ] ],
+						// 줄간격
+						[ 'height',[ 'height' ] ],
+						// 그림첨부, 링크만들기, 동영상첨부
+						['insert',[ 'picture','link','video' ] ],
+						// 코드보기, 확대해서보기, 도움말
+						['view',['codeview','fullscreen','help' ] ] ],
+						onImageUpload : function(files, editor, welEditable) {
+							console.log(files);
+							console.log(files[0]);
+							data = new FormData();
+							data.append("file", files[0]);
+							var $note = $(this);
+							$.ajax({
+								data : data,
+								type : "POST",
+								url : '/designBoard/imageupload',
+								cache : false,
+								contentType : false,
+								processData : false,
+								success : function(url) {
+									alert(url);
+									$note.summernote('insertImage', url);
+									}
 								});
-							 */
+							}
 						});
+					});
+		
+	 	// 이미지없을시에 alert 띄우기
+		   function goWrite(frm) {
+				let body = $("<div>" +  frm.body.value + "</div>");
+				let imgElems = body.find("img");
+				
+				console.log(body);
+				console.log("그림수", imgElems.length);
+				
+				if (imgElems.length <= 0) {
+					alert("사진을 넣어주세요");
+				} else {
+					frm.submit();
+				} 
+	 	}
 	</script>
 
 	<!-- page content -->
@@ -183,8 +140,8 @@
 					</div>
 
 					<div class="my-4">
-						<button type="submit"
-							class="btn btn-secondary btn-icon-split btn-block">업로드</button>
+						<button type="button"
+							class="btn btn-secondary btn-icon-split btn-block" onclick="goWrite(this.form)">업로드</button>
 					</div>
 
 				</div>
