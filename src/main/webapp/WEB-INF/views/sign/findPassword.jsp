@@ -77,7 +77,7 @@
 						
 						
 					<label for="questionInput1" class="form-label"> 비밀번호 초기화 질문 </label>
-					<select id="usernameInput1"  name="question" style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;">
+					<select id="usernameInput1"  name="question" style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px; font-size: 1rem;">
 					<option value="내가 좋아하는 캐릭터는 ?">내가 좋아하는 캐릭터는 ?</option>
 					<option value="기억에 남는 추억의 장소는 ?">기억에 남는 추억의 장소는 ?</option>
 					<option value="인상 깊게 읽은 책 이름은 ?">인상 깊게 읽은 책 이름은 ?</option>
@@ -95,6 +95,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	
 
 

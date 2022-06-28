@@ -131,6 +131,7 @@ public class SignupService {
 		return mapper.deleteMember(dto.getId()) == 1;
 	}
 
+	// 비밀번호 초기화
 	public void findPassword(String id) {
 		
 		String pw = passwordEncoder.encode(id);
