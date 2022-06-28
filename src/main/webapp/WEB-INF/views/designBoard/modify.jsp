@@ -33,12 +33,7 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<link href="${appRoot }/resources/css/designBoard/style.css"
-	rel="stylesheet" type="text/css">
-<noscript>
-	<link rel="stylesheet"
-		href="${appRoot }/resources/css/designBoard/noscript.css" />
-</noscript>
+<link href="${appRoot }/resources/css/requestGet/styles.css" rel="stylesheet" />
 
 <style>
 .list-group-item {
@@ -97,7 +92,7 @@ $(document).ready(function() {
 					alert(url);
 					$note.summernote('insertImage',	url);
 						}
-							});
+					});
 				}
 			});
 		});
@@ -121,8 +116,8 @@ $(document).ready(function() {
 							<input class="form-control" type="text" name="title" required
 							id="input1" value="${designBoard.title }"/>
 							<label class="form-label" for="textarea1"></label>
-							<div class="form-control" name="body" id="summernote"
-								cols="30" rows="10">${designBoard.body }</div>
+							<textarea class="form-control" name="body" id="summernote"
+								cols="30" rows="10">${designBoard.body }</textarea>
 						</div>
 					</div>
 				</div>
@@ -144,13 +139,7 @@ $(document).ready(function() {
 
 
 	<!-- Scripts -->
-	<script src="${appRoot }/resources/css/designBoard/jquery.min.js"></script>
-	<script src="${appRoot }/resources/css/designBoard/browser.min.js"></script>
-	<script src="${appRoot }/resources/css/designBoard/breakpoints.min.js"></script>
-	<script src="${appRoot }/resources/css/designBoard/util.js"></script>
-	<script src="${appRoot }/resources/css/designBoard/main.js"></script>
-
-
+		<script src="${appRoot }/resources/css/requestGet/scripts.js"></script>
 </body>
 </html>
 
