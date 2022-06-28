@@ -61,7 +61,7 @@ color: #FFFFFF;
 
 </style>
 
-<header id="nav-header"class="p-3 border-bottom fixed">
+<header id="nav-header"class="border-bottom fixed">
     <div class="container">
     	<div class="modal fade" id="modal2" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -128,7 +128,7 @@ color: #FFFFFF;
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
        
         <a href="/trazar/designBoard/list" class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><img src="../resources/picture/logo/로고.png" /></svg>
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><img src="../resources/picture/logo/악.PNG" /></svg>
         </a>
 
         <ul id="front-nav-font" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">

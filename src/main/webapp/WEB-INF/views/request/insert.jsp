@@ -61,8 +61,6 @@
 				    ['view', ['codeview','fullscreen', 'help']]
 				  ],
 				onImageUpload : function(files, editor, welEditable) {
-					console.log(files);
-					console.log( files[0] );
 					data = new FormData();
 					data.append("file", files[0]);
 					var $note = $(this);
@@ -74,25 +72,36 @@
 						contentType : false,
 						processData : false,
 						success : function(url) {
-							alert(url);
+							/* alert(url); */
 							$note.summernote('insertImage', url);
 						}
 					});
 				}
 			}); 
 		});
-	
-	  /* function goWrite(frm) {
-			var title = frm.title.value;
+		
+	 	// 이미지없을시에 alert 띄우기
+	   function goWrite(frm) {
+			let body = $("<div>" +  frm.body.value + "</div>");
+			let imgElems = body.find("img");
+			
+			console.log(body);
+			console.log("그림수", imgElems.length);
+			
+			if (imgElems.length <= 0) {
+				alert("사진을 넣어주세요");
+			} else {
+				frm.submit();
+			} 
 			
 			
-			if (title.trim() == ''){
-				alert("제목을 입력해주세요");
+			/* if (body.trim() == ''){
+				alert("사진을 입력해주세요");
 				return false;
 			}
 			
-			frm.submit();
-		} */
+			frm.submit(); */
+		}
 </script>
 
 <head>
@@ -181,7 +190,7 @@
                         <div class="card-header">Side Widget</div>
                         <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
                     </div>
-                    <button class="btn btn-outline-secondary mt-3">등록</button>
+                    <button type="button" class="btn btn-outline-secondary mt-3" onclick="goWrite(this.form)">등록</button>
                 </div>
             </div>
         </div>

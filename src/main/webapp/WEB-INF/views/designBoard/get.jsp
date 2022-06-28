@@ -63,7 +63,7 @@
 			$("#delete-submit1").removeClass("d-none");
 		}); */
 		
-		$("#delete-submit1").click(function(e) {
+	/* 	$("#delete-submit1").click(function(e) {
 			e.preventDefault();
 			
 			if (confirm("삭제하시겠습니까?")) {
@@ -73,7 +73,7 @@
 				form1.submit();
 			}
 			
-		});
+		}); */
 		
 	// 댓글 목록 (review list) 가져오는 ajax
 		const listReview = function() {
@@ -331,7 +331,7 @@
 									<c:url value="/designBoard/remove" var="removeLink" />
 									<form action="${removeLink }" method="post">
 										<input type="hidden" name="id" value="${designBoard.id }" />
-										<button id="delete-submit1" class="btn btn-danger d-none">삭제하기</button>
+										<button id="delete-submit1" class="btn btn-danger">삭제하기</button>
 									</form>
 									
 								</div>

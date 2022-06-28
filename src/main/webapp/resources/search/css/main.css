@@ -90,7 +90,7 @@ section, summary, time, mark, audio, video {
 	vertical-align: baseline;}
 
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+footer, hgroup, menu, nav, section {
 	display: block;}
 
 body {
@@ -163,7 +163,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #242629;
+		background: white;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -1394,19 +1394,9 @@ input, select, textarea {
 				background: rgba(36, 38, 41, 0.8);
 			}
 
-		body.modal-active #wrapper {
-			-moz-filter: blur(8px);
-			-webkit-filter: blur(8px);
-			-ms-filter: blur(8px);
-			filter: blur(8px);
-		}
+	
 
-			body.modal-active #wrapper:after {
-				pointer-events: auto;
-				opacity: 1;
-				visibility: visible;
-				z-index: 10003;
-			}
+		
 
 		#wrapper:before {
 			-moz-animation: spinner 1s infinite linear !important;

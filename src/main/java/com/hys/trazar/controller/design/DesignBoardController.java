@@ -60,13 +60,42 @@ public class DesignBoardController {
 	private ReviewService reviewService;
 
 	@RequestMapping("list")
-	public void list( Model model) {
-		List<DesignBoardDto> list = service.listDesignBoard();
-
+	public void list( Model model, String categoryName) {
+		
+		List<DesignBoardDto> hotList = service.hotList();
+		
+		List<DesignBoardDto> list = null;
+		if(categoryName == null) {
+			list = service.listDesignBoard();
+		} else {
+			
+			list = service.listDesignBoard(categoryName);
+		}
+		
 		processThumbNailImage(list);
+		processThumbNailImageHotList(hotList);
+		model.addAttribute("hotList", hotList);
 		model.addAttribute("designBoardList", list);
 	}
 	
+	/* hot list thumbnail */
+	private void processThumbNailImageHotList(List<DesignBoardDto> hotList) {
+		for (DesignBoardDto dto : hotList) {
+			String thumbNail = "";
+			
+			String source = dto.getBody();
+			Document doc = Jsoup.parse(source);
+			Elements elements = doc.select("img");
+			
+			if (elements.size() > 0) {
+				thumbNail = elements.get(0).attr("src").toString();
+			}
+			
+			dto.setImgthumbnail(thumbNail);
+		}
+		
+	}
+
 	// 썸네일에 이미지 출력
 	private void processThumbNailImage(List<DesignBoardDto> list) {
 		
@@ -110,8 +139,8 @@ public class DesignBoardController {
 		designBoard.setMemberId(principal.getName());
 
 		boolean success = service.insertDesignBoard(designBoard);
-
-		if (success) {
+		if (success ) {
+			
 			rttr.addFlashAttribute("message", "새 글이 등록되었습니다.");
 		} else {
 			rttr.addFlashAttribute("message", "새 글이 등록되지 않았습니다.");

@@ -22,6 +22,7 @@ public class DesignBoardDto {
 	private List<MultipartFile> fileName;
 	//private List<String> uploadfiles;
 	private String imgthumbnail;
+	private String categoryName;
 	private int category;
 	
 	public String getPrettyInserted() {

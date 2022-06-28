@@ -28,6 +28,8 @@ public interface DesignBoardMapper {
 
 	int increamentClicked(DesignBoardDto dto);
 
+	List<DesignBoardDto> selectDesignBoardCategory(String categoryName);
 
-	
+	List<DesignBoardDto> hotList();
+
 }

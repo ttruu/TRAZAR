@@ -38,8 +38,8 @@
 	</select>
 	
 	<insert id="insertDesignBoard" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-		INSERT INTO DesignBoard (title, body, price, memberId,category)
-		VALUES (#{title}, #{body}, #{price}, #{memberId}, #{category})
+		INSERT INTO DesignBoard (title, body, price, memberId, categoryName)
+		VALUES (#{title}, #{body}, #{price}, #{memberId}, #{categoryName})
 	</insert>
 	
 	<select id="selectDesignBoardById" resultType="com.hys.trazar.domain.DesignBoardDto">
@@ -93,5 +93,36 @@
 		WHERE memberId = #{memberId}
 	</select>
 	
+	<!-- category query -->
+	<select id="selectDesignBoardCategory" resultType="com.hys.trazar.domain.DesignBoardDto">
+		SELECT d.id, 
+			   d.title, 
+			   d.body, 
+			   d.price, 
+			   d.inserted,
+			   m.id memberId,
+			   m.nickName writerNickName
+		FROM DesignBoard d LEFT JOIN Review r ON d.id = r.memberId
+								JOIN Member m ON d.memberId = m.id
+		WHERE categoryName = #{categoryName} 
+		GROUP BY d.id
+		ORDER BY d.id DESC
+	</select>
+	
+	<!-- hotList query -->
+	<select id="hotList" resultType="com.hys.trazar.domain.DesignBoardDto">
+		SELECT d.id, 
+			   d.title, 
+			   d.body, 
+			   d.price, 
+			   d.inserted,
+			   m.id memberId,
+			   m.nickName writerNickName
+		FROM DesignBoard d LEFT JOIN Review r ON d.id = r.memberId
+								JOIN Member m ON d.memberId = m.id
+		GROUP BY d.id
+		ORDER BY d.clicked DESC
+		LIMIT 4
+	</select>
 
 </mapper>

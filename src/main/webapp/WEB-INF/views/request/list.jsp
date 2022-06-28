@@ -27,11 +27,11 @@
 </head>
 <style>
 	.card-img-top {
-		hegith : 1000px;
+		height : 150px;
 		width : 100%;
 	}
 </style>
-<body class="pt-5">
+<body>
         <!-- Navigation-->
         <my:navBar/>
         <!-- Header-->
