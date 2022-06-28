@@ -31,7 +31,7 @@
 		width : 100%;
 	}
 </style>
-<body class="pt-5">
+<body>
         <!-- Navigation-->
         <my:navBar/>
         <!-- Header-->
