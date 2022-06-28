@@ -45,7 +45,6 @@
 
 	<!-- <script src="/static/vendor/summernote/dist/summernote.min.js"></script> -->
 	 
-	
 	<script>
 		$(document).ready(function() {
 

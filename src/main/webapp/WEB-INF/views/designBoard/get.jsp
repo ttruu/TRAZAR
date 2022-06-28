@@ -204,10 +204,6 @@
 						const displayDivId = "#reviewDisplayContainer" + reviewId;
 						const editFormId = "#reviewEditFormContainer" + reviewId;
 
-						console.log(reviewId);
-						console.log(displayDivId);
-						console.log(editFormId);
-
 						$(displayDivId).addClass("d-none");
 						$(displayDivId).removeClass("d-flex");
 						$(editFormId).show();
@@ -301,7 +297,6 @@
 
 	<my:navBar />
 		
- 	
 	<div class="container">
 			<div class="row">
 				<div class="col">
@@ -315,12 +310,9 @@
 						</c:if>
 					</sec:authorize>
 					
-					
-
 					<c:if test="${not empty message }">
 						<div class="alert alert-primary">${message }</div>
 					</c:if>
-
 
 					<!-- 게시물 보기 + 수정 -->
 					<form id="form1" action="${appRoot }/designBoard/modify"
@@ -405,7 +397,6 @@
 				<input type="text" name="designBoardId" value="${designBoard.id }" />
 			</form>
 		</div>
-		
 		
 		<!-- 연습해볼것 -->
 		<!--  
@@ -500,7 +491,6 @@
 				</div>
 			</div>
 		</div> -->
-		
 		
 </body>
 </html>

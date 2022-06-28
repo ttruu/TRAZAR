@@ -32,12 +32,11 @@
 <style>
 .MainHome {
 	display: grid;
-	grid-template-columns: 5% 62% 4% 10% 10%;
-	grid-template-rows: 45% 5% 60% 5% 90% 10%;
+	grid-template-columns: 3% 55% 4% 10% 10%;
+	grid-template-rows: 45% 3% 50% 5%;
 	height: 100%;
 	grid-gap: 0.5%;
-	grid-template-areas: 
-		'left-side main main main right right-side'
+	grid-template-areas: 'left-side main main main right right'
 		'left-side other other other other other'
 		'left-side content content content content content'
 		'footer footer footer footer footer footer';
@@ -45,27 +44,24 @@
 
 .left-side {
 	grid-area: left-side;
-	padding-left: 10%;
+	padding-left: 5%;
 }
 
 .main1 {
-	grid-area: main;	
-	padding-top : 50px;
+	grid-area: main;
+	padding-top: 50px;
 }
 
 .right {
 	grid-area: right;
-	justify-content : space-around;
-	padding-top : 100px;
+	justify-content: space-around;
+	padding-top: 100px;
+	padding-right: 10%;
 }
 
 .card {
-	justify-content : space-around;
-}
-
-.right-side {
-	grid-area : right-side;
-	padding-right : 10%
+	justify-content: space-around;
+	margin-bottom: 33%;
 }
 
 .other {
@@ -74,6 +70,7 @@
 
 .content {
 	grid-area: content;
+	padding-top : 1%;
 }
 
 .footer {
@@ -124,7 +121,7 @@
 	text-align: center;
 }
 
-.main-lists .thumbnail-image img  {
+.main-lists .thumbnail-image img {
 	width: 270px;
 	height: 270px;
 	border: 1px solid #E1F6FA;
@@ -138,6 +135,7 @@
 	margin: 8px 0;
 	text-align: center;
 }
+
 </style>
 
 <title>Insert title here</title>
@@ -151,12 +149,10 @@
 
 
 <body class="pt-5">
-	<my:mainNav/>
+	<my:mainNav />
 	<div class="MainHome">
 
-		<div class="left-side">
-		
-		</div>
+		<div class="left-side"></div>
 		<div class="main1">
 			<div class="totalLayout">
 				<div class="totalLayout-title">
@@ -178,32 +174,33 @@
 								<div class="thumbnail-image">
 									<img src="${designBoard.imgthumbnail }">
 								</div>
-									</a>
-									
-								<c:url value="/designer/view" var="viewUrl">
-								<c:param name="memberId" value="${designBoard.memberId }" ></c:param>
-								</c:url>
-								<a href="${viewUrl }" >
+							</a>
+
+							<c:url value="/designer/view" var="viewUrl">
+								<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+							</c:url>
+							<a href="${viewUrl }">
 								<div class="design-name">${designBoard.id}ㅣ
 									${designBoard.writerNickName }</div>
-									</a>
-								
-								<div class="main-project-title">${designBoard.title }
-									${designBoard.prettyInserted }</div>
-						
+							</a>
+
+							<div class="main-project-title">${designBoard.title }
+								${designBoard.prettyInserted }</div>
+
 						</div>
 					</c:forEach>
 				</div>
 			</div>
 		</div>
 		<div class="right">
-			<div class="card" style="padding-top : 50px; height: 35%; width: 130%; cursor: pointer;"
+			<div class="card"
+				style="padding-top: 50px; height: 25%; width: 100%; cursor: pointer;"
 				onclick="location.href='https://www.google.com';">
 				<img src="../resources/picture/ad/구글1.PNG" class="card-img-top">
 				<div class="card-body">
 					<h5 class="card-title"></h5>
 					<ul class="fa-ul custom-list">
-						  
+
 						<!-- <li>
 							<i class="fa fa-check fa-fw"></i>
 							광고내용
@@ -211,41 +208,46 @@
 					</ul>
 				</div>
 			</div>
-			<div class="card" style="padding-top : 50px; height: 35%; width: 130%; cursor: pointer;"
+			<div class="card"
+				style="padding-top: 50px; height: 25%; width: 100%; cursor: pointer;"
 				onclick="location.href='https://www.naver.com';">
 				<img src="../resources/picture/ad/네이버.PNG" class="card-img-top">
 				<div class="card-body">
 					<h5 class="card-title"></h5>
 					<ul class="fa-ul custom-list">
-						 
+
 						<!-- <li>
 							<i class="fa fa-check fa-fw"></i>
 							광고내용
 						</li> -->
 					</ul>
 				</div>
-			</div> 
+			</div>
 		</div>
-		
-		<div clss="right-side"></div>
+
 		<div class="other">
 			<div class="totalLayout-title ">
 				<h3 class="list-titles " style="margin-top: 40px;">작품</h3>
 				<c:url value="/designBoard/search" var="searchUrl"></c:url>
-		  <form action="${searchUrl }" class=" float-start">
-      	<div class="input-group">
-	      	<!-- select.form-select>option*3 -->
-	      	<select name="type" id="" class="form-select" style="flex:0 0 100px;">
-	      		<option value="bodyTitle" ${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>제목+본문</option>
-	      		<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
-	      		<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
-	      		<option value="writerNickName" ${param.type == 'writerNickName' ? 'selected' : ''}>작성자</option>
-	      	</select>
-	      
-	      	<input type="search" class="form-control" name="keyword"/>
-	      	<button class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass"></i></button>
-      	</div>
-      </form>
+				<form action="${searchUrl }" class=" float-start">
+					<div class="input-group">
+						<!-- select.form-select>option*3 -->
+						<select name="type" id="" class="form-select"
+							style="flex: 0 0 130px; text-align:center;">
+							<option value="bodyTitle" style="width:100px;"
+								${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>제목+본문</option>
+							<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
+							<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
+							<option value="writerNickName"
+								${param.type == 'writerNickName' ? 'selected' : ''}>작성자</option>
+						</select>
+
+						<input type="search" class="form-control" name="keyword" />
+						<button class="btn btn-outline-dark">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</div>
+				</form>
 			</div>
 		</div>
 		<div class="content">
