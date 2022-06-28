@@ -228,6 +228,10 @@
 		<div class="other">
 			<div class="totalLayout-title ">
 				<h3 class="list-titles " style="margin-top: 40px;">작품</h3>
+				<a href="./list">전체</a>
+				<a href="./list?category=1">일러스트</a>
+				<a href="./list?category=2">웹 디자인</a>
+				<a href="./list?category=3">인테리어</a>
 				<c:url value="/designBoard/search" var="searchUrl"></c:url>
 				<form action="${searchUrl }" class=" float-start">
 					<div class="input-group">
