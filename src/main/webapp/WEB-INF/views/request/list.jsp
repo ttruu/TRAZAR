@@ -27,7 +27,7 @@
 </head>
 <style>
 	.card-img-top {
-		hegith : 1000px;
+		height : 150px;
 		width : 100%;
 	}
 </style>
