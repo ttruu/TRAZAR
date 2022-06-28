@@ -201,10 +201,6 @@
 						const displayDivId = "#reviewDisplayContainer" + reviewId;
 						const editFormId = "#reviewEditFormContainer" + reviewId;
 
-						console.log(reviewId);
-						console.log(displayDivId);
-						console.log(editFormId);
-
 						$(displayDivId).addClass("d-none");
 						$(displayDivId).removeClass("d-flex");
 						$(editFormId).show();
