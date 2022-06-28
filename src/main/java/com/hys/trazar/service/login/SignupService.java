@@ -151,4 +151,6 @@ public class SignupService {
 	public SignupDto selectMember1(String email) {
 		return mapper.selectMember1(email);
 	}
+	
+	
 }

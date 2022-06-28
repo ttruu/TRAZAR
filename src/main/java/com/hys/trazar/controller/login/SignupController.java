@@ -239,17 +239,16 @@ public class SignupController {
 		}
 	}
 
-	// 비밀번호 초기화 코드
+	// 비밀번호 찾기 인증 코드
 	@PostMapping("findPassword")
 	public String findPassword(SignupDto dto, String id, Model model, RedirectAttributes rttr) {
 		// selectMember id로 멤버 찾는 mapper
 		SignupDto findId = mapper.selectMember(dto.getId());
 		// id가 null이 아니고 id의 question이랑 dto의 question이랑 같을 때 서비스 실행
 		if (findId != null && findId.getQuestion().equals(dto.getQuestion()) && findId.getAnswer().equals(dto.getAnswer())) {
-			System.out.println(findId);
 			service.findPassword(id);
 			rttr.addAttribute("success", "good");
-			return "redirect:/sign/findPasswordSuccess";
+			return "redirect:/sign/updatePassword";
 		} else {
 			rttr.addAttribute("msg", "error");
 			return "redirect:/sign/findPassword";
@@ -257,10 +256,6 @@ public class SignupController {
 	}
 	
 	// 아이디찾기 코드
-	@GetMapping("findId")
-	public void findId1() {
-		
-	}
 	
 	@PostMapping("findId")
 	public String findId(SignupDto dto, String email, Model model, RedirectAttributes rttr) {
@@ -279,6 +274,13 @@ public class SignupController {
 	@GetMapping("findIdSuccess")
 	public void findIdSuccess() {
 	}
+	@GetMapping("updatePassword")
+	public void updatePassword() {
+	}
+	@GetMapping("findId")
+	public void findId1() {
+	}
+	
 	
 
 }
