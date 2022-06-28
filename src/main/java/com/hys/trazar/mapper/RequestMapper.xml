@@ -6,14 +6,22 @@
 	
 	
 	<insert id="addRequest" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-		INSERT INTO Request (title, body, price, memberId, term)
-		VALUES (#{title}, #{body}, #{price}, #{memberId}, #{term})
+		INSERT INTO Request (title, body, price, memberId, term, categoryName)
+		VALUES (#{title}, #{body}, #{price}, #{memberId}, #{term}, #{categoryName})
 	</insert>
 	
 	<select id="listRequest" resultType="com.hys.trazar.domain.RequestDto">
 		SELECT r.id, r.memberId, r.body, r.title, r.price, r.inserted, r.state
 		FROM Request r 
 		JOIN Member m ON m.id = r.memberId
+		ORDER BY r.id DESC
+	</select>
+	
+	<select id="listRequestByCategory" resultType="com.hys.trazar.domain.RequestDto">
+		SELECT r.id, r.memberId, r.body, r.title, r.price, r.inserted, r.state
+		FROM Request r 
+		JOIN Member m ON m.id = r.memberId
+		WHERE r.categoryName = #{categoryName}
 		ORDER BY r.id DESC
 	</select>
 	

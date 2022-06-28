@@ -46,6 +46,23 @@
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
+            	<form action="${appRoot }/request/insert">
+					<button id="requestAdd" class="btn btn-primary">의뢰 작성</button>
+				</form>
+            	<ul class="nav nav-tabs">
+					  <li class="nav-item">
+					    <a class="nav-link active" aria-current="page" href="${appRoot }/request/list">전체</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=illust">일러스트</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=web">웹 디자이너</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=interior">인테리어</a>
+					  </li>
+					</ul>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 		        	<c:forEach items="${requestList }" var="req" varStatus="status">
 						<input type="hidden" name="memberId" value="${req.memberId }" />
@@ -68,7 +85,7 @@
 		                            </div>
 	                            <!-- Product actions-->
 	                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="${getUrl }">View options</a></div>
+	                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="${getUrl }">자세히</a></div>
                             	</div>
                         	</div>
                     	</div>
@@ -84,8 +101,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="${appRoot }/resources/css/requestList/scripts.js"></script>
-        <form action="${appRoot }/request/insert">
-				<button id="requestAdd" class="btn btn-primary">의뢰 작성</button>
-			</form>
+        	
 </body>
 </html>

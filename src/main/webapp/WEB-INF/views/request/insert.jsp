@@ -165,25 +165,11 @@
                     </div>
                     <!-- Categories widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Categories</div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Web Design</a></li>
-                                        <li><a href="#!">HTML</a></li>
-                                        <li><a href="#!">Freebies</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">JavaScript</a></li>
-                                        <li><a href="#!">CSS</a></li>
-                                        <li><a href="#!">Tutorials</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <select name="categoryName" >
+							<option value="illust">일러스트레이션</option>
+							<option value="web">웹 디자인</option>
+							<option value="interior">인테리어</option>
+						</select>
                     </div>
                     <!-- Side widget-->
                     <div class="card mb-4">
