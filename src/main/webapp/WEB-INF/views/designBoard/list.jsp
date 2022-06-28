@@ -223,6 +223,7 @@ $(" .top").on("click", function(e) {
 		<div class="other">
 			<div class="totalLayout-title top">
 				<h3 class="list-titles" style="padding-bottom : 0.5%;">작품</h3>
+			
 				<form action="${appRoot}/designBoard/list" method="get">
 					
 				<ul class="nav nav-tabs">
@@ -276,7 +277,7 @@ $(" .top").on("click", function(e) {
 
 		<div class="footer">
 			<my:footer></my:footer>
-						<form action="${searchUrl }" class="float-start">
+				<form action="${searchUrl }" class="float-start">
 					<div class="input-group">
 						<!-- select.form-select>option*3 -->
 						<select name="type" id="" class="form-select"

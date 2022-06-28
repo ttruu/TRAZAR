@@ -27,12 +27,6 @@ public class DesignBoardService {
 	@Autowired
 	private DesignBoardMapper mapper;
 
-	//private S3Client s3;
-
-	/*
-	@Value("${aws.s3.bucketName}")
-	private String bucketName;
-	*/
 	
 	// get service
 	public DesignBoardDto getDesignBoardById(int id) {
@@ -41,20 +35,6 @@ public class DesignBoardService {
 		return designBoard;
 	}
 
-	/*
-	// 객체가 생성되자마자 실행되는 메소드
-	@PostConstruct
-	public void init() {
-		Region region = Region.AP_NORTHEAST_2;
-		this.s3 = S3Client.builder().region(region).build();
-	}
-
-	@PreDestroy
-	public void destroy() {
-		this.s3.close();
-	}
-	*/
-	
 	
 	// insert service
 	@Transactional
@@ -67,41 +47,7 @@ public class DesignBoardService {
 		return cnt == 1;
 	}
 	
-	/*
-	private void addFiles(int id, MultipartFile[] files) {
-		// 파일 등록
-		if (files != null) {
-			for (MultipartFile file : files) {
-
-				if (file.getSize() > 0) {
-					mapper.insertFile(id, file.getOriginalFilename()); // db에 쓰는 일
-					// saveFile(board.getId(), file); // 파일시스템에 저장
-					// save 두개를 다 할순없음
-					saveFileAwsS3(id, file); // aws s3에 업로드 하는 일을 해줌
-				}
-			}
-		}
-	}
-
-	private void saveFileAwsS3(int id, MultipartFile file) {
-
-		String key = "designBoard/" + id + "/" + file.getOriginalFilename();
-
-		PutObjectRequest putObjectRequest = PutObjectRequest.builder().acl(ObjectCannedACL.PUBLIC_READ)
-				.bucket(bucketName).key(key).build();
-
-		RequestBody requestBody;
-		try {
-			requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
-			s3.putObject(putObjectRequest, requestBody);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-	}
-	 */
-	
+		
 	// list service	
 	public List<DesignBoardDto> listDesignBoard() {
 		return mapper.selectDesignBoardAll();
@@ -122,12 +68,14 @@ public class DesignBoardService {
 	public boolean deleteDesignBoard(int id) {
 		return mapper.deleteDesignBoard(id) == 1;
 	}
-
+	
+	// clicked service
 	public boolean increamentClicked(DesignBoardDto dto) {
 		int cnt = mapper.increamentClicked(dto);
 		return cnt == 1;
 	}
-
+	
+	// category service
 	public List<DesignBoardDto> listDesignBoard(String categoryName) {
 		
 		return mapper.selectDesignBoardCategory(categoryName);
