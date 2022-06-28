@@ -22,7 +22,7 @@ public class DesignBoardDto {
 	private List<MultipartFile> fileName;
 	//private List<String> uploadfiles;
 	private String imgthumbnail;
-	private int category;
+	private String categoryName;
 	
 	public String getPrettyInserted() {
 		// 24시간 이내면 시간만

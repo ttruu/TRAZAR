@@ -163,10 +163,10 @@
 								cols="30" rows="10"></textarea>
 						</div>
 					</div>
-					<select name="category" id="cate">
-						<option value="1">일러스트레이션</option>
-						<option value="2">웹 디자인</option>
-						<option value="3">인테리어</option>
+					<select name="categoryName" id="cate">
+						<option value="illust">일러스트레이션</option>
+						<option value="web">웹 디자인</option>
+						<option value="interior">인테리어</option>
 
 					</select>
 				</div>
