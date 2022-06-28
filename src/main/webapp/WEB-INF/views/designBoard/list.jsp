@@ -223,8 +223,6 @@ $(" .top").on("click", function(e) {
 		<div class="other">
 			<div class="totalLayout-title top">
 				<h3 class="list-titles" style="padding-bottom : 0.5%;">작품</h3>
-			
-				<form action="${appRoot}/designBoard/list" method="get">
 					
 				<ul class="nav nav-tabs">
 				  <li class="nav-item">

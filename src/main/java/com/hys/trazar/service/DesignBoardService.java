@@ -77,7 +77,6 @@ public class DesignBoardService {
 	
 	// category service
 	public List<DesignBoardDto> listDesignBoard(String categoryName) {
-		
 		return mapper.selectDesignBoardCategory(categoryName);
 	}
 
