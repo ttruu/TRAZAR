@@ -11,6 +11,7 @@
 			   d.body, 
 			   d.price, 
 			   d.inserted,
+			   d.category,
 			   m.id memberId,
 			   m.nickName writerNickName
 		FROM DesignBoard d LEFT JOIN Review r ON d.id = r.memberId
@@ -37,8 +38,8 @@
 	</select>
 	
 	<insert id="insertDesignBoard" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-		INSERT INTO DesignBoard (title, body, price, memberId)
-		VALUES (#{title}, #{body}, #{price}, #{memberId})
+		INSERT INTO DesignBoard (title, body, price, memberId,category)
+		VALUES (#{title}, #{body}, #{price}, #{memberId}, #{category})
 	</insert>
 	
 	<select id="selectDesignBoardById" resultType="com.hys.trazar.domain.DesignBoardDto">
@@ -47,7 +48,9 @@
 			   d.body, 
 			   d.price, 
 			   d.inserted,
-			   m.id memberId
+			   d.category,
+			   m.id memberId,
+			   d.clicked
 		FROM DesignBoard d JOIN Member m ON d.memberId = m.id
 		WHERE d.id = #{id}
 	</select>
@@ -56,7 +59,9 @@
 		UPDATE DesignBoard
 		SET title = #{title},
 			body = #{body},
-		WHERE id = #{id}
+			price = #{price}			
+		WHERE 
+			id = #{id}
 	</update>
 	
 	<update id="increamentClicked">

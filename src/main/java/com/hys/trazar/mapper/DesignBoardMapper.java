@@ -15,6 +15,7 @@ public interface DesignBoardMapper {
 	List<DesignBoardDto> selectDesignBoardAll(@Param("type") String type, @Param("keyword") String keyword);//검색용 맴퍼 값 타입 키워드 추가
 	
 	List<DesignBoardDto> selectDesignBoardAll();
+	
 	int updateDesignBoard(DesignBoardDto dto);
 
 	int deleteDesignBoard(int id);
