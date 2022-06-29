@@ -40,8 +40,6 @@
 }
 
 .totalLayout {
-	justify-content: space-around;
-	margin-top: 7%;
 }
 
 .totalLayout-title {
@@ -128,7 +126,7 @@
 
 	<!-- hot creator -->
 	<section>
-		<div class="totalLayout row">
+		<div class="totalLayout row justify-content-center" style="padding-top:3%;">
 			<div class="totalLayout-title col-8">
 				<h3 class="list-titles">hot creator🔥</h3>
 
@@ -163,8 +161,8 @@
 				</div>
 			</div>
 			<!-- 광고 -->
-			<div class="col-4 d-flex justify-content-center">
-				<div style="width: 60%; cursor: pointer;"
+			<div class="col-3 d-flex justify-content-center">
+				<div style="width: 110%; cursor: pointer;"
 					onclick="location.href='https://notefolioacademy.com/products/7';">
 					<img src="../resources/picture/ad/펜2.PNG" class="card-img-top">
 				</div>
@@ -233,16 +231,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
