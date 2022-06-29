@@ -117,7 +117,7 @@
 
 		
 				
-<my:footer></my:footer>
+<my:footer2/>
 </body>
 </html>
 

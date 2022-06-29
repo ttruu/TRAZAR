@@ -81,9 +81,7 @@
 	<script src="${appRoot }/resources/search/js/browser.min.js"></script>
 	<script src="${appRoot }/resources/search/js/breakpoints.min.js"></script>
 	<script src="${appRoot }/resources/search/js/main.js"></script>
-	<div class="footer">
-		<my:footer></my:footer>
-	</div>
+<my:footer2/>
 
 </body>
 </html>

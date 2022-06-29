@@ -152,9 +152,10 @@ table.type09 td {
 					</div>
 				</div>
 			</div>
-
+</div>
 		</div>
-	
+		
+	<my:footer2/>
 </body>
 </html>
 
