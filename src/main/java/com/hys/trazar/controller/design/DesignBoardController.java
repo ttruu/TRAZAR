@@ -155,7 +155,7 @@ public class DesignBoardController {
 	}
 
 	@GetMapping("get")
-	public void get(int id, @ModelAttribute("likers") LikeDto likers, Model model, DesignBoardDto dto2) {
+	public void get(int id, Model model, DesignBoardDto dto2) {
 		
 		DesignBoardDto dto = service.getDesignBoardById(id);
 		
@@ -165,7 +165,6 @@ public class DesignBoardController {
 		List<ReviewDto> reviewList = reviewService.getReviewByDesignBoardId(id);
 
 		model.addAttribute("designBoard", dto);
-		model.addAttribute("likers",  likers);
 	}
 	
 

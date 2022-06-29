@@ -35,10 +35,8 @@
 
 <link href="${appRoot }/resources/css/designBoard/style.css"
 	rel="stylesheet" type="text/css">
-<noscript>
-	<link rel="stylesheet"
-		href="${appRoot }/resources/css/designBoard/noscript.css" />
-</noscript>
+	
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 <style>
 .list-group-item {
@@ -63,7 +61,7 @@
 			$("#delete-submit1").removeClass("d-none");
 		}); */
 		
-	/* 	$("#delete-submit1").click(function(e) {
+	 	$("#delete-submit1").click(function(e) {
 			e.preventDefault();
 			
 			if (confirm("삭제하시겠습니까?")) {
@@ -73,7 +71,7 @@
 				form1.submit();
 			}
 			
-		}); */
+		});
 		
 	// 댓글 목록 (review list) 가져오는 ajax
 		const listReview = function() {
@@ -300,13 +298,10 @@
 	
 	
 	<!-- Page Content -->
-<%-- 
-	<form id="form1" action="${appRoot }/designBoard/modify" method="post">
-		<input type="hidden" name="id" value="${designBoard.id }" />
-		 --%>
-		<div class="container">
+
+		<div class="container" style="padding-top : 4%; margin-left:10%;">
 			<div class="row">
-				<div class="col-lg-9">
+				<div class="col-lg-10" >
 
 					<!-- 게시물 보기 + 수정 -->
 					<div class="card shadow mb-4">
@@ -314,8 +309,8 @@
 						<div class="card-body">
 
 							<div class="form-group row" style="text-align: center;">
-								<div class="mb-3 mb-sm-2" style="text-align: left;">
-								
+							
+								<div class="mb-3 mb-sm-2" style="display : flex; text-align: left;">
 									<c:url value="/designBoard/modify" var="modifyLink">
                             		<c:param name="id" value="${designBoard.id }"></c:param>
                             		</c:url>
@@ -323,36 +318,34 @@
 									<sec:authorize access="isAuthenticated()">
 										<sec:authentication property="principal" var="principal" />
 										<c:if test="${principal.username == designBoard.memberId }">
-											<button id="edit-button1" class="btn btn-light" onclick="location.href = '${modifyLink}'">
+											<button id="edit-button1" class="btn btn-outline-secondary btn-sm" onclick="location.href = '${modifyLink}'" style="margin-right:4px;">
 												수정하기
 											</button>
-									<c:url value="/designBoard/remove" var="removeLink" />
-									<form action="${removeLink }" method="post">
-										<input type="hidden" name="id" value="${designBoard.id }" />
-										<button id="delete-submit1" class="btn btn-danger">삭제하기</button>
-									</form>
+											<c:url value="/designBoard/remove" var="removeLink" />
+											<form action="${removeLink }" method="post">
+												<input type="hidden" name="id" value="${designBoard.id }" />
+												<button id="delete-submit1" class="btn btn-outline-secondary btn-sm">삭제하기</button>
+											</form>
 										</c:if>
-									</sec:authorize>
-									
-									
+									</sec:authorize>		
 								</div>
+							
 								<div class="col-sm-6 mb-3 mb-sm-2" style="">
 									<h2 class="card-title h4">${designBoard.title }</h2>
 									<div class="small text-muted">${designBoard.inserted }</div>
 								</div>
-								<div class="col-sm-3 mt-3">
+								<div class="col-sm-3  mt-1">
 									<i class="fa-solid fa-heart"></i>
-									<h6 class="like">좋아요</h6>
-									<h6 class="like">${designBoard.likeCount }</h6>
+									<h6 class="small text-muted">좋아요</h6>
+									
 								</div>
-								<div class="col-sm-3 mt-3">
+								<div class="col-sm-3 mt-1">
 									<i class="fa-solid fa-eye"></i>
-									<h6 class="like">조회수</h6>
-									<h6>${designBoard.clicked }</h6>
+									<h6 class="small text-muted">조회수 ${designBoard.clicked }</h6>
 								</div>
 							</div>
-
-							<div class="col-sm-6 mb-3 mb-sm-2" style="text-align : center;  ">
+							
+							<div class="mt-5 mb-3" style="text-align : center;  ">
 								<div class="card-img-top" >${designBoard.body }</div>
 								
 							</div>
@@ -361,26 +354,22 @@
 								<span class="">${designBoard.memberId }</span>
 							</div>
 
-						</div>
-						<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
-						
+						</div>		
 					</div>
 				</div>
-						<div class="col-lg-3">
-						<div class="card shadow mb-4">
-							<div class="card-body">
-							<label for="input3" class="form-label">작성자</label>
-							<button class="btn btn-primary btn-circle btn-sm">${designBoard.memberId }</button>
-							<input class="form-control" type="text"
-								value="${designBoard.memberId }" readonly />
-							<span class="d-none">${designBoard.memberId }</span>
-							</div>
+						
+				<div class="col-lg-2">
+					<div class="card shadow mb-4">
+						<div class="card-body">
+						<label for="input3" class="form-label small text-muted">작성자</label>
+						 <h6 class="m-0 font-weight-bold text-primary">${designBoard.memberId }</h6>
 						</div>
-						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	<!-- </form> -->
-
+		
+	
 
 	<%-- 댓글 추가 --%>
 	<div class="border border-black border-2 rounded-3 p-4 container">
