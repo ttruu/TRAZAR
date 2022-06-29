@@ -35,8 +35,13 @@
 
 <link href="${appRoot }/resources/css/designBoard/style.css"
 	rel="stylesheet" type="text/css">
-	
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+<link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 <style>
 .list-group-item {
@@ -295,209 +300,122 @@
 	<c:if test="${not empty message }">
 		<div class="alert alert-light">${message }</div>
 	</c:if>
-	
-	
+
+
 	<!-- Page Content -->
 
-		<div class="container" style="padding-top : 4%; margin-left:10%;">
-			<div class="row">
-				<div class="col-lg-10" >
-
-					<!-- 게시물 보기 + 수정 -->
-					<div class="card shadow mb-4">
-
-						<div class="card-body">
-
-							<div class="form-group row" style="text-align: center;">
-							
-								<div class="mb-3 mb-sm-2" style="display : flex; text-align: left;">
-									<c:url value="/designBoard/modify" var="modifyLink">
-                            		<c:param name="id" value="${designBoard.id }"></c:param>
-                            		</c:url>
-									<!-- 권한설정 -->
-									<sec:authorize access="isAuthenticated()">
-										<sec:authentication property="principal" var="principal" />
-										<c:if test="${principal.username == designBoard.memberId }">
-											<button id="edit-button1" class="btn btn-outline-secondary btn-sm" onclick="location.href = '${modifyLink}'" style="margin-right:4px;">
-												수정하기
-											</button>
-											<c:url value="/designBoard/remove" var="removeLink" />
-											<form action="${removeLink }" method="post">
-												<input type="hidden" name="id" value="${designBoard.id }" />
-												<button id="delete-submit1" class="btn btn-outline-secondary btn-sm">삭제하기</button>
-											</form>
-										</c:if>
-									</sec:authorize>		
-								</div>
-							
-								<div class="col-sm-6 mb-3 mb-sm-2" style="">
-									<h2 class="card-title h4">${designBoard.title }</h2>
-									<div class="small text-muted">${designBoard.inserted }</div>
-								</div>
-								<div class="col-sm-3  mt-1">
-									<i class="fa-solid fa-heart"></i>
-									<h6 class="small text-muted">좋아요</h6>
-									
-								</div>
-								<div class="col-sm-3 mt-1">
-									<i class="fa-solid fa-eye"></i>
-									<h6 class="small text-muted">조회수 ${designBoard.clicked }</h6>
-								</div>
-							</div>
-							
-							<div class="mt-5 mb-3" style="text-align : center;  ">
-								<div class="card-img-top" >${designBoard.body }</div>
-								
-							</div>
-
-							<div>
-								<span class="">${designBoard.memberId }</span>
-							</div>
-
-						</div>		
-					</div>
-				</div>
-						
-				<div class="col-lg-2">
-					<div class="card shadow mb-4">
-						<div class="card-body">
-						<label for="input3" class="form-label small text-muted">작성자</label>
-						 <h6 class="m-0 font-weight-bold text-primary">${designBoard.memberId }</h6>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-	
-
-	<%-- 댓글 추가 --%>
-	<div class="border border-black border-2 rounded-3 p-4 container">
-		<div class="row mt-3">
-			<div class="col">
-				<h4>댓글</h4>
-				<form class="mt-3" id="insertReviewForm1">
-					<div class="input-group">
-						<input type="hidden" name="designBoardId"
-							value="${designBoard.id }" />
-
-						<input id="insertReviewContentInput1" class="form-control"
-							type="text" name="body" required />
-						<button id="addReviewSubmitButton1"
-							class="btn btn-outline-secondary">등록</button>
-
-					</div>
-				</form>
-			</div>
-		</div>
+	<div class="container" style="padding-top: 4%;">
 		<div class="row">
-			<div class="alert alert-primary" style="display: none;"
-				id="reviewMessage1"></div>
-		</div>
+			<div class="col-lg-10">
 
-		<%-- 댓글 목록 --%>
-		<div class="row mt-3">
-			<div class="col">
+				<!-- 게시물 보기 + 수정 -->
+				<div class="card shadow mb-4">
 
-				<ul id="reviewList1" class="list-group" />
+					<div class="card-body">
+						<div class="form-group row" style="text-align: center;">
 
-			</div>
-		</div>
-	</div>
-
-	<%-- 댓글 삭제 --%>
-	<div class="d-none">
-		<form id="reviewDeleteForm1" action="${appRoot }/review/delete"
-			method="post">
-			<input id="reviewDeleteInput1" type="text" name="id" />
-			<input type="text" name="designBoardId" value="${designBoard.id }" />
-		</form>
-	</div>
-
-
-	<!-- 연습해볼것 -->
-
-
-	<!-- work-add-info-container end -->
-
-	<!-- 
-		<div class="work-actions">
-			<div class="comment-wrapper">
-				
-				<form class="comment-block create">
-					<div class="comment-profile-input-form">
-						<a class="comment-profile-area">
-							<div class="profile-item" style="width: 48px; height: 48px;">
-								<img
-									src="https://cdn.notefolio.net/profiles/rhdtlr3006380_face.jpg"
-									class="hide">
-								<span class="show">R</span>
-								
-								
+							<div class="mb-3 mb-sm-2"
+								style="display: flex; text-align: left;">
+								<c:url value="/designBoard/modify" var="modifyLink">
+									<c:param name="id" value="${designBoard.id }"></c:param>
+								</c:url>
+								<!-- 권한설정 -->
+								<sec:authorize access="isAuthenticated()">
+									<sec:authentication property="principal" var="principal" />
+									<c:if test="${principal.username == designBoard.memberId }">
+										<button id="edit-button1"
+											class="btn btn-outline-secondary btn-sm"
+											onclick="location.href = '${modifyLink}'"
+											style="margin-right: 4px;">수정하기</button>
+										<c:url value="/designBoard/remove" var="removeLink" />
+										<form action="${removeLink }" method="post">
+											<input type="hidden" name="id" value="${designBoard.id }" />
+											<button id="delete-submit1"
+												class="btn btn-outline-secondary btn-sm">삭제하기</button>
+										</form>
+									</c:if>
+								</sec:authorize>
 							</div>
-						</a>
 
-						<textarea tabindex="1" rows="4" placeholder=" 이 작업에 대한 댓글을 남겨주세요."
-							class="comment-textarea comment-textform comment-textarea-form"></textarea>
-					</div>
-					<div class="comment-action-area">
-						<div tabindex="2" class="comment-submit-btn">댓글작성</div>
-					</div>
-				</form>
-			</div>
-		</div>
-		
-			
+							<div class="col-sm-6 mb-3 mb-sm-2" style="">
+								<h2 class="card-title h4">${designBoard.title }</h2>
+								<div class="small text-muted">${designBoard.inserted }</div>
+							</div>
+							<div class="col-sm-3  mt-1">
+								<i class="fa-solid fa-heart"></i>
+								<h6 class="small text-muted">좋아요</h6>
 
-		<div class="preview-sidebar">
-			<div class="profile">
-				<div class="profile-wrapper">
-					<div class="profile-image-container">
-						<div class="v-popover">
-							<div class="trigger" style="display: inline-block;">
-								<div class="profile-image">
-									<div class="profile-item pointer-cursor"
-										style="width: 46px; height: 46px;">
-										<img
-											src="https://cdn-bastani.stunning.kr/prod/users/0c9b5107-86f1-4e2f-ab14-e423b7df62c7/avatar/aezcK9ztSbZ3a7hU.시현하다_시원.jpeg.small?q=80&amp;t=crop&amp;s=100x100&amp;version=1a22780">
-										<span class="hide">S</span>
-										
-										
-									</div>
-								</div>
+							</div>
+							<div class="col-sm-2 mt-1">
+								<i class="fa-solid fa-eye"></i>
+								<h6 class="small text-muted">조회수 ${designBoard.clicked }</h6>
 							</div>
 						</div>
+
+						<div class="mt-5 mb-3" style="text-align: center;">
+							<div class="card-img-top">${designBoard.body }</div>
+
+						</div>
+
+						<div class="card-body">
+						<h4 class="small text-muted">댓글</h4>
+						<form class="mt-3" id="insertReviewForm1">
+							<div class="input-group">
+								<input type="hidden" name="designBoardId"
+									value="${designBoard.id }" />
+								<input class="form-control" type="text" name="body" required
+									id="insertReviewContentInput1"
+									placeholder="이 작업에 대한 댓글을 남겨주세요."
+									aria-label="이 작업에 대한 댓글을 남겨주세요." />
+								<button id="addReviewSubmitButton1"
+									class="btn btn-outline-secondary">등록</button>
+							</div>
+						</form>
+						</div>
+						<div class="alert alert-primary" style="display: none;"
+							id="reviewMessage1"></div>
+						<%-- 댓글 목록 --%>
+						<ul id="reviewList1" class="list-group" />
+
+						<div class="d-none">
+							<form id="reviewDeleteForm1" action="${appRoot }/review/delete"
+								method="post">
+								<input id="reviewDeleteInput1" type="text" name="id" />
+								<input type="text" name="designBoardId"
+									value="${designBoard.id }" />
+							</form>
+						</div>
+
 					</div>
-					<span>프로필</span>
 				</div>
 			</div>
 
 
-			<div class="like">
-				<div class="like-work-wrapper">
-					<div class="v-popover">
-						<div class="trigger" style="display: inline-block;">
-							<div class="btn-like pointer-cursor">
-								<svg class="like-icon">
-	                                    <use href="#like-icon"></use>
-	                                </svg>
-								<svg class="like-icon-fill">
-	                                    <use href="#like-icon-fill"></use>
-	                                </svg>
-							</div>
-						</div>
+			<div class="col-lg-2">
+				<div class="card shadow mb-4">
+					<div class="card-header py-2">
+						<h6 class="m-0 font-weight-bold" style="color: black; font-size: 15px;">작성자</h6>
 					</div>
-					<span>좋아요</span>
+					<div class="card-body py-2">${designBoard.memberId }</div>
+				</div>
+
+
+
+				<div class="card shadow mb-4">
+					<div class="card-header py-2">
+						<h6 class="m-0 font-weight-bold" style="color: black; font-size: 15px;">가격</h6>
+					</div>
+					<div class="card-body py-2">${designBoard.price }</div>
 				</div>
 			</div>
-		</div> -->
+		</div>
+	</div>
 
-	<!-- Scripts -->
-	<script src="${appRoot }/resources/css/designBoard/jquery.min.js"></script>
-	<script src="${appRoot }/resources/css/designBoard/browser.min.js"></script>
-	<script src="${appRoot }/resources/css/designBoard/breakpoints.min.js"></script>
-	<script src="${appRoot }/resources/css/designBoard/util.js"></script>
-	<script src="${appRoot }/resources/css/designBoard/main.js"></script>
+
+	<!-- 하단 -->
+	<section>
+		<my:footer2 />
+	</section>
 
 
 </body>
