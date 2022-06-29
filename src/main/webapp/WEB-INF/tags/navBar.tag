@@ -61,7 +61,7 @@ color: #FFFFFF;
 
 </style>
 
-<header id="nav-header"class="border-bottom fixed">
+<header id="nav-header"class="border-bottom fixed" >
     <div class="container">
     	<div class="modal fade" id="modal2" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -140,7 +140,7 @@ color: #FFFFFF;
         <ul class="nav nav-pills" id="front-nav-font">
           <li class="nav-item "><a href="${loginUrl }" class="nav-link link-light">로그인</a> </li>
        		<li class="nav-item "><a href="${signupUrl }" class="nav-link link-light">회원가입</a> </li>
-        <ul>
+        </ul>
 </sec:authorize>
 	<sec:authorize access="isAuthenticated()">
         <div class="dropdown text-end">
