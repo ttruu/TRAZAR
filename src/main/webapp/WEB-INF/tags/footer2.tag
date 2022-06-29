@@ -32,7 +32,7 @@
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: black;">
-      © 2020 Copyright:
+      © 2022 
       <a class="text-white" href="/trazar/designBoard/list">HYS:TRAZAR</a>
     </div>
     <!-- Copyright -->
