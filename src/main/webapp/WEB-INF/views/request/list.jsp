@@ -62,7 +62,7 @@
 					  <li class="nav-item">
 					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=interior">인테리어</a>
 					  </li>
-					  <li class="nav-item d-flex" style="margin-left:61%">
+					  <li class="nav-item ms-auto">
 						<button form="insertForm" id="requestAdd" class="btn btn-primary" >의뢰 작성</button>
 					  </li>
 					</ul>

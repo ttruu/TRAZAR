@@ -282,6 +282,16 @@
 				}
 			});
 		});
+		
+		$("#solid").hide()
+		$("#regular").click(function(){
+			$("#regular").hide()
+			$("#solid").show()
+		})
+		$("#solid").click(function(){
+			$("#solid").hide()
+			$("#regular").show()
+		})
 	});
 
 	</script>
@@ -340,7 +350,8 @@
 									<div class="small text-muted">${designBoard.inserted }</div>
 								</div>
 								<div class="col-sm-3 mt-3">
-									<i class="fa-solid fa-heart"></i>
+									<i class="fa-solid fa-heart" id="solid"></i>
+									<i class="fa-regular fa-heart" id="regular"></i>
 									<h6 class="like">좋아요</h6>
 								</div>
 								<div class="col-sm-3 mt-3">

@@ -20,6 +20,7 @@
 		
 		<!-- 로그인 권한 -->
 		<security:intercept-url pattern="/designBoard/insert" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/request/insert" access="isAuthenticated()"/>
 		<security:intercept-url pattern="/notice/insert" access="hasRole('ADMIN')"/>
 	</security:http>
 
