@@ -75,7 +75,7 @@
 				<div class="col-12 col-lg-5">
 					<h1 
 					style="font-weight: 700; font-size: 25px; line-height: 130%; margin-bottom: 12px; padding-bottom: 14px;
-					text-align: center; font-size: 150%;">로그인하기 </h1>
+					text-align: center; font-size: 150%;">로그인 하기 </h1>
 					<form action="${appRoot }/login" method="post">
 					
 						<%-- 아이디 --%>
@@ -97,7 +97,7 @@
 						 padding: 17px; outline-style: none;"
 						placeholder="비밀번호" />
 						<i class="fa-solid fa-eye" style="position: absolute; left: 67%; top: 44%;" id="eye"></i>
-						<i class="fa-solid fa-eye-slash" style="position: absolute; left: 67%; top: 44%;" id="close" id=""></i>
+						<i class="fa-solid fa-eye-slash" style="position: absolute; left: 67%; top: 44%;" id="close"></i>
 						</div>
 						
 						
@@ -113,7 +113,7 @@
 								로그인유지
 							</label>
 							<a href="${appRoot}/sign/findId" style="position: absolute; right:42%; text-decoration: none; color: #979797;"> 아이디 찾기</a>
-							<a href="${appRoot}/sign/findPassword" style="position: absolute; right: 0; text-decoration: none; color: #979797;">비밀번호 초기화</a>
+							<a href="${appRoot}/sign/findPassword" style="position: absolute; right: 0; text-decoration: none; color: #979797;">비밀번호 찾기</a>
 						</div>
 						
 						

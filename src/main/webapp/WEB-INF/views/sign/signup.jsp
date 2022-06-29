@@ -270,7 +270,7 @@ input::-webkit-inner-spin-button {
 
 
 	<div class="main"
-		style="display: flex; height: 107%; margin: 0; padding: 0;">
+		style="display: flex; height: 110%; margin: 0; padding: 0;">
 
 		<div class="main2" style="display: flex; flex: 1 1;">
 
@@ -373,16 +373,13 @@ input::-webkit-inner-spin-button {
 						<div class="form-text" id="phoneNumCheckMessage"></div>
 
 						<%-- 비밀번호 초기화 질문 --%>
-						<label for="questionInput1" class="form-label"> 비밀번호 초기화
-							질문 </label>
-						<div class="input-group">
-							<select id="usernameInput1" class="form-control" name="question">
+						<label for="questionInput1" class="form-label"> 비밀번호 초기화 질문 </label>
+							<select id="usernameInput1" class="form-control" name="question" class="arrow" >
 								<option value="내가 좋아하는 캐릭터는 ?">내가 좋아하는 캐릭터는 ?</option>
 								<option value="기억에 남는 추억의 장소는 ?">기억에 남는 추억의 장소는 ?</option>
 								<option value="인상 깊게 읽은 책 이름은 ?">인상 깊게 읽은 책 이름은 ?</option>
 								<option value="아버지의 성함은 ?">아버지의 성함은 ?</option>
 							</select>
-						</div>
 
 						<%-- 비밀번호 초기화 답변 --%>
 						<label for="answerInput1" class="form-label"> 답변 </label>
