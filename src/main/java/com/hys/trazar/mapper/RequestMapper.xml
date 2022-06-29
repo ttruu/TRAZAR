@@ -14,6 +14,21 @@
 		SELECT r.id, r.memberId, r.body, r.title, r.price, r.inserted, r.state, r.term
 		FROM Request r 
 		JOIN Member m ON m.id = r.memberId
+		
+		<if test="keyword != '%%'">
+			<choose>
+				<when test="type == 'all'">
+					WHERE r.title LIKE #{keyword } OR
+						  r.body LIKE #{keyword}
+				</when>
+				<when test="type == 'title'">
+					WHERE r.title LIKE #{keyword }
+				</when>
+				<when test="type == 'body'">
+					WHERE r.body LIKE #{keyword}
+				</when>
+			</choose>
+		</if>
 		ORDER BY r.id DESC
 	</select>
 	

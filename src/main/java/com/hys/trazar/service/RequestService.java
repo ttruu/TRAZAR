@@ -23,8 +23,9 @@ public class RequestService {
 	}
 	
 	// 요청 list가져오기
-	public List<RequestDto> listRequest() {
-		return mapper.listRequest();
+	
+	public List<RequestDto> listRequest(String type, String keyword) {
+		return mapper.listRequest(type, "%" + keyword + "%");
 	}
 	
 	// 요청을 id기준으로 가져오기

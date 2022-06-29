@@ -5,12 +5,9 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.security.Principal;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.ServletContext;
 
-import org.apache.commons.io.FilenameUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -28,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hys.trazar.domain.DesignBoardDto;
@@ -87,12 +83,13 @@ public class RequestController {
 	}
 	
 	@RequestMapping("list")
-	public void list(Model model, String categoryName) {
+	public void list(Model model, String categoryName, @RequestParam(name = "keyword", defaultValue = "") String keyword, 
+			@RequestParam(name = "type", defaultValue = "") String type) {
 //		List<RequestDto> list = service.listRequest();
 		
-		List<RequestDto> list = service.listRequest();
+		List<RequestDto> list = null;
 		if(categoryName == null) {
-			list = service.listRequest();
+			list = service.listRequest(type, keyword);
 		} else {
 			list = service.listRequestByCategory(categoryName);
 		}

@@ -42,14 +42,30 @@
                 <div class="text-center text-black">
                     <h1 class="display-4 fw-bolder">Commission</h1>
                     <p class="lead fw-normal text-black-50 mb-0">Write your commission here</p>
+                    
                 </div>
             </div>
+            
         </header>
         <!-- Section-->
         <section class="py-5">
+        	
             <div class="container px-4 px-lg-5 mt-5">
+            <div class="mt-5">
+                    <form action="${appRoot }/request/list" class="d-flex">
+			      	<div class="input-group">
+				      	<select name="type" id="" class="form-select" style="flex:0 0 100px;">
+				      		<option value="all" ${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>전체</option>
+				      		<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
+				      		<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
+				      	</select>
+				      	<input type="search" class="form-control" name="keyword"/>
+				      	<button class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass"></i></button>
+			      	</div>
+			      </form>
+                    </div>
 				<form action="${appRoot }/request/insert" method="get" id="insertForm"></form>
-            	<ul class="nav nav-tabs">
+            	<ul class="nav nav-tabs mt-1">
 					  <li class="nav-item">
 					    <a class="nav-link active" aria-current="page" href="${appRoot }/request/list">전체</a>
 					  </li>
@@ -62,7 +78,7 @@
 					  <li class="nav-item">
 					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=interior">인테리어</a>
 					  </li>
-					  <li class="nav-item d-flex" style="margin-left:61%">
+					  <li class="nav-item ms-auto" >
 						<button form="insertForm" id="requestAdd" class="btn btn-primary" >의뢰 작성</button>
 					  </li>
 					</ul>
