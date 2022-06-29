@@ -40,8 +40,6 @@
 }
 
 .totalLayout {
-   justify-content: space-around;
-   margin-top: 7%;
 }
 
 .totalLayout-title {
@@ -126,11 +124,11 @@
       <my:mainNav />
    </section>
 
-   <!-- hot creator -->
-   <section>
-      <div class="totalLayout row">
-         <div class="totalLayout-title col-8">
-            <h3 class="list-titles">hot creator🔥</h3>
+	<!-- hot creator -->
+	<section>
+		<div class="totalLayout row justify-content-center" style="padding-top:3%;">
+			<div class="totalLayout-title col-8">
+				<h3 class="list-titles">hot creator🔥</h3>
 
             <c:if test="${not empty message }">
                <div class="alert alert-primary">${message }</div>
@@ -156,21 +154,21 @@
                         <div class="design-name">${hot.id}ㅣ${hot.writerNickName }</div>
                      </a>
 
-                     <div class="main-project-title">${hot.title }
-                        ${hot.prettyInserted }</div>
-                  </div>
-               </c:forEach>
-            </div>
-         </div>
-         <!-- 광고 -->
-         <div class="col-4 d-flex justify-content-center">
-            <div style="width: 60%; cursor: pointer;"
-               onclick="location.href='https://notefolioacademy.com/products/7';">
-               <img src="../resources/picture/ad/펜2.PNG" class="card-img-top">
-            </div>
-         </div>
-      </div>
-   </section>
+							<div class="main-project-title">${hot.title }
+								${hot.prettyInserted }</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+			<!-- 광고 -->
+			<div class="col-3 d-flex justify-content-center">
+				<div style="width: 110%; cursor: pointer;"
+					onclick="location.href='https://notefolioacademy.com/products/7';">
+					<img src="../resources/picture/ad/펜2.PNG" class="card-img-top">
+				</div>
+			</div>
+		</div>
+	</section>
 
    <!-- 카테고리 -->
    <section class="list-titles">
