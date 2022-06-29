@@ -33,9 +33,9 @@ public class NoticeService {
 	}
 	
 
-	public List<NoticeDto> listNotice() {
-		return mapper.selectNoticeAll();
-	}
+	/*
+	 * public List<NoticeDto> listNotice() { return mapper.selectNoticeAll(); }
+	 */
 
 	public boolean updateNotice(NoticeDto dto) {
 		int cnt = mapper.updateNotice(dto);
@@ -45,7 +45,17 @@ public class NoticeService {
 	public boolean deleteNotice(int id) {
 		return mapper.deleteNotice(id) == 1;
 	}
-
+	
+	//페이지네이션
+public List<NoticeDto> listNoticePage(int page, int rowPerPage) {
+		
+		int from = (page-1) * rowPerPage;
+		
+		return mapper.listNoticePage(from, rowPerPage);
+	}
+public int countNotice() {
+	return mapper.countNotice();
+}
 }
 	
 
