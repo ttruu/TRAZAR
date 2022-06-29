@@ -134,7 +134,7 @@
 					<div class="alert alert-primary">${message }</div>
 				</c:if>
 
-				<div class="main-lists d-flex justify-content-center">
+				<div class="main-lists d-flex ">
 					<c:forEach items="${hotList }" var="hot">
 						<div class="project-list-mini">
 							<c:url value="/designBoard/get" var="getUrl">
