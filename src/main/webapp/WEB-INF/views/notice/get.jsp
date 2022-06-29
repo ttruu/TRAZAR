@@ -129,7 +129,7 @@ $(document).ready(function() {
 	
 	
 	
-	
+	<my:footer></my:footer>
 </body>
 </html>
 

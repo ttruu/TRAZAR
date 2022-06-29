@@ -29,7 +29,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<my:navBar current="insert" />
+	<my:navBar/>
 	 <script>
 	 $(document).ready(function() {
 			
@@ -117,7 +117,7 @@
 
 		
 				
-
+<my:footer></my:footer>
 </body>
 </html>
 
