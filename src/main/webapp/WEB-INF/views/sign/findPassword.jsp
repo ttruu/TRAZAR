@@ -66,7 +66,7 @@
 				<div class="col-12 col-lg-5">
 				<h1
 					style="font-weight: 700; font-size: 25px; line-height: 130%; margin-bottom: 12px; padding-bottom: 14px; text-align: center; font-size: 150%;">
-					비밀번호 초기화</h1>
+					비밀번호 찾기</h1>
 				<form action="${appRoot}/sign/findPassword" method="post">
 
 					<label for="idInput1" class="form-label"> 아이디 </label>

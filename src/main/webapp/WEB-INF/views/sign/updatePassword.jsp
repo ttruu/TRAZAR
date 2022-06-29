@@ -69,14 +69,14 @@
 					<h1
 						style="font-weight: 700; font-size: 25px; line-height: 130%; margin-bottom: 12px; padding-bottom: 14px; text-align: center; font-size: 150%;">
 						비밀번호 찾기</h1>
-					<form action="${appRoot }/sign/passwordUpdate" method="post">
+					<form action="${appRoot }/sign/passwordUpdate1" method="post">
 
 						<input id="idInput1" class="form-control" type="hidden" name="id"
-							value="${member.id }" readonly />
+							value="${member.id}" readonly />
 
 						<label for="passwordInput1" class="form-label"> 변경 할 암호 </label>
 						<input class="form-control" id="passwordModify3" name="password"
-							type="password" value="" />
+							type="password" />
 						<label for="passwordInput2" class="form-label"> 변경 후 암호확인
 						</label>
 						<input class="form-control" id="passwordModify4" type="password"

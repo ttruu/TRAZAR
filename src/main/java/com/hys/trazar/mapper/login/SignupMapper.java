@@ -45,5 +45,8 @@ public interface SignupMapper {
 
 	SignupDto selectMember1(String email);
 
+	int passwordUpdate1(SignupDto dto);
+
+
 
 }

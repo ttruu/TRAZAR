@@ -113,7 +113,7 @@
 								로그인유지
 							</label>
 							<a href="${appRoot}/sign/findId" style="position: absolute; right:42%; text-decoration: none; color: #979797;"> 아이디 찾기</a>
-							<a href="${appRoot}/sign/findPassword" style="position: absolute; right: 0; text-decoration: none; color: #979797;">비밀번호 변경</a>
+							<a href="${appRoot}/sign/findPassword" style="position: absolute; right: 0; text-decoration: none; color: #979797;">비밀번호 찾기</a>
 						</div>
 						
 						

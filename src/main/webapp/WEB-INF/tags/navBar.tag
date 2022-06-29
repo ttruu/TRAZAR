@@ -140,7 +140,7 @@ color: #FFFFFF;
         <ul class="nav nav-pills" id="front-nav-font">
           <li class="nav-item "><a href="${loginUrl }" class="nav-link link-light">로그인</a> </li>
        		<li class="nav-item "><a href="${signupUrl }" class="nav-link link-light">회원가입</a> </li>
-        <ul>
+        </ul>
 </sec:authorize>
 	<sec:authorize access="isAuthenticated()">
         <div class="dropdown text-end">

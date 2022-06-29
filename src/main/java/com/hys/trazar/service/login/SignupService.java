@@ -144,12 +144,23 @@ public class SignupService {
 		return mapper.DesignerlistByMemberId(memberId);
 	}
 
+	// 아이디 찾기
 	public SignupDto findId(String email) {
 		return mapper.findId(email);
 	}
 	
 	public SignupDto selectMember1(String email) {
 		return mapper.selectMember1(email);
+	}
+	
+	public boolean passwordUpdate1(SignupDto dto) {
+		
+		/// 암호화
+		String encodedPassword = passwordEncoder.encode(dto.getPassword());
+		// 암호화 된 암호를 다시 세팅
+		dto.setPassword(encodedPassword);
+				
+		return mapper.passwordUpdate1(dto)==1;
 	}
 	
 	
