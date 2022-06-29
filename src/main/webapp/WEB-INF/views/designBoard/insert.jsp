@@ -138,6 +138,16 @@
 								placeholder="가격을 입력해주세요." aria-label="가격을 입력해주세요." />
 						</div>
 					</div>
+					
+					<div class="card shadow mb-4">
+						<div class="card-header py-2">
+							<select name="categoryName" id="cate">
+								<option value="illust">일러스트레이션</option>
+								<option value="web">웹 디자인</option>
+								<option value="interior">인테리어</option>
+							</select>
+						</div>
+					</div>
 
 					<div class="my-4">
 						<button type="button"
