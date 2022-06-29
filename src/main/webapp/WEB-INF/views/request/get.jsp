@@ -37,17 +37,18 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js"
 	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script>
 	$(document).ready(function() {
 
 		// edit버튼 클릭됐을때 쓰기 가능하게함
 
-		$("#delete-submit1").click(function(e) {
+		 $("#delete-submit1").click(function(e) {
 			e.preventDefault();
 
 			if (confirm("삭제하시겠습니까?")) {
-				let form1 = $("#form");
+				let form1 = $("#removeForm");
 				let actionAttr = "${appRoot}/request/remove";
 				form1.attr("action", actionAttr);
 
@@ -96,7 +97,10 @@
 									<button id="edit-button1" class="btn btn-secondary" onclick = "location.href = '${modifyLink}' ">
 										<i class="fa-solid fa-pen-to-square"></i>
 									</button>
-									<button id="delete-submit1" class="btn btn-danger" onclick = "location.href = '/request/remove'">삭제</button>
+									<button form="removeForm" id="delete-submit1" class="btn btn-danger" >삭제</button>
+									<form action="${appRoot }/request/remove" method="post" id="removeForm">
+										<input type="hidden" name="id" value="${request.id }" />
+									</form>
 								</c:if>
 							</sec:authorize>
                         </header>
