@@ -41,7 +41,7 @@
 
 .totalLayout {
 	justify-content: space-around;
-	margin-top : 7%;
+	margin-top: 7%;
 }
 
 .totalLayout-title {
@@ -125,10 +125,11 @@
 	<section>
 		<my:mainNav />
 	</section>
-	
+
+	<!-- hot creator -->
 	<section>
-		<div class="totalLayout row" >
-			<div class="totalLayout-title col-8" >
+		<div class="totalLayout row">
+			<div class="totalLayout-title col-8">
 				<h3 class="list-titles">hot creator🔥</h3>
 
 				<c:if test="${not empty message }">
@@ -157,52 +158,53 @@
 
 							<div class="main-project-title">${hot.title }
 								${hot.prettyInserted }</div>
-
 						</div>
 					</c:forEach>
-					<hr />
 				</div>
 			</div>
-			<!-- <div class="col-4 d-flex justify-content-center">
-				<div style="width: 80%; cursor: pointer;"
+			<!-- 광고 -->
+			<div class="col-4 d-flex justify-content-center">
+				<div style="width: 60%; cursor: pointer;"
 					onclick="location.href='https://notefolioacademy.com/products/7';">
 					<img src="../resources/picture/ad/펜2.PNG" class="card-img-top">
 				</div>
-			</div> -->
+			</div>
 		</div>
 	</section>
-	<section>
 
-	
-			<div class="container">
-
-			<form action="${appRoot}/designBoard/list" method="get">
-
-				<ul class="nav nav-tabs row justify-content-md-start">
-				<li class="nav-item ">
-				<h3 class="list-titles col-sm-3" style="padding-bottom: 0.5%;">작품</h3>
+	<!-- 카테고리 -->
+	<section class="list-titles">
+		<form action="${appRoot}/designBoard/list" method="get">
+			<ul class="nav row justify-content-md-center"
+				style="padding-bottom: 1%;">
+				<!-- <li class="nav-item col-1 col-md-1" >
+					<a class="nav-link active">작품</a>
+				</li> -->
+				<li class="nav-item col-1 col-md-1">
+					<a style="color: black;" class="nav-link active"
+						aria-current="page" href="${appRoot }/designBoard/list">전체</a>
 				</li>
-					<li class="nav-item col-6 col-md-4">
-						<a class="nav-link active" aria-current="page"
-							href="${appRoot }/designBoard/list">전체</a>
-					</li>
-					<li class="nav-item col-6 col-md-4">
-						<a class="nav-link active" aria-current="page"
-							href="${appRoot }/designBoard/list?categoryName=illust">일러스트</a>
-					</li>
-					<li class="nav-item col-6 col-md-4">
-						<a class="nav-link active" aria-current="page"
-							href="${appRoot }/designBoard/list?categoryName=web">웹디자인</a>
-					</li>
-					<li class="nav-item col-6 col-md-4">
-						<a class="nav-link active" aria-current="page"
-							href="${appRoot }/designBoard/list?categoryName=interior">인테리어</a>
-					</li>
-				</ul>
-			</form>
-		</div>
-		</section>
-		<section>
+				<li class="nav-item col-1 col-md-1">
+					<a style="color: black;" class="nav-link active"
+						aria-current="page"
+						href="${appRoot }/designBoard/list?categoryName=illust">일러스트</a>
+				</li>
+				<li class="nav-item col-1 col-md-1">
+					<a style="color: black;" class="nav-link active"
+						aria-current="page"
+						href="${appRoot }/designBoard/list?categoryName=web">웹디자인</a>
+				</li>
+				<li class="nav-item col-1 col-md-1">
+					<a style="color: black;" class="nav-link active"
+						aria-current="page"
+						href="${appRoot }/designBoard/list?categoryName=interior">인테리어</a>
+				</li>
+			</ul>
+		</form>
+	</section>
+
+	<!-- 메인 -->
+	<section>
 		<div class="main-lists d-flex justify-content-center">
 			<c:forEach items="${designBoardList }" var="designBoard">
 				<div class="project-list-mini">
@@ -222,12 +224,11 @@
 				</div>
 			</c:forEach>
 		</div>
-		
-		
 	</section>
 
+	<!-- 하단 -->
 	<section>
-		<%-- <my:footer2 /> --%>
+		<my:footer2 />
 	</section>
 
 </body>
