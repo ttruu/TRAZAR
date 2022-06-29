@@ -60,7 +60,7 @@ color: #FFFFFF;
 }
 </style>
 
-<header class="mb-3 border-bottom fixed-top"style="grid-template-columns: 1fr 2fr;">
+<header class="mb-3 border-bottom fixed"style="grid-template-columns: 1fr 2fr;">
     <div class="container-fluid d-grid gap-3 align-items-center">
     	<div class="modal fade" id="modal2" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -124,7 +124,7 @@ color: #FFFFFF;
 				</div>
 			</div>
 		</div>
-      <div class="d-flex flex-wrap align-items-center justify-content-start">
+      <div class="d-flex p-2 flex-wrap align-items-center justify-content-start">
        
         <a href="/trazar/designBoard/list" class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><img src="../resources/picture/logo/악.PNG" /></svg>

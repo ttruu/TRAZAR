@@ -25,4 +25,6 @@ public interface RequestMapper {
 
 	List<RequestDto> myListRequest(String memberId);
 
+	List<RequestDto> listRequestByCategory(String categoryName);
+
 }
