@@ -24,6 +24,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="${appRoot }/resources/css/requestList/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <style>
 	.card-img-top {
@@ -35,17 +37,36 @@
         <!-- Navigation-->
         <my:navBar/>
         <!-- Header-->
-        <header class="bg-dark py-5">
+        <header class="bg-white py-5">
             <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
+                <div class="text-center text-black">
                     <h1 class="display-4 fw-bolder">Commission</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Write your commission here</p>
+                    <p class="lead fw-normal text-black-50 mb-0">Write your commission here</p>
                 </div>
             </div>
         </header>
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
+				<form action="${appRoot }/request/insert" method="get" id="insertForm"></form>
+            	<ul class="nav nav-tabs">
+					  <li class="nav-item">
+					    <a class="nav-link active" aria-current="page" href="${appRoot }/request/list">전체</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=illust">일러스트</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=web">웹 디자이너</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=interior">인테리어</a>
+					  </li>
+					  <li class="nav-item d-flex" style="margin-left:61%">
+						<button form="insertForm" id="requestAdd" class="btn btn-primary" >의뢰 작성</button>
+					  </li>
+					</ul>
+					
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 		        	<c:forEach items="${requestList }" var="req" varStatus="status">
 						<input type="hidden" name="memberId" value="${req.memberId }" />
@@ -61,14 +82,14 @@
 		                            <div class="card-body p-4">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">${req.title }</h5>
+		                                    <h5 class="fw-bolder">${req.state }</h5>
 		                                    <!-- Product price-->
-		                                    $40.00 - $80.00
+		                                    ${req.term }
 		                                </div>
 		                            </div>
 	                            <!-- Product actions-->
 	                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="${getUrl }">View options</a></div>
+	                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="${getUrl }">자세히</a></div>
                             	</div>
                         	</div>
                     	</div>
