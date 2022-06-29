@@ -297,7 +297,8 @@
 	<c:if test="${not empty message }">
 		<div class="alert alert-light">${message }</div>
 	</c:if>
-
+	
+	
 	<!-- Page Content -->
 <%-- 
 	<form id="form1" action="${appRoot }/designBoard/modify" method="post">
@@ -325,14 +326,14 @@
 											<button id="edit-button1" class="btn btn-light" onclick="location.href = '${modifyLink}'">
 												수정하기
 											</button>
-										</c:if>
-									</sec:authorize>
-									
 									<c:url value="/designBoard/remove" var="removeLink" />
 									<form action="${removeLink }" method="post">
 										<input type="hidden" name="id" value="${designBoard.id }" />
 										<button id="delete-submit1" class="btn btn-danger">삭제하기</button>
 									</form>
+										</c:if>
+									</sec:authorize>
+									
 									
 								</div>
 								<div class="col-sm-6 mb-3 mb-sm-2" style="">
@@ -342,6 +343,7 @@
 								<div class="col-sm-3 mt-3">
 									<i class="fa-solid fa-heart"></i>
 									<h6 class="like">좋아요</h6>
+									<h6 class="like">${designBoard.likeCount }</h6>
 								</div>
 								<div class="col-sm-3 mt-3">
 									<i class="fa-solid fa-eye"></i>
