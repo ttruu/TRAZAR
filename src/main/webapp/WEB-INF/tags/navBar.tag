@@ -61,7 +61,7 @@ color: #FFFFFF;
 
 </style>
 
-<header id="nav-header"class="border-bottom fixed">
+<header id="nav-header"class="border-bottom fixed" >
     <div class="container">
     	<div class="modal fade" id="modal2" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
