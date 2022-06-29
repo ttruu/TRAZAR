@@ -163,7 +163,7 @@ $(" .top").on("click", function(e) {
 
 });
 </script>
-<body class="pt-5">
+<body >
 	<my:mainNav />
 	<div class="MainHome">
 
