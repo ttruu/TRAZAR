@@ -1,6 +1,7 @@
 package com.hys.trazar.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -36,5 +37,9 @@ public class DesignBoardDto {
 		}
 	}
 	
+	public String getInserted() {
+	      String pattern = "yyyy-MM-dd";
+	      return inserted.format(DateTimeFormatter.ofPattern(pattern));
+	   }
 
 }

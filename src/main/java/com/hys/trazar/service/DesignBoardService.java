@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hys.trazar.domain.DesignBoardDto;
+import com.hys.trazar.domain.LikeDto;
 import com.hys.trazar.mapper.DesignBoardMapper;
+import com.hys.trazar.mapper.LikeMapper;
 
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.regions.Region;
@@ -27,6 +30,8 @@ public class DesignBoardService {
 	@Autowired
 	private DesignBoardMapper mapper;
 
+	@Autowired
+	private LikeMapper likemapper;
 	
 	// get service
 	public DesignBoardDto getDesignBoardById(int id) {
@@ -77,7 +82,6 @@ public class DesignBoardService {
 	
 	// category service
 	public List<DesignBoardDto> listDesignBoard(String categoryName) {
-		
 		return mapper.selectDesignBoardCategory(categoryName);
 	}
 
@@ -86,5 +90,29 @@ public class DesignBoardService {
 		return mapper.hotList();
 		
 	}
+
+	// 게시물에 대한 좋아요 사용자 리스트
+	public List<LikeDto> getLikersList(int designBoardId, String memberId) {
+		return likemapper.getLikersPicked(designBoardId);
+	}
+	
+	// like service
+	// 리뷰 좋아요 수 설정 및 얻기
+	public int likeCount(@RequestParam("designBoardId")int designBoardId, @RequestParam("memberId")int memberId) {
+		// 좋아요 누른 사용자 리스트 조회
+		List<LikeDto> likers = likemapper.getLikersPicked(designBoardId);
+		
+		for(LikeDto userLikers : likers) {
+			if(userLikers.getMemberId().equals(memberId)) {
+				throw new RuntimeException("이미 좋아요를 눌러줬어요 !");
+			}
+		}
+		likemapper.setLikeCount(designBoardId);
+		likemapper.insertLikers(designBoardId, memberId);
+			
+		return likemapper.getLikeCount(designBoardId);
+	}
+	
+		
 
 }
