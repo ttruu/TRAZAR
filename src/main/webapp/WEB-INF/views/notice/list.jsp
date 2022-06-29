@@ -65,25 +65,32 @@ table.type09 td {
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
 }
+
+.copyright {
+	text-align: center;
+	padding: 4% 0 0;
+	font-weight: bold;
+	color: white;
+}
 </style>
 <body>
-<my:navBar/>
+	<my:navBar />
 
 
 
-	<div class="container">
+	<div class="container mt-5">
 		<div class="row">
 			<div class="col-8">
 				<h1>공지사항</h1>
-				<table class="type09 text-center">
+				<table class="type09 text-center mt-5"">
 					<sec:authorize access="hasRole('ADMIN')">
 						<sec:authentication property="principal" var="principal" />
 
 
 						<c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
 						<a id="insert-button1" href="${noticeInsertUrl }"
-							class="btn btn-secondary"> <i
-							class="fa-solid fa-pen-to-square"></i>
+							class="btn btn-secondary">
+							<i class="fa-solid fa-pen-to-square"></i>
 						</a>
 					</sec:authorize>
 					<c:if test="${not empty message }">
@@ -103,54 +110,51 @@ table.type09 td {
 						<c:forEach items="${noticeList }" var="notice">
 							<tr>
 								<th scope="row">${notice.id }</th>
-								<td><c:url value="/notice/get" var="getUrl">
+								<td>
+									<c:url value="/notice/get" var="getUrl">
 										<c:param name="id" value="${notice.id }"></c:param>
 										<c:param name="memberId" value="${notice.memberId }"></c:param>
-									</c:url> <a href="${getUrl }"> <c:out value="${notice.title }"></c:out>
-								</a></td>
+									</c:url>
+									<a href="${getUrl }">
+										<c:out value="${notice.title }"></c:out>
+									</a>
+								</td>
 								<th scope="row">${notice.writerNickName }</th>
 								<td>${notice.prettyInserted }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				</div>
-				<div class="col">
-			<div class="card"
-				style="padding-top: 50px; height: 75%; width: 100%; cursor: pointer;"
-				onclick="location.href='https://www.google.com';">
-				<img src="../resources/picture/ad/구글1.PNG" class="card-img-top">
-				<div class="card-body">
-					<h5 class="card-title"></h5>
-					<ul class="fa-ul custom-list">
+			</div>
+			<div class="col">
+				<div class="card"
+					style="padding-top: 50px; height: 50%; width: 100%; cursor: pointer;"
+					onclick="location.href='https://notefolioacademy.com/products/7';">
+					<img src="../resources/picture/ad/펜2.PNG" class="card-img-top">
+					<div class="card-body">
+						<h5 class="card-title"></h5>
+						<ul class="fa-ul custom-list">
 
-						<!-- <li>
-							<i class="fa fa-check fa-fw"></i>
-							광고내용
-						</li> -->
-					</ul>
+
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="card"
+					style="padding-top: 50px; height: 50%; width: 100%; cursor: pointer;"
+					onclick="location.href='https://notefolioacademy.com/products/30';">
+					<img src="../resources/picture/ad/아이패드.PNG" class="card-img-top">
+					<div class="card-body">
+						<h5 class="card-title"></h5>
+						<ul class="fa-ul custom-list">
+						</ul>
+					</div>
 				</div>
 			</div>
-		
-			<div class="card"
-				style="padding-top: 50px; height: 75%; width: 100%; cursor: pointer;"
-				onclick="location.href='https://www.naver.com';">
-				<img src="../resources/picture/ad/네이버.PNG" class="card-img-top">
-				<div class="card-body">
-					<h5 class="card-title"></h5>
-					<ul class="fa-ul custom-list">
 
-						<!-- <li>
-							<i class="fa fa-check fa-fw"></i>
-							광고내용
-						</li> -->
-					</ul>
-				</div>
-			</div>
 		</div>
-				
-		</div>
-	</div>
+	
 </body>
 </html>
 

@@ -137,6 +137,28 @@ color: #FFFFFF;
           <li><a href="${insertUrl }" class="nav-link px-2 link-light">디자인 올리기</a></li>
          </sec:authorize>
         </ul>
+        
+        <c:url value="/designBoard/search" var="searchUrl"></c:url>
+				<form action="${searchUrl }" class="float-start">
+					<div class="input-group">
+						<!-- select.form-select>option*3 -->
+						<select name="type" id="" class="form-select"
+							style="flex: 0 0 130px; text-align:center;">
+							<option value="bodyTitle" style="width:100px;"
+								${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>제목+본문</option>
+							<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
+							<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
+							<option value="writerNickName"
+								${param.type == 'writerNickName' ? 'selected' : ''}>작성자</option>
+						</select>
+
+						<input type="search" class="form-control" name="keyword" />
+						<button class="btn btn-outline-dark">
+							<i class="fa-solid fa-magnifying-glass text-light"></i>
+						</button>
+					</div>
+				</form>
+				
 <sec:authorize access="not isAuthenticated()">
         <ul class="nav nav-pills justify-content-end" id="front-nav-font">
           <li class="nav-item "><a href="${loginUrl }" class="nav-link link-light">로그인</a> </li>
