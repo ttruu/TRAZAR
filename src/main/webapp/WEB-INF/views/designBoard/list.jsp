@@ -277,25 +277,7 @@ $(" .top").on("click", function(e) {
 
 		<div class="footer">
 			<my:footer></my:footer>
-				<form action="${searchUrl }" class="float-start">
-					<div class="input-group">
-						<!-- select.form-select>option*3 -->
-						<select name="type" id="" class="form-select"
-							style="flex: 0 0 130px; text-align:center;">
-							<option value="bodyTitle" style="width:100px;"
-								${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>제목+본문</option>
-							<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
-							<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
-							<option value="writerNickName"
-								${param.type == 'writerNickName' ? 'selected' : ''}>작성자</option>
-						</select>
-
-						<input type="search" class="form-control" name="keyword" />
-						<button class="btn btn-outline-dark">
-							<i class="fa-solid fa-magnifying-glass"></i>
-						</button>
-					</div>
-				</form>
+				
 		</div>
 	</div>
 
