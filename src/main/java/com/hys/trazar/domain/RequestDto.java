@@ -1,6 +1,7 @@
 package com.hys.trazar.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import lombok.Data;
 import lombok.ToString;
@@ -20,4 +21,9 @@ public class RequestDto {
 	private String imgthumbnail;
 	private String getImg;
 	private String categoryName;
+	
+	public String getInserted() {
+		String pattern = "yyyy-MM-dd";
+		return inserted.format(DateTimeFormatter.ofPattern(pattern));
+	}
 }
