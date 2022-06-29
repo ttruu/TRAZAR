@@ -30,60 +30,18 @@
 
 
 <style>
-.MainHome {
-	display: grid;
-	grid-template-columns: 3% 55% 4% 10% 10%;
-	grid-template-rows: 22% 3% 70% 7%;
-	height: 100%;
-	
-	grid-template-areas: 'left-side main main main right right'
-		'left-side other other other other other'
-		'left-side content content content content content'
-		'footer footer footer footer footer footer';
-}
-
-.left-side {
-	grid-area: left-side;
-	padding-left: 5%;
-}
-
-.main1 {
-	grid-area: main;
-	padding-top: 7%;
-}
-
-.right {
-	grid-area: right;
-	justify-content: space-around;
-	margin-top: 19%;
-	padding-right: 10%;
-}
-
 .card .card-img-top {
 	justify-content: space-around;
 	margin-bottom: 34%;
 }
 
 .card-img-top {
-	margin-bottom : 25%;
-}
-
-.other {
-	grid-area: other;
-}
-
-.content {
-	grid-area: content;
-	padding-top: 1%;
-}
-
-.footer {
-	grid-area: footer;
-	background-color : #303134;
+	margin-bottom: 25%;
 }
 
 .totalLayout {
 	justify-content: space-around;
+	margin-top : 7%;
 }
 
 .totalLayout-title {
@@ -100,7 +58,6 @@
 	line-height: 19px;
 	align-items: center;
 	color: #161C1C;
-	
 }
 
 .main-lists:after {
@@ -113,7 +70,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 4%;
-	padding-top : 1.5%;
+	padding-top: 1.5%;
 }
 
 .project-list-mini {
@@ -154,31 +111,31 @@
 </c:if>
 
 <script>
+	$(" .top").on("click", function(e) {
 
-$(" .top").on("click", function(e) {
+		$("html, body").animate({
+			scrollTop : 0
+		}, '500');
 
-    $("html, body").animate({scrollTop:0}, '500');
+		return false;
 
-    return false;
-
-});
+	});
 </script>
-<body class="pt-5">
-	<my:mainNav />
-	<div class="MainHome">
-
-		<div class="left-side"></div>
-		<div class="main1">
-			<div class="totalLayout">
-				<div class="totalLayout-title">
-					<h3 class="list-titles">hot creator🔥</h3>
-				</div>
+<body>
+	<section>
+		<my:mainNav />
+	</section>
+	
+	<section>
+		<div class="totalLayout row" >
+			<div class="totalLayout-title col-8" >
+				<h3 class="list-titles">hot creator🔥</h3>
 
 				<c:if test="${not empty message }">
 					<div class="alert alert-primary">${message }</div>
 				</c:if>
 
-				<div class="main-lists">
+				<div class="main-lists d-flex justify-content-center">
 					<c:forEach items="${hotList }" var="hot">
 						<div class="project-list-mini">
 							<c:url value="/designBoard/get" var="getUrl">
@@ -195,8 +152,7 @@ $(" .top").on("click", function(e) {
 								<c:param name="memberId" value="${hot.memberId }"></c:param>
 							</c:url>
 							<a href="${viewUrl }">
-								<div class="design-name">${hot.id}ㅣ
-									${hot.writerNickName }</div>
+								<div class="design-name">${hot.id}ㅣ${hot.writerNickName }</div>
 							</a>
 
 							<div class="main-project-title">${hot.title }
@@ -204,82 +160,88 @@ $(" .top").on("click", function(e) {
 
 						</div>
 					</c:forEach>
-				<hr />
+					<hr />
 				</div>
 			</div>
-		</div>
-		<div class="right">
-			<div style="width: 100%; cursor: pointer;"
-				onclick="location.href='https://notefolioacademy.com/products/7';">
-				<img src="../resources/picture/ad/펜2.PNG" class="card-img-top">
-			</div>
-			
-			<!-- <div style="width: 100%; cursor: pointer;"
-				onclick="location.href='https://notefolioacademy.com/products/30';">
-				<img src="../resources/picture/ad/아이패드.PNG" class="card-img-top">
+			<!-- <div class="col-4 d-flex justify-content-center">
+				<div style="width: 80%; cursor: pointer;"
+					onclick="location.href='https://notefolioacademy.com/products/7';">
+					<img src="../resources/picture/ad/펜2.PNG" class="card-img-top">
+				</div>
 			</div> -->
 		</div>
-			
-		<div class="other">
-			<div class="totalLayout-title top">
-				<h3 class="list-titles" style="padding-bottom : 0.5%;">작품</h3>
-			
-				<form action="${appRoot}/designBoard/list" method="get">
-					
-				<ul class="nav nav-tabs">
-				  <li class="nav-item">
-				    <a class="nav-link active" aria-current="page" href="${appRoot }/designBoard/list">전체</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link active" aria-current="page" href="${appRoot }/designBoard/list?categoryName=illust">일러스트</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link active" aria-current="page" href="${appRoot }/designBoard/list?categoryName=web">웹디자인</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link active" aria-current="page" href="${appRoot }/designBoard/list?categoryName=interior">인테리어</a>
-				  </li>
+	</section>
+	<section>
+
+	
+			<div class="container">
+
+			<form action="${appRoot}/designBoard/list" method="get">
+
+				<ul class="nav nav-tabs row justify-content-md-start">
+				<li class="nav-item ">
+				<h3 class="list-titles col-sm-3" style="padding-bottom: 0.5%;">작품</h3>
+				</li>
+					<li class="nav-item col-6 col-md-4">
+						<a class="nav-link active" aria-current="page"
+							href="${appRoot }/designBoard/list">전체</a>
+					</li>
+					<li class="nav-item col-6 col-md-4">
+						<a class="nav-link active" aria-current="page"
+							href="${appRoot }/designBoard/list?categoryName=illust">일러스트</a>
+					</li>
+					<li class="nav-item col-6 col-md-4">
+						<a class="nav-link active" aria-current="page"
+							href="${appRoot }/designBoard/list?categoryName=web">웹디자인</a>
+					</li>
+					<li class="nav-item col-6 col-md-4">
+						<a class="nav-link active" aria-current="page"
+							href="${appRoot }/designBoard/list?categoryName=interior">인테리어</a>
+					</li>
 				</ul>
-			</div>
+			</form>
+		</div>
+		</section>
+		<section>
+		<div class="main-lists d-flex justify-content-center">
+			<c:forEach items="${designBoardList }" var="designBoard">
+				<div class="project-list-mini">
+					<c:url value="/designBoard/get" var="getUrl">
+						<c:param name="id" value="${designBoard.id }"></c:param>
+						<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+					</c:url>
+					<a href="${getUrl }" class="list-thumbnail">
+						<div class="thumbnail-image">
+							<img src="${designBoard.imgthumbnail }">
+						</div>
+						<div class="design-name">${designBoard.id}ㅣ
+							${designBoard.writerNickName }</div>
+						<div class="main-project-title">${designBoard.title }
+							${designBoard.prettyInserted }</div>
+					</a>
+				</div>
+			</c:forEach>
 		</div>
 		
-		<div class="content">
-			<div class="totalLayout">
-				<!-- <div class="totalLayout-title">
-					<h3 class="list-titles">hot creator🔥</h3>
-				</div>
+		
+	</section>
 
-				<c:if test="${not empty message }">
-					<div class="alert alert-primary">${message }</div>
-				</c:if>  -->
-
-				<div class="main-lists">
-					<c:forEach items="${designBoardList }" var="designBoard">
-						<div class="project-list-mini">
-							<c:url value="/designBoard/get" var="getUrl">
-								<c:param name="id" value="${designBoard.id }"></c:param>
-								<c:param name="memberId" value="${designBoard.memberId }"></c:param>
-							</c:url>
-							<a href="${getUrl }" class="list-thumbnail">
-								<div class="thumbnail-image">
-									<img src="${designBoard.imgthumbnail }">
-								</div>
-								<div class="design-name">${designBoard.id}ㅣ
-									${designBoard.writerNickName }</div>
-								<div class="main-project-title">${designBoard.title }
-									${designBoard.prettyInserted }</div>
-							</a>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
-
-		<div class="footer">
-			<my:footer></my:footer>
-				
-		</div>
-	</div>
+	<section>
+		<%-- <my:footer2 /> --%>
+	</section>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
