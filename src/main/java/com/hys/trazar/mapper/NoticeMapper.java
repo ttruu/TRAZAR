@@ -11,7 +11,7 @@ public interface NoticeMapper {
 
 	int insertNotice(NoticeDto notice);
 
-	List<NoticeDto> selectNoticeAll();
+	/* List<NoticeDto> selectNoticeAll(); */
 
 	int updateNotice(NoticeDto dto);
 
@@ -20,7 +20,10 @@ public interface NoticeMapper {
 	void insertFile(@Param("noticeId") int noticeId, @Param("fileName") String fileName);
 	
 	void deleteByMemberId(String id);
-
+	//페이지네이션
+	List<NoticeDto> listNoticePage(@Param("from") int from, @Param("row") int row);
+	
+	int countNotice();
 
 
 }

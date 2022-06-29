@@ -89,7 +89,7 @@ table.type09 td {
 
 						<c:url value="/notice/insert" var="noticeInsertUrl"></c:url>
 						<a id="insert-button1" href="${noticeInsertUrl }"
-							class="btn btn-secondary">
+							class="btn btn-secondary mt-2">
 							<i class="fa-solid fa-pen-to-square"></i>
 						</a>
 					</sec:authorize>
@@ -125,6 +125,10 @@ table.type09 td {
 						</c:forEach>
 					</tbody>
 				</table>
+				<div class="mt-3">
+		<my:PageNation path="list" />
+		
+	</div>
 			</div>
 			<div class="col">
 				<div class="card"
