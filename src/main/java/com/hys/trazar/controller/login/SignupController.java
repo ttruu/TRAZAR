@@ -239,16 +239,18 @@ public class SignupController {
 		}
 	}
 
-	// 비밀번호 초기화 코드
+	// 비밀번호 찾기 인증 코드
 	@PostMapping("findPassword")
 	public String findPassword(SignupDto dto, String id, Model model, RedirectAttributes rttr) {
 		// selectMember id로 멤버 찾는 mapper
-		SignupDto findId = mapper.selectMember(dto.getId());
+		SignupDto findId = mapper.selectMember(id);
+		System.out.println(findId);
 		// id가 null이 아니고 id의 question이랑 dto의 question이랑 같을 때 서비스 실행
 		if (findId != null && findId.getQuestion().equals(dto.getQuestion()) && findId.getAnswer().equals(dto.getAnswer())) {
-			service.findPassword(id);
-			rttr.addAttribute("success", "good");
-			return "redirect:/sign/findPasswordSuccess";
+			System.out.println(dto);
+			rttr.addFlashAttribute("member", findId);
+			rttr.addAttribute("success", "good");  
+			return "redirect:/sign/updatePassword";
 		} else {
 			rttr.addAttribute("msg", "error");
 			return "redirect:/sign/findPassword";
@@ -256,9 +258,44 @@ public class SignupController {
 	}
 	
 	// 아이디찾기 코드
+	
+	@PostMapping("findId")
+	public String findId(SignupDto dto, String email, Model model, RedirectAttributes rttr) {
+		SignupDto find = mapper.selectMember1(dto.getEmail());
+		if(find != null && find.getName().equals(dto.getName()) && find.getPhoneNum().equals(dto.getPhoneNum())) {
+			SignupDto findId = service.findId(email);
+			rttr.addFlashAttribute("findId", findId);
+			return "redirect:/sign/findIdSuccess";
+		} else {
+			rttr.addAttribute("msg", "error");
+			return "redirect:/sign/findId";
+		}
+	}
+	
+	
+	
+	@GetMapping("findIdSuccess")
+	public void findIdSuccess() {
+	}
+	@GetMapping("updatePassword")
+	public void updatePassword() {
+	}
 	@GetMapping("findId")
 	public void findId1() {
-		
 	}
+	
+	// 비밀번호 변경 코드
+	@PostMapping("passwordUpdate1")
+	public String passwordUpdate1(SignupDto dto, Model model, RedirectAttributes rttr) {
+		boolean success = service.passwordUpdate1(dto);
+		System.out.println(dto);
+		if (success) {
+			return "redirect:/sign/login";
+		} else {
+			rttr.addAttribute("msg", "error");
+			return "redirect:/designBoard/list";
+		}
+	}
+	
 
 }

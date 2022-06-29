@@ -112,14 +112,14 @@ public class SignupService {
 	@Transactional
 	// 한번에 수행 되어야 하는 어노테이션
 	public boolean removeMember(SignupDto dto) {
-		// 댓글 삭제
-		reviewMapper.deleteByMemberId(dto.getId());
 		// 멤버가 쓴 게시글에 다른 사람이 단 댓글 삭제
 		List<DesignBoardDto> boardList = boardMapper.listByMemberId(dto.getId());
 		for (DesignBoardDto board : boardList) {
 			reviewMapper.deleteByDesignBoardId(board.getId());
 		}
 		
+		// 댓글 삭제
+		reviewMapper.deleteByMemberId(dto.getId());
 		// 멤버가 쓴 게시글 삭제 
 		boardMapper.deleteByMemberId(dto.getId());
 		// 리퀘스트 게시글 삭제 
@@ -131,6 +131,7 @@ public class SignupService {
 		return mapper.deleteMember(dto.getId()) == 1;
 	}
 
+	// 비밀번호 초기화
 	public void findPassword(String id) {
 		
 		String pw = passwordEncoder.encode(id);
@@ -142,4 +143,25 @@ public class SignupService {
 	public List<DesignBoardDto> DesignListRequest(String memberId) {
 		return mapper.DesignerlistByMemberId(memberId);
 	}
+
+	// 아이디 찾기
+	public SignupDto findId(String email) {
+		return mapper.findId(email);
+	}
+	
+	public SignupDto selectMember1(String email) {
+		return mapper.selectMember1(email);
+	}
+	
+	public boolean passwordUpdate1(SignupDto dto) {
+		
+		/// 암호화
+		String encodedPassword = passwordEncoder.encode(dto.getPassword());
+		// 암호화 된 암호를 다시 세팅
+		dto.setPassword(encodedPassword);
+				
+		return mapper.passwordUpdate1(dto)==1;
+	}
+	
+	
 }

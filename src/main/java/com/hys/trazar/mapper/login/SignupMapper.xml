@@ -32,7 +32,7 @@
 	</insert>
 	
 	<select id="selectMember" resultType="com.hys.trazar.domain.login.SignupDto">
-		SELECT id, password, email, nickName, phoneNum, introduce, name, inserted, question, answer FROM Member WHERE id = #{id}
+		SELECT id, password, email, nickName, phoneNum, name, inserted, question, answer FROM Member WHERE id = #{id}
 	</select>
 	
 	<update id="modifyMember">
@@ -77,6 +77,20 @@
 		WHERE d.memberId = #{memberId}
 		ORDER BY d.id DESC
 	</select>
+	
+	<select id="selectMember1" resultType="com.hys.trazar.domain.login.SignupDto">
+		SELECT email, phoneNum, name FROM Member WHERE email = #{email}
+	</select>
+	
+	<select id="findId" resultType="com.hys.trazar.domain.login.SignupDto">
+		SELECT id FROM Member WHERE email = #{email}
+	</select>
+	
+	<update id="passwordUpdate1">
+		UPDATE Member SET password = #{password}
+		WHERE id = #{id}
+	</update>
+	
 	
 	
 </mapper>
