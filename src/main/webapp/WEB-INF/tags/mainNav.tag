@@ -60,7 +60,7 @@ color: #FFFFFF;
 }
 </style>
 
-<header class="mb-3 border-bottom fixed-top"style="grid-template-columns: 1fr 2fr;">
+<header class="mb-3 border-bottom fixed"style="grid-template-columns: 1fr 2fr;">
     <div class="container-fluid d-grid gap-3 align-items-center">
     	<div class="modal fade" id="modal2" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">

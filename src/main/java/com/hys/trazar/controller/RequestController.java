@@ -87,8 +87,16 @@ public class RequestController {
 	}
 	
 	@RequestMapping("list")
-	public void list(Model model) {
+	public void list(Model model, String categoryName) {
+//		List<RequestDto> list = service.listRequest();
+		
 		List<RequestDto> list = service.listRequest();
+		if(categoryName == null) {
+			list = service.listRequest();
+		} else {
+			list = service.listRequestByCategory(categoryName);
+		}
+		
 		processThumbNailImage(list);
 		model.addAttribute("requestList", list);
 	}
