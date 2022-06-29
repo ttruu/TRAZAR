@@ -26,8 +26,23 @@
 		FROM ManagerBoard n JOIN Member m ON n.memberId = m.id
 		WHERE n.id = #{id}
 	</select>
+	<!-- 페이지네이션 -->
+	<select id="listNoticePage" resultType="com.hys.trazar.domain.NoticeDto">
+		SELECT n.id, 
+			   n.title, 
+			   n.body, 
+			   n.inserted,
+			   m.id memberId,
+			   m.nickName writerNickName
+		FROM ManagerBoard n JOIN Member m ON n.memberId = m.id
+		GROUP BY n.id
+		ORDER BY n.id DESC
+		LIMIT #{from }, #{row }
+	</select>
   
-
+	<select id="countNotice" resultType="int">	
+	SELECT Count(id) FROM ManagerBoard n
+	</select>
   <update id="updateNotice">
   	UPDATE ManagerBoard
   	SET title = #{title},
