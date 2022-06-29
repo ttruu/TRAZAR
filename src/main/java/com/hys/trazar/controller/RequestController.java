@@ -90,7 +90,7 @@ public class RequestController {
 	public void list(Model model, String categoryName) {
 //		List<RequestDto> list = service.listRequest();
 		
-		List<RequestDto> list = null;
+		List<RequestDto> list = service.listRequest();
 		if(categoryName == null) {
 			list = service.listRequest();
 		} else {

@@ -48,9 +48,7 @@
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-            	<form action="${appRoot }/request/insert">
-					<button id="requestAdd" class="btn btn-primary">의뢰 작성</button>
-				</form>
+				<form action="${appRoot }/request/insert" method="get" id="insertForm"></form>
             	<ul class="nav nav-tabs">
 					  <li class="nav-item">
 					    <a class="nav-link active" aria-current="page" href="${appRoot }/request/list">전체</a>
@@ -64,7 +62,11 @@
 					  <li class="nav-item">
 					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=interior">인테리어</a>
 					  </li>
+					  <li class="nav-item d-flex" style="margin-left:61%">
+						<button form="insertForm" id="requestAdd" class="btn btn-primary" >의뢰 작성</button>
+					  </li>
 					</ul>
+					
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 		        	<c:forEach items="${requestList }" var="req" varStatus="status">
 						<input type="hidden" name="memberId" value="${req.memberId }" />
