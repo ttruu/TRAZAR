@@ -96,6 +96,7 @@
 									<button id="edit-button1" class="btn btn-secondary" onclick = "location.href = '${modifyLink}' ">
 										<i class="fa-solid fa-pen-to-square"></i>
 									</button>
+									<button id="delete-submit1" class="btn btn-danger" onclick = "location.href = '/request/remove'">삭제</button>
 								</c:if>
 							</sec:authorize>
                         </header>

@@ -78,9 +78,9 @@
 		                            <div class="card-body p-4">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">${req.title }</h5>
+		                                    <h5 class="fw-bolder">${req.state }</h5>
 		                                    <!-- Product price-->
-		                                    $40.00 - $80.00
+		                                    ${req.term }
 		                                </div>
 		                            </div>
 	                            <!-- Product actions-->

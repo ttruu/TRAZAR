@@ -11,7 +11,7 @@
 	</insert>
 	
 	<select id="listRequest" resultType="com.hys.trazar.domain.RequestDto">
-		SELECT r.id, r.memberId, r.body, r.title, r.price, r.inserted, r.state
+		SELECT r.id, r.memberId, r.body, r.title, r.price, r.inserted, r.state, r.term
 		FROM Request r 
 		JOIN Member m ON m.id = r.memberId
 		ORDER BY r.id DESC
