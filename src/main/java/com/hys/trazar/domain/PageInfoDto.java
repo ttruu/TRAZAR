@@ -10,7 +10,7 @@ public class PageInfoDto {
 		return current;
 	}
 	public int getLeft() {
-		return Math.max(current - 3, 1);
+		return Math.max(current , 1);
 	}
 	public int getRight() {
 		return Math.min(current + 3, end);
