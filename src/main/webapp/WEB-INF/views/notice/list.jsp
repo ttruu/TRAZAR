@@ -159,7 +159,10 @@ table.type09 td {
 </div>
 		</div>
 		
+	<div class="sticky-bottom mt-auto">
 	<my:footer2/>
+	</div>
+
 </body>
 </html>
 

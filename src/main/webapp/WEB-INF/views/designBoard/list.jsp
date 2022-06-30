@@ -21,7 +21,8 @@
    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
    crossorigin="anonymous"></script>
-
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="${appRoot }/resources/main/css/main.css" />
 <link
    href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
    rel="stylesheet">
@@ -119,7 +120,7 @@
 
    });
 </script>
-<body>
+<body >
    <section>
       <my:mainNav />
    </section>
@@ -171,63 +172,63 @@
 	</section>
 
    <!-- 카테고리 -->
-   <section class="list-titles">
-      <form action="${appRoot}/designBoard/list" method="get">
-         <ul class="nav row justify-content-md-center"
-            style="padding-bottom: 1%;">
-            <!-- <li class="nav-item col-1 col-md-1" >
-               <a class="nav-link active">작품</a>
-            </li> -->
-            <li class="nav-item col-1 col-md-1">
-               <a style="color: black;" class="nav-link active"
-                  aria-current="page" href="${appRoot }/designBoard/list">전체</a>
-            </li>
-            <li class="nav-item col-1 col-md-1">
-               <a style="color: black;" class="nav-link active"
-                  aria-current="page"
-                  href="${appRoot }/designBoard/list?categoryName=illust">일러스트</a>
-            </li>
-            <li class="nav-item col-1 col-md-1">
-               <a style="color: black;" class="nav-link active"
-                  aria-current="page"
-                  href="${appRoot }/designBoard/list?categoryName=web">웹디자인</a>
-            </li>
-            <li class="nav-item col-1 col-md-1">
-               <a style="color: black;" class="nav-link active"
-                  aria-current="page"
-                  href="${appRoot }/designBoard/list?categoryName=interior">인테리어</a>
-            </li>
-         </ul>
-      </form>
-   </section>
+  <div id="page-wrapper">
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Portfolio -->
+									<section>
+										<header class="major">
+											<h2>My Portfolio</h2>
+										</header>
+										<div class="row">
+											<c:forEach items="${designBoardList }" var="designBoard">
+											<div class="col-4 col-6-medium col-12-small">
+												<section class="box">				
+													<c:url value="/designBoard/get" var="getUrl">
+														<c:param name="id" value="${designBoard.id }"></c:param>
+														<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+													 </c:url>
+													<a href="${getUrl }" class="image featured"><img src="${designBoard.imgthumbnail }" /></a>
+													<header>
+														<h2>${designBoard.title }</h2>
+													</header>
+													<h3> ${designBoard.writerNickName }</h3>
+													<br>
+													<p> ${designBoard.prettyInserted }</p>
+
+													<footer>
+														<ul class="actions">
+															<li><a href="${getUrl }" class="button alt">자세히</a></li>
+														</ul>
+													</footer>
+												
+												</section>
+												</div>
+												</c:forEach>
+							</div>							
+		</div>
+</div>
+</div>
+</section>
+</div>
 
    <!-- 메인 -->
-   <section>
-      <div class="main-lists d-flex justify-content-center">
-         <c:forEach items="${designBoardList }" var="designBoard">
-            <div class="project-list-mini">
-               <c:url value="/designBoard/get" var="getUrl">
-                  <c:param name="id" value="${designBoard.id }"></c:param>
-                  <c:param name="memberId" value="${designBoard.memberId }"></c:param>
-               </c:url>
-               <a href="${getUrl }" class="list-thumbnail">
-                  <div class="thumbnail-image">
-                     <img src="${designBoard.imgthumbnail }">
-                  </div>
-                  <div class="design-name">${designBoard.id}ㅣ
-                     ${designBoard.writerNickName }</div>
-                  <div class="main-project-title">${designBoard.title }
-                     ${designBoard.prettyInserted }</div>
-               </a>
-            </div>
-         </c:forEach>
-      </div>
-   </section>
+  
 
    <!-- 하단 -->
    <section>
       <my:footer2 />
    </section>
-
+		<!-- Scripts -->
+			<script src="${appRoot }/resources/main/js/jquery.min.js"></script>
+			<script src="${appRoot }/resources/main/js/jquery.dropotron.min.js"></script>
+			<script src="${appRoot }/resources/main/js/browser.min.js"></script>
+			<script src="${appRoot }/resources/main/js/breakpoints.min.js"></script>
+			<script src="${appRoot }/resources/main/js/util.js"></script>
+			<script src="${appRoot }/resources/main/js/main.js"></script>
 </body>
 </html>
