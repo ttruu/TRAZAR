@@ -184,7 +184,7 @@ public class DesignBoardController {
 		model.addAttribute("likeDto", likeDto);
 	}
 	
-	
+	@ResponseBody
 	@PutMapping("/likeUpdate")
 	public Map<String, String> likeUpdate(@RequestBody LikeDto likeDto) {
 		Map<String, String> map = new HashMap<String, String>();
