@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hys.trazar.domain.DesignBoardDto;
+import com.hys.trazar.domain.NoticeDto;
 import com.hys.trazar.domain.RequestDto;
 import com.hys.trazar.mapper.RequestMapper;
 
@@ -52,12 +53,18 @@ public class RequestService {
 	}
 	
 	// 내 요청 가져오기
-	public List<RequestDto> myListRequest(String memberId) {
-		return mapper.myListRequest(memberId);
+	public List<RequestDto> myListRequest(String memberId, int page, int rowPerPage) {
+		int from = (page - 1) * rowPerPage;
+		
+		return mapper.myListRequest(memberId, from, rowPerPage);
 	}
 
 	public List<RequestDto> listRequestByCategory(String categoryName) {
 		return mapper.listRequestByCategory(categoryName);
+	}
+
+	public int countMyList(String memberId) {
+		return mapper.countMyList(memberId);
 	}
 
 }

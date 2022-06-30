@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hys.trazar.domain.DesignBoardDto;
+import com.hys.trazar.domain.PageInfoDto;
 import com.hys.trazar.domain.RequestDto;
 import com.hys.trazar.service.RequestService;
 
@@ -187,10 +188,23 @@ public class RequestController {
 	
 	// 내 의뢰목록 보여주기
 	@RequestMapping("myList")
-	public void myList(RequestDto dto, Principal principal, Model model, String memberId) {
+	public void myList(@RequestParam(name = "page", defaultValue = "1") int page, RequestDto dto, Principal principal, Model model, String memberId) {
+		int rowPerPage = 10;
+		
+		List<RequestDto> list = service.myListRequest(memberId, page, rowPerPage);
+		
+		int totalRecords = service.countMyList(memberId);
+		
+		int end = (totalRecords - 1) / rowPerPage + 1;
+
+		PageInfoDto pageInfo = new PageInfoDto();
+
+		pageInfo.setCurrent(page);
+		pageInfo.setEnd(end);
+		
 		dto.setMemberId(principal.getName());
-		List<RequestDto> list = service.myListRequest(memberId);
 		model.addAttribute("requestMyList", list);
+		model.addAttribute("pageInfo", pageInfo);
 	}
 	
 	

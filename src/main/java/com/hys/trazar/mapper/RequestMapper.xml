@@ -46,6 +46,12 @@
 		JOIN Member m ON m.id = r.memberId
 		WHERE r.memberId = #{memberId}
 		ORDER BY r.id DESC
+		LIMIT #{from }, #{row }
+	</select>
+	
+	<select id="countMyList" resultType="int">
+		SELECT COUNT(id) FROM Request
+		WHERE memberId = #{memberId}
 	</select>
 	
 	<select id="getRequestById" resultType="com.hys.trazar.domain.RequestDto">

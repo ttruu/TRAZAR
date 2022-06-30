@@ -23,8 +23,10 @@ public interface RequestMapper {
 	
 	void deleteByMemberId(String memberId);
 
-	List<RequestDto> myListRequest(String memberId);
-
 	List<RequestDto> listRequestByCategory(String categoryName);
+
+	List<RequestDto> myListRequest(@Param("memberId") String memberId, @Param("from") int from, @Param("row") int row);
+
+	int countMyList(String memberId);
 
 }
