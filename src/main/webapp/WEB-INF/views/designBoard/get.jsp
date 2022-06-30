@@ -304,13 +304,12 @@
 	</script>
 	
 	<script type="text/javascript">
-	
+$(document).ready(function() {
 	$('#likebtn').click(function(){
 		likeUpdate();
 	});
 	
-	function likeupdate(){
-		var root = getContextPath(),
+	function likeUpdate(){
 		likeurl = "${appRoot}/designBoard/likeUpdate",
 		memberId = $('#memberId').val(),
 		designBoardId = $('#designBoardId').val(),
@@ -320,8 +319,8 @@
 				"count" : count};
 		
 	$.ajax({
-		url : root + likeurl,
-		type : 'POST',
+		url : likeurl,
+		type : 'put',
 		contentType: 'application/json',
 		data : JSON.stringify(data),
 		success : function(result){
@@ -341,11 +340,7 @@
 		
 		});
 	};
-	
-	function getContextPath() {
-	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
-	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
-	} 
+});	
 	</script>
 
 <title>get jsp</title>
@@ -353,7 +348,8 @@
 
 </head>
 <body>
-
+		<input type="hidden" id="memberId" value="${likeDto.memberId }" />
+		<input type="hidden" id="likecheck" value="${likeCheck }">
 	<my:navBar />
 
 	<c:if test="${not empty message }">
@@ -409,11 +405,10 @@
 						<c:choose>
 							<c:when test="${likeCheck ==0}">
 								<button type="button" class="btn btn-light" id="likebtn">좋아요</button>
-								<input type="hidden" id="likecheck" value="${likeCheck }">
 							</c:when>					
 							<c:when test="${likeCheck ==1}">
 								<button type="button" class="btn btn-danger" id="likebtn">좋아요</button>
-								<input type="hidden" id="likecheck" value="${likeCheck }">
+								
 							</c:when>
 						</c:choose>					
 				
@@ -434,7 +429,7 @@
 						<h4 class="small text-muted">댓글</h4>
 						<form class="mt-3" id="insertReviewForm1">
 							<div class="input-group">
-								<input type="hidden" name="designBoardId"
+								<input id="designBoardId" type="hidden" name="designBoardId"
 									value="${designBoard.id }" />
 								<input class="form-control" type="text" name="body" required
 									id="insertReviewContentInput1"

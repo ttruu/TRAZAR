@@ -15,6 +15,7 @@ public class LikeDto {
 	private int designBoardId;
 	private String memberId;
 	private int likeCheck;
+	private int count;
 	
 	private List<SignupDto> likers;
 }

@@ -131,6 +131,7 @@ public class DesignBoardService {
 
 	public void likeUpdate(LikeDto likeDto) {
 		mapper.likeUpdate(likeDto);
+		System.out.println("!!!!!");
 		
 	}
 	
