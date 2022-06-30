@@ -32,6 +32,10 @@
 		height : 150px;
 		width : 100%;
 	}
+	.navs{
+	  color : black;
+	  font-weight:bold;
+	}
 </style>
 <body>
         <!-- Navigation-->
@@ -65,27 +69,27 @@
             <div class="container px-4 px-lg-5 mt-5">
             <div class="mt-5">
                     
-                    </div>
+            </div>
 				<form action="${appRoot }/request/insert" method="get" id="insertForm"></form>
             	<ul class="nav nav-tabs mt-1">
 					  <li class="nav-item">
-					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list">전체</a>
+					    <a class="nav-link navs" aria-current="page" href="${appRoot }/request/list">전체</a>
 					  </li>
 					  <li class="nav-item">
-					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=illust">일러스트</a>
+					    <a class="nav-link navs" aria-current="page" href="${appRoot }/request/list?categoryName=illust">일러스트</a>
 					  </li>
 					  <li class="nav-item">
-					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=web">웹 디자이너</a>
+					    <a class="nav-link navs" aria-current="page" href="${appRoot }/request/list?categoryName=web">웹 디자이너</a>
 					  </li>
 					  <li class="nav-item">
-					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=interior">인테리어</a>
+					    <a class="nav-link navs" aria-current="page" href="${appRoot }/request/list?categoryName=interior">인테리어</a>
 					  </li>
 					  <li class="nav-item ms-auto" >
 						<button form="insertForm" id="requestAdd" class="btn btn-outline-dark" >의뢰 작성</button>
 					  </li>
-					</ul>
+				</ul>
 					
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center mt-3">
 		        	<c:forEach items="${requestList }" var="req" varStatus="status">
 						<input type="hidden" name="memberId" value="${req.memberId }" />
 							<c:url value="/request/get" var="getUrl">

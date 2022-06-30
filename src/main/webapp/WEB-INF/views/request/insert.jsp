@@ -168,11 +168,6 @@
 							<option value="interior">인테리어</option>
 						</select>
                     </div>
-                    <!-- Side widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Side Widget</div>
-                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-                    </div>
                     <button type="button" class="btn btn-outline-secondary mt-3" onclick="goWrite(this.form)">등록</button>
                 </div>
             </div>
