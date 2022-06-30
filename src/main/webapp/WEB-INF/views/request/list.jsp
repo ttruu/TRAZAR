@@ -116,6 +116,8 @@
             </div>
         </section>
         <!-- Footer-->
-<my:footer2/>
+        <section class="mt-5">
+			<my:footer2/>
+        </section>
 </body>
 </html>
