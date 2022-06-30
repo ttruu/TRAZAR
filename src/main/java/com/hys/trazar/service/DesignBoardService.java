@@ -91,26 +91,47 @@ public class DesignBoardService {
 		
 	}
 
-	// 게시물에 대한 좋아요 사용자 리스트
-	public List<LikeDto> getLikersList(int designBoardId, String memberId) {
-		return likemapper.getLikersPicked(designBoardId);
-	}
-	
-	// like service
-	// 리뷰 좋아요 수 설정 및 얻기
-	public int likeCount(@RequestParam("designBoardId")int designBoardId, @RequestParam("memberId")int memberId) {
-		// 좋아요 누른 사용자 리스트 조회
-		List<LikeDto> likers = likemapper.getLikersPicked(designBoardId);
-		
-		for(LikeDto userLikers : likers) {
-			if(userLikers.getMemberId().equals(memberId)) {
-				throw new RuntimeException("이미 좋아요를 눌러줬어요 !");
-			}
+	/*	// 게시물에 대한 좋아요 사용자 리스트
+		public List<LikeDto> getLikersList(int designBoardId, String memberId) {
+			return likemapper.getLikersPicked(designBoardId);
 		}
-		likemapper.setLikeCount(designBoardId);
-		likemapper.insertLikers(designBoardId, memberId);
+		
+		// like service
+		// 리뷰 좋아요 수 설정 및 얻기
+		public int likeCount(@RequestParam("designBoardId")int designBoardId, @RequestParam("memberId")int memberId) {
+			// 좋아요 누른 사용자 리스트 조회
+			List<LikeDto> likers = likemapper.getLikersPicked(designBoardId);
 			
-		return likemapper.getLikeCount(designBoardId);
+			for(LikeDto userLikers : likers) {
+				if(userLikers.getMemberId().equals(memberId)) {
+					throw new RuntimeException("이미 좋아요를 눌러줬어요 !");
+				}
+			}
+			likemapper.setLikeCount(designBoardId);
+			likemapper.insertLikers(designBoardId, memberId);
+				
+			return likemapper.getLikeCount(designBoardId);
+		}*/
+
+
+		public int likeSelectById(LikeDto likeDto) {
+			return mapper.likeSelectById(likeDto);
+		}
+	
+
+	public void likeInsert(LikeDto likeDto) {
+		mapper.likeInsert(likeDto);		
+	}
+
+
+	public int likeGetInfo(LikeDto likeDto) {
+		return mapper.likeGetInfo(likeDto);
+	}
+
+
+	public void likeUpdate(LikeDto likeDto) {
+		mapper.likeUpdate(likeDto);
+		
 	}
 	
 		

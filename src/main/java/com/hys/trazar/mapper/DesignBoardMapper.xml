@@ -42,6 +42,7 @@
 		VALUES (#{title}, #{body}, #{price}, #{memberId}, #{categoryName})
 	</insert>
 	
+	<!-- get -->
 	<select id="selectDesignBoardById" resultType="com.hys.trazar.domain.DesignBoardDto">
 		SELECT d.id, 
 			   d.title, 
@@ -51,6 +52,7 @@
 			   d.category,
 			   m.id memberId,
 			   d.clicked
+
 		FROM DesignBoard d JOIN Member m ON d.memberId = m.id
 		WHERE d.id = #{id}
 	</select>
@@ -124,5 +126,43 @@
 		ORDER BY d.clicked DESC
 		LIMIT 4
 	</select>
-
+	
+	<!-- 카운트로 유저의 좋아요에 대한 정보를 얻음 -->
+	<select id="likeSelectById" resultType="Integer" parameterType="com.hys.trazar.domain.LikeDto">
+		SELECT count(l.likeCheck) 
+		FROM Likes l RIGHT JOIN DesignBoard d ON l.designBoardId = d.id
+		WHERE l.designBoardId = #{designBoardId} AND l.memberId = #{memberId}   
+	</select>
+	
+	<!-- 테이블값(멤버/디자인보드 아이디) 넣는 쿼리 -->
+	<insert id="likeInsert" parameterType="com.hys.trazar.domain.DesignBoardDto">		
+		INSERT INTO Likes (memberId, designBoardId)
+		SELECT memberId, id 
+		FROM DesignBoard
+		WHERE memberId = #{memberId} AND id = #{id};
+	</insert>
+	
+	<!-- 좋아요가 없는 경우 카운트를 다시 확인 -->
+	<select id="likeGetInfo" resultType="Integer" parameterType="com.hys.trazar.domain.LikeDto">
+		SELECT likeCheck 
+		FROM Likes 
+		WHERE designBoardId = #{designBoardId} AND memberId = #{memberId} 
+	</select>
+	
+	<!-- 1일때 빈하트로 업뎃 0일때 하트로 업뎃 -->
+	<update id="likeUpdate" parameterType="com.hys.trazar.domain.LikeDto">
+		UPDATE Likes
+		SET <include refid="cal"></include>
+		WHERE designBoardId = #{designBoardId} AND memberId = #{memberId}
+	</update>
+	
+	<sql id="cal">
+		<if test="count == 1">
+			likeCheck = 0
+		</if>
+		
+		<if test="count == 0">
+			likeCheck = likeCheck + 1
+		</if>
+	</sql> 
 </mapper>

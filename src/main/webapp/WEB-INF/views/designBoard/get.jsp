@@ -285,8 +285,67 @@
 				}
 			});
 		});
+		
+		
+		$("#solid").hide()
+		$("#regular").click(function(){
+			$("#regular").hide()
+			$("#solid").show()
+		})
+		$("#solid").click(function(){
+			$("#solid").hide()
+			$("#regular").show()
+		})
+
+		
+		
 	});
 
+	</script>
+	
+	<script type="text/javascript">
+	
+	$('#likebtn').click(function(){
+		likeUpdate();
+	});
+	
+	function likeupdate(){
+		var root = getContextPath(),
+		likeurl = "${appRoot}/designBoard/likeUpdate",
+		memberId = $('#memberId').val(),
+		designBoardId = $('#designBoardId').val(),
+		count = $('#likecheck').val(),
+		data = {"memberId" : memberId,
+				"designBoardId" : designBoardId,
+				"count" : count};
+		
+	$.ajax({
+		url : root + likeurl,
+		type : 'POST',
+		contentType: 'application/json',
+		data : JSON.stringify(data),
+		success : function(result){
+			console.log("수정" + result.result);
+			if(count == 1){
+				console.log("좋아요 취소");
+				 $('#likecheck').val(0);
+				 $('#likebtn').attr('class','btn btn-light');
+			}else if(count == 0){
+				console.log("좋아요!");
+				$('#likecheck').val(1);
+				$('#likebtn').attr('class','btn btn-danger');
+			}
+		}, error : function(result){
+			console.log("에러" + result.result)
+		}
+		
+		});
+	};
+	
+	function getContextPath() {
+	    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+	} 
 	</script>
 
 <title>get jsp</title>
@@ -341,10 +400,24 @@
 								<h2 class="card-title h4">${designBoard.title }</h2>
 								<div class="small text-muted">${designBoard.inserted }</div>
 							</div>
-							<div class="col-sm-3  mt-1">
-								<i class="fa-solid fa-heart"></i>
+							<div class="col-sm-3  mt-1" id="like">
+								<i class="fa-solid fa-heart" id="solid"></i>
+								<i class="fa-regular fa-heart" id="regular"></i>
 								<h6 class="small text-muted">좋아요</h6>
-
+							<!--  -->
+							
+						<c:choose>
+							<c:when test="${likeCheck ==0}">
+								<button type="button" class="btn btn-light" id="likebtn">좋아요</button>
+								<input type="hidden" id="likecheck" value="${likeCheck }">
+							</c:when>					
+							<c:when test="${likeCheck ==1}">
+								<button type="button" class="btn btn-danger" id="likebtn">좋아요</button>
+								<input type="hidden" id="likecheck" value="${likeCheck }">
+							</c:when>
+						</c:choose>					
+				
+							<!--  -->	
 							</div>
 							<div class="col-sm-2 mt-1">
 								<i class="fa-solid fa-eye"></i>

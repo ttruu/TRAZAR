@@ -10,6 +10,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -31,6 +32,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -155,18 +157,50 @@ public class DesignBoardController {
 	}
 
 	@GetMapping("get")
-	public void get(int id, Model model, DesignBoardDto dto2) {
-		
+	public void get(int id, Model model, DesignBoardDto dto2, Principal principal) {
+			
 		DesignBoardDto dto = service.getDesignBoardById(id);
+		
+		/*좋아요 기능 추가*/
+		LikeDto likeDto = new LikeDto();
+		likeDto.setDesignBoardId(dto.getId());
+		likeDto.setMemberId(dto.getMemberId());
+		
+		int likeCheck = 0;
+		
+		service.likeInsert(likeDto);
+		
+		int Check = service.likeSelectById(likeDto);
+		
+		if(Check == 0) {
+			/*service.likeInsert(likeDto);*/
+		} else if (Check == 1) {
+			likeCheck = service.likeGetInfo(likeDto);
+		}
 		
 		service.increamentClicked(dto2);
 
 		// designBoard 내에서 review 목록을 보기 위해 추가
 		List<ReviewDto> reviewList = reviewService.getReviewByDesignBoardId(id);
-
+		
+		model.addAttribute("likeCheck", likeCheck);
 		model.addAttribute("designBoard", dto);
 	}
 	
+	
+	@PostMapping("/likeUpdate")
+	public Map<String, String> likeUpdate(@RequestBody LikeDto likeDto) {
+		Map<String, String> map = new HashMap<String, String>();
+		
+		try {
+			service.likeUpdate(likeDto);
+			map.put("result", "success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("result", "fail");
+		}
+		return map;
+	}
 
 	
 	@GetMapping("modify") 
