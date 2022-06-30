@@ -79,7 +79,7 @@ public class NoticeController {
 		pageInfo.setEnd(end);
 
 		model.addAttribute("noticeList", list);
-	
+		model.addAttribute("pageInfo", pageInfo);
 	}
 
 	@GetMapping("get")
