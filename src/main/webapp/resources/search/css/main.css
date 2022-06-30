@@ -190,7 +190,7 @@ input, select, textarea {
 
 /* Type */
 
-	body, input, select, textarea {
+	body, textarea {
 		color: #a0a0a1;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 15pt;
@@ -212,7 +212,6 @@ input, select, textarea {
 		-webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-		border-bottom: dotted 1px;
 		color: #34a58e;
 		text-decoration: none;
 	}
@@ -363,7 +362,7 @@ input, select, textarea {
 
 /* Button */
 
-	input[type="submit"],
+	/* input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
 	button,
@@ -393,9 +392,9 @@ input, select, textarea {
 		text-decoration: none;
 		text-transform: uppercase;
 		white-space: nowrap;
-	}
+	} */
 
-		input[type="submit"]:hover,
+		/* input[type="submit"]:hover,
 		input[type="reset"]:hover,
 		input[type="button"]:hover,
 		button:hover,
@@ -403,9 +402,9 @@ input, select, textarea {
 			box-shadow: inset 0 0 0 2px #34a58e;
 			color: #34a58e !important;
 		}
-
+ */
 			input[type="submit"]:hover:active,
-			input[type="reset"]:hover:active,
+			/* input[type="reset"]:hover:active,
 			input[type="button"]:hover:active,
 			button:hover:active,
 			.button:hover:active {
@@ -491,11 +490,11 @@ input, select, textarea {
 			pointer-events: none;
 			opacity: 0.35;
 		}
-
+ */
 /* Form */
 
 	form {
-		margin: 0 0 2em 0;
+		margin: 0 0 0 0;
 	}
 
 		form > :last-child {
@@ -574,7 +573,7 @@ input, select, textarea {
 		margin: 0 0 1em 0;
 	}
 
-	input[type="text"],
+	/* input[type="text"],
 	input[type="password"],
 	input[type="email"],
 	input[type="tel"],
@@ -617,7 +616,7 @@ input, select, textarea {
 		select:focus,
 		textarea:focus {
 			box-shadow: inset 0 0 0 2px #34a58e;
-		}
+		} */
 
 	select {
 		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='%2336383c' /%3E%3C/svg%3E");
@@ -1444,7 +1443,7 @@ input, select, textarea {
 /* Header */
 
 	body {
-		padding: 0 0 4em 0;
+		padding: 0 0 0 0;
 	}
 
 	#header {
