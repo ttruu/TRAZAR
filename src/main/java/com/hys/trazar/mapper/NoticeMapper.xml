@@ -42,6 +42,7 @@
   
 	<select id="countNotice" resultType="int">	
 	SELECT Count(id) FROM ManagerBoard n
+	WHERE id = #{id}
 	</select>
   <update id="updateNotice">
   	UPDATE ManagerBoard

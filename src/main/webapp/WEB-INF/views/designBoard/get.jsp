@@ -286,7 +286,6 @@
 			});
 		});
 		
-		
 		$("#solid").hide()
 		$("#regular").click(function(){
 			$("#regular").hide()
@@ -296,9 +295,6 @@
 			$("#solid").hide()
 			$("#regular").show()
 		})
-
-		
-		
 	});
 
 	</script>
