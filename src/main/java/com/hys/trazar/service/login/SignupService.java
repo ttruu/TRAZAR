@@ -154,12 +154,10 @@ public class SignupService {
 	}
 	
 	public boolean passwordUpdate1(SignupDto dto) {
-		
 		/// 암호화
 		String encodedPassword = passwordEncoder.encode(dto.getPassword());
 		// 암호화 된 암호를 다시 세팅
-		dto.setPassword(encodedPassword);
-				
+		dto.setPassword(encodedPassword);	
 		return mapper.passwordUpdate1(dto)==1;
 	}
 	

@@ -51,7 +51,7 @@
 				<form action="${appRoot }/request/insert" method="get" id="insertForm"></form>
             	<ul class="nav nav-tabs">
 					  <li class="nav-item">
-					    <a class="nav-link active" aria-current="page" href="${appRoot }/request/list">전체</a>
+					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list">전체</a>
 					  </li>
 					  <li class="nav-item">
 					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=illust">일러스트</a>
@@ -62,7 +62,7 @@
 					  <li class="nav-item">
 					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=interior">인테리어</a>
 					  </li>
-					  <li class="nav-item d-flex" style="margin-left:61%">
+					  <li class="nav-item ms-auto">
 						<button form="insertForm" id="requestAdd" class="btn btn-primary" >의뢰 작성</button>
 					  </li>
 					</ul>
