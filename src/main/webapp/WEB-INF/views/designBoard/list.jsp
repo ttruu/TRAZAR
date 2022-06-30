@@ -159,7 +159,8 @@
 							</a>
 
 							<div class="main-project-title">${hot.title }
-								${hot.prettyInserted }</div>
+								<div class="main-project-title">${hot.prettyInserted }</div>
+							</div>
 						</div>
 					</c:forEach>
 				</div>
@@ -200,52 +201,48 @@
 			</ul>
 		</form>
 	</section>
+	
+	<!-- Main -->
 	<div id="page-wrapper">
-
-		<!-- Main -->
 		<section id="main">
 			<div class="container">
-					<div class="col-12">
+				<div class="col-12">
 
-						<!-- Portfolio -->
-						<section>
-							<header class="major">
-							</header>
-							<div class="row">
-								<c:forEach items="${designBoardList }" var="designBoard">
-									<div class="col-3 col-3-medium col-8-small">
-										<section class="box">
-											<c:url value="/designBoard/get" var="getUrl">
-												<c:param name="id" value="${designBoard.id }"></c:param>
-												<c:param name="memberId" value="${designBoard.memberId }"></c:param>
-											</c:url>
-											<a href="${getUrl }" class="image featured">
-												<img src="${designBoard.imgthumbnail }" />
-											</a>
-											<header>
-												<h2>${designBoard.title }</h2>
-											</header>
-											<h3>${designBoard.writerNickName }</h3>
-											<br>
-											<p>${designBoard.prettyInserted }</p>
-										</section>
-									</div>
-								</c:forEach>
-							</div>
-							</section>
-					</div>
+					<!-- Portfolio -->
+					<section>
+						<header class="major"> </header>
+						<div class="row">
+							<c:forEach items="${designBoardList }" var="designBoard">
+								<div class="col-3 col-3-medium col-8-small">
+									<section class="box">
+										<c:url value="/designBoard/get" var="getUrl">
+											<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+										</c:url>
+										<a href="${getUrl }" class="image featured">
+											<img src="${designBoard.imgthumbnail }" />
+										</a>
+
+										<div class="design-name">${designBoard.title }
+											<div class="main-project-title">${designBoard.writerNickName }
+												<div class="main-project-title">${designBoard.prettyInserted }
+												</div>
+											</div>
+										</div>
+									</section>
+								</div>
+							</c:forEach>
+						</div>
+					</section>
 				</div>
 			</div>
 		</section>
 	</div>
 
-	<!-- 메인 -->
 
-
-	<!-- 하단 -->
 	<section>
 		<my:footer2 />
 	</section>
+
 	<!-- Scripts -->
 	<script src="${appRoot }/resources/main/js/jquery.min.js"></script>
 	<script src="${appRoot }/resources/main/js/jquery.dropotron.min.js"></script>
