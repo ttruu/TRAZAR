@@ -1688,10 +1688,12 @@ input, select, textarea {
 		outline: 0;
 	}
 
-		.image img {
-			display: block;
-			width: 100%;
-		}
+	.image img {
+		width: 270px;
+		height: 270px;
+		border: 1px solid #E1F6FA;
+		border-radius: 30px;
+	}
 
 		.image.centered {
 			display: block;

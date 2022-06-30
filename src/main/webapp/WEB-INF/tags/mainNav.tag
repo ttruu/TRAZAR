@@ -51,7 +51,7 @@
 	</c:url>
 </sec:authorize>
 <style>
-header{
+#nav-header{
 background-color: #303134;
 }
 #front-nav-font{
@@ -60,7 +60,7 @@ color: #FFFFFF;
 }
 </style>
 
-<header class="mb-3 border-bottom fixed"style="grid-template-columns: 1fr 2fr;">
+<header id="nav-header" class="mb-3 border-bottom fixed"style="grid-template-columns: 1fr 2fr;">
     <div class="container-fluid d-grid gap-3 align-items-center">
       <div class="d-flex flex-wrap align-items-center justify-content-start">
        
