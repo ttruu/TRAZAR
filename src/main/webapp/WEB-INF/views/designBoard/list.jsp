@@ -132,13 +132,13 @@
 		<div class="totalLayout row justify-content-center"
 			style="padding-top: 3%;">
 			<div class="totalLayout-title col-8">
-				<h3 class="list-titles">hot creator🔥</h3>
+				<h3 class="list-titles ">hot creator🔥</h3>
 
 				<c:if test="${not empty message }">
 					<div class="alert alert-primary">${message }</div>
 				</c:if>
 
-				<div class="main-lists d-flex justify-content-center">
+				<div class="main-lists ">
 					<c:forEach items="${hotList }" var="hot">
 						<div class="project-list-mini">
 							<c:url value="/designBoard/get" var="getUrl">
@@ -165,12 +165,12 @@
 				</div>
 			</div>
 			<!-- 광고 -->
-			<div class="col-3 d-flex justify-content-center">
+		<!-- 	<div class="col-3 d-flex justify-content-center">
 				<div style="width: 110%; cursor: pointer;"
 					onclick="location.href='https://notefolioacademy.com/products/7';">
 					<img src="../resources/picture/ad/펜2.PNG" class="card-img-top">
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</section>
 
