@@ -22,7 +22,7 @@
 
 <c:if test="${param.msg != null }">
 	<script>
-		alert("아이디와 답변을 확인 해주세요.")
+		alert("이름과 이메일, 휴대폰번호를 확인 해 주세요.")
 	</script>
 </c:if>
 

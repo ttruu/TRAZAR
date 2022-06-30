@@ -209,9 +209,11 @@
 
 						<!-- Portfolio -->
 						<section>
+							<header class="major">
+							</header>
 							<div class="row">
 								<c:forEach items="${designBoardList }" var="designBoard">
-									<div class="col-4 col-6-medium col-12-small">
+									<div class="col-3 col-3-medium col-8-small">
 										<section class="box">
 											<c:url value="/designBoard/get" var="getUrl">
 												<c:param name="id" value="${designBoard.id }"></c:param>
@@ -226,19 +228,11 @@
 											<h3>${designBoard.writerNickName }</h3>
 											<br>
 											<p>${designBoard.prettyInserted }</p>
-
-											<footer>
-												<ul class="actions">
-													<li>
-														<a href="${getUrl }" class="button alt">자세히</a>
-													</li>
-												</ul>
-											</footer>
-
 										</section>
 									</div>
 								</c:forEach>
 							</div>
+							</section>
 					</div>
 				</div>
 			</div>
