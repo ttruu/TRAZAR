@@ -67,7 +67,7 @@
 .main-lists {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 4%;
+	gap: 0.5%;
 	padding-top: 1.5%;
 }
 
@@ -126,7 +126,7 @@
 
 	<!-- hot creator -->
 	<section>
-		<div class="totalLayout row justify-content-center" style="padding-top:3%;">
+		<div class="totalLayout row justify-content-center" style="padding-top:3%; ">
 			<div class="totalLayout-title col-8">
 				<h3 class="list-titles">hot creator🔥</h3>
 
