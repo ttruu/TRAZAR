@@ -51,7 +51,7 @@
 						      		<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
 						      	</select>
 						      	<input type="search" class="form-control" name="keyword"/>
-						      	<button class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass"></i></button>
+						      	<button class="btn btn-outline-dark"><i class="fa-solid fa-magnifying-glass"></i></button>
 					      	</div>
 				        </form>
                     </div>
@@ -81,7 +81,7 @@
 					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=interior">인테리어</a>
 					  </li>
 					  <li class="nav-item ms-auto" >
-						<button form="insertForm" id="requestAdd" class="btn btn-primary" >의뢰 작성</button>
+						<button form="insertForm" id="requestAdd" class="btn btn-outline-dark" >의뢰 작성</button>
 					  </li>
 					</ul>
 					
