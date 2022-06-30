@@ -285,6 +285,16 @@
 				}
 			});
 		});
+		
+		$("#solid").hide()
+		$("#regular").click(function(){
+			$("#regular").hide()
+			$("#solid").show()
+		})
+		$("#solid").click(function(){
+			$("#solid").hide()
+			$("#regular").show()
+		})
 	});
 
 	</script>

@@ -35,27 +35,8 @@
 <title>Insert title here</title>
 </head>
 <body class="is-preload">
-	<my:navBar />
-	<c:url value="/designBoard/search" var="searchUrl"></c:url>
-	<form action="${searchUrl }" class="center">
-		<div class="input-group ">
-			<!-- select.form-select>option*3 -->
-			<select name="type" id="" class="form-select"
-				style="flex: 0 0 100px;">
-				<option value="bodyTitle"
-					${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>제목+본문</option>
-				<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
-				<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
-				<option value="writerNickName"
-					${param.type == 'writerNickName' ? 'selected' : ''}>작성자</option>
-			</select>
-
-			<input type="search" class="form-control" name="keyword" />
-			<button class="btn btn-outline-success">
-				<i class="fa-solid fa-magnifying-glass"></i>
-			</button>
-		</div>
-	</form>
+	<my:mainNav />
+	
 	<div id="wrapper">
 		<div id="main">
 	
@@ -81,6 +62,7 @@
 	<script src="${appRoot }/resources/search/js/browser.min.js"></script>
 	<script src="${appRoot }/resources/search/js/breakpoints.min.js"></script>
 	<script src="${appRoot }/resources/search/js/main.js"></script>
+	
 <my:footer2/>
 
 </body>
