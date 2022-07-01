@@ -42,6 +42,7 @@
 		VALUES (#{title}, #{body}, #{price}, #{memberId}, #{categoryName})
 	</insert>
 	
+	<!-- get -->
 	<select id="selectDesignBoardById" resultType="com.hys.trazar.domain.DesignBoardDto">
 		SELECT d.id, 
 			   d.title, 
@@ -50,7 +51,12 @@
 			   d.inserted,
 			   d.category,
 			   m.id memberId,
-			   d.clicked
+			   d.clicked,
+			   (SELECT COUNT(likeCheck) 
+				FROM Likes
+				WHERE designBoardId = #{designBoardId} and likeCheck = 1)
+				AS likeCount
+
 		FROM DesignBoard d JOIN Member m ON d.memberId = m.id
 		WHERE d.id = #{id}
 	</select>
@@ -124,5 +130,53 @@
 		ORDER BY d.clicked DESC
 		LIMIT 4
 	</select>
-
+	
+	<!-- 카운트로 유저의 좋아요에 대한 정보를 얻음 -->
+	<select id="likeSelectById" resultType="Integer" parameterType="com.hys.trazar.domain.LikeDto">
+		SELECT count(likeCheck) 
+		FROM Likes 
+		WHERE designBoardId = #{designBoardId} AND memberId = #{memberId}   
+	</select>
+	
+	<!-- 테이블값(멤버/디자인보드 아이디) 넣는 쿼리 -->
+	<insert id="likeInsert" parameterType="com.hys.trazar.domain.LikeDto">		
+		INSERT INTO Likes (memberId, designBoardId)
+		VALUES (#{memberId}, #{designBoardId})
+	</insert>
+	
+	<!-- 좋아요가 없는 경우 카운트를 다시 확인 -->
+	<select id="likeGetInfo" resultType="Integer" parameterType="com.hys.trazar.domain.LikeDto">
+		SELECT likeCheck 
+		FROM Likes 
+		WHERE designBoardId = #{designBoardId} AND memberId = #{memberId} 
+	</select>
+	
+	<!-- 1일때 빈하트로 업뎃 0일때 하트로 업뎃 -->
+	<update id="likeUpdate" parameterType="com.hys.trazar.domain.LikeDto">
+		UPDATE Likes
+		SET <include refid="cal"></include>
+		WHERE designBoardId = #{designBoardId} AND memberId = #{memberId}
+		
+		<selectKey keyProperty="id" order="AFTER" resultType="Integer">
+			select count(likeCheck) from Likes where designBoardId =#{designBoardId} and likeCheck = 1
+		</selectKey>
+		
+		
+	</update>
+	
+	<sql id="cal">
+		<if test="count == 1">
+			likeCheck = 0
+		</if>
+		
+		<if test="count == 0">
+			likeCheck = likeCheck + 1
+		</if>
+	</sql>
+	
+	<!-- <select id="updateLikeCount" resultType="Integer" parameterType="com.hys.trazar.domain.LikeDto">
+		SELECT COUNT(likeCheck) likeCount
+		FROM Likes
+		WHERE designBoardId = #{designBoardId} and likeCheck = 1;
+	</select> -->
 </mapper>
