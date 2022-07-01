@@ -117,7 +117,6 @@ public class SignupService {
 		for (DesignBoardDto board : boardList) {
 			reviewMapper.deleteByDesignBoardId(board.getId());
 		}
-		
 		// 댓글 삭제
 		reviewMapper.deleteByMemberId(dto.getId());
 		// 멤버가 쓴 게시글 삭제 
