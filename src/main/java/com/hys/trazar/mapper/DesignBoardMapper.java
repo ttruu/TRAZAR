@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.hys.trazar.domain.DesignBoardDto;
+import com.hys.trazar.domain.LikeDto;
 
 public interface DesignBoardMapper {
 
@@ -31,5 +32,13 @@ public interface DesignBoardMapper {
 	List<DesignBoardDto> selectDesignBoardCategory(String categoryName);
 
 	List<DesignBoardDto> hotList();
+
+	int likeSelectById(LikeDto likeDto);
+
+	void likeInsert(LikeDto likeDto);
+
+	int likeGetInfo(LikeDto likeDto);
+
+	int likeUpdate(LikeDto likeDto);
 
 }

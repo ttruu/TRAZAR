@@ -25,6 +25,7 @@ public class DesignBoardDto {
 	private String imgthumbnail;
 	private String categoryName;
 	private int category;
+	private int likeCount;
 	
 	public String getPrettyInserted() {
 		// 24시간 이내면 시간만

@@ -39,7 +39,7 @@
 <script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>
 <title>Insert title here</title>
 </head>
-<body class="pt-5">
+<body>
 
 	<my:navBar />
 
@@ -120,12 +120,6 @@
 								cols="30" rows="10"></textarea>
 						</div>
 					</div>
-					<select name="categoryName" id="cate">
-						<option value="illust">일러스트레이션</option>
-						<option value="web">웹 디자인</option>
-						<option value="interior">인테리어</option>
-
-					</select>
 				</div>
 				<!-- Side widgets-->
 				<div class="col-lg-3">
@@ -141,7 +135,7 @@
 					
 					<div class="card shadow mb-4">
 						<div class="card-header py-2">
-							<select name="categoryName" id="cate">
+							<select class="form-select small text-muted" aria-label="Default select example" name="categoryName">
 								<option value="illust">일러스트레이션</option>
 								<option value="web">웹 디자인</option>
 								<option value="interior">인테리어</option>
@@ -151,12 +145,18 @@
 
 					<div class="my-4">
 						<button type="button"
-							class="btn btn-secondary btn-icon-split btn-block" onclick="goWrite(this.form)">업로드</button>
+							class="btn btn-secondary btn-icon-split btn-block" onclick="goWrite(this.form)">업로드
+						</button>
 					</div>
 
 				</div>
 			</div>
 		</div>
 	</form>
+	
+	  <!-- 하단 -->
+   <section>
+      <my:footer2 />
+   </section>
 </body>
 </html>
