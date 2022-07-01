@@ -259,25 +259,25 @@
 	<!-- 카테고리 -->
 	<section class="list-titles2" style="padding-top: 100px;">
 		<form action="${appRoot}/designBoard/list" method="get">
-			<ul class="nav row justify-content-center">
+			<ul class="nav row justify-content-center mx-auto" style="font-size: 0.9vmax;">
 				<!-- <li class="nav-item col-1 col-md-1" >
                <a class="nav-link active">작품</a>
             </li> -->
-				<li class="nav-item col-1">
+				<li class="nav-item col-auto">
 					<a style="color: black;" class="nav-link active"
 						aria-current="page" href="${appRoot }/designBoard/list">전체</a>
 				</li>
-				<li class="nav-item col-1">
+				<li class="nav-item col-auto">
 					<a style="color: black;" class="nav-link active"
 						aria-current="page"
 						href="${appRoot }/designBoard/list?categoryName=illust">일러스트</a>
 				</li>
-				<li class="nav-item col-1">
+				<li class="nav-item col-auto">
 					<a style="color: black;" class="nav-link active"
 						aria-current="page"
 						href="${appRoot }/designBoard/list?categoryName=web">웹디자인</a>
 				</li>
-				<li class="nav-item col-1">
+				<li class="nav-item col-auto">
 					<a style="color: black;" class="nav-link active"
 						aria-current="page"
 						href="${appRoot }/designBoard/list?categoryName=interior">인테리어</a>
