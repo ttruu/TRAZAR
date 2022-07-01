@@ -346,7 +346,7 @@
 
 
 	<!-- Page Content -->
-
+	<section style="margin-bottom: 50%;">
 	<div class="container" style="padding-top: 4%;">
 		<div class="row">
 			<div class="col-lg-10">
@@ -468,9 +468,11 @@
 			</div>
 		</div>
 	</div>
-	<!-- 하단 -->
-	<section>
-		<my:footer2 />
 	</section>
+	
+	<!-- 하단 -->
+	
+		<my:footer2 />
+	
 </body>
 </html>
