@@ -41,7 +41,7 @@
         <!-- Navigation-->
         <my:navBar/>
         <!-- Header-->
-        <header class="bg-white py-5">
+        <header class="bg-white ">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-black">
                     <h1 class="display-4 fw-bolder">Commission</h1>

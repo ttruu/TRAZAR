@@ -64,11 +64,11 @@
 </script>
 
 <style>
-.sticky-bottom {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-}
+	.card-img-top img{
+		max-width : 100%;
+		width : auto !important;
+		heigth : auto !important;
+	}
 </style>
 
 <head>
@@ -121,8 +121,8 @@
                         <!-- Preview image figure-->
                         <!-- <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
                         <!-- Post content-->
-                        <section class="mb-5">
-                            <p class="fs-5 mb-4" style="text-align: center;">${request.body }</p>
+                        <section class="mb-5" style="text-align: center;">
+                            <div class="card-img-top">${request.body }</div>
                         </section>
                         		</div>
                         	</div>

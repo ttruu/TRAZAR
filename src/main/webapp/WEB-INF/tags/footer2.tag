@@ -4,7 +4,6 @@
 	uri="http://www.springframework.org/security/tags"%>
 <style>
 	#sticky-footer{
-		position: fixed;
 		bottom: 0;
 		width: 100%;
 	}
