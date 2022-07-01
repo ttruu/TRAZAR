@@ -209,19 +209,16 @@
 						const reviewId = $(this).attr("data-review-id");
 						const displayDivId = "#reviewDisplayContainer" + reviewId;
 						const editFormId = "#reviewEditFormContainer" + reviewId;
-
 						$(displayDivId).addClass("d-none");
 						$(displayDivId).removeClass("d-flex");
 						$(editFormId).show();
 					});
-
 					
 					// 삭제 버튼 클릭 이벤트 메소드 등록
 					// review-delete-button 클릭시
 					$(".review-delete-button").click(function() {
 						const reviewId = $(this).attr("data-review-id");
 						const message = "댓글을 삭제하시겠습니까?";
-
 						if (confirm(message)) {
 							// $("#replyDeleteInput1").val(replyId);
 							// $("#replyDeleteForm1").submit();
@@ -302,49 +299,48 @@
 			$("#regular").show()
 		}) */
 	});
-
 	</script>
 	
-	<script type="text/javascript">
-$(document).ready(function() {
-	$('#likebtn').click(function(){
-		likeUpdate();
-	});
-	
-	function likeUpdate(){
-		likeurl = "${appRoot}/designBoard/likeUpdate",
-		memberId = $('#memberId').val(),
-		designBoardId = $('#designBoardId').val(),
-		count = $('#likecheck').val(),
-		data = {"memberId" : memberId,
-				"designBoardId" : designBoardId,
-				"count" : count};
-		
-	$.ajax({
-		url : likeurl,
-		type : 'post',
-		contentType: 'application/json',
-		data : JSON.stringify(data),
-		success : function(result){
-			console.log("수정" + result.result);
-			if(count == 1){
-				console.log("좋아요 취소");
-				 $('#likecheck').val(0);
-				 $('#likebtn').attr('class','fa-regular fa-heart');
-				 $("#likeCount").html(result.count);
-			}else if(count == 0){
-				console.log("좋아요!");
-				$('#likecheck').val(1);
-				$('#likebtn').attr('class','fa-solid fa-heart');
-				$("#likeCount").html(result.count);
-			}
-		}, error : function(result){
-			console.log("에러" + result.result)
-		}
-		
+	<script>
+	$(document).ready(function() {
+		$('#likebtn').click(function(){
+			likeUpdate();
 		});
-	};
-});	
+		
+		function likeUpdate(){
+			likeurl = "${appRoot}/designBoard/likeUpdate",
+			memberId = $('#memberId').val(),
+			designBoardId = $('#designBoardId').val(),
+			count = $('#likecheck').val(),
+			data = {"memberId" : memberId,
+					"designBoardId" : designBoardId,
+					"count" : count};
+			
+		$.ajax({
+			url : likeurl,
+			type : 'post',
+			contentType: 'application/json',
+			data : JSON.stringify(data),
+			success : function(result){
+				console.log("수정" + result.result);
+				if(count == 1){
+					console.log("좋아요 취소");
+					 $('#likecheck').val(0);
+					 $('#likebtn').attr('class','fa-regular fa-heart');
+					 $("#likeCount").html(result.count);
+				}else if(count == 0){
+					console.log("좋아요!");
+					$('#likecheck').val(1);
+					$('#likebtn').attr('class','fa-solid fa-heart');
+					$("#likeCount").html(result.count);
+				}
+			}, error : function(result){
+				console.log("에러" + result.result)
+			}
+			
+			});
+		};
+	});
 	</script>
 
 <title>get jsp</title>
@@ -428,12 +424,9 @@ $(document).ready(function() {
 								<h6 class="small text-muted">조회수 ${designBoard.clicked }</h6>
 							</div>
 						</div>
-
 						<div class="mt-5 mb-3" style="text-align: center;">
 							<div class="card-img-top">${designBoard.body }</div>
-
 						</div>
-
 						<div class="card-body">
 						<h4 class="small text-muted">댓글</h4>
 						<form class="mt-3" id="insertReviewForm1">
@@ -453,7 +446,6 @@ $(document).ready(function() {
 							id="reviewMessage1"></div>
 						<%-- 댓글 목록 --%>
 						<ul id="reviewList1" class="list-group" />
-
 						<div class="d-none">
 							<form id="reviewDeleteForm1" action="${appRoot }/review/delete"
 								method="post">
@@ -462,12 +454,9 @@ $(document).ready(function() {
 									value="${designBoard.id }" />
 							</form>
 						</div>
-
 					</div>
 				</div>
 			</div>
-
-
 			<div class="col-lg-2">
 				<div class="card shadow mb-4">
 					<div class="card-header py-2">
@@ -475,9 +464,6 @@ $(document).ready(function() {
 					</div>
 					<div class="card-body py-2">${designBoard.memberId }</div>
 				</div>
-
-
-
 				<div class="card shadow mb-4">
 					<div class="card-header py-2">
 						<h6 class="m-0 font-weight-bold" style="color: black; font-size: 15px;">가격</h6>
@@ -487,18 +473,9 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
-
-
 	<!-- 하단 -->
 	<section>
 		<my:footer2 />
 	</section>
-
-
 </body>
 </html>
-
-
-
-
-
