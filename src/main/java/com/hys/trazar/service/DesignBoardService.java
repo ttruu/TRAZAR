@@ -1,28 +1,16 @@
 package com.hys.trazar.service;
 
-import java.io.IOException;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.LikeDto;
 import com.hys.trazar.mapper.DesignBoardMapper;
 import com.hys.trazar.mapper.LikeMapper;
-
-import software.amazon.awssdk.core.sync.RequestBody;
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
-import software.amazon.awssdk.services.s3.model.PutObjectRequest;
+import com.hys.trazar.mapper.ReviewMapper;
 
 @Service
 public class DesignBoardService {
@@ -32,6 +20,9 @@ public class DesignBoardService {
 
 	@Autowired
 	private LikeMapper likemapper;
+	
+	@Autowired
+	private ReviewMapper reviewMapper;
 	
 	// get service
 	public DesignBoardDto getDesignBoardById(int id) {
@@ -69,7 +60,10 @@ public class DesignBoardService {
 	}
 
 	// remove service
+	@Transactional
 	public boolean deleteDesignBoard(int id) {
+		likemapper.deleteLikeByDesignBoardId(id);
+		reviewMapper. deleteByDesignBoardId(id);
 		return mapper.deleteDesignBoard(id) == 1;
 	}
 	

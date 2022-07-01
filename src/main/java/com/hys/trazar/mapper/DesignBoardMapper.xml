@@ -179,4 +179,12 @@
 		FROM Likes
 		WHERE designBoardId = #{designBoardId} and likeCheck = 1;
 	</select> -->
+	<delete id="deleteByDesignBoardId">
+	DELETE FROM Likes
+	WHERE designBoardId = #{designBoardId}
+	</delete>
+	<delete id="deleteListByMemberId">
+	DELETE FROM Likes
+	WHERE memberId = #{memberId}
+	</delete>
 </mapper>

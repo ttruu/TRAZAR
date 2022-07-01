@@ -13,16 +13,21 @@ public interface DesignBoardMapper {
 
 	int insertDesignBoard(DesignBoardDto designBoard);
 
-	List<DesignBoardDto> selectDesignBoardAll(@Param("type") String type, @Param("keyword") String keyword);//검색용 맴퍼 값 타입 키워드 추가
-	
+	List<DesignBoardDto> selectDesignBoardAll(@Param("type") String type, @Param("keyword") String keyword);// 검색용 맴퍼 값
+																											// 타입 키워드 추가
+
 	List<DesignBoardDto> selectDesignBoardAll();
-	
+
 	int updateDesignBoard(DesignBoardDto dto);
 
 	int deleteDesignBoard(int id);
 
+	void deleteByDesignBoardId(int boardId);
+
+	void deleteListByMemberId(String memberId);
+
 	void deleteByMemberId(String memberId);
-	
+
 	void insertFile(@Param("designBoardId") int designBoardId, @Param("fileName") String fileName);
 
 	List<DesignBoardDto> listByMemberId(String id);

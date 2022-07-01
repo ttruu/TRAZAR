@@ -38,7 +38,10 @@
 	integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+ <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="${appRoot }/resources/css/requestGet/scripts.js"></script>
 <script>
 	$(document).ready(function() {
 
@@ -59,6 +62,14 @@
 
 	});
 </script>
+
+<style>
+	.card-img-top img{
+		max-width : 100%;
+		width : auto !important;
+		heigth : auto !important;
+	}
+</style>
 
 <head>
         <meta charset="utf-8" />
@@ -81,6 +92,9 @@
                     <!-- Post content-->
                     <article>
                         <!-- Post header-->
+                        <div class="card shadow mb-4">
+							<div class="card-body">
+								<div class="form-group row" style="text-align: center;">
                         <header class="mb-4">
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">${request.title }</h1>
@@ -107,9 +121,12 @@
                         <!-- Preview image figure-->
                         <!-- <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
                         <!-- Post content-->
-                        <section class="mb-5">
-                            <p class="fs-5 mb-4">${request.body }</p>
+                        <section class="mb-5" style="text-align: center;">
+                            <div class="card-img-top">${request.body }</div>
                         </section>
+                        		</div>
+                        	</div>
+                        </div>
                     </article>
                 </div>
                 <!-- Side widgets-->
@@ -138,90 +155,9 @@
             </div>
         </div>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="${appRoot }/resources/css/requestGet/scripts.js"></script>
+	        <my:footer2/>
+       
     </body>
 
 
-<%-- <title>Insert title here</title>
-</head>
-<body>
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<h1>
-					글 본문
-					<sec:authorize access="isAuthenticated()">
-						<sec:authentication property="principal" var="principal" />
-						<c:if test="${principal.username == request.memberId }">
-							<button id="edit-button1" class="btn btn-secondary">
-								<i class="fa-solid fa-pen-to-square"></i>
-							</button>
-						</c:if>
-					</sec:authorize>
-				</h1>
-				<form id="form" action="${appRoot }/request/modify" method="post">
-					<input type="hidden" name="id" value="${request.id }" />
-					<div>
-						<label class="form-label" for="input1">제목</label>
-						<input class="form-control mb-3" type="text" name="title" required
-							id="input1" value="${request.title }" readonly />
-					</div>
-
-					<select id="select1" class="form-select d-none"
-						aria-label="Default select example" name="state">
-						<option selected>상태 선택하기</option>
-						<option value="대기중">대기중</option>
-						<option value="진행중">진행중</option>
-						<option value="완료">완료</option>
-					</select>
-
-					<div>
-						<label class="form-label" for="textarea1">본문</label>
-						<div id="view">${request.body }</div>
-						<textarea class="form-control d-none" name="body" id="summernote">${request.body }</textarea>
-					</div>
-
-					<div>
-						<label for="input3" class="form-label">작성자</label>
-						<input id="input3" class="form-control mb-3" type="text"
-							value="${request.memberId }" readonly />
-					</div>
-
-					<div>
-						<label class="form-label" for="input4">예산</label>
-						<input class="form-control mb-3" type="text" name="price" required
-							id="input4" value="${request.price }" readonly />
-					</div>
-
-					<div>
-						<label for="input2" class="form-label">작성일시</label>
-						<input class="form-control mb-3" type="datetime-local"
-							value="${request.inserted }" readonly />
-					</div>
-
-					<div>
-						<label class="form-label" for="input5">연락처</label>
-						<input class="form-control mb-3" type="text" name="phoneNum"
-							id="input5" value="${request.phoneNum }" readonly />
-					</div>
-
-					<div>
-						<label class="form-label" for="input6">기간</label>
-						<input class="form-control mb-3" type="text" name="term"
-							id="input6" value="${request.term }" readonly />
-					</div>
-
-					<button id="modify-submit1" class="btn btn-outline-primary d-none">수정</button>
-					<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
-				</form>
-			</div>
-		</div>
-	</div>
-</body> --%>
 </html>

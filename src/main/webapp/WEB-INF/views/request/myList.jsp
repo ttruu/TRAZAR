@@ -96,6 +96,9 @@ table.type09 td {
 						</c:forEach>
 					</tbody>
 				</table>
+				<div class="mt-3">
+					<my:myPagination path="myList" />
+				</div>
 			</div>
 			<div class="col" style="height: 30%">
 				<div class="card"
@@ -115,47 +118,4 @@ table.type09 td {
 	</div>
 </body>
 
-
-
-
-<%-- <body>
-	<my:navBar/>
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<h1>나의 의뢰 목록</h1>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>제목</th>
-							<th>의뢰 날짜</th>
-							<th>의뢰 상태</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${requestMyList }" var="my" varStatus="status">
-							<input type="hidden" name="memberId" value="${my.memberId }" />
-							<tr>
-								<td>
-													
-									<c:url value="/request/get" var="getUrl">
-										<c:param name="id" value="${my.id }"></c:param>
-										<c:param name="memberId" value="${my.memberId }"></c:param>
-									</c:url>
-									
-									<a href="${getUrl }">
-										<c:out value="${my.title }" />
-									</a>
-									
-								</td>
-								<td>${my.inserted }</td>
-								<td>${my.state }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</body> --%>
 </html>

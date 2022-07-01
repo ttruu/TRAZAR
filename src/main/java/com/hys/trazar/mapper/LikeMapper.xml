@@ -5,34 +5,9 @@
   
 <mapper namespace="com.hys.trazar.mapper.LikeMapper">
 
-<!-- 좋아요 수 설정 -->
- <update id="setLikeCount">
- 	UPDATE DesignBoard
- 	SET
- 		lickCount = likeCount + 1
- 	WHERE
- 		id = #{id}
- </update>
- 
-<!-- 좋아요 수 얻어오기 --> 
- <select id="getLikeCount" resultType="int">
- 	SELECT likeCount FROM DesignBoard 
- 	WHERE 
- 		id = #{Likes.designBoardId}
- </select>
- 
- <!-- 좋아요 사용자 목록 -->
- <insert id="insertLikers" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
- 	INSERT INTO Likes (designBoardId, memberId)
- 	VALUES (#{designBoardId}, #{memberId})
- </insert> 
- 
- <!-- 사용자 좋아요 게시물 -->
- <select id="getLikersPicked" resultType="com.hys.trazar.domain.LikeDto">
-	SELECT DISTINCT l.memberId 
-	FROM Likes l JOIN DesignBoard d	ON l.designBoardId = d.id
-	WHERE l.designBoardId = #{designBoardId}
-	
- </select>
+<delete id="deleteLikeByDesignBoardId">
+	DELETE FROM Likes
+	WHERE designBoardId = #{designBoardId} 
+</delete>
  	
 </mapper>
