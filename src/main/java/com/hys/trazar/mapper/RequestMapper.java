@@ -13,8 +13,8 @@ public interface RequestMapper {
 	
 	int addRequest(RequestDto dto);
 
-	List<RequestDto> listRequest();
-
+	List<RequestDto> listRequest(@Param("type") String type, @Param("keyword") String keyword);
+	
 	RequestDto getRequestById(int id);
 
 	int updateRequest(RequestDto dto);
@@ -23,8 +23,10 @@ public interface RequestMapper {
 	
 	void deleteByMemberId(String memberId);
 
-	List<RequestDto> myListRequest(String memberId);
-
 	List<RequestDto> listRequestByCategory(String categoryName);
+
+	List<RequestDto> myListRequest(@Param("memberId") String memberId, @Param("from") int from, @Param("row") int row);
+
+	int countMyList(String memberId);
 
 }

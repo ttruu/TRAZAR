@@ -72,7 +72,7 @@
 			$("#delete-submit1").removeClass("d-none");
 		}); */
 		
-	 	$("#delete-submit1").click(function(e) {
+	 	/* $("#delete-submit1").click(function(e) {
 			e.preventDefault();
 			
 			if (confirm("삭제하시겠습니까?")) {
@@ -82,7 +82,7 @@
 				form1.submit();
 			}
 			
-		});
+		}); */
 		
 	// 댓글 목록 (review list) 가져오는 ajax
 		const listReview = function() {
@@ -289,20 +289,8 @@
 			});
 		});
 		
-	/* 	$("#solid").hide()
-		$("#regular").click(function(){
-			$("#regular").hide()
-			$("#solid").show()
-		})
-		$("#solid").click(function(){
-			$("#solid").hide()
-			$("#regular").show()
-		}) */
-	});
-	</script>
-	
-	<script>
-	$(document).ready(function() {
+
+
 		$('#likebtn').click(function(){
 			likeUpdate();
 		});
@@ -398,6 +386,9 @@
 							</div>
 							<div class="col-sm-3  mt-1" id="like">
 							<!--  -->
+						<sec:authorize access="isAuthenticated()">
+									<sec:authentication property="principal" var="principal" />
+									<c:if test="${principal.username != null }">
 						<c:choose>
 							<c:when test="${likeCheck ==0}">
 								<i class="fa-regular fa-heart" id="likebtn"></i>
@@ -408,10 +399,14 @@
 								<!-- <button type="button" class="btn btn-danger" id="likebtn">좋아요</button> -->
 							</c:when>
 						</c:choose>	
+						</c:if>
+						</sec:authorize>
+						<c:if test="${principal.username == null }">
+						<i class="fa-regular fa-heart" ></i>
+						</c:if>
 					<div class="d-flex justify-content-center">
 						<h5 class="col-lg-3 small text-muted col">좋아요</h5>
 						<h6 id="likeCount" class="col-lg-1 small text-muted col" >${designBoard.likeCount }</h6>
-						
 					</div>
 						
 							

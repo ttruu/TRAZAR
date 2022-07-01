@@ -221,9 +221,17 @@ public class DesignBoardController {
 
 	@PostMapping("remove")
 	public String remove(DesignBoardDto dto, Principal principal, RedirectAttributes rttr) {
+		System.out.println("########################@$@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println(dto);
+		
+		
+		
 		// 게시물 정보 얻고
 		DesignBoardDto oldBoard = service.getDesignBoardById(dto.getId());
-
+		
+		System.out.println(oldBoard);
+		System.out.println(principal.getName());
+		
 		if (oldBoard.getMemberId().equals(principal.getName())) {
 			boolean success = service.deleteDesignBoard(dto.getId());
 
@@ -239,6 +247,7 @@ public class DesignBoardController {
 			return "redirect:/designBoard/get";
 		}
 
+		System.out.println("########################@$@@@@@@@@@@@@@@@@@@@@@");
 		return "redirect:/designBoard/list";
 	}
 

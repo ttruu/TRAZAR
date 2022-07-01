@@ -32,42 +32,64 @@
 		height : 150px;
 		width : 100%;
 	}
+	.navs{
+	  color : black;
+	  font-weight:bold;
+	}
 </style>
 <body>
         <!-- Navigation-->
         <my:navBar/>
         <!-- Header-->
-        <header class="bg-white py-5">
+        <header class="bg-white ">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-black">
                     <h1 class="display-4 fw-bolder">Commission</h1>
-                    <p class="lead fw-normal text-black-50 mb-0">Write your commission here</p>
+                    <p class="lead fw-normal text-black-50 mb-4">Write your commission here</p>
+                    <div class="searchAll" style="display: flex; justify-content: center;">
+	                    <form action="${appRoot }/request/list" class="d-flex">
+					      	<div class="input-group">
+						      	<select name="type" id="" class="form-select" style="flex:0 0 100px;">
+						      		<option value="all" ${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>전체</option>
+						      		<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
+						      		<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
+						      	</select>
+						      	<input type="search" class="form-control" name="keyword"/>
+						      	<button class="btn btn-outline-dark"><i class="fa-solid fa-magnifying-glass"></i></button>
+					      	</div>
+				        </form>
+                    </div>
                 </div>
             </div>
+            
         </header>
         <!-- Section-->
         <section class="py-5">
+        	
             <div class="container px-4 px-lg-5 mt-5">
+            <div class="mt-5">
+                    
+            </div>
 				<form action="${appRoot }/request/insert" method="get" id="insertForm"></form>
-            	<ul class="nav nav-tabs">
+            	<ul class="nav nav-tabs mt-1">
 					  <li class="nav-item">
-					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list">전체</a>
-					  </li>
-					  <li class="nav-item">
-					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=illust">일러스트</a>
+					    <a class="nav-link navs" aria-current="page" href="${appRoot }/request/list">전체</a>
 					  </li>
 					  <li class="nav-item">
-					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=web">웹 디자이너</a>
+					    <a class="nav-link navs" aria-current="page" href="${appRoot }/request/list?categoryName=illust">일러스트</a>
 					  </li>
 					  <li class="nav-item">
-					    <a class="nav-link" aria-current="page" href="${appRoot }/request/list?categoryName=interior">인테리어</a>
+					    <a class="nav-link navs" aria-current="page" href="${appRoot }/request/list?categoryName=web">웹 디자이너</a>
 					  </li>
-					  <li class="nav-item ms-auto">
-						<button form="insertForm" id="requestAdd" class="btn btn-primary" >의뢰 작성</button>
+					  <li class="nav-item">
+					    <a class="nav-link navs" aria-current="page" href="${appRoot }/request/list?categoryName=interior">인테리어</a>
 					  </li>
-					</ul>
+					  <li class="nav-item ms-auto" >
+						<button form="insertForm" id="requestAdd" class="btn btn-outline-dark" >의뢰 작성</button>
+					  </li>
+				</ul>
 					
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center mt-3">
 		        	<c:forEach items="${requestList }" var="req" varStatus="status">
 						<input type="hidden" name="memberId" value="${req.memberId }" />
 							<c:url value="/request/get" var="getUrl">
@@ -98,6 +120,8 @@
             </div>
         </section>
         <!-- Footer-->
-<my:footer2/>
+        <section class="mt-5">
+			<my:footer2/>
+        </section>
 </body>
 </html>
