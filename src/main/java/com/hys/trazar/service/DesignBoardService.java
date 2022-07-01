@@ -36,7 +36,6 @@ public class DesignBoardService {
 	// get service
 	public DesignBoardDto getDesignBoardById(int id) {
 		DesignBoardDto designBoard = mapper.selectDesignBoardById(id);
-
 		return designBoard;
 	}
 
@@ -129,11 +128,16 @@ public class DesignBoardService {
 	}
 
 
-	public void likeUpdate(LikeDto likeDto) {
+	public int likeUpdate(LikeDto likeDto) {
 		mapper.likeUpdate(likeDto);
-		System.out.println("!!!!!");
-		
+		return mapper.selectDesignBoardById(likeDto.getDesignBoardId()).getLikeCount();
 	}
+
+
+//	public int updateLikeCount(LikeDto likeDto) {
+//		mapper.updateLikeCount(likeDto);
+//		return likeDto.getLikeCount();
+//	}
 	
 		
 

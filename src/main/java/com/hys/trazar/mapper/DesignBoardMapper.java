@@ -39,6 +39,6 @@ public interface DesignBoardMapper {
 
 	int likeGetInfo(LikeDto likeDto);
 
-	void likeUpdate(LikeDto likeDto);
+	int likeUpdate(LikeDto likeDto);
 
 }

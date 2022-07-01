@@ -47,6 +47,12 @@
 .list-group-item {
 	border: none;
 }
+.card-img-top img{
+		
+	max-width:100%;
+	width : auto !important;
+	height : auto !important;
+}
 </style>
 
 
@@ -286,7 +292,7 @@
 			});
 		});
 		
-		$("#solid").hide()
+	/* 	$("#solid").hide()
 		$("#regular").click(function(){
 			$("#regular").hide()
 			$("#solid").show()
@@ -294,7 +300,7 @@
 		$("#solid").click(function(){
 			$("#solid").hide()
 			$("#regular").show()
-		})
+		}) */
 	});
 
 	</script>
@@ -316,7 +322,7 @@ $(document).ready(function() {
 		
 	$.ajax({
 		url : likeurl,
-		type : 'put',
+		type : 'post',
 		contentType: 'application/json',
 		data : JSON.stringify(data),
 		success : function(result){
@@ -324,11 +330,13 @@ $(document).ready(function() {
 			if(count == 1){
 				console.log("좋아요 취소");
 				 $('#likecheck').val(0);
-				 $('#likebtn').attr('class','btn btn-light');
+				 $('#likebtn').attr('class','fa-regular fa-heart');
+				 $("#likeCount").html(result.count);
 			}else if(count == 0){
 				console.log("좋아요!");
 				$('#likecheck').val(1);
-				$('#likebtn').attr('class','btn btn-danger');
+				$('#likebtn').attr('class','fa-solid fa-heart');
+				$("#likeCount").html(result.count);
 			}
 		}, error : function(result){
 			console.log("에러" + result.result)
@@ -393,21 +401,26 @@ $(document).ready(function() {
 								<div class="small text-muted">${designBoard.inserted }</div>
 							</div>
 							<div class="col-sm-3  mt-1" id="like">
-								<i class="fa-solid fa-heart" id="solid"></i>
-								<i class="fa-regular fa-heart" id="regular"></i>
-								<h6 class="small text-muted">좋아요</h6>
 							<!--  -->
-							
 						<c:choose>
 							<c:when test="${likeCheck ==0}">
-								<button type="button" class="btn btn-light" id="likebtn">좋아요</button>
+								<i class="fa-regular fa-heart" id="likebtn"></i>
+								<!-- <button type="button" class="btn btn-light" id="likebtn">좋아요</button> -->
 							</c:when>					
 							<c:when test="${likeCheck ==1}">
-								<button type="button" class="btn btn-danger" id="likebtn">좋아요</button>
-								
+								<i class="fa-solid fa-heart" id="likebtn"></i>
+								<!-- <button type="button" class="btn btn-danger" id="likebtn">좋아요</button> -->
 							</c:when>
-						</c:choose>					
-				
+						</c:choose>	
+					<div class="d-flex justify-content-center">
+						<h5 class="col-lg-3 small text-muted col">좋아요</h5>
+						<h6 id="likeCount" class="col-lg-1 small text-muted col" >${designBoard.likeCount }</h6>
+						
+					</div>
+						
+							
+						
+							<input type="hidden" id=likeCon" value="${designBoard.likeCount }" />
 							<!--  -->	
 							</div>
 							<div class="col-sm-2 mt-1">

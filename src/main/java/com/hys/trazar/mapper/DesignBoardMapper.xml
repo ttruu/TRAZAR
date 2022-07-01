@@ -51,7 +51,11 @@
 			   d.inserted,
 			   d.category,
 			   m.id memberId,
-			   d.clicked
+			   d.clicked,
+			   (SELECT COUNT(likeCheck) 
+				FROM Likes
+				WHERE designBoardId = #{designBoardId} and likeCheck = 1)
+				AS likeCount
 
 		FROM DesignBoard d JOIN Member m ON d.memberId = m.id
 		WHERE d.id = #{id}
@@ -153,9 +157,9 @@
 		SET <include refid="cal"></include>
 		WHERE designBoardId = #{designBoardId} AND memberId = #{memberId}
 		
-		<!-- <selectKey keyProperty="id" order="AFTER" resultType="Integer">
+		<selectKey keyProperty="id" order="AFTER" resultType="Integer">
 			select count(likeCheck) from Likes where designBoardId =#{designBoardId} and likeCheck = 1
-		</selectKey> -->
+		</selectKey>
 		
 		
 	</update>
@@ -169,4 +173,10 @@
 			likeCheck = likeCheck + 1
 		</if>
 	</sql>
+	
+	<!-- <select id="updateLikeCount" resultType="Integer" parameterType="com.hys.trazar.domain.LikeDto">
+		SELECT COUNT(likeCheck) likeCount
+		FROM Likes
+		WHERE designBoardId = #{designBoardId} and likeCheck = 1;
+	</select> -->
 </mapper>

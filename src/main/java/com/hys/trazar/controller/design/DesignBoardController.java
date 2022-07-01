@@ -20,7 +20,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -185,13 +184,16 @@ public class DesignBoardController {
 	}
 	
 	@ResponseBody
-	@PutMapping("/likeUpdate")
-	public Map<String, String> likeUpdate(@RequestBody LikeDto likeDto) {
-		Map<String, String> map = new HashMap<String, String>();
+	@PostMapping("/likeUpdate")
+	public Map<String, Object> likeUpdate(@RequestBody LikeDto likeDto, DesignBoardDto dto) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
 		System.out.println("@@@@@@");
 		try {
-			service.likeUpdate(likeDto);
 			map.put("result", "success");
+			
+			int cnt = service.likeUpdate(likeDto);
+			map.put("count", cnt);
 		} catch (Exception e) {
 			e.printStackTrace();
 			map.put("result", "fail");
