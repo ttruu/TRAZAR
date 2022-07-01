@@ -135,6 +135,7 @@
 	bottom: 30px;
 	left: 30px;
 }
+
 </style>
 
 <title>Insert title here</title>
@@ -193,10 +194,11 @@
 									<img src="${hot.imgthumbnail }" />
 								</a>
 								<header>
-									<h5>${hot.title }</h5>
+									<p>${hot.title }</p>
+									<p style="color: grey; font-size: medium">${hot.writerNickName }</p>
+									<p style="color: grey; font-size: medium">${hot.prettyInserted }</p>
 								</header>
-								<p>${hot.writerNickName }</p>
-								<p>${hot.prettyInserted }</p>
+
 							</section>
 						</div>
 					</c:forEach>
@@ -307,10 +309,11 @@
 												<img src="${designBoard.imgthumbnail }" />
 											</a>
 											<header>
-												<h5>${designBoard.title }</h5>
+												<p>${designBoard.title }</p>
+												<p style="color: grey; font-size: medium">${designBoard.writerNickName }</p>
+												<p style="color: grey; font-size: medium">${designBoard.prettyInserted }</p>
 											</header>
-											<p>${designBoard.writerNickName }</p>
-											<p>${designBoard.prettyInserted }</p>
+
 										</section>
 									</div>
 								</c:forEach>
