@@ -72,7 +72,7 @@
 			$("#delete-submit1").removeClass("d-none");
 		}); */
 		
-	 	$("#delete-submit1").click(function(e) {
+	 	/* $("#delete-submit1").click(function(e) {
 			e.preventDefault();
 			
 			if (confirm("삭제하시겠습니까?")) {
@@ -82,7 +82,7 @@
 				form1.submit();
 			}
 			
-		});
+		}); */
 		
 	// 댓글 목록 (review list) 가져오는 ajax
 		const listReview = function() {
