@@ -22,8 +22,8 @@ section, summary, time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;}
+	/* font: inherit; */
+	}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -95,7 +95,7 @@ input, select, textarea {
 		}
 
 	body, input, textarea, select {
-		font-family: 'Source Sans Pro';
+		/* font-family: 'Source Sans Pro'; */
 		font-weight: 300;
 		color: black;
 		font-size: 14pt;
@@ -131,7 +131,13 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #252122;
-		font-weight: 700;
+		font-weight: 600;
+	}
+	
+	p{
+		
+		color: #252122;
+		font-weight: 600;
 	}
 
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -144,7 +150,7 @@ input, select, textarea {
 	}
 
 	h3 {
-		font-size: 1.35em;
+		text-align : center;
 	}
 
 	a {
@@ -168,7 +174,7 @@ input, select, textarea {
 	}
 
 	p, ul, ol, dl, table {
-		margin-bottom: 2em;
+
 	}
 
 /* Container */
@@ -404,13 +410,15 @@ input, select, textarea {
 				}
 
 		.row {
-			margin-top: -50px;
+			margin-top: -30px;
 			margin-left: -50px;
 		}
-
+		
+	
 			.row > * {
-				padding: 50px 0 0 50px;
+				padding:28px 0 0 38px;
 			}
+			
 
 			.row.gtr-uniform {
 				margin-top: -50px;
@@ -1522,7 +1530,7 @@ input, select, textarea {
 /* Section/Article */
 
 	section, article {
-		margin-bottom: 2.5em;
+	 	margin-bottom: -60px;
 	}
 
 		section > :last-child, section:last-child, article > :last-child, article:last-child {
@@ -1530,12 +1538,12 @@ input, select, textarea {
 		}
 
 	header {
-		margin: 0 0 1.5em 0;
+		margin: 0 0 0.5em 0;
 	}
 
 		header > p {
 			display: block;
-			font-style: italic;
+			/* font-style: italic; */
 			margin: 0.5em 0 0 0;
 			padding-bottom: 0.5em;
 		}
@@ -1564,7 +1572,7 @@ input, select, textarea {
 
 	.box {
 		background: #ffffff;
-		border-bottom: solid 1px #ccc;
+/* 		border-bottom: solid 1px #ccc; */
 		padding: 2.75em 1.75em 2.75em 1.75em;
 	}
 
@@ -1574,6 +1582,14 @@ input, select, textarea {
 			left: 1.75em;
 			top: 1.75em;
 			margin: -4.5em 0 4.25em -3.5em;
+		}
+		.box p{
+			text-align: center;
+			margin: 0 1.5em 0 0;
+		}
+		.box h5{
+			text-align: center;
+			margin: 0 1.5em 0 0;
 		}
 
 		.box.post header {
@@ -1689,10 +1705,11 @@ input, select, textarea {
 	}
 
 	.image img {
-		width: 270px;
+		width: 90%;
 		height: 270px;
 		border: 1px solid #E1F6FA;
 		border-radius: 30px;
+		margin : 0 0 -20px 0;
 	}
 
 		.image.centered {
@@ -1708,7 +1725,6 @@ input, select, textarea {
 		.image.featured {
 			display: block;
 			width: 100%;
-			margin: 0 0 2em 0;
 		}
 
 		.image.left {
@@ -1998,7 +2014,6 @@ input, select, textarea {
 	#main {
 		position: relative;
 		
-		padding: 4em 0 4em 0;
 	}
 
 		#main:before {
@@ -2091,7 +2106,7 @@ input, select, textarea {
 		/* Main */
 
 			#main {
-				padding: 30px 0;
+				padding: 10px 0;
 			}
 
 		/* Footer */
