@@ -30,7 +30,6 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-
 <style>
 .card .card-img-top {
 	justify-content: space-around;
@@ -42,14 +41,26 @@
 }
 
 .totalLayout {
-	
+	position: relative;
 }
 
 .totalLayout-title {
-	margin: 0px 0
+	margin: 0px 0;
 }
 
 .list-titles {
+	color: black;
+	font-size: 25px;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: -0.4px;
+	font-weight: 700;
+	line-height: 19px;
+	align-items: center;
+	color: #161C1C;
+}
+
+.list-titles2 {
 	color: black;
 	font-size: 20px;
 	font-stretch: normal;
@@ -75,15 +86,23 @@
 }
 
 .project-list-mini {
-	max-width: 250px;
+	weight: 250px;
 	margin-bottom: 55px;
 	margin-right: 20px;
+	margin-right: auto !important;
+	weight: auto !important;
+	height: auto !important;
 }
 
 .design-name {
 	margin-top: 15px;
 	color: gray;
 	text-align: center;
+}
+
+.main.list-thumbnail {
+	weight: auto !important;
+	height: auto !important;
 }
 
 .main-lists .thumbnail-image img {
@@ -100,6 +119,22 @@
 	margin: 8px 0;
 	text-align: center;
 }
+
+.adv {
+	width: 110%;
+	cursor: pointer;
+}
+
+#main {
+	padding-left: 120px;
+	margin-top: 70px;
+}
+
+.adv-container {
+	position: relative;
+	bottom: 30px;
+	left: 30px;
+}
 </style>
 
 <title>Insert title here</title>
@@ -112,7 +147,7 @@
 </c:if>
 
 <script>
-	$(" .top").on("click", function(e) {
+	/* $(" .top").on("click", function(e) {
 
 		$("html, body").animate({
 			scrollTop : 0
@@ -120,25 +155,78 @@
 
 		return false;
 
+	}); */
+
+	$(document).ready(function() {
+		$("#message").fadeOut(2000);
 	});
 </script>
 <body>
+
 	<section>
 		<my:mainNav />
 	</section>
+	<div id="page-wrapper ">
+		<!-- Main -->
+		<section id="main">
+
+			<div class="row">
+				<div class="ms-auto">
+					<section>
+						<c:if test="${not empty message }">
+							<div id="message" class="alert alert-light">${message }</div>
+						</c:if>
+						<h3 class="list-titles " style="text-align: left;">hot
+							creator🔥</h3>
+
+					</section>
+				</div>
+				<div class="row">
+					<c:forEach items="${hotList }" var="hot">
+						<div class="col-2" style="align-items: center;">
+							<section class="box">
+								<c:url value="/designBoard/get" var="getUrl">
+									<c:param name="id" value="${hot.id }"></c:param>
+									<c:param name="memberId" value="${hot.memberId }"></c:param>
+								</c:url>
+								<a href="${getUrl}" class="image featured">
+									<img src="${hot.imgthumbnail }" />
+								</a>
+								<header>
+									<h5>${hot.title }</h5>
+								</header>
+								<p>${hot.writerNickName }</p>
+								<p>${hot.prettyInserted }</p>
+							</section>
+						</div>
+					</c:forEach>
+					<div class="col-3 adv-container">
+						<div class="adv"
+							onclick="location.href='https://notefolioacademy.com/products/7';">
+							<img src="../resources/picture/ad/펜2.PNG" class="card-img-top">
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+		</section>
+	</div>
+
 
 	<!-- hot creator -->
-	<section>
+	<%-- <section>
 		<div class="totalLayout row justify-content-center"
 			style="padding-top: 3%;">
-			<div class="totalLayout-title col-8">
-				<h3 class="list-titles d-flex">hot creator🔥</h3>
+			<section class="totalLayout-title col-8">
+				<h3 class="list-titles ">hot creator🔥</h3>
 
 				<c:if test="${not empty message }">
 					<div class="alert alert-primary">${message }</div>
 				</c:if>
 
-				<div class="main-lists">
+				<div class="main-lists ">
 					<c:forEach items="${hotList }" var="hot">
 						<div class="project-list-mini">
 							<c:url value="/designBoard/get" var="getUrl">
@@ -155,45 +243,39 @@
 								<c:param name="memberId" value="${hot.memberId }"></c:param>
 							</c:url>
 							<a href="${viewUrl }">
-								<div class="design-name">${hot.id}ㅣ${hot.writerNickName }</div>
+								<div class="design-name">${hot.title }</div>
 							</a>
 
-							<div class="main-project-title">${hot.title }
-								<div class="main-project-title">${hot.prettyInserted }</div>
-							</div>
+							<div class="main-project-title">${hot.writerNickName }</div>
 						</div>
 					</c:forEach>
 				</div>
-			</div>
-			<!-- 광고 -->
-			<!-- <div class="col-3 d-flex justify-content-center">
-				<div style="width: 110%; cursor: pointer;"
-					onclick="location.href='https://notefolioacademy.com/products/7';">
-					<img src="../resources/picture/ad/펜2.PNG" class="card-img-top">
-				</div>
-			</div> -->
-		</div>
-	</section>
+			</section> --%>
+	<!-- 광고 -->
+
 
 	<!-- 카테고리 -->
-	<section class="list-titles">
+	<section class="list-titles2" style="padding-top: 100px;">
 		<form action="${appRoot}/designBoard/list" method="get">
-			<ul class="nav row justify-content-md-center">
-				<li class="nav-item col-1 col-md-1">
+			<ul class="nav row justify-content-center">
+				<!-- <li class="nav-item col-1 col-md-1" >
+               <a class="nav-link active">작품</a>
+            </li> -->
+				<li class="nav-item col-1">
 					<a style="color: black;" class="nav-link active"
 						aria-current="page" href="${appRoot }/designBoard/list">전체</a>
 				</li>
-				<li class="nav-item col-1 col-md-1">
+				<li class="nav-item col-1">
 					<a style="color: black;" class="nav-link active"
 						aria-current="page"
 						href="${appRoot }/designBoard/list?categoryName=illust">일러스트</a>
 				</li>
-				<li class="nav-item col-1 col-md-1">
+				<li class="nav-item col-1">
 					<a style="color: black;" class="nav-link active"
 						aria-current="page"
 						href="${appRoot }/designBoard/list?categoryName=web">웹디자인</a>
 				</li>
-				<li class="nav-item col-1 col-md-1">
+				<li class="nav-item col-1">
 					<a style="color: black;" class="nav-link active"
 						aria-current="page"
 						href="${appRoot }/designBoard/list?categoryName=interior">인테리어</a>
@@ -201,49 +283,51 @@
 			</ul>
 		</form>
 	</section>
-	
-	<!-- Main -->
-	<div id="page-wrapper">
+
+	<div id="page-wrapper ">
+		<!-- Main -->
 		<section id="main">
 			<div class="container">
-				<div class="col-12">
+				<div class="row">
+					<div class="col-12" style="padding: 0 0 0 0;">
 
-					<!-- Portfolio -->
-					<section>
-						<header class="major"> </header>
-						<div class="row">
-							<c:forEach items="${designBoardList }" var="designBoard">
-								<div class="col-3 col-3-medium col-8-small">
-									<section class="box">
-										<c:url value="/designBoard/get" var="getUrl">
-											<c:param name="memberId" value="${designBoard.memberId }"></c:param>
-										</c:url>
-										<a href="${getUrl }" class="image featured">
-											<img src="${designBoard.imgthumbnail }" />
-										</a>
-
-										<div class="design-name">${designBoard.title }
-											<div class="main-project-title">${designBoard.writerNickName }
-												<div class="main-project-title">${designBoard.prettyInserted }
-												</div>
-											</div>
-										</div>
-									</section>
-								</div>
-							</c:forEach>
-						</div>
-					</section>
+						<!-- Portfolio -->
+						<section>
+							<header class="major"> </header>
+							<div class="row">
+								<c:forEach items="${designBoardList }" var="designBoard">
+									<div class="col-3 col-3-medium col-8-small"
+										style="align-items: center;">
+										<section class="box">
+											<c:url value="/designBoard/get" var="getUrl">
+												<c:param name="id" value="${designBoard.id }"></c:param>
+												<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+											</c:url>
+											<a href="${getUrl}" class="image featured">
+												<img src="${designBoard.imgthumbnail }" />
+											</a>
+											<header>
+												<h5>${designBoard.title }</h5>
+											</header>
+											<p>${designBoard.writerNickName }</p>
+											<p>${designBoard.prettyInserted }</p>
+										</section>
+									</div>
+								</c:forEach>
+							</div>
+						</section>
+					</div>
 				</div>
 			</div>
 		</section>
 	</div>
 
+	<!— 메인 —>
 
-	<section>
-		<my:footer2 />
-	</section>
 
-	<!-- Scripts -->
+	<!— 하단 —>
+	<my:footer2 />
+	<!— Scripts —>
 	<script src="${appRoot }/resources/main/js/jquery.min.js"></script>
 	<script src="${appRoot }/resources/main/js/jquery.dropotron.min.js"></script>
 	<script src="${appRoot }/resources/main/js/browser.min.js"></script>
