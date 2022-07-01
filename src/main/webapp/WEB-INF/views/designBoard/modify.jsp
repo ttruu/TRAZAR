@@ -136,8 +136,11 @@ $(document).ready(function() {
 		</div>
 	</form>
 
-
-
+	<!-- 하단 -->
+   <section>
+      <my:footer2 />
+   </section>
+	
 	<!-- Scripts -->
 		<script src="${appRoot }/resources/css/requestGet/scripts.js"></script>
 </body>

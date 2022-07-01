@@ -1,22 +1,14 @@
 package com.hys.trazar.controller.design;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -24,13 +16,13 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,11 +31,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.JsonObject;
 import com.hys.trazar.domain.DesignBoardDto;
 import com.hys.trazar.domain.LikeDto;
 import com.hys.trazar.domain.ReviewDto;
-import com.hys.trazar.mapper.DesignBoardMapper;
+import com.hys.trazar.domain.login.SignupDto;
 import com.hys.trazar.service.DesignBoardService;
 import com.hys.trazar.service.ReviewService;
 
@@ -155,18 +146,60 @@ public class DesignBoardController {
 	}
 
 	@GetMapping("get")
-	public void get(int id, Model model, DesignBoardDto dto2) {
-		
+	public void get(@RequestParam(name = "id") int id, Model model, DesignBoardDto dto2, Principal principal, SignupDto sDto) {
+			
 		DesignBoardDto dto = service.getDesignBoardById(id);
+		
+		/*좋아요 기능 추가*/
+		LikeDto likeDto = new LikeDto();
+		likeDto.setDesignBoardId(dto.getId());
+		int likeCheck = 0;
+		if (principal != null) {
+			sDto.setName(principal.getName());
+			likeDto.setMemberId(sDto.getName());
+			int Check = service.likeSelectById(likeDto);
+			if(Check == 0) {
+				service.likeInsert(likeDto);
+			} else if (Check == 1) {
+				likeCheck = service.likeGetInfo(likeDto);
+			}
+		} else {
+			likeDto.setMemberId(sDto.getName());
+		}
+		
+		model.addAttribute("likeCheck", likeCheck);
+		System.out.println(likeCheck);
+		
+//		service.likeInsert(likeDto);
+		
 		
 		service.increamentClicked(dto2);
 
 		// designBoard 내에서 review 목록을 보기 위해 추가
 		List<ReviewDto> reviewList = reviewService.getReviewByDesignBoardId(id);
-
+		
+		
 		model.addAttribute("designBoard", dto);
+		model.addAttribute("likeDto", likeDto);
 	}
 	
+	@ResponseBody
+	@PostMapping("/likeUpdate")
+	public Map<String, Object> likeUpdate(@RequestBody LikeDto likeDto, DesignBoardDto dto) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		System.out.println("@@@@@@");
+		try {
+			map.put("result", "success");
+			
+			int cnt = service.likeUpdate(likeDto);
+			map.put("count", cnt);
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("result", "fail");
+		}
+		return map;
+	}
 
 	
 	@GetMapping("modify") 
