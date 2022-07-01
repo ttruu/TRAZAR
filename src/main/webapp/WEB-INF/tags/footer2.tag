@@ -2,8 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-	<div id="sticky-footer"class="mt-5">
-
+<style>
+	#sticky-footer{
+		bottom: 0;
+		width: 100%;
+	}
+</style>
+	<div id="sticky-footer"class="mt-auto">
   <section class="">
   <!-- Footer -->
   <footer class="text-center text-white" style="background-color: #303134">

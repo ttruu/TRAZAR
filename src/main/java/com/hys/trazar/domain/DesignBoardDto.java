@@ -40,7 +40,13 @@ public class DesignBoardDto {
 	
 	public String getInserted() {
 	      String pattern = "yyyy-MM-dd";
-	      return inserted.format(DateTimeFormatter.ofPattern(pattern));
+	      
+	      if (inserted != null) {
+	    	  return inserted.format(DateTimeFormatter.ofPattern(pattern));
+	    	  
+	      } else {
+	    	  return "";
+	      }
 	   }
 
 }

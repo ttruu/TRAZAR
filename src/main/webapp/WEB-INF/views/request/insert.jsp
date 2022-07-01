@@ -14,10 +14,6 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
 	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
-	integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 	referrerpolicy="no-referrer"></script>
@@ -104,6 +100,7 @@
 		}
 </script>
 
+
 <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -120,7 +117,7 @@
         <!-- Page header with logo and tagline-->
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
-                <div class="text-center my-5">
+                <div class="text-center">
                     <h1 class="fw-bolder">Welcome to Commission!</h1>
                     <p class="lead mb-0">Write your commission</p>
                 </div>
@@ -171,20 +168,13 @@
 							<option value="interior">인테리어</option>
 						</select>
                     </div>
-                    <!-- Side widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Side Widget</div>
-                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-                    </div>
                     <button type="button" class="btn btn-outline-secondary mt-3" onclick="goWrite(this.form)">등록</button>
                 </div>
             </div>
         </div>
         </form>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-        </footer>
+	        <my:footer2/>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -192,50 +182,4 @@
     </body>
 
 
-
-
-
-
-
-
-<%-- <title>Insert title here</title>
-</head>
-<body>
-	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-8">
-
-			<h2 class="text-center">
-				요청 사항
-				<i class="fa-solid fa-pen-to-square"></i>
-			</h2>
-
-			<c:url value="/request/insert" var="writeLink" />
-
-			<form action="${writeLink }" method="post">
-
-				<div>
-					<label class="form-label" for="input1">제목</label>
-					<input class="form-control" type="text" name="title" required
-						id="input1" />
-				</div>
-
-				기간
-				<input type="text" name="term" />
-
-				<div>
-					<label class="form-label">내용</label>
-					<textarea name="body" id="summernote"></textarea>
-				</div>
-
-				<div>
-					<label class="form-label" for="input1">예산</label>
-					<input class="form-control" type="text" name="price" required
-						id="input2" />
-				</div>
-				<button class="btn btn-outline-secondary mt-3">등록</button>
-			</form>
-		</div>
-	</div>
-</body> --%>
 </html>
