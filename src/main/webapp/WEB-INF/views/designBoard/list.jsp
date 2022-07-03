@@ -127,12 +127,12 @@
 
 #main {
    padding-left: 120px;
-   margin-top: 70px;
+   margin-top: 120px;
 }
 
 .adv-container {
    position: relative;
-   bottom: 30px;
+   bottom: 70px;
    left: 30px;
 }
 
@@ -169,7 +169,7 @@
    </section>
    <div id="page-wrapper ">
       <!-- Main -->
-      <section id="main">
+      <section id="main" style="padding-top : 70px; padding-left : 170px;">
 
          <div class="row">
             <div class="ms-auto">
@@ -257,12 +257,9 @@
 
 
 	<!-- 카테고리 -->
-	<section class="list-titles2" style="padding-top: 100px;">
+	<section class="list-titles2">
 		<form action="${appRoot}/designBoard/list" method="get">
 			<ul class="nav row justify-content-center mx-auto" style="font-size: 0.9vmax;">
-				<!-- <li class="nav-item col-1 col-md-1" >
-               <a class="nav-link active">작품</a>
-            </li> -->
 				<li class="nav-item col-auto">
 					<a style="color: black;" class="nav-link active"
 						aria-current="page" href="${appRoot }/designBoard/list">전체</a>

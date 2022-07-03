@@ -18,7 +18,7 @@
       <section class="">
       	<sec:authorize access="not isAuthenticated()">
         <p class="d-flex justify-content-center align-items-center">
-          <span class="me-3">지금 바로!!</span>
+          <span class="me-3" style="color:white;">지금 바로!!</span>
           <button type="button" class="btn btn-outline-light btn-rounded">
           <c:url value="/sign/signup" var="signupUrl"></c:url>
            <a href="${signupUrl }" class="nav-link link-light">회원가입</a>
