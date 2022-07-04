@@ -127,7 +127,7 @@
         </header>
         <form action="${appRoot }/request/insert" method="post">
         <!-- Page content-->
-        <div class="container">
+        <div class="container" style="margin-bottom: 20%;">
             <div class="row">
                 <!-- Blog entries-->
                 <div class="col-lg-8">

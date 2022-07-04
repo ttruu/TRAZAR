@@ -12,7 +12,7 @@
   <section class="">
   <!-- Footer -->
   <footer class="text-center text-white" style="background-color: #303134">
-    <!-- Grid container -->
+    <%-- <!-- Grid container -->
     <div class="container p-4 pb-4">
       <!-- Section: CTA -->
       <section class="">
@@ -33,7 +33,7 @@
       </section>
       <!-- Section: CTA -->
     </div>
-    <!-- Grid container -->
+    <!-- Grid container --> --%>
 
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: black;">

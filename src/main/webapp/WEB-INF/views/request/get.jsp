@@ -86,7 +86,7 @@
  <body>
  		<my:navBar/>
         <!-- Page content-->
-        <div class="container mt-5">
+        <div class="container mt-5" style="margin-bottom: 30%;">
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Post content-->
