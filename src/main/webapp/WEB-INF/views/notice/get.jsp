@@ -43,9 +43,16 @@ $(document).ready(function() {
 		$("#input1").removeAttr("readonly");
 		$("#summernote").removeClass("d-none");
 		$("#view").addClass("d-none");
+		$("#title-text").addClass("d-none");
+		$("#id-text").addClass("d-none");
+		$("#time-text").addClass("d-none");
+		
 		$("#summernote").summernote();
 		$("#modify-submit1").removeClass("d-none");
 		$("#delete-submit1").removeClass("d-none");
+		$("#input1").removeClass("d-none");
+		$("#input2").removeClass("d-none");
+		
 	});
 		
 	$("#delete-submit1").click(function(e) {
@@ -66,10 +73,12 @@ $(document).ready(function() {
 		
 </script>
 <my:navBar />
+<section style="margin-bottom: 30%;">
 <div class="container">
 		<div class="row">
 			<div class="col">
-				<h1>글 본문
+			
+				<h1 class="mt-5" id="title-text">${notice.title }
 					<sec:authorize access="isAuthenticated()">
 						<sec:authentication property="principal" var="principal" />
 						<c:if test="${principal.username == notice.memberId }">
@@ -79,6 +88,14 @@ $(document).ready(function() {
 						</c:if>
 					</sec:authorize>
 				</h1>
+				<h4 id="id-text" >${notice.memberId }</h4>
+				<h5 id="time-text">${notice.prettyInserted }</h5>
+				<form id="form1" action="${appRoot }/notice/modify"
+					method="post">
+					<input type="hidden" name="id" value="${notice.id }" />
+					<input type="hidden" name="managerId" value="${notice.memberId }"/>
+							<input class="form-control d-none mt-5" type="text" name="title" required
+							id="input1" value="${notice.title }" />
 
 				<c:if test="${not empty message }">
 					<div class="alert alert-primary">${message }</div>
@@ -86,31 +103,17 @@ $(document).ready(function() {
 
 
 				<!-- 게시물 보기 + 수정 -->
-				<form id="form1" action="${appRoot }/notice/modify"
-					method="post">
-					<input type="hidden" name="id" value="${notice.id }" />
-					<input type="hidden" name="managerId" value="${notice.memberId }"/>
-					<div>
-						<label for="input3" class="form-label">작성자</label>
-						<input class="form-control" 
-							value="관리자" />
-					</div>
+		
 
-					<div>
-						<label class="form-label" for="input1">제목</label>
-						<input class="form-control" type="text" name="title" required
-							id="input1" value="${notice.title }" />
-					</div>
-
-					<div>
-						<label class="form-label" for="textarea1">본문</label>
-						<div id="view"  rows="20" cols="10" style="width:100%">${notice.body }</div>
-						<textarea class="form-control d-none" name="body" id="summernote">${notice.body }</textarea>
+ 
+					<div class="d-flex justify-content-center card">
+						<div id="view"  class="card-body">${notice.body }</div>
+						<textarea class="form-control d-none mb-5 mt-5" name="body" id="summernote">${notice.body }</textarea>
 					</div>
 					
 					<div>
-						<label for="input2" class="form-label">작성일시</label>
-						<input class="form-control" type="datetime-local"
+						
+						<input class="form-control d-none" type="datetime-local"
 							value="${notice.inserted }" />
 					</div>
 
@@ -127,7 +130,7 @@ $(document).ready(function() {
 		</div>
 	</div>
 	
-	
+	</section>
 	
 <my:footer2/>
 </body>
