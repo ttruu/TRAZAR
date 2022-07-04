@@ -103,9 +103,7 @@
 		                            <!-- Product details-->
 		                            <div class="card-body p-4">
 		                                <div class="text-center">
-		                                    <!-- Product name-->
 		                                    <h5 class="fw-bolder">${req.state }</h5>
-		                                    <!-- Product price-->
 		                                    ${req.term }
 		                                </div>
 		                            </div>
