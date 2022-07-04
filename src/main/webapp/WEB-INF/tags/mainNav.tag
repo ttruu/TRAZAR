@@ -74,6 +74,7 @@ color: #FFFFFF;
           <sec:authorize access="isAuthenticated()">
           <li><a href="${insertUrl }" class="nav-link px-2 link-light">디자인 올리기</a></li>
          </sec:authorize>
+          <li><a href="${appRoot}/chat" class="nav-link px-2 link-light">모두의 채팅</a></li>
         </ul>
         
         <c:url value="/designBoard/search" var="searchUrl"></c:url>
