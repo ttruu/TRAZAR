@@ -191,7 +191,7 @@ input, select, textarea {
 /* Type */
 
 	body, textarea {
-		color: #a0a0a1;
+		
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 15pt;
 		font-weight: 300;
@@ -234,7 +234,7 @@ input, select, textarea {
 		margin: 0 0 2em 0;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	h1, h2, h3, h4, h6 {
 		color: #ffffff;
 		font-weight: 300;
 		letter-spacing: 0.1em;
@@ -565,13 +565,6 @@ input, select, textarea {
 
 		}
 
-	label {
-		color: #ffffff;
-		display: block;
-		font-size: 0.9em;
-		font-weight: 300;
-		margin: 0 0 1em 0;
-	}
 
 	/* input[type="text"],
 	input[type="password"],
@@ -672,7 +665,7 @@ input, select, textarea {
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			text-decoration: none;
-			color: #a0a0a1;
+			
 			cursor: pointer;
 			display: inline-block;
 			font-size: 1em;
@@ -1478,7 +1471,7 @@ input, select, textarea {
 		}
 
 		#header h1 {
-			color: #a0a0a1;
+		
 			display: inline-block;
 			font-size: 1em;
 			line-height: 1;
