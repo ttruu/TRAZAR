@@ -61,7 +61,7 @@ color: #FFFFFF;
 </style>
 
 <header id="nav-header" class="mb-3 border-bottom fixed"style="grid-template-columns: 1fr 2fr;">
-    <div class="container-fluid d-grid gap-3 align-items-center">
+    <div class="container-fluid p-3 d-grid gap-3 align-items-center">
       <div class="d-flex flex-wrap align-items-center justify-content-start">
        
         <a href="/trazar/designBoard/list" class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">
