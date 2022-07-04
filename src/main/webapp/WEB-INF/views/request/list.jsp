@@ -104,7 +104,8 @@
 		                            <div class="card-body p-4">
 		                                <div class="text-center">
 		                                    <h5 class="fw-bolder">${req.state }</h5>
-		                                    ${req.term }
+		                                    <h6>기간 : ${req.term }</h6>
+		                                    예산 : ${req.price }
 		                                </div>
 		                            </div>
 	                            <!-- Product actions-->
