@@ -140,7 +140,7 @@
 .titles{
 overflow: hidden 10px;
 text-overflow: ellopsis;
-white-space: nowarap;
+
 }
 </style>
 
