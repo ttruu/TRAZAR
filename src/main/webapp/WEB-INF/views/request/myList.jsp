@@ -70,10 +70,10 @@ table.type09 td {
 
 					<thead>
 						<tr>
-							<th scope="cols">글번호</th>
+							<th scope="cols">번호</th>
 							<th scope="cols">제목</th>
-							<th scope="cols">의뢰날짜</th>
-							<th scope="cols">의뢰상태</th>
+							<th scope="cols">날짜</th>
+							<th scope="cols">상태</th>
 						</tr>
 					</thead>
 					<tbody>
