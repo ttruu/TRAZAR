@@ -4,6 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page import="java.util.*" %>
 <% request.setCharacterEncoding("utf-8"); %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 
 <sec:authentication property="principal" var="principal"/>
 
@@ -28,7 +29,7 @@ $(document).ready(function() {
 		$('#msg').val('')
 	});
 	
-	var sock = new SockJS('http://localhost:8080/trazar/chatting');
+	var sock = new SockJS('${appRoot}/chatting');
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
 	sock.onopen = onOpen;
@@ -96,7 +97,8 @@ $(document).ready(function() {
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
+	<my:navBar/>
+	<div class="container" >
 	<div class="col-6">
 		<label><b>채팅방</b></label>
 	</div>
@@ -104,10 +106,10 @@ $(document).ready(function() {
 		<div id="msgArea" class="col">
 		
 		</div>
-	<form id="form1" action="${appRoot }/chat" method="post" >
+	<form id="form1" action="${appRoot }/chat" >
 		<div class="col-6">
 		<div class="input-group mb-3">
-			<input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+			<input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" >
 			<div class="input-group-append">
 				<button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
 			</div>

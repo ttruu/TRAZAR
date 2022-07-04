@@ -39,9 +39,9 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
  <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="${appRoot }/resources/css/requestGet/scripts.js"></script>
+<script src="${appRoot }/resources/css/requestGet/scripts.js"></script>
 <script>
 	$(document).ready(function() {
 
@@ -86,7 +86,7 @@
  <body>
  		<my:navBar/>
         <!-- Page content-->
-        <div class="container mt-5">
+        <div class="container mt-5" style="margin-bottom: 30%;">
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Post content-->

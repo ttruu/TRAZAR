@@ -143,6 +143,9 @@
 				<li>
 					<a href="${requestListUrl }" class="nav-link px-2 link-light">의뢰</a>
 				</li>
+				<li>
+					<a href="${appRoot }/chat" class="nav-link px-2 link-light">모두의 채팅</a>
+				</li>
 
 			</ul>
 			<sec:authorize access="not isAuthenticated()">
