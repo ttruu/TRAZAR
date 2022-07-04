@@ -12,7 +12,7 @@
   <section class="">
   <!-- Footer -->
   <footer class="text-center text-white" style="background-color: #303134">
-   <%--  <!-- Grid container -->
+    <%-- <!-- Grid container -->
     <div class="container p-4 pb-4">
       <!-- Section: CTA -->
       <section class="">
