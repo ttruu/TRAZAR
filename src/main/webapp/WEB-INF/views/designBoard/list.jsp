@@ -142,6 +142,13 @@ overflow: hidden 10px;
 text-overflow: ellopsis;
 white-space: nowarap;
 }
+
+#alist img{
+	transition: all 0.2s linear;
+}
+#alist:hover img{
+	transform: scale(1.4);
+}
 </style>
 
 <title>Insert title here</title>
@@ -196,7 +203,7 @@ white-space: nowarap;
 									<c:param name="id" value="${hot.id }"></c:param>
 									<c:param name="memberId" value="${hot.memberId }"></c:param>
 								</c:url>
-								<a href="${getUrl}" class="image featured">
+								<a href="${getUrl}" class="image featured" id="alist">
 									<img src="${hot.imgthumbnail }" />
 								</a>
 								<header>
@@ -309,7 +316,7 @@ white-space: nowarap;
 												<c:param name="id" value="${designBoard.id }"></c:param>
 												<c:param name="memberId" value="${designBoard.memberId }"></c:param>
 											</c:url>
-											<a href="${getUrl}" class="image featured">
+											<a href="${getUrl}" class="image featured" id="alist">
 												<img src="${designBoard.imgthumbnail }" />
 											</a>
 											<header>
