@@ -1530,7 +1530,7 @@ input, select, textarea {
 /* Section/Article */
 
    section, article {
-       margin-bottom: -60px;
+       margin-bottom: -100px;
    }
 
       section > :last-child, section:last-child, article > :last-child, article:last-child {
@@ -1573,7 +1573,7 @@ input, select, textarea {
    .box {
       background: #ffffff;
 /*       border-bottom: solid 1px #ccc; */
-      padding: 2.75em 1.75em 2.75em 1.75em;
+      padding: 3.3em 1.75em 2.75em 1.75em;
    }
 
       .box .image.featured {

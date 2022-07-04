@@ -13,12 +13,12 @@
   <!-- Footer -->
   <footer class="text-center text-white" style="background-color: #303134">
     <!-- Grid container -->
-    <div class="container p-4 pb-0">
+    <div class="container p-4 pb-4">
       <!-- Section: CTA -->
       <section class="">
       	<sec:authorize access="not isAuthenticated()">
         <p class="d-flex justify-content-center align-items-center">
-          <span class="me-3">지금 바로!!</span>
+          <span class="me-3" style="color:white;">지금 바로!!</span>
           <button type="button" class="btn btn-outline-light btn-rounded">
           <c:url value="/sign/signup" var="signupUrl"></c:url>
            <a href="${signupUrl }" class="nav-link link-light">회원가입</a>
@@ -36,7 +36,7 @@
     <!-- Grid container -->
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: black;">
+    <div class="text-center p-4" style="background-color: black;">
       © 2022 
       <a class="text-white" href="/trazar/designBoard/list">HYS:TRAZAR</a>
     </div>
