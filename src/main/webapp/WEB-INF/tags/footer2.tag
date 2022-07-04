@@ -47,7 +47,7 @@
     
     </div>
     
-    <div style="padding-left:24%; padding-bottom : 1.5%;">
+    <div style="text-align : center; padding-bottom : 1.5%;">
     <hr />
     <a style="color : #888b94; font-size:medium; font-weight:bold;" href="/trazar/designBoard/list">©2022 HYS:TRAZAR</a>
     </div>
