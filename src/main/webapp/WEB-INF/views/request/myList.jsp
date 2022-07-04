@@ -57,7 +57,7 @@ table.type09 td {
 
 
 
-	<div class="container mt-5">
+	<div class="container mt-5" style="margin-bottom: 20%;">
 		<div class="row">
 			<div class="col-8">
 				<h1>내 의뢰 목록</h1>
@@ -116,6 +116,9 @@ table.type09 td {
 
 		</div>
 	</div>
+	<section class="mt-5">
+			<my:footer2/>
+        </section>
 </body>
 
 </html>

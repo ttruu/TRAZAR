@@ -52,7 +52,7 @@
 						      	<select name="type" id="" class="form-select" style="flex:0 0 100px;">
 						      		<option value="all" ${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>전체</option>
 						      		<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
-						      		<option value="body" ${param.type == 'body' ? 'selected' : ''}>본문</option>
+						      		<option value="body" ${param.type == 'body' ? 'selected' : ''}>내용</option>
 						      	</select>
 						      	<input type="search" class="form-control" name="keyword"/>
 						      	<button class="btn btn-outline-dark"><i class="fa-solid fa-magnifying-glass"></i></button>
