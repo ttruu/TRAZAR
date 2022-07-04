@@ -313,7 +313,7 @@ white-space: nowarap;
 												<img src="${designBoard.imgthumbnail }" />
 											</a>
 											<header>
-												<div class="titles"><p class="titles">${designBoard.title }</p></div>
+												<p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">${designBoard.title }</p>
 												<p style="color: grey; font-size: medium">${designBoard.writerNickName }</p>
 												<p style="color: grey; font-size: medium">${designBoard.prettyInserted }</p>
 											</header>
