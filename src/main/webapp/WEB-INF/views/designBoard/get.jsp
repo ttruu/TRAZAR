@@ -377,7 +377,7 @@
 												class="btn btn-outline-secondary btn-sm">삭제하기</button>
 										</form>
 									</c:if>
-								</sec:authorize>
+								</sec:authorize>   
 								
 								
 								

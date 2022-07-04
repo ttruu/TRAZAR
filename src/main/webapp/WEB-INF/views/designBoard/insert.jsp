@@ -115,7 +115,7 @@
 					<div class="card shadow mb-4">
 						<div class="card-body">
 							<input class="form-control" type="text" name="title" required
-								id="input1" placeholder="제목을 입력해주세요." aria-label="제목을 입력해주세요." maxlength="5" />
+								id="input1" placeholder="제목을 입력해주세요." aria-label="제목을 입력해주세요." />
 							<label class="form-label" for="textarea1"></label>
 							<textarea class="form-control" name="body" id="summernote"
 								cols="30" rows="10"></textarea>
