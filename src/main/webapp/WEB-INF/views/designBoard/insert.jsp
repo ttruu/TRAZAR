@@ -106,10 +106,10 @@
 	</script>
 
 	<!-- page content -->
-	<section style="margin-bottom: 50%;">
+	<section style="margin-bottom: 20%;">
 	<form action="${appRoot }/designBoard/insert" method="post"
 		enctype="multipart/form-data">
-		<div class="container" >
+		<div class="container" style="padding-top: 4%;">
 			<div class="row">
 				<div class="col-lg-9" style="">
 					<div class="card shadow mb-4">

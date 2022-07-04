@@ -346,7 +346,7 @@
 
 
 	<!-- Page Content -->
-	<section style="margin-bottom: 50%;">
+	<section style="margin-bottom: 20%;">
 	<div class="container" style="padding-top: 4%;">
 		<div class="row">
 			<div class="col-lg-10">
