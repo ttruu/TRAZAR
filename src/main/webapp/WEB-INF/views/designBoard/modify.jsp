@@ -103,7 +103,7 @@ $(document).ready(function() {
 	<my:navBar />
 
 	<!-- Page Content -->
-
+	<section style="margin-bottom: 50%;">
 	<form id="form1" action="${appRoot }/designBoard/modify" method="post">
 		<input type="hidden" name="id" value="${designBoard.id }" />
 
@@ -130,16 +130,19 @@ $(document).ready(function() {
 						<input class="form-control" type="text" name="price" value="${designBoard.price }" />
 						</div>
 					</div>
+				
 				</div>
-				<button id="modify-submit1" class="btn btn-primary">수정</button>
+				
+				<button id="modify-submit1" class="btn btn-secondary btn-icon-split btn-block">수정</button>
+				
 			</div>
 		</div>
 	</form>
-
+	</section>
 	<!-- 하단 -->
-   <section>
+   
       <my:footer2 />
-   </section>
+   
 	
 	<!-- Scripts -->
 		<script src="${appRoot }/resources/css/requestGet/scripts.js"></script>

@@ -106,9 +106,10 @@
 	</script>
 
 	<!-- page content -->
+	<section style="margin-bottom: 50%;">
 	<form action="${appRoot }/designBoard/insert" method="post"
 		enctype="multipart/form-data">
-		<div class="container">
+		<div class="container" >
 			<div class="row">
 				<div class="col-lg-9" style="">
 					<div class="card shadow mb-4">
@@ -153,10 +154,12 @@
 			</div>
 		</div>
 	</form>
-	
+	</section>
 	  <!-- 하단 -->
-   <section>
+  
       <my:footer2 />
-   </section>
+   
+ 
+   
 </body>
 </html>
