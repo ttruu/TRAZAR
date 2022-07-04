@@ -144,7 +144,7 @@ white-space: nowarap;
 }
 
 #alist img{
-	transition: all 0.2s linear;
+	transition: all 0.3s linear;
 }
 #alist:hover img{
 	transform: scale(1.4);
