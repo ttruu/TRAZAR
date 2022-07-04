@@ -131,9 +131,16 @@
 }
 
 .adv-container {
+	width : 10%;
 	position: relative;
 	bottom: 70px;
 	left: 30px;
+}
+
+.titles{
+overflow: hidden 10px;
+text-overflow: ellopsis;
+white-space: nowarap;
 }
 </style>
 
@@ -193,7 +200,7 @@
 									<img src="${hot.imgthumbnail }" />
 								</a>
 								<header>
-									<p>${hot.title }</p>
+									<div class="titles"><p >${hot.title }</p></div>
 									<p style="color: grey; font-size: medium">${hot.writerNickName }</p>
 									<p style="color: grey; font-size: medium">${hot.prettyInserted }</p>
 								</header>
