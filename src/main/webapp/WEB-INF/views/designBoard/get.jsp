@@ -289,8 +289,6 @@
 			});
 		});
 		
-
-
 		$('#likebtn').click(function(){
 			likeUpdate();
 		});
