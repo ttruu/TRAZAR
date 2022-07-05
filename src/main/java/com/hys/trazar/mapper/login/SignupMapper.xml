@@ -32,7 +32,7 @@
 	</insert>
 	
 	<select id="selectMember" resultType="com.hys.trazar.domain.login.SignupDto">
-		SELECT id, password, email, nickName, phoneNum, name, inserted, question, answer FROM Member WHERE id = #{id}
+		SELECT id, password, email, nickName, phoneNum, name, introduce, inserted, question, answer FROM Member WHERE id = #{id}
 	</select>
 	
 	<update id="modifyMember">

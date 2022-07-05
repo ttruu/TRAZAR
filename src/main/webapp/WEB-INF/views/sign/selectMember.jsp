@@ -216,7 +216,7 @@ $(document).ready(function() {
 					자기소개
 					</label>
 					<div class="input-group">
-						<input type="text" name="introduce" value="${member.introduce }" size="74" id="introduce" />
+						<textarea name="introduce" id="introduce" class="col" rows="10">${member.introduce } </textarea>
 					</div>
 					
 					<label for="" class="form-label">
