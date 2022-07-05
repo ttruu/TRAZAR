@@ -131,22 +131,23 @@
 }
 
 .adv-container {
-	width : 10%;
+	width: 10%;
 	position: relative;
 	bottom: 70px;
 	left: 30px;
 }
 
-.titles{
-overflow: hidden 10px;
-text-overflow: ellopsis;
-white-space: nowarap;
+.titles {
+	overflow: hidden 10px;
+	text-overflow: ellopsis;
+	white-space: nowarap;
 }
 
-#alist img{
+#alist img {
 	transition: all 0.2s linear;
 }
-#alist:hover img{
+
+#alist:hover img {
 	transform: scale(1.4);
 }
 </style>
@@ -207,8 +208,13 @@ white-space: nowarap;
 									<img src="${hot.imgthumbnail }" />
 								</a>
 								<header>
-									<div class="titles"><p >${hot.title }</p></div>
-									<p style="color: grey; font-size: medium">${hot.writerNickName }</p>
+									<div class="titles">
+										<p>${hot.title }</p>
+									</div>
+									<c:url value="/designer/view" var="designerHotUrl">
+													<c:param name="memberId" value="${hot.memberId }"></c:param>
+												</c:url>
+									<p style="color: grey; font-size: medium"><a style="color: grey;" href="${designerHotUrl }">${hot.writerNickName }</a></p>
 									<p style="color: grey; font-size: medium">${hot.prettyInserted }</p>
 								</header>
 
@@ -320,8 +326,14 @@ white-space: nowarap;
 												<img src="${designBoard.imgthumbnail }" />
 											</a>
 											<header>
-												<p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">${designBoard.title }</p>
-												<p style="color: grey; font-size: medium">${designBoard.writerNickName }</p>
+												<c:url value="/designer/view" var="designerUrl">
+													<c:param name="memberId" value="${designBoard.memberId }"></c:param>
+												</c:url>
+
+												<p
+													style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${designBoard.title }</p>
+												<p style="color: grey; font-size: medium">
+													<a href="${designerUrl }" style="color: grey;">${designBoard.writerNickName }</a></p>
 												<p style="color: grey; font-size: medium">${designBoard.prettyInserted }</p>
 											</header>
 
