@@ -41,8 +41,8 @@
 	</select>
   
 	<select id="countNotice" resultType="int">	
-	SELECT Count(id) FROM ManagerBoard n
-	WHERE id = #{id}
+	SELECT Count(id) FROM ManagerBoard n 
+	WHERE memberId IS NOT NULL
 	</select>
   <update id="updateNotice">
   	UPDATE ManagerBoard
