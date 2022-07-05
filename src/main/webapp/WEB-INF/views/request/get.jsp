@@ -92,38 +92,42 @@
                     <!-- Post content-->
                     <article>
                         <!-- Post header-->
+                        
                         <div class="card shadow mb-4">
 							<div class="card-body">
 								<div class="form-group row" style="text-align: center;">
                         <header class="mb-4">
                             <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">${request.title }</h1>
-                            <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">${request.inserted }</div>
-                            <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" >${request.memberId }</a>
-                            <c:url value="/request/modify" var="modifyLink">
-                            	<c:param name="id" value="${request.id }"></c:param>
-                            </c:url>
-                            <sec:authorize access="isAuthenticated()">
+                              <sec:authorize access="isAuthenticated()">
 									<sec:authentication property="principal" var="principal" />
 									<c:if test="${principal.username == request.memberId}" var="owner">
 									</c:if>
 								</sec:authorize>
 								<sec:authorize access="hasRole('ADMIN')" var="isAdmin">
 								</sec:authorize>
-                           
-								<c:if test="${owner }">
+                            <h2 class="fw-bolder mb-1" style="text-align:center">${request.title }
+                            	<c:if test="${owner }">
 									<button id="edit-button1" class="btn btn-secondary" onclick = "location.href = '${modifyLink}' ">
 										<i class="fa-solid fa-pen-to-square"></i>
 									</button>
 									</c:if>
 									<c:if test="${owner or isAdmin}">
-									<button form="removeForm" id="delete-submit1" class="btn btn-danger" >삭제</button>
+									<button form="removeForm" id="delete-submit1" class="btn btn-danger" ><i class="fa-solid fa-trash-can"></i></button>
 									<form action="${appRoot }/request/remove" method="post" id="removeForm">
 										<input type="hidden" name="id" value="${request.id }" />
 									</form>
 								</c:if>
+								  </h2>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2">${request.memberId } | ${request.inserted }</div>
+                            <!-- Post categories-->
+                            <c:url value="/request/modify" var="modifyLink">
+                            	<c:param name="id" value="${request.id }"></c:param>
+                            </c:url>
+                          
+                          
+                           
+							
 							
                         </header>
                         <!-- Preview image figure-->
