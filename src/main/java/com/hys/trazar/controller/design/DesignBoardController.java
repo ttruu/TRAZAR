@@ -232,7 +232,7 @@ public class DesignBoardController {
 		System.out.println(oldBoard);
 		System.out.println(principal.getName());
 		
-		if (oldBoard.getMemberId().equals(principal.getName())) {
+		if (oldBoard.getMemberId().equals(principal.getName()) || "admin".equals(principal.getName())) {
 			boolean success = service.deleteDesignBoard(dto.getId());
 
 			if (success) {

@@ -106,17 +106,25 @@
                             	<c:param name="id" value="${request.id }"></c:param>
                             </c:url>
                             <sec:authorize access="isAuthenticated()">
-								<sec:authentication property="principal" var="principal" />
-								<c:if test="${principal.username == request.memberId }">
+									<sec:authentication property="principal" var="principal" />
+									<c:if test="${principal.username == request.memberId}" var="owner">
+									</c:if>
+								</sec:authorize>
+								<sec:authorize access="hasRole('ADMIN')" var="isAdmin">
+								</sec:authorize>
+                           
+								<c:if test="${owner }">
 									<button id="edit-button1" class="btn btn-secondary" onclick = "location.href = '${modifyLink}' ">
 										<i class="fa-solid fa-pen-to-square"></i>
 									</button>
+									</c:if>
+									<c:if test="${owner or isAdmin}">
 									<button form="removeForm" id="delete-submit1" class="btn btn-danger" >삭제</button>
 									<form action="${appRoot }/request/remove" method="post" id="removeForm">
 										<input type="hidden" name="id" value="${request.id }" />
 									</form>
 								</c:if>
-							</sec:authorize>
+							
                         </header>
                         <!-- Preview image figure-->
                         <!-- <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
