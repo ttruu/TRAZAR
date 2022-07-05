@@ -365,7 +365,7 @@
 								<!-- 권한설정 -->
 								<sec:authorize access="isAuthenticated()">
 									<sec:authentication property="principal" var="principal" />
-									<c:if test="${principal.username == designBoard.memberId }">
+									<c:if test="${principal.username == designBoard.memberId}">
 										<button id="edit-button1"
 											class="btn btn-outline-secondary btn-sm"
 											onclick="location.href = '${modifyLink}'"
@@ -377,7 +377,10 @@
 												class="btn btn-outline-secondary btn-sm">삭제하기</button>
 										</form>
 									</c:if>
-								</sec:authorize>
+								</sec:authorize>   
+								
+								
+								
 							</div>
 
 							<div class="col-sm-6 mb-3 mb-sm-2" style="">
