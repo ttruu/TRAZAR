@@ -7,21 +7,19 @@
 <nav aria-label="Page navigation example">
 	<ul class="pagination justify-content-center">
 		<c:url value="${path }" var="link">
-
 			<c:param name="page" value="${pageInfo.current - 1 }"></c:param>
-
 		</c:url>
 		<c:if test="${pageInfo.current != 1 }">
-			<li class="page-item"><a class="page-link" href="${link }"
-				aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-			</a></li>
+			<li class="page-item">
+				<a class="page-link" href="${link }" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
 		</c:if>
 		<c:forEach begin="${pageInfo.left }" end="${pageInfo.right }"
 			var="pageNum">
 
 			<c:url value="${path }" var="link">
-
-
 				<c:param name="page" value="${pageNum }"></c:param>
 
 			</c:url>
@@ -37,9 +35,11 @@
 				<c:param name="page" value="${pageInfo.current + 1 }"></c:param>
 
 			</c:url>
-			<li class="page-item"><a class="page-link" href="${link }"
-				aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-			</a></li>
+			<li class="page-item">
+				<a class="page-link" href="${link }" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
 		</c:if>
 	</ul>
 </nav>
