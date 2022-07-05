@@ -54,6 +54,9 @@ public class RequestController {
 	@PostMapping("insert")
 	public String insertRequest(RequestDto dto, Principal principal,DesignBoardDto designBoard, RedirectAttributes rttr) {
 		
+		if(dto.getPrice() == "") {
+			dto.setPrice("문의주세요");
+		}
 		dto.setMemberId(principal.getName());
 		boolean success = service.addRequest(dto);
 		
