@@ -192,7 +192,7 @@
 							<div id="message" class="alert alert-light">${message }</div>
 						</c:if>
 						<h3 class="list-titles " style="text-align: left;">hot
-							creator🔥</h3>
+							design🔥</h3>
 
 					</section>
 				</div>
