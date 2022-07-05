@@ -364,6 +364,7 @@ $(document).ready(function() {
 								style="display: flex; text-align: left;">
 								<c:url value="/designBoard/modify" var="modifyLink">
 									<c:param name="id" value="${designBoard.id }"></c:param>
+									<c:param name="memberId" value="${designBoard.memberId }"></c:param>
 								</c:url>
 								<!-- 권한설정 -->
 								<sec:authorize access="isAuthenticated()">
