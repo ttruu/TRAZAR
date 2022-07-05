@@ -78,7 +78,7 @@ table.type09 td {
 
 
 
-	<div class="container mt-5">
+	<div class="container mt-5" style="margin-bottom: 20%;">
 		<div class="row">
 			<div class="col-8">
 				<h1>공지사항</h1>
