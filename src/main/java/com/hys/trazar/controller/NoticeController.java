@@ -70,7 +70,7 @@ public class NoticeController {
 		List<NoticeDto> list = service.listNoticePage(page, rowPerPage);
 		
 		int totalRecords = service.countNotice();
-		
+		System.out.println(totalRecords);
 		int end = (totalRecords - 1) / rowPerPage + 1;
 
 		PageInfoDto pageInfo = new PageInfoDto();
