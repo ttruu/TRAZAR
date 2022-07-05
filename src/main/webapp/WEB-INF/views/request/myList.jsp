@@ -57,7 +57,7 @@ table.type09 td {
 
 
 
-	<div class="container mt-5">
+	<div class="container mt-5" style="margin-bottom: 20%;">
 		<div class="row">
 			<div class="col-8">
 				<h1>내 의뢰 목록</h1>
@@ -70,10 +70,10 @@ table.type09 td {
 
 					<thead>
 						<tr>
-							<th scope="cols">글번호</th>
+							<th scope="cols">번호</th>
 							<th scope="cols">제목</th>
-							<th scope="cols">의뢰날짜</th>
-							<th scope="cols">의뢰상태</th>
+							<th scope="cols">날짜</th>
+							<th scope="cols">상태</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -116,6 +116,9 @@ table.type09 td {
 
 		</div>
 	</div>
+	<section class="mt-5">
+			<my:footer2/>
+        </section>
 </body>
 
 </html>
