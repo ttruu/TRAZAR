@@ -289,8 +289,6 @@
 			});
 		});
 		
-
-
 		$('#likebtn').click(function(){
 			likeUpdate();
 		});
@@ -365,22 +363,27 @@
 								<!-- 권한설정 -->
 								<sec:authorize access="isAuthenticated()">
 									<sec:authentication property="principal" var="principal" />
-									<c:if test="${principal.username == designBoard.memberId}">
-										<button id="edit-button1"
-											class="btn btn-outline-secondary btn-sm"
-											onclick="location.href = '${modifyLink}'"
-											style="margin-right: 4px;">수정하기</button>
-										<c:url value="/designBoard/remove" var="removeLink" />
-										<form action="${removeLink }" method="post">
-											<input type="hidden" name="id" value="${designBoard.id }" />
-											<button id="delete-submit1"
-												class="btn btn-outline-secondary btn-sm">삭제하기</button>
-										</form>
+									<c:if test="${principal.username == designBoard.memberId}" var="owner">
 									</c:if>
-								</sec:authorize>   
+								</sec:authorize>
+								<sec:authorize access="hasRole('ADMIN')" var="isAdmin">
+								</sec:authorize>
+								 
+								<c:if test="${owner}">
+									<button id="edit-button1"
+										class="btn btn-outline-secondary btn-sm"
+										onclick="location.href = '${modifyLink}'"
+										style="margin-right: 4px;">수정하기</button>
+										</c:if>
+											<c:if test="${owner or isAdmin}">
+									<c:url value="/designBoard/remove" var="removeLink" />
+									<form action="${removeLink }" method="post">
+										<input type="hidden" name="id" value="${designBoard.id }" />
+										<button id="delete-submit1"
+											class="btn btn-outline-secondary btn-sm">삭제하기</button>
+									</form>
 								
-								
-								
+								</c:if>
 							</div>
 
 							<div class="col-sm-6 mb-3 mb-sm-2" style="">
