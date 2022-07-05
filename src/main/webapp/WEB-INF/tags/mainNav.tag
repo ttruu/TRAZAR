@@ -43,6 +43,14 @@
 	</c:url>
 </sec:authorize>
 
+<%-- 내정보 링크 --%>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+	<c:url value="/designer/view" var="information">
+		<c:param name="memberId" value="${principal.username }" />
+	</c:url>
+</sec:authorize>
+
 <%-- 마이리스트 링크 --%>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
@@ -113,9 +121,9 @@ color: #FFFFFF;
             <li><a class="dropdown-item"data-bs-toggle="modal"
                            data-bs-target="#modal3" href="${passwordModify }">비밀번호 변경</a></li>
             <li><a class="dropdown-item" href="${myListUrl }">내 의뢰목록</a></li>
-
+			<li><a class="dropdown-item" href="${information }">내 정보</a></li>
             <li><a class="dropdown-item"data-bs-toggle="modal"
-                           data-bs-target="#modal2" href="${memberInfoUrl }">회원정보수정</a></li>
+                           data-bs-target="#modal2" href="${memberInfoUrl }">회원정보 수정</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="${logoutUrl }">로그아웃</a></li>
           </ul>
