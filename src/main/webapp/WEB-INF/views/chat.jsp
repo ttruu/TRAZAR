@@ -59,7 +59,7 @@ $(document).ready(function() {
 	    //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
 		if(sessionId == cur_session){
 			
-			var str = "<div class='col-6'>";
+			var str = "<div class='col-auto '>";
 			str += "<div class='alert alert-secondary'>";
 			str += "<b>" + sessionId + " : " + message + "</b>";
 			str += "</div></div>";
@@ -68,7 +68,7 @@ $(document).ready(function() {
 		}
 		else{
 			
-			var str = "<div class='col-6'>";
+			var str = "<div class='col-auto'>";
 			str += "<div class='alert alert-warning'>";
 			str += "<b>" + sessionId + " : " + message + "</b>";
 			str += "</div></div>";
@@ -98,16 +98,15 @@ $(document).ready(function() {
 </head>
 <body>
 	<my:navBar/>
-	<div class="container" >
-	<div class="col-6">
-		<label><b>채팅방</b></label>
-	</div>
+	<div class="container mt-5 d-flex justify-content-center" >
+	<div class="row">
+		<label ><b>채팅방</b></label>
 	<div>
-		<div id="msgArea" class="col">
+		<div id="msgArea" >
 		
 		</div>
 	<form id="form1" action="${appRoot }/chat" >
-		<div class="col-6">
+		<div class="col-auto mt-5">
 		<div class="input-group mb-3">
 			<input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" >
 			<div class="input-group-append">
@@ -116,9 +115,9 @@ $(document).ready(function() {
 		</div>
 		</div>
 	</form>
+		</div>
 	</div>
-	<div class="col-6">
-	</div>
+	
 </div>
 </body>
 </html>
