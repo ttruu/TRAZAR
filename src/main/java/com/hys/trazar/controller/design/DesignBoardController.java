@@ -153,6 +153,7 @@ public class DesignBoardController {
 		/*좋아요 기능 추가*/
 		LikeDto likeDto = new LikeDto();
 		likeDto.setDesignBoardId(dto.getId());
+	
 		int likeCheck = 0;
 		if (principal != null) {
 			sDto.setName(principal.getName());
@@ -168,10 +169,6 @@ public class DesignBoardController {
 		}
 		
 		model.addAttribute("likeCheck", likeCheck);
-		System.out.println(likeCheck);
-		
-//		service.likeInsert(likeDto);
-		
 		
 		service.increamentClicked(dto2);
 
@@ -188,7 +185,6 @@ public class DesignBoardController {
 	public Map<String, Object> likeUpdate(@RequestBody LikeDto likeDto, DesignBoardDto dto) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		System.out.println("@@@@@@");
 		try {
 			map.put("result", "success");
 			
@@ -211,7 +207,13 @@ public class DesignBoardController {
 	@PostMapping("modify")
 	public String modify(DesignBoardDto dto, Principal principal, RedirectAttributes rttr) {
 
-		service.updateDesignBoard(dto);
+		boolean success = service.updateDesignBoard(dto);
+		
+		if (success ) {	
+			rttr.addFlashAttribute("message", "게시글이 수정되었습니다.");
+		} else {
+			rttr.addFlashAttribute("message", "게시글이 수정되지 않았습니다.");
+		}
 
 		rttr.addAttribute("id", dto.getId());
 		rttr.addAttribute("memberId", principal.getName());
@@ -221,33 +223,19 @@ public class DesignBoardController {
 
 	@PostMapping("remove")
 	public String remove(DesignBoardDto dto, Principal principal, RedirectAttributes rttr) {
-		System.out.println("########################@$@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println(dto);
-		
-		
-		
+				
 		// 게시물 정보 얻고
 		DesignBoardDto oldBoard = service.getDesignBoardById(dto.getId());
+				
+		boolean success = service.deleteDesignBoard(dto.getId());
 		
-		System.out.println(oldBoard);
-		System.out.println(principal.getName());
-		
-		if (oldBoard.getMemberId().equals(principal.getName()) || "admin".equals(principal.getName())) {
-			boolean success = service.deleteDesignBoard(dto.getId());
-
-			if (success) {
-				rttr.addFlashAttribute("message", "글이 삭제 되었습니다.");
-
-			} else {
-				rttr.addFlashAttribute("message", "글이 삭제 되지않았습니다.");
-			}
+		if (success) {
+			rttr.addFlashAttribute("message", "글이 삭제 되었습니다.");
+			
 		} else {
-			rttr.addFlashAttribute("message", "권한이 없습니다");
-			rttr.addAttribute("id", dto.getId());
-			return "redirect:/designBoard/get";
+			rttr.addFlashAttribute("message", "글이 삭제 되지않았습니다.");
 		}
 
-		System.out.println("########################@$@@@@@@@@@@@@@@@@@@@@@");
 		return "redirect:/designBoard/list";
 	}
 

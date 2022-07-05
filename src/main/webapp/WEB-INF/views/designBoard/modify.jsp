@@ -103,11 +103,12 @@ $(document).ready(function() {
 	<my:navBar />
 
 	<!-- Page Content -->
-	<section style="margin-bottom: 50%;">
+	<section style="margin-bottom: 20%;">
 	<form id="form1" action="${appRoot }/designBoard/modify" method="post">
 		<input type="hidden" name="id" value="${designBoard.id }" />
+		<input type="hidden" name="memberId" value="${designBoard.memberId }" />
 
-		<div class="container">
+		<div class="container" style="padding-top: 4%;">
 			<div class="row">
 				<div class="col-lg-9">
 					<!-- 게시물 보기 + 수정 -->
@@ -131,9 +132,9 @@ $(document).ready(function() {
 						</div>
 					</div>
 				
+				<button id="modify-submit1" class="btn btn-secondary btn-icon-split btn-block">수정</button>
 				</div>
 				
-				<button id="modify-submit1" class="btn btn-secondary btn-icon-split btn-block">수정</button>
 				
 			</div>
 		</div>
