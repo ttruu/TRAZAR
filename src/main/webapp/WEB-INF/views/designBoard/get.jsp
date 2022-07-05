@@ -72,7 +72,7 @@
 			$("#delete-submit1").removeClass("d-none");
 		}); */
 		
-	 	/* $("#delete-submit1").click(function(e) {
+	 	 $("#delete-submit1").click(function(e) {
 			e.preventDefault();
 			
 			if (confirm("삭제하시겠습니까?")) {
@@ -82,7 +82,7 @@
 				form1.submit();
 			}
 			
-		}); */
+		});
 		
 	// 댓글 목록 (review list) 가져오는 ajax
 		const listReview = function() {
@@ -332,6 +332,11 @@
 	</script>
 
 <title>get jsp</title>
+<script>
+$(document).ready(function() {
+	$("#message").fadeOut(2000);
+});
+</script>
 
 
 </head>
@@ -341,7 +346,7 @@
 	<my:navBar />
 
 	<c:if test="${not empty message }">
-		<div class="alert alert-light">${message }</div>
+		<div id="message" class="alert alert-light">${message }</div>
 	</c:if>
 
 
@@ -379,7 +384,7 @@
 										</c:if>
 											<c:if test="${owner or isAdmin}">
 									<c:url value="/designBoard/remove" var="removeLink" />
-									<form action="${removeLink }" method="post">
+									<form id="form1" action="${removeLink }" method="post">
 										<input type="hidden" name="id" value="${designBoard.id }" />
 										<button id="delete-submit1"
 											class="btn btn-outline-secondary btn-sm">삭제하기</button>

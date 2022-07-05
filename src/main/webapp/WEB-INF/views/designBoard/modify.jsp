@@ -106,6 +106,7 @@ $(document).ready(function() {
 	<section style="margin-bottom: 20%;">
 	<form id="form1" action="${appRoot }/designBoard/modify" method="post">
 		<input type="hidden" name="id" value="${designBoard.id }" />
+		<input type="hidden" name="memberId" value="${designBoard.memberId }" />
 
 		<div class="container" style="padding-top: 4%;">
 			<div class="row">
