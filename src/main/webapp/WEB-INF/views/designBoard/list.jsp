@@ -35,19 +35,15 @@
 	justify-content: space-around;
 	margin-bottom: 34%;
 }
-
 .card-img-top {
 	margin-bottom: 25%;
 }
-
 .totalLayout {
 	position: relative;
 }
-
 .totalLayout-title {
 	margin: 0px 0;
 }
-
 .list-titles {
 	color: black;
 	font-size: 25px;
@@ -59,7 +55,6 @@
 	align-items: center;
 	color: #161C1C;
 }
-
 .list-titles2 {
 	color: black;
 	font-size: 20px;
@@ -71,20 +66,17 @@
 	align-items: center;
 	color: #161C1C;
 }
-
 .main-lists:after {
 	content: "";
 	display: block;
 	clear: both;
 }
-
 .main-lists {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 4%;
 	padding-top: 1.5%;
 }
-
 .project-list-mini {
 	weight: 250px;
 	margin-bottom: 55px;
@@ -93,25 +85,21 @@
 	weight: auto !important;
 	height: auto !important;
 }
-
 .design-name {
 	margin-top: 15px;
 	color: gray;
 	text-align: center;
 }
-
 .main.list-thumbnail {
 	weight: auto !important;
 	height: auto !important;
 }
-
 .main-lists .thumbnail-image img {
 	width: 270px;
 	height: 270px;
 	border: 1px solid #E1F6FA;
 	border-radius: 30px;
 }
-
 .main-project-title {
 	font-size: 11pt;
 	font-weight: bold;
@@ -119,34 +107,28 @@
 	margin: 8px 0;
 	text-align: center;
 }
-
 .adv {
 	width: 110%;
 	cursor: pointer;
 }
-
 #main {
 	padding-left: 120px;
 	margin-top: 120px;
 }
-
 .adv-container {
 	width: 10%;
 	position: relative;
 	bottom: 70px;
 	left: 30px;
 }
-
 .titles {
 	overflow: hidden 10px;
 	text-overflow: ellopsis;
 	white-space: nowarap;
 }
-
 #alist img{
 	transition: all 0.3s linear;
 }
-
 #alist:hover img {
 	transform: scale(1.4);
 }
@@ -163,15 +145,11 @@
 
 <script>
 	/* $(" .top").on("click", function(e) {
-
 	   $("html, body").animate({
 	      scrollTop : 0
 	   }, '500');
-
 	   return false;
-
 	}); */
-
 	$(document).ready(function() {
 		$("#message").fadeOut(2000);
 	});
@@ -242,11 +220,9 @@
          style="padding-top: 3%;">
          <section class="totalLayout-title col-8">
             <h3 class="list-titles ">hot creator🔥</h3>
-
             <c:if test="${not empty message }">
                <div class="alert alert-primary">${message }</div>
             </c:if>
-
             <div class="main-lists ">
                <c:forEach items="${hotList }" var="hot">
                   <div class="project-list-mini">
@@ -259,14 +235,12 @@
                            <img src="${hot.imgthumbnail }">
                         </div>
                      </a>
-
                      <c:url value="/designer/view" var="viewUrl">
                         <c:param name="memberId" value="${hot.memberId }"></c:param>
                      </c:url>
                      <a href="${viewUrl }">
                         <div class="design-name">${hot.title }</div>
                      </a>
-
                      <div class="main-project-title">${hot.writerNickName }</div>
                   </div>
                </c:forEach>
