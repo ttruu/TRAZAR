@@ -240,6 +240,7 @@
 						$("#passwordCheck").css("color", "red")
 					}
 				})
+				// id 중복확인, 이메일 중복확인, 닉네임 중복확인, 비밀번호 일치 모두 만족 할 시 회원가입 버튼 활성화 
 				const enableSubmit = function() {
 					if (idCheck && emailCheck && nickNameCheck && pwCheck
 							&& phoneNumCheck) {
