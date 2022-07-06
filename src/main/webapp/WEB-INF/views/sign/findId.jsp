@@ -30,74 +30,157 @@
 </head>
 
 <style>
-.form-control:focus {
-	box-shadow: 0 0;
-}
+	.form-control:focus {
+		box-shadow: 0 0;
+	}
 
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
+	input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	.form-control:focus {
+		box-shadow : 0 0;
+	}
+	
+	.main{
+		display: flex;
+		height: 100%;
+		margin: 0;
+		padding:0;
+	}
+	.main2{
+		display: flex;
+		flex:1 1;
+	}
+	.left-area{
+		position: relative; 
+		flex: 1 1; 
+		background-color: #303134; 
+		display: block;
+	}
+	.left{
+		color: white; 
+		text-decoration: none; 
+		font-size: 500%; 
+		left: 15%; 
+		top: 30%; 
+		z-index: 60; 
+		position: fixed;
+	}
+	.a-left{
+		text-decoration: none;
+		color: white;
+	}
+	.team{
+		padding-top: 48px; 
+		color: white; 
+		font-size: 25px; 
+		text-align: center; 
+		left: 15%; 
+		top: 30%; 
+		z-index: 60;
+	}
+	.left-under{
+		position: absolute; 
+		bottom: 42px; 
+		left: 3%; 
+		width: 90%;
+	}
+	.left-under-team{
+		color: white; 
+		font-size: 15px;
+	}
+	.right-area{
+		position: relative; 
+		align-items: center; 
+		flex-basis: 55%; 
+		display: flex; 
+		padding: 120px 0;
+		font-size: 1.4rem; 
+		flex-direction: column;
+	}
+	h1{
+		font-weight: 700; 
+		font-size: 25px; 
+		line-height: 130%; 
+		margin-bottom: 12px; 
+		padding-bottom: 14px; 
+		text-align: center; 
+		font-size: 150%;
+	}
+	#idInput1{
+		border: none; 
+		border-bottom: 1px solid; 
+		border-radius: 0; 
+		left: 0; 
+		padding: 14px; 
+		width: 100%; 
+		box-sizing: border-box; 
+		line-height: 36px; 
+		padding: 14px;
+	}
+	#phoneInput1{
+		border: none; 
+		border-bottom: 1px solid; 
+		border-radius: 0; 
+		left: 0; 
+		padding: 14px; 
+		width: 100%; 
+		box-sizing: border-box; 
+		line-height: 36px;
+		padding: 14px;
+	}
+	#emailInput1{
+		border: none; 
+		border-bottom: 1px solid; 
+		border-radius: 0; 
+		left: 0; 
+		padding: 14px; 
+		width: 100%; 
+		box-sizing: border-box; 
+		line-height: 36px; 
+		padding: 14px;
+	}
 </style>
 <body>
 
-	<div class="main"
-		style="display: flex; height: 100%; margin: 0; padding: 0;">
-
-		<div class="main2" style="display: flex; flex: 1 1;">
-
-
-
-			<div class="left-area"
-				style="position: relative; flex: 1 1; background-color: #303134; display: block;">
-				<div
-					style="color: white; text-decoration: none; font-size: 500%; left: 15%; top: 30%; z-index: 60; position: fixed;">
-					<a href="${appRoot }/designBoard/list"
-						style="text-decoration: none; color: white;">TRAZAR</a>
-					<div
-						style="padding-top: 48px; color: white; font-size: 25px; text-align: center; left: 15%; top: 30%; z-index: 60;">produce
-						by HYS</div>
-				</div>
+	<div class="main">
+	
+	<div class="main2">
+	
+	
+		<div class="left-area">
+			<div class="left">
+			<a href="${appRoot }/designBoard/list" class="a-left">TRAZAR</a>
+			<div class="team">produce by HYS</div>
 			</div>
+		</div>
+		
+		<div class="left-under">
+			<div class="left-under-team">TRAZAR</div>
+		</div>
 
-			<div class="left-under"
-				style="position: absolute; bottom: 42px; left: 3%; width: 90%;">
-				<div style="color: white; font-size: 15px;">TRAZAR</div>
-			</div>
-
-			<div class="right-area justify-content-center"
-				style="position: relative; align-items: center; flex-basis: 55%; display: flex; padding: 120px 0; font-size: 1.4rem; flex-direction: column;">
+			<div class="right-area justify-content-center">
 				<div class="col-12 col-lg-5">
-					<h1
-						style="font-weight: 700; font-size: 25px; line-height: 130%; margin-bottom: 12px; padding-bottom: 14px; text-align: center; font-size: 150%;">
-						아이디 찾기</h1>
+					<h1>아이디 찾기</h1>
 					<form action="${appRoot}/sign/findId" method="post">
 
 						<%-- 이름 입력  --%>
 						<label for="nameInput1" class="form-label"> 이름 </label>
-						<input class="form-control" id="passwordInput1" type="text"
-							name="name"
-							style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
-							placeholder="이름을 입력하세요" />
+						<input class="form-control" id="idInput1" type="text" name="name" placeholder="이름을 입력하세요" />
 						<br />
 						<br />
 
 
 						<%-- 휴대폰 번호 입력 --%>
 						<label for="phoneInput1" class="form-label">휴대폰 번호 </label>
-						<input class="form-control" id="passwordInput1" type="number"
-							name="phoneNum"
-							style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
-							placeholder="휴대폰 번호를 입력하세요 ( - 빼고 입력)" />
+						<input class="form-control" id="phoneInput1" type="number" name="phoneNum" placeholder="휴대폰 번호를 입력하세요 ( - 빼고 입력)" />
 						<br />
 						<br />
 
 						<%-- 이메일 입력 --%>
 						<label for="emailInput1" class="form-label"> 이메일 </label>
-						<input class="form-control" id="passwordInput1" type="email"
-							name="email"
-							style="border: none; border-bottom: 1px solid; border-radius: 0; left: 0; padding: 14px; width: 100%; box-sizing: border-box; line-height: 36px; padding: 14px;"
-							placeholder="이메일을 입력하세요" />
+						<input class="form-control" id="emailInput1" type="email" name="email" placeholder="이메일을 입력하세요" />
 						<br />
 						<br />
 						<input class="btn btn-dark" type="submit" value="아이디 찾기"

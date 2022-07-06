@@ -258,54 +258,138 @@
 	.form-control:focus {
 	box-shadow: 0 0;
 	
-}
+	}
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-  }
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+  		-webkit-appearance: none;
+  		margin: 0;
+  	}
+  	.form-control:focus {
+		box-shadow : 0 0;
+	}
+	.main{
+		display: flex;
+		height: 100%;
+		margin: 0;
+		padding:0;
+	}
+	.main2{
+		display: flex;
+		flex:1 1;
+	}
+	.left-area{
+		position: relative; 
+		flex: 1 1; 
+		background-color: #303134; 
+		display: block;
+	}
+	.left{
+		color: white; 
+		text-decoration: none; 
+		font-size: 500%; 
+		left: 15%; 
+		top: 30%; 
+		z-index: 60; 
+		position: fixed;
+	}
+	.a-left{
+		text-decoration: none;
+		color: white;
+	}
+	.team{
+		padding-top: 48px; 
+		color: white; 
+		font-size: 25px; 
+		text-align: center; 
+		left: 15%; 
+		top: 30%; 
+		z-index: 60;
+	}
+	.left-under{
+		position: absolute; 
+		bottom: 42px; 
+		left: 3%; 
+		width: 90%;
+	}
+	.left-under-team{
+		color: white; 
+		font-size: 15px;
+	}
+	.right-area{
+		position: relative; 
+		align-items: center; 
+		flex-basis: 55%; 
+		display: flex; 
+		padding: 120px 0;
+		font-size: 1.4rem; 
+		flex-direction: column;
+	}
+	#go-login{
+		position: absolute; 
+		top: 20px; 
+		right: 8%; 
+		font-size: 14px; 
+		color: #aeaeae; 
+		font-weight: 500; 
+		line-height: 36px;
+	}
+	#login-button{
+		margin-left: 8px; 
+		display: inline-block; 
+		border-radius: 13px;
+		box-sizing: border-box; 
+		height: 30px; 
+		padding: 0 12px;
+	}
+	h1{
+		font-weight: 700; 
+		font-size: 25px; 
+		line-height: 130%; 
+		margin-bottom: 12px; 
+		padding-bottom: 14px; 
+		text-align: center; 
+		font-size: 150%;
+	}
+	#CreateButton{
+		margin-top: 37px; 
+		position: relative; 
+		display: block; 
+		height: 58px; 
+		text-align: center; 
+		font-size: 18px; 
+		width: 100%; 
+		font-weight: 500; 
+		line-height: normal;
+	}
 </style>
 <body>
 
 
-	<div class="main"
-		style="display: flex; height: 110%; margin: 0; padding: 0;">
-
-		<div class="main2" style="display: flex; flex: 1 1;">
-
-
-
-			<div class="left-area"
-				style="position: relative; flex: 1 1; background-color: #303134; display: block;">
-				<div
-					style="color: white; text-decoration: none; font-size: 500%; left: 15%; top: 30%; z-index: 60; position:fixed;">
-					<a href="${appRoot }/designBoard/list"
-						style="text-decoration: none; color: white;">TRAZAR</a>
-					<div
-						style="padding-top: 48px; color: white; font-size: 25px; text-align: center; left: 15%; top: 30%; z-index: 60;">produce
-						by HYS</div>
-				</div>
+	<div class="main">
+	
+	<div class="main2">
+	
+	
+		<div class="left-area">
+			<div class="left">
+			<a href="${appRoot }/designBoard/list" class="a-left">TRAZAR</a>
+			<div class="team">produce by HYS</div>
 			</div>
-
-			<div class="left-under"
-				style="position: fixed; bottom: 42px; left: 3%; width: 90%;">
-				<div style="color: white; font-size: 15px;">TRAZAR</div>
-			</div>
-
-			<div class="right-area justify-content-start"
-				style="position: relative; align-items: center; flex-basis: 55%; display: flex; padding: 30px 0; font-size: 1.4rem; flex-direction: column;">
+		</div>
+		
+		<div class="left-under">
+			<div class="left-under-team">TRAZAR</div>
+		</div>
+	
+		<div class="right-area justify-content-center">
 				<div class="col-12 col-lg-5">
-					<div
-						style="position: absolute; top: 20px; right: 8%; font-size: 14px; color: #aeaeae; font-weight: 500; line-height: 36px;">
+					<div id="go-login">
 						이미 계정이 있으신가요 ?
-						<button class="btn btn-outline-primary" type="button"
-							onclick="location.href='${appRoot}/sign/login';"
-							style="margin-left: 8px; display: inline-block; border-radius: 13px; box-sizing: border-box; height: 30px; padding: 0 12px;">로그인</button>
+						<button class="btn btn-outline-primary" type="button" id="login-button"
+							onclick="location.href='${appRoot}/sign/login';" >로그인</button>
 					</div>
-					<h1
-						style="font-weight: 700; font-size: 25px; line-height: 130%; margin-bottom: 12px; padding-bottom: 14px; text-align: center; font-size: 150%;">TRAZAR
-						가입하기</h1>
+					<h1>TRAZAR 가입하기</h1>
 
 					<form id="form1" action="${appRoot}/sign/signup" method="post"
 						style="font-size: 15px;">
@@ -387,9 +471,7 @@ input::-webkit-inner-spin-button {
 							<input id="answer" class="form-control" type="text" name="answer" />
 						</div>
 
-						<button class="btn btn-dark" type="submit"
-							style="margin-top: 37px; position: relative; display: block; height: 58px; text-align: center; font-size: 18px; width: 100%; font-weight: 500; line-height: normal;"
-							id="CreateButton" disabled>회원가입</button>
+						<button class="btn btn-dark" type="submit" id="CreateButton" disabled>회원가입</button>
 					</form>
 
 				</div>
