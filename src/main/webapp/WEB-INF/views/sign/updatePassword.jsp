@@ -30,47 +30,106 @@
 			if (pw3 === pw4) {
 				$("#passwordMessageModify1").text("패스워드가 일치합니다.")
 				$("#passwordMessageModify1").css("color", "blue")
+				$("#button").removeAttr("disabled")
 			} else {
 				$("#passwordMessageModify1").text("패스워드가 일치하지 않습니다.")
 				$("#passwordMessageModify1").css("color", "red")
+				$("#button").attr("disabled","")
 			}
 		})
 	})
 </script>
 
+<style>
+	.form-control:focus {
+		box-shadow : 0 0;
+	}
+	
+	.main{
+		display: flex;
+		height: 100%;
+		margin: 0;
+		padding:0;
+	}
+	.main2{
+		display: flex;
+		flex:1 1;
+	}
+	.left-area{
+		position: relative; 
+		flex: 1 1; 
+		background-color: #303134; 
+		display: block;
+	}
+	.left{
+		color: white; 
+		text-decoration: none; 
+		font-size: 500%; 
+		left: 15%; 
+		top: 30%; 
+		z-index: 60; 
+		position: fixed;
+	}
+	.team{
+		padding-top: 48px; 
+		color: white; 
+		font-size: 25px; 
+		text-align: center; 
+		left: 15%; 
+		top: 30%; 
+		z-index: 60;
+	}
+	.left-under{
+		position: absolute; 
+		bottom: 42px; 
+		left: 3%; 
+		width: 90%;
+	}
+	.left-under-team{
+		color: white; 
+		font-size: 15px;
+	}
+	.right-area{
+		position: relative; 
+		align-items: center; 
+		flex-basis: 55%; 
+		display: flex; 
+		padding: 120px 0;
+		font-size: 1.4rem; 
+		flex-direction: column;
+	}
+	h1{
+		font-weight: 700; 
+		font-size: 25px; 
+		line-height: 130%; 
+		margin-bottom: 12px; 
+		padding-bottom: 14px; 
+		text-align: center; 
+		font-size: 150%;
+	}
+</style>
 
 <body>
 
-	<div class="main"
-		style="display: flex; height: 100%; margin: 0; padding: 0;">
-
-		<div class="main2" style="display: flex; flex: 1 1;">
-
-
-
-			<div class="left-area"
-				style="position: relative; flex: 1 1; background-color: #303134; display: block;">
-				<div
-					style="color: white; text-decoration: none; font-size: 500%; left: 15%; top: 30%; z-index: 60; position: fixed;">
-					<a href="${appRoot }/designBoard/list"
-						style="text-decoration: none; color: white;">TRAZAR</a>
-					<div
-						style="padding-top: 48px; color: white; font-size: 25px; text-align: center; left: 15%; top: 30%; z-index: 60;">produce
-						by HYS</div>
-				</div>
+	<div class="main">
+	
+	<div class="main2">
+	
+	
+		<div class="left-area">
+			<div class="left">
+			<a href="${appRoot }/designBoard/list" style="text-decoration: none; color: white;">TRAZAR</a>
+			<div class="team">produce by HYS</div>
 			</div>
-
-			<div class="left-under"
-				style="position: absolute; bottom: 42px; left: 3%; width: 90%;">
-				<div style="color: white; font-size: 15px;">TRAZAR</div>
-			</div>
-
-			<div class="right-area justify-content-center"
-				style="position: relative; align-items: center; flex-basis: 55%; display: flex; padding: 120px 0; font-size: 1.4rem; flex-direction: column;">
+		</div>
+		
+		<div class="left-under">
+			<div class="left-under-team">TRAZAR</div>
+		</div>
+	
+		<div class="right-area justify-content-center">
 				<div class="col-12 col-lg-5">
-					<h1
-						style="font-weight: 700; font-size: 25px; line-height: 130%; margin-bottom: 12px; padding-bottom: 14px; text-align: center; font-size: 150%;">
-						비밀번호 찾기</h1>
+					<h1> 비밀번호 찾기</h1>
 					<form action="${appRoot }/sign/passwordUpdate1" method="post">
 
 						<input id="idInput1" class="form-control" type="hidden" name="id"
@@ -85,7 +144,7 @@
 							value="" />
 						<p class="form-text" id="passwordMessageModify1"></p>
 						<br />
-						<input class="btn btn-dark" type="submit" value="비밀번호 변경" style="width: 100%;" />
+						<input id="button" class="btn btn-dark" type="submit" value="비밀번호 변경" style="width: 100%;" disabled />
 					</form>
 
 

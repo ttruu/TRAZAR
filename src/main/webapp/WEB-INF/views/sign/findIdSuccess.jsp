@@ -18,33 +18,90 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>Insert title here</title>
 </head>
+
+<style>
+	.form-control:focus {
+		box-shadow : 0 0;
+	}
+	
+	.main{
+		display: flex;
+		height: 100%;
+		margin: 0;
+		padding:0;
+	}
+	.main2{
+		display: flex;
+		flex:1 1;
+	}
+	.left-area{
+		position: relative; 
+		flex: 1 1; 
+		background-color: #303134; 
+		display: block;
+	}
+	.left{
+		color: white; 
+		text-decoration: none; 
+		font-size: 500%; 
+		left: 15%; 
+		top: 30%; 
+		z-index: 60; 
+		position: fixed;
+	}
+	.team{
+		padding-top: 48px; 
+		color: white; 
+		font-size: 25px; 
+		text-align: center; 
+		left: 15%; 
+		top: 30%; 
+		z-index: 60;
+	}
+	.left-under{
+		position: absolute; 
+		bottom: 42px; 
+		left: 3%; 
+		width: 90%;
+	}
+	.left-under-team{
+		color: white; 
+		font-size: 15px;
+	}
+	.right-area{
+		position: relative; 
+		align-items: center; 
+		flex-basis: 55%; 
+		display: flex; 
+		padding: 120px 0;
+		font-size: 1.4rem; 
+		flex-direction: column;
+	}
+		
+</style>
 <body>
 
-	<div class="main" 
-	style="display: flex; height: 100%; margin: 0; padding:0; ">
+	<div class="main">
 	
-	<div class="main2" style="display: flex; flex:1 1;">
+	<div class="main2">
 	
 	
-		
-		<div class="left-area" 
-		style="position: relative; flex: 1 1; background-color: #303134; display: block;">
-			<div style="color: white; text-decoration: none; font-size: 500%; left: 15%; top: 30%; z-index: 60; position: fixed;">
+		<div class="left-area">
+			<div class="left">
 			<a href="${appRoot }/designBoard/list" style="text-decoration: none; color: white;">TRAZAR</a>
-			<div style="padding-top: 48px; color: white; font-size: 25px; text-align: center; left: 15%; top: 30%; z-index: 60;">produce by HYS</div>
+			<div class="team">produce by HYS</div>
 			</div>
 		</div>
 		
-		<div class="left-under" style="position: absolute; bottom: 42px; left: 3%; width: 90%;">
-			<div style="color: white; font-size: 15px;">TRAZAR</div>
+		<div class="left-under">
+			<div class="left-under-team">TRAZAR</div>
 		</div>
-	
-		<div class="right-area justify-content-center" 
-		style=" position: relative; align-items: center; flex-basis: 55%; display: flex; padding: 120px 0;
-		font-size: 1.4rem; flex-direction: column;">
+
+			<div class="right-area justify-content-center">
 				<div class="col-12 col-lg-5" style="text-align: center;">
 					<h1>회원님의 ID는</h1>
-					<h2>"${findId.id}"입니다.</h2>
+					<h2 style="color: blue;">"${findId.id}"</h2>
+					<h2>입니다.</h2>
 					<div style="text-align: center;">
 					<a href="${appRoot }/sign/login">로그인 하러가기!</a>
 					</div>
