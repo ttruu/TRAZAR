@@ -58,11 +58,13 @@ public class RequestService {
 		
 		return mapper.myListRequest(memberId, from, rowPerPage);
 	}
-
+	
+	// list를 카테고리별로 가져오기
 	public List<RequestDto> listRequestByCategory(String categoryName) {
 		return mapper.listRequestByCategory(categoryName);
 	}
-
+	
+	// 내 list count
 	public int countMyList(String memberId) {
 		return mapper.countMyList(memberId);
 	}

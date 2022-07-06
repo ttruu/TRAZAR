@@ -132,6 +132,10 @@ public class DesignBoardController {
 			Principal principal,
 			RedirectAttributes rttr) {
 
+		if(designBoard.getPrice() == "") {
+			designBoard.setPrice("문의주세요");
+		}
+		
 		designBoard.setMemberId(principal.getName());
 
 		boolean success = service.insertDesignBoard(designBoard);

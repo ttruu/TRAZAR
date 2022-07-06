@@ -192,7 +192,7 @@
 							<div id="message" class="alert alert-light">${message }</div>
 						</c:if>
 						<h3 class="list-titles " style="text-align: left;">hot
-							creator🔥</h3>
+							design🔥</h3>
 
 					</section>
 				</div>
@@ -209,12 +209,12 @@
 								</a>
 								<header>
 									<div class="titles">
-										<p>${hot.title }</p>
+										<p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${hot.title }</p>
 									</div>
 									<c:url value="/designer/view" var="designerHotUrl">
 													<c:param name="memberId" value="${hot.memberId }"></c:param>
 												</c:url>
-									<p style="color: grey; font-size: medium"><a style="color: grey;" href="${designerHotUrl }">${hot.writerNickName }</a></p>
+									<p style="color: grey; font-size: medium"><a style="color: grey; white-space: nowrap;" href="${designerHotUrl }">${hot.writerNickName }</a></p>
 									<p style="color: grey; font-size: medium">${hot.prettyInserted }</p>
 								</header>
 
