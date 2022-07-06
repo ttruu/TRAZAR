@@ -30,9 +30,11 @@
 			if (pw3 === pw4) {
 				$("#passwordMessageModify1").text("패스워드가 일치합니다.")
 				$("#passwordMessageModify1").css("color", "blue")
+				$("#button").removeAttr("disabled")
 			} else {
 				$("#passwordMessageModify1").text("패스워드가 일치하지 않습니다.")
 				$("#passwordMessageModify1").css("color", "red")
+				$("#button").attr("disabled","")
 			}
 		})
 	})
@@ -68,10 +70,6 @@
 		z-index: 60; 
 		position: fixed;
 	}
-	.a-left{
-		text-decoration: none;
-		color: white;
-	}
 	.team{
 		padding-top: 48px; 
 		color: white; 
@@ -100,6 +98,15 @@
 		font-size: 1.4rem; 
 		flex-direction: column;
 	}
+	h1{
+		font-weight: 700; 
+		font-size: 25px; 
+		line-height: 130%; 
+		margin-bottom: 12px; 
+		padding-bottom: 14px; 
+		text-align: center; 
+		font-size: 150%;
+	}
 </style>
 
 <body>
@@ -111,7 +118,7 @@
 	
 		<div class="left-area">
 			<div class="left">
-			<a href="${appRoot }/designBoard/list" class="a-left">TRAZAR</a>
+			<a href="${appRoot }/designBoard/list" style="text-decoration: none; color: white;">TRAZAR</a>
 			<div class="team">produce by HYS</div>
 			</div>
 		</div>
@@ -122,9 +129,7 @@
 	
 		<div class="right-area justify-content-center">
 				<div class="col-12 col-lg-5">
-					<h1
-						style="font-weight: 700; font-size: 25px; line-height: 130%; margin-bottom: 12px; padding-bottom: 14px; text-align: center; font-size: 150%;">
-						비밀번호 찾기</h1>
+					<h1> 비밀번호 찾기</h1>
 					<form action="${appRoot }/sign/passwordUpdate1" method="post">
 
 						<input id="idInput1" class="form-control" type="hidden" name="id"
@@ -139,7 +144,7 @@
 							value="" />
 						<p class="form-text" id="passwordMessageModify1"></p>
 						<br />
-						<input class="btn btn-dark" type="submit" value="비밀번호 변경" style="width: 100%;" />
+						<input id="button" class="btn btn-dark" type="submit" value="비밀번호 변경" style="width: 100%;" disabled />
 					</form>
 
 

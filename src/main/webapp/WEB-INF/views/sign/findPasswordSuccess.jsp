@@ -40,10 +40,6 @@
 		z-index: 60; 
 		position: fixed;
 	}
-	.a-left{
-		text-decoration: none;
-		color: white;
-	}
 	.team{
 		padding-top: 48px; 
 		color: white; 
@@ -82,7 +78,7 @@
 	
 		<div class="left-area">
 			<div class="left">
-			<a href="${appRoot }/designBoard/list" class="a-left">TRAZAR</a>
+			<a href="${appRoot }/designBoard/list" style="text-decoration: none; color: white;">TRAZAR</a>
 			<div class="team">produce by HYS</div>
 			</div>
 		</div>

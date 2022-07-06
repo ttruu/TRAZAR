@@ -33,9 +33,11 @@ $(document).ready(function(){
 		if (pw3 === pw4) {
 			$("#passwordMessageModify1").text("패스워드가 일치합니다.")
 			$("#passwordMessageModify1").css("color","blue")
+			$("#button").removeAttr("disabled")
 		} else {
 			$("#passwordMessageModify1").text("패스워드가 일치하지 않습니다.")
 			$("#passwordMessageModify1").css("color","red")
+			$("button").attr("disabled","")
 		}
 	})
 })
@@ -64,7 +66,7 @@ $(document).ready(function(){
 					<input class="form-control" id="passwordModify4" type="password" value=""  />
 					<p class="form-text" id="passwordMessageModify1"></p>
 					<br />
-					<button class="btn btn-primary">비밀번호 변경</button>
+					<button class="btn btn-primary" id="button" disabled>비밀번호 변경</button>
 				</form>
 
 			</div>
