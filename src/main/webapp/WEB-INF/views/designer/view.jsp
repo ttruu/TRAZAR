@@ -50,7 +50,7 @@
 				
 						<header class="major">
 						
-							<h2>	<a href="/trazar/designBoard/list"><img src="${appRoot }/resources/picture/logo/로고.png" /></a>자기소개</h2> 
+							<h2>	<a href="/trazar/designBoard/list"><img src="${appRoot }/resources/picture/logo/자기소개.png" /></a>자기소개</h2> 
 						</header>
 						<p>${member.introduce }</p>
 						
