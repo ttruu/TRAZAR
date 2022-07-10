@@ -86,13 +86,6 @@
 		WHERE memberId = #{memberId}
 	</delete>
 	
-	<!--  
-	<insert id="insertFile">
-		INSERT INTO Files (designBoardId, fileName)
-		VALUES (#{designBoardId}, #{fileName})
-	</insert>
-	-->
-	
 	<select id="listByMemberId" resultType="com.hys.trazar.domain.DesignBoardDto">
 		SELECT id
 		FROM DesignBoard
@@ -131,6 +124,7 @@
 		LIMIT 4
 	</select>
 	
+	
 	<!-- 카운트로 유저의 좋아요에 대한 정보를 얻음 -->
 	<select id="likeSelectById" resultType="Integer" parameterType="com.hys.trazar.domain.LikeDto">
 		SELECT count(likeCheck) 
@@ -138,11 +132,13 @@
 		WHERE designBoardId = #{designBoardId} AND memberId = #{memberId}   
 	</select>
 	
+	
 	<!-- 테이블값(멤버/디자인보드 아이디) 넣는 쿼리 -->
 	<insert id="likeInsert" parameterType="com.hys.trazar.domain.LikeDto">		
 		INSERT INTO Likes (memberId, designBoardId)
 		VALUES (#{memberId}, #{designBoardId})
 	</insert>
+	
 	
 	<!-- 좋아요가 없는 경우 카운트를 다시 확인 -->
 	<select id="likeGetInfo" resultType="Integer" parameterType="com.hys.trazar.domain.LikeDto">
@@ -150,6 +146,7 @@
 		FROM Likes 
 		WHERE designBoardId = #{designBoardId} AND memberId = #{memberId} 
 	</select>
+	
 	
 	<!-- 1일때 빈하트로 업뎃 0일때 하트로 업뎃 -->
 	<update id="likeUpdate" parameterType="com.hys.trazar.domain.LikeDto">
@@ -160,8 +157,6 @@
 		<selectKey keyProperty="id" order="AFTER" resultType="Integer">
 			select count(likeCheck) from Likes where designBoardId =#{designBoardId} and likeCheck = 1
 		</selectKey>
-		
-		
 	</update>
 	
 	<sql id="cal">
@@ -174,15 +169,11 @@
 		</if>
 	</sql>
 	
-	<!-- <select id="updateLikeCount" resultType="Integer" parameterType="com.hys.trazar.domain.LikeDto">
-		SELECT COUNT(likeCheck) likeCount
-		FROM Likes
-		WHERE designBoardId = #{designBoardId} and likeCheck = 1;
-	</select> -->
 	<delete id="deleteByDesignBoardId">
 	DELETE FROM Likes
 	WHERE designBoardId = #{designBoardId}
 	</delete>
+	
 	<delete id="deleteListByMemberId">
 	DELETE FROM Likes
 	WHERE memberId = #{memberId}

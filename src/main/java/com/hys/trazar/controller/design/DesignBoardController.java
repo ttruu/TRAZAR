@@ -57,24 +57,26 @@ public class DesignBoardController {
 
 	@RequestMapping("list")
 	public void list( Model model, String categoryName) {
-		
+		// 조회수 높은 게시물(hotList)
 		List<DesignBoardDto> hotList = service.hotList();
 		
+		// 카테고리별로 게시물 나누기
 		List<DesignBoardDto> list = null;
 		if(categoryName == null) {
 			list = service.listDesignBoard();
 		} else {
-			
 			list = service.listDesignBoard(categoryName);
 		}
 		
-		processThumbNailImage(list);
+		// 조회수 높은 게시물(hotList)
 		processThumbNailImageHotList(hotList);
 		model.addAttribute("hotList", hotList);
+		// 메인페이지 게시물(list)
+		processThumbNailImage(list);
 		model.addAttribute("designBoardList", list);
 	}
 	
-	/* hot list thumbnail */
+	/* 조회수 높은 게시물 썸네일 출력 */
 	private void processThumbNailImageHotList(List<DesignBoardDto> hotList) {
 		for (DesignBoardDto dto : hotList) {
 			String thumbNail = "";
@@ -92,7 +94,7 @@ public class DesignBoardController {
 		
 	}
 
-	// 썸네일에 이미지 출력
+	// list 게시물 썸네일 출력
 	private void processThumbNailImage(List<DesignBoardDto> list) {
 		
 		for (DesignBoardDto dto : list) {

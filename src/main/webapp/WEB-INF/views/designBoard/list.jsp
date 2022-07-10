@@ -162,16 +162,6 @@
 </c:if>
 
 <script>
-	/* $(" .top").on("click", function(e) {
-
-	   $("html, body").animate({
-	      scrollTop : 0
-	   }, '500');
-
-	   return false;
-
-	}); */
-
 	$(document).ready(function() {
 		$("#message").fadeOut(2000);
 	});
@@ -181,21 +171,22 @@
 	<section>
 		<my:mainNav />
 	</section>
+	
 	<div id="page-wrapper " style="padding-bottom: 70px;">
 		<!-- Main -->
 		<section id="main" style="padding-top: 70px; padding-left: 170px;">
 
 			<div class="row">
+				<!-- hot design -->
 				<div class="ms-auto">
 					<section>
 						<c:if test="${not empty message }">
 							<div id="message" class="alert alert-light">${message }</div>
 						</c:if>
-						<h3 class="list-titles " style="text-align: left;">hot
-							design🔥</h3>
-
+						<h3 class="list-titles " style="text-align: left;">hot design🔥</h3>
 					</section>
 				</div>
+				
 				<div class="row">
 					<c:forEach items="${hotList }" var="hot">
 						<div class="col-2" style="align-items: center;">
@@ -212,15 +203,17 @@
 										<p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${hot.title }</p>
 									</div>
 									<c:url value="/designer/view" var="designerHotUrl">
-													<c:param name="memberId" value="${hot.memberId }"></c:param>
-												</c:url>
-									<p style="color: grey; font-size: medium"><a style="color: grey; white-space: nowrap;" href="${designerHotUrl }">${hot.writerNickName }</a></p>
+										<c:param name="memberId" value="${hot.memberId }"></c:param>
+									</c:url>
+									<p style="color: grey; font-size: medium">
+										<a style="color: grey; white-space: nowrap;" href="${designerHotUrl }">${hot.writerNickName }</a>
+									</p>
 									<p style="color: grey; font-size: medium">${hot.prettyInserted }</p>
 								</header>
-
 							</section>
 						</div>
 					</c:forEach>
+					<!-- 광고 -->
 					<div class="col-3 adv-container">
 						<div class="adv"
 							onclick="location.href='https://notefolioacademy.com/products/7';">
@@ -228,52 +221,9 @@
 						</div>
 					</div>
 				</div>
-
-
-
 			</div>
 		</section>
 	</div>
-
-
-	<!-- hot creator -->
-	<%-- <section>
-      <div class="totalLayout row justify-content-center"
-         style="padding-top: 3%;">
-         <section class="totalLayout-title col-8">
-            <h3 class="list-titles ">hot creator🔥</h3>
-
-            <c:if test="${not empty message }">
-               <div class="alert alert-primary">${message }</div>
-            </c:if>
-
-            <div class="main-lists ">
-               <c:forEach items="${hotList }" var="hot">
-                  <div class="project-list-mini">
-                     <c:url value="/designBoard/get" var="getUrl">
-                        <c:param name="id" value="${hot.id }"></c:param>
-                        <c:param name="memberId" value="${hot.memberId }"></c:param>
-                     </c:url>
-                     <a href="${getUrl }" class="list-thumbnail">
-                        <div class="thumbnail-image">
-                           <img src="${hot.imgthumbnail }">
-                        </div>
-                     </a>
-
-                     <c:url value="/designer/view" var="viewUrl">
-                        <c:param name="memberId" value="${hot.memberId }"></c:param>
-                     </c:url>
-                     <a href="${viewUrl }">
-                        <div class="design-name">${hot.title }</div>
-                     </a>
-
-                     <div class="main-project-title">${hot.writerNickName }</div>
-                  </div>
-               </c:forEach>
-            </div>
-         </section> --%>
-	<!-- 광고 -->
-
 
 	<!-- 카테고리 -->
 	<section class="list-titles2">
@@ -310,7 +260,7 @@
 				<div class="row">
 					<div class="col-12" style="padding: 0 0 0 0;">
 
-						<!-- Portfolio -->
+						<!-- list -->
 						<section>
 							<header class="major"> </header>
 							<div class="row">
@@ -329,14 +279,12 @@
 												<c:url value="/designer/view" var="designerUrl">
 													<c:param name="memberId" value="${designBoard.memberId }"></c:param>
 												</c:url>
-
-												<p
-													style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${designBoard.title }</p>
+												<p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${designBoard.title }</p>
 												<p style="color: grey; font-size: medium">
-													<a href="${designerUrl }" style="color: grey;">${designBoard.writerNickName }</a></p>
+													<a href="${designerUrl }" style="color: grey;">${designBoard.writerNickName }</a>
+												</p>
 												<p style="color: grey; font-size: medium">${designBoard.prettyInserted }</p>
 											</header>
-
 										</section>
 									</div>
 								</c:forEach>
